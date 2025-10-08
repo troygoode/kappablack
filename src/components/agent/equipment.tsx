@@ -1,5 +1,7 @@
 "use client";
 
+import { Input } from "../ui/input";
+import { Textarea } from "../ui/textarea";
 import { SideHeader } from "./form/side-header";
 
 export default function Equipment() {
@@ -22,14 +24,11 @@ export default function Equipment() {
             </label>
             <span className="text-xs print:hidden">0/500</span>
           </div>
-          <textarea
+          <Textarea
             className="min-h-10 w-full justify-self-end rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm h-60"
             maxLength={500}
-            placeholder=""
             id="headlessui-control-:r1do:"
-            data-headlessui-state=""
-            aria-labelledby="headlessui-label-:r1dp:"
-          ></textarea>
+          />
         </div>
         <div className="flex flex-col lg:hidden print:hidden">
           <div className="flex items-center justify-between px-2 py-1 font-jost text-xs uppercase">
@@ -54,7 +53,7 @@ export default function Equipment() {
           </div>
           <div className="m-2 flex flex-col gap-4 rounded-xl bg-zinc-200 p-2 font-jost">
             <div className="flex items-center">
-              <input
+              <Input
                 className="min-h-10 w-full justify-self-end rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm"
                 maxLength={100}
                 placeholder=""
@@ -165,7 +164,7 @@ export default function Equipment() {
             <tr className="text-center">
               <td className="border-l border-b border-zinc-800 px-1 py-0.5">
                 <div className="flex items-center gap-1.5">
-                  <input
+                  <Input
                     className="min-h-10 w-full justify-self-end rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm print:py-0.5 print:px-1"
                     maxLength={100}
                     placeholder=""

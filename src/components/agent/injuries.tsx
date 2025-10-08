@@ -1,5 +1,7 @@
 "use client";
 
+import { Checkbox } from "../ui/checkbox";
+import { Textarea } from "../ui/textarea";
 import { SideHeader } from "./form/side-header";
 
 export default function Injuries() {
@@ -22,27 +24,15 @@ export default function Injuries() {
             </label>
             <span className="text-xs print:hidden">0/300</span>
           </div>
-          <textarea
+          <Textarea
             className="min-h-10 w-full justify-self-end rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm h-28"
             maxLength={300}
-            placeholder=""
-            id="headlessui-control-:r1dk:"
-            data-headlessui-state=""
-            aria-labelledby="headlessui-label-:r1dl:"
-          ></textarea>
+          />
         </div>
         <div className="flex flex-col items-center justify-center px-2 py-1 font-jost text-sm lg:flex-row lg:gap-4">
           <span>Has First Aid been attempted since the last injury?</span>
           <div className="flex items-center gap-1">
-            <span
-              aria-label="Bond damaged"
-              className="size-4 flex-none cursor-pointer border border-slate-950 focus-visible:outline-slate-600 data-[checked]:bg-slate-950 sm:size-3"
-              id="headlessui-checkbox-:r1dn:"
-              role="checkbox"
-              aria-checked="false"
-              tabIndex={0}
-              data-headlessui-state=""
-            ></span>
+            <Checkbox className="cursor-pointer" id="first-aid-no" />
             <span>
               Yes: Only Medicine, Surgery, or long-term rest can help further.
             </span>

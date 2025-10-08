@@ -1,5 +1,7 @@
 "use client";
 
+import { Input } from "../ui/input";
+import { Textarea } from "../ui/textarea";
 import { SideHeader } from "./form/side-header";
 
 export default function Remarks() {
@@ -23,14 +25,11 @@ export default function Remarks() {
               </label>
               <span className="text-xs print:hidden">0/500</span>
             </div>
-            <textarea
+            <Textarea
               className="min-h-10 w-full justify-self-end rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm grow h-28 lg:h-auto"
               maxLength={500}
-              placeholder=""
               id="headlessui-control-:r1dt:"
-              data-headlessui-state=""
-              aria-labelledby="headlessui-label-:r1du:"
-            ></textarea>
+            />
           </div>
           <div className="flex flex-col">
             <div
@@ -48,14 +47,11 @@ export default function Remarks() {
                 </label>
                 <span className="text-xs print:hidden">0/300</span>
               </div>
-              <textarea
+              <Textarea
                 className="min-h-10 w-full justify-self-end rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm grow h-28"
                 maxLength={300}
-                placeholder=""
                 id="headlessui-control-:r1e0:"
-                data-headlessui-state=""
-                aria-labelledby="headlessui-label-:r1e1:"
-              ></textarea>
+              />
             </div>
             <div className="flex flex-col font-jost">
               <div className="flex text-xs uppercase">
@@ -96,7 +92,7 @@ export default function Remarks() {
                     >
                       Special training name
                     </label>
-                    <input
+                    <Input
                       className="min-h-10 w-full justify-self-end rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm"
                       maxLength={50}
                       placeholder=""
@@ -176,7 +172,7 @@ export default function Remarks() {
                     >
                       Special training name
                     </label>
-                    <input
+                    <Input
                       className="min-h-10 w-full justify-self-end rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm"
                       maxLength={50}
                       placeholder=""
@@ -256,7 +252,7 @@ export default function Remarks() {
                     >
                       Special training name
                     </label>
-                    <input
+                    <Input
                       className="min-h-10 w-full justify-self-end rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm"
                       maxLength={50}
                       placeholder=""

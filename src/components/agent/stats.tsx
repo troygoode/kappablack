@@ -1,5 +1,7 @@
 "use client";
 
+import { Input } from "../ui/input";
+import { Textarea } from "../ui/textarea";
 import { SideHeader } from "./form/side-header";
 
 export default function Stats() {
@@ -40,7 +42,7 @@ export default function Stats() {
                   Strength score
                 </label>
                 <div className="flex gap-0.5">
-                  <input
+                  <Input
                     className="span min-h-10 w-full grow rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-1 py-0.5 text-center hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 print:border-0 print:bg-transparent print:text-sm"
                     inputMode="numeric"
                     pattern="[0-9]*"
@@ -102,7 +104,7 @@ export default function Stats() {
                 >
                   Strength distinguishing feature
                 </label>
-                <input
+                <Input
                   className="min-h-10 w-full justify-self-end rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm disabled:opacity-0 transition-opacity duration-200"
                   maxLength={50}
                   placeholder=""
@@ -132,7 +134,7 @@ export default function Stats() {
                   Dexterity score
                 </label>
                 <div className="flex gap-0.5">
-                  <input
+                  <Input
                     className="span min-h-10 w-full grow rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-1 py-0.5 text-center hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 print:border-0 print:bg-transparent print:text-sm"
                     inputMode="numeric"
                     pattern="[0-9]*"
@@ -194,7 +196,7 @@ export default function Stats() {
                 >
                   Dexterity distinguishing feature
                 </label>
-                <input
+                <Input
                   className="min-h-10 w-full justify-self-end rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm disabled:opacity-0 transition-opacity duration-200"
                   maxLength={50}
                   placeholder=""
@@ -222,7 +224,7 @@ export default function Stats() {
                   Constitution score
                 </label>
                 <div className="flex gap-0.5">
-                  <input
+                  <Input
                     className="span min-h-10 w-full grow rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-1 py-0.5 text-center hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 print:border-0 print:bg-transparent print:text-sm"
                     inputMode="numeric"
                     pattern="[0-9]*"
@@ -284,7 +286,7 @@ export default function Stats() {
                 >
                   Constitution distinguishing feature
                 </label>
-                <input
+                <Input
                   className="min-h-10 w-full justify-self-end rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm disabled:opacity-0 transition-opacity duration-200"
                   maxLength={50}
                   placeholder=""
@@ -312,7 +314,7 @@ export default function Stats() {
                   Intelligence score
                 </label>
                 <div className="flex gap-0.5">
-                  <input
+                  <Input
                     className="span min-h-10 w-full grow rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-1 py-0.5 text-center hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 print:border-0 print:bg-transparent print:text-sm"
                     inputMode="numeric"
                     pattern="[0-9]*"
@@ -374,7 +376,7 @@ export default function Stats() {
                 >
                   Intelligence distinguishing feature
                 </label>
-                <input
+                <Input
                   className="min-h-10 w-full justify-self-end rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm disabled:opacity-0 transition-opacity duration-200"
                   maxLength={50}
                   placeholder=""
@@ -402,7 +404,7 @@ export default function Stats() {
                   Power score
                 </label>
                 <div className="flex gap-0.5">
-                  <input
+                  <Input
                     className="span min-h-10 w-full grow rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-1 py-0.5 text-center hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 print:border-0 print:bg-transparent print:text-sm"
                     inputMode="numeric"
                     pattern="[0-9]*"
@@ -464,7 +466,7 @@ export default function Stats() {
                 >
                   Power distinguishing feature
                 </label>
-                <input
+                <Input
                   className="min-h-10 w-full justify-self-end rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm disabled:opacity-0 transition-opacity duration-200"
                   maxLength={50}
                   placeholder=""
@@ -492,7 +494,7 @@ export default function Stats() {
                   Charisma score
                 </label>
                 <div className="flex gap-0.5">
-                  <input
+                  <Input
                     className="span min-h-10 w-full grow rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-1 py-0.5 text-center hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 print:border-0 print:bg-transparent print:text-sm"
                     inputMode="numeric"
                     pattern="[0-9]*"
@@ -554,7 +556,7 @@ export default function Stats() {
                 >
                   Charisma distinguishing feature
                 </label>
-                <input
+                <Input
                   className="min-h-10 w-full justify-self-end rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm disabled:opacity-0 transition-opacity duration-200"
                   maxLength={50}
                   placeholder=""
@@ -587,7 +589,7 @@ export default function Stats() {
               </div>
               <div className="col-span-2 flex items-center justify-center px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
                 <div className="flex gap-0.5">
-                  <input
+                  <Input
                     className="span min-h-10 w-full grow rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-1 py-0.5 text-center hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 print:border-0 print:bg-transparent print:text-sm"
                     inputMode="numeric"
                     pattern="[0-9]*"
@@ -643,7 +645,7 @@ export default function Stats() {
               </div>
               <div className="col-span-2 flex items-center justify-center px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
                 <div className="flex gap-0.5">
-                  <input
+                  <Input
                     className="span min-h-10 w-full grow rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-1 py-0.5 text-center hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 print:border-0 print:bg-transparent print:text-sm"
                     inputMode="numeric"
                     pattern="[0-9]*"
@@ -699,7 +701,7 @@ export default function Stats() {
               </div>
               <div className="col-span-2 flex items-center justify-center px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
                 <div className="flex gap-0.5">
-                  <input
+                  <Input
                     className="span min-h-10 w-full grow rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-1 py-0.5 text-center hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 print:border-0 print:bg-transparent print:text-sm"
                     inputMode="numeric"
                     pattern="[0-9]*"
@@ -755,7 +757,7 @@ export default function Stats() {
               </div>
               <div className="col-span-2 flex items-center justify-center px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
                 <div className="flex gap-0.5">
-                  <input
+                  <Input
                     className="span min-h-10 w-full grow rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-1 py-0.5 text-center hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 print:border-0 print:bg-transparent print:text-sm"
                     inputMode="numeric"
                     pattern="[0-9]*"
@@ -818,14 +820,11 @@ export default function Stats() {
               </label>
               <span className="text-xs print:hidden">0/300</span>
             </div>
-            <textarea
+            <Textarea
               className="min-h-10 w-full justify-self-end rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm h-full"
               maxLength={300}
-              placeholder=""
               id="headlessui-control-:r2j:"
-              data-headlessui-state=""
-              aria-labelledby="headlessui-label-:r2k:"
-            ></textarea>
+            />
           </div>
         </div>
       </div>

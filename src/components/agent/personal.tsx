@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import classNames from "classnames";
 
 import { type IAgent } from "@/IAgent";
 
@@ -125,15 +126,29 @@ const Sex = ({ state }: { state: IAgent }) => {
           onChange={onSexChange}
         >
           <div className="flex items-center gap-1">
-            <SquareRadioGroupItem value="sex-m" id="sex-m" />
+            <SquareRadioGroupItem
+              value="sex-m"
+              id="sex-m"
+              className={sex === "sex-m" ? "cursor-default" : "cursor-pointer"}
+            />
             <Label htmlFor="sex-m">M</Label>
           </div>
           <div className="flex items-center gap-1">
-            <SquareRadioGroupItem value="sex-f" id="sex-f" />
+            <SquareRadioGroupItem
+              value="sex-f"
+              id="sex-f"
+              className={sex === "sex-f" ? "cursor-default" : "cursor-pointer"}
+            />
             <Label htmlFor="sex-f">F</Label>
           </div>
           <div className="flex items-center gap-1">
-            <SquareRadioGroupItem value="sex-other" id="sex-other" />
+            <SquareRadioGroupItem
+              value="sex-other"
+              id="sex-other"
+              className={
+                sex === "sex-other" ? "cursor-default" : "cursor-pointer"
+              }
+            />
           </div>
         </RadioGroup>
         <div className="grow">

@@ -1,10 +1,13 @@
 "use client";
 
+import { Checkbox } from "../ui/checkbox";
+import { Input } from "../ui/input";
+import { Textarea } from "../ui/textarea";
 import { SideHeader } from "./form/side-header";
 
 export default function Psychology() {
   return (
-    <div className="flex flex-col outline-1 outline-zinc-800 sm:flex-row print:outline-slate-950">
+    <div className="flex h-full flex-col outline-1 outline-zinc-800 sm:flex-row print:outline-slate-950">
       <SideHeader>Psychological Data</SideHeader>
       <div className="w-full">
         <div className="flex h-full flex-col">
@@ -54,7 +57,7 @@ export default function Psychology() {
                   >
                     Bond name
                   </label>
-                  <input
+                  <Input
                     className="min-h-10 w-full justify-self-end rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm"
                     maxLength={50}
                     placeholder=""
@@ -95,7 +98,7 @@ export default function Psychology() {
                     score
                   </label>
                   <div className="flex gap-0.5">
-                    <input
+                    <Input
                       className="span min-h-10 w-full grow rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-1 py-0.5 text-center hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 print:border-0 print:bg-transparent print:text-sm"
                       inputMode="numeric"
                       pattern="[0-9]*"
@@ -164,7 +167,7 @@ export default function Psychology() {
                   >
                     Bond name
                   </label>
-                  <input
+                  <Input
                     className="min-h-10 w-full justify-self-end rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm"
                     maxLength={50}
                     placeholder=""
@@ -205,7 +208,7 @@ export default function Psychology() {
                     score
                   </label>
                   <div className="flex gap-0.5">
-                    <input
+                    <Input
                       className="span min-h-10 w-full grow rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-1 py-0.5 text-center hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 print:border-0 print:bg-transparent print:text-sm"
                       inputMode="numeric"
                       pattern="[0-9]*"
@@ -274,7 +277,7 @@ export default function Psychology() {
                   >
                     Bond name
                   </label>
-                  <input
+                  <Input
                     className="min-h-10 w-full justify-self-end rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm"
                     maxLength={50}
                     placeholder=""
@@ -315,7 +318,7 @@ export default function Psychology() {
                     score
                   </label>
                   <div className="flex gap-0.5">
-                    <input
+                    <Input
                       className="span min-h-10 w-full grow rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-1 py-0.5 text-center hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 print:border-0 print:bg-transparent print:text-sm"
                       inputMode="numeric"
                       pattern="[0-9]*"
@@ -383,14 +386,11 @@ export default function Psychology() {
               </label>
               <span className="text-xs print:hidden">0/300</span>
             </div>
-            <textarea
+            <Textarea
               className="min-h-10 w-full justify-self-end rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm h-full"
               maxLength={300}
-              placeholder=""
               id="headlessui-control-:r3b:"
-              data-headlessui-state=""
-              aria-labelledby="headlessui-label-:r3c:"
-            ></textarea>
+            />
           </div>
           <div className="flex flex-col px-2 py-1 font-jost text-sm">
             <h3 className="text-xs uppercase">
@@ -399,60 +399,36 @@ export default function Psychology() {
             <div className="flex flex-col justify-between sm:flex-row">
               <div className="flex items-center justify-center gap-3 sm:gap-1">
                 <span>Violence</span>
-                <span
-                  className="size-4 flex-none cursor-pointer border border-zinc-800 focus-visible:outline-slate-600 data-[checked]:bg-slate-950 sm:size-3"
+                <Checkbox
                   id="headlessui-checkbox-:r3e:"
-                  role="checkbox"
-                  aria-checked="false"
-                  tabIndex={0}
-                  data-headlessui-state=""
-                ></span>
-                <span
-                  className="size-4 flex-none cursor-pointer border border-zinc-800 focus-visible:outline-slate-600 data-[checked]:bg-slate-950 sm:size-3"
-                  id="headlessui-checkbox-:r3f:"
-                  role="checkbox"
-                  aria-checked="false"
-                  tabIndex={0}
-                  data-headlessui-state=""
-                ></span>
-                <span
-                  className="size-4 flex-none cursor-pointer border border-zinc-800 focus-visible:outline-slate-600 data-[checked]:bg-slate-950 sm:size-3"
-                  id="headlessui-checkbox-:r3g:"
-                  role="checkbox"
-                  aria-checked="false"
-                  tabIndex={0}
-                  data-headlessui-state=""
-                ></span>
+                  className="cursor-pointer"
+                />
+                <Checkbox
+                  id="headlessui-checkbox-:r3e:"
+                  className="cursor-pointer"
+                />
+                <Checkbox
+                  id="headlessui-checkbox-:r3e:"
+                  className="cursor-pointer"
+                />
                 <span className="peer rounded-full border border-transparent pl-0.5 pr-1 italic data-[adapted]:border-slate-950">
                   adapted
                 </span>
               </div>
               <div className="flex items-center justify-center gap-3 sm:gap-1">
                 <span>Helplessness</span>
-                <span
-                  className="size-4 flex-none cursor-pointer border border-zinc-800 focus-visible:outline-slate-600 data-[checked]:bg-slate-950 sm:size-3"
-                  id="headlessui-checkbox-:r3h:"
-                  role="checkbox"
-                  aria-checked="false"
-                  tabIndex={0}
-                  data-headlessui-state=""
-                ></span>
-                <span
-                  className="size-4 flex-none cursor-pointer border border-zinc-800 focus-visible:outline-slate-600 data-[checked]:bg-slate-950 sm:size-3"
-                  id="headlessui-checkbox-:r3i:"
-                  role="checkbox"
-                  aria-checked="false"
-                  tabIndex={0}
-                  data-headlessui-state=""
-                ></span>
-                <span
-                  className="size-4 flex-none cursor-pointer border border-zinc-800 focus-visible:outline-slate-600 data-[checked]:bg-slate-950 sm:size-3"
-                  id="headlessui-checkbox-:r3j:"
-                  role="checkbox"
-                  aria-checked="false"
-                  tabIndex={0}
-                  data-headlessui-state=""
-                ></span>
+                <Checkbox
+                  id="headlessui-checkbox-:r3e:"
+                  className="cursor-pointer"
+                />
+                <Checkbox
+                  id="headlessui-checkbox-:r3e:"
+                  className="cursor-pointer"
+                />
+                <Checkbox
+                  id="headlessui-checkbox-:r3e:"
+                  className="cursor-pointer"
+                />
                 <span className="peer rounded-full border border-transparent pl-0.5 pr-1 italic data-[adapted]:border-slate-950">
                   adapted
                 </span>
