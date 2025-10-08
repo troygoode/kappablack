@@ -36,7 +36,7 @@ export default function Home() {
       <div className="mt-4 mb-1">
         <Equipment />
       </div>
-      <div className="mt-4 mb-1">
+      <div className="mt-4 mb-2">
         <Remarks />
       </div>
       <div className="mb-8">

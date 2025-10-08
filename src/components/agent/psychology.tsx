@@ -1,19 +1,19 @@
 "use client";
 
+import { SideHeader } from "./form/side-header";
+
 export default function Psychology() {
   return (
-    <div className="flex flex-col outline-1 outline-slate-500 sm:flex-row print:outline-slate-950">
-      <h2 className="bg-slate-950 px-1.5 py-1.5 text-center font-jost text-sm font-bold uppercase text-slate-50 outline-1 outline-slate-500 sm:rotate-180 sm:py-5 sm:[writing-mode:vertical-lr] print:py-0 print:outline-slate-950">
-        Psychological Data
-      </h2>
+    <div className="flex flex-col outline-1 outline-zinc-800 sm:flex-row print:outline-slate-950">
+      <SideHeader>Psychological Data</SideHeader>
       <div className="w-full">
         <div className="flex h-full flex-col">
           <div className="flex flex-col font-jost">
             <div className="flex text-xs uppercase">
-              <div className="flex grow items-center justify-between px-2 py-1 outline-1 outline-slate-500 print:outline-slate-950">
+              <div className="flex grow items-center justify-between px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
                 <h3>11. Bonds</h3>
                 <button
-                  className="disabled:hover flex min-h-10 sm:min-h-0 h-fit px-3 sm:px-0 items-center gap-1 text-nowrap rounded-full border border-slate-600 sm:pl-1.5 text-sm text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400 disabled:scale-100 disabled:border-slate-600 disabled:bg-inherit disabled:text-inherit disabled:opacity-30 print:hidden"
+                  className="disabled:hover flex min-h-10 sm:min-h-0 h-fit px-3 sm:px-0 items-center gap-1 text-nowrap rounded-full border border-zinc-800 sm:pl-1.5 text-sm text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400 disabled:scale-100 disabled:border-slate-600 disabled:bg-inherit disabled:text-inherit disabled:opacity-30 print:hidden"
                   type="button"
                   data-headlessui-state=""
                 >
@@ -30,15 +30,15 @@ export default function Psychology() {
                   </svg>
                 </button>
               </div>
-              <div className="flex w-20 items-center justify-center px-2 py-1 outline-1 outline-slate-500 print:outline-slate-950">
+              <div className="flex w-20 items-center justify-center px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
                 Score
               </div>
             </div>
             <div className="flex">
-              <div className="flex grow items-center gap-1.5 px-2 py-1 outline-1 outline-slate-500 print:outline-slate-950">
+              <div className="flex grow items-center gap-1.5 px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
                 <span
                   aria-label="Bond damaged"
-                  className="size-4 flex-none cursor-pointer border border-slate-950 focus-visible:outline-slate-600 data-[checked]:bg-slate-950 sm:size-3"
+                  className="size-4 flex-none cursor-pointer border border-zinc-800 focus-visible:outline-slate-600 data-[checked]:bg-slate-950 sm:size-3"
                   id="headlessui-checkbox-:r2m:"
                   role="checkbox"
                   aria-checked="false"
@@ -55,7 +55,7 @@ export default function Psychology() {
                     Bond name
                   </label>
                   <input
-                    className="min-h-10 w-full justify-self-end rounded-t-md border-b border-slate-500 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm"
+                    className="min-h-10 w-full justify-self-end rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm"
                     maxLength={50}
                     placeholder=""
                     id="headlessui-control-:r2n:"
@@ -81,9 +81,9 @@ export default function Psychology() {
                   </svg>
                 </button>
               </div>
-              <div className="w-20 text-center outline-1 outline-slate-500 print:outline-slate-950">
+              <div className="w-20 text-center outline-1 outline-zinc-800 print:outline-slate-950">
                 <div
-                  className="flex items-center p-1 outline-slate-950"
+                  className="flex items-center p-1 outline-zinc-800"
                   data-headlessui-state=""
                 >
                   <label
@@ -96,7 +96,7 @@ export default function Psychology() {
                   </label>
                   <div className="flex gap-0.5">
                     <input
-                      className="span min-h-10 w-full grow rounded-t-md border-b border-slate-500 bg-zinc-300 bg-opacity-70 px-1 py-0.5 text-center hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 print:border-0 print:bg-transparent print:text-sm"
+                      className="span min-h-10 w-full grow rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-1 py-0.5 text-center hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 print:border-0 print:bg-transparent print:text-sm"
                       inputMode="numeric"
                       pattern="[0-9]*"
                       maxLength={3}
@@ -108,7 +108,7 @@ export default function Psychology() {
                     />
                     <div className="hidden flex-col justify-between gap-0 sm:flex print:hidden">
                       <button
-                        className="flex h-3.5 w-4 items-center justify-center rounded-sm border border-slate-600 text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400"
+                        className="flex h-3.5 w-4 items-center justify-center rounded-sm border border-zinc-800 text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400"
                         type="button"
                         data-headlessui-state=""
                       >
@@ -124,7 +124,7 @@ export default function Psychology() {
                         </svg>
                       </button>
                       <button
-                        className="flex h-3.5 w-4 rotate-180 items-center justify-center rounded-sm border border-slate-600 text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400"
+                        className="flex h-3.5 w-4 rotate-180 items-center justify-center rounded-sm border border-zinc-800 text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400"
                         type="button"
                         data-headlessui-state=""
                       >
@@ -145,10 +145,10 @@ export default function Psychology() {
               </div>
             </div>
             <div className="flex">
-              <div className="flex grow items-center gap-1.5 px-2 py-1 outline-1 outline-slate-500 print:outline-slate-950">
+              <div className="flex grow items-center gap-1.5 px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
                 <span
                   aria-label="Bond damaged"
-                  className="size-4 flex-none cursor-pointer border border-slate-950 focus-visible:outline-slate-600 data-[checked]:bg-slate-950 sm:size-3"
+                  className="size-4 flex-none cursor-pointer border border-zinc-800 focus-visible:outline-slate-600 data-[checked]:bg-slate-950 sm:size-3"
                   id="headlessui-checkbox-:r2t:"
                   role="checkbox"
                   aria-checked="false"
@@ -165,7 +165,7 @@ export default function Psychology() {
                     Bond name
                   </label>
                   <input
-                    className="min-h-10 w-full justify-self-end rounded-t-md border-b border-slate-500 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm"
+                    className="min-h-10 w-full justify-self-end rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm"
                     maxLength={50}
                     placeholder=""
                     id="headlessui-control-:r2u:"
@@ -191,9 +191,9 @@ export default function Psychology() {
                   </svg>
                 </button>
               </div>
-              <div className="w-20 text-center outline-1 outline-slate-500 print:outline-slate-950">
+              <div className="w-20 text-center outline-1 outline-zinc-800 print:outline-slate-950">
                 <div
-                  className="flex items-center p-1 outline-slate-950"
+                  className="flex items-center p-1 outline-zinc-800"
                   data-headlessui-state=""
                 >
                   <label
@@ -206,7 +206,7 @@ export default function Psychology() {
                   </label>
                   <div className="flex gap-0.5">
                     <input
-                      className="span min-h-10 w-full grow rounded-t-md border-b border-slate-500 bg-zinc-300 bg-opacity-70 px-1 py-0.5 text-center hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 print:border-0 print:bg-transparent print:text-sm"
+                      className="span min-h-10 w-full grow rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-1 py-0.5 text-center hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 print:border-0 print:bg-transparent print:text-sm"
                       inputMode="numeric"
                       pattern="[0-9]*"
                       maxLength={3}
@@ -218,7 +218,7 @@ export default function Psychology() {
                     />
                     <div className="hidden flex-col justify-between gap-0 sm:flex print:hidden">
                       <button
-                        className="flex h-3.5 w-4 items-center justify-center rounded-sm border border-slate-600 text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400"
+                        className="flex h-3.5 w-4 items-center justify-center rounded-sm border border-zinc-800 text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400"
                         type="button"
                         data-headlessui-state=""
                       >
@@ -234,7 +234,7 @@ export default function Psychology() {
                         </svg>
                       </button>
                       <button
-                        className="flex h-3.5 w-4 rotate-180 items-center justify-center rounded-sm border border-slate-600 text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400"
+                        className="flex h-3.5 w-4 rotate-180 items-center justify-center rounded-sm border border-zinc-800 text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400"
                         type="button"
                         data-headlessui-state=""
                       >
@@ -255,10 +255,10 @@ export default function Psychology() {
               </div>
             </div>
             <div className="flex">
-              <div className="flex grow items-center gap-1.5 px-2 py-1 outline-1 outline-slate-500 print:outline-slate-950">
+              <div className="flex grow items-center gap-1.5 px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
                 <span
                   aria-label="Bond damaged"
-                  className="size-4 flex-none cursor-pointer border border-slate-950 focus-visible:outline-slate-600 data-[checked]:bg-slate-950 sm:size-3"
+                  className="size-4 flex-none cursor-pointer border border-zinc-800 focus-visible:outline-slate-600 data-[checked]:bg-slate-950 sm:size-3"
                   id="headlessui-checkbox-:r34:"
                   role="checkbox"
                   aria-checked="false"
@@ -275,7 +275,7 @@ export default function Psychology() {
                     Bond name
                   </label>
                   <input
-                    className="min-h-10 w-full justify-self-end rounded-t-md border-b border-slate-500 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm"
+                    className="min-h-10 w-full justify-self-end rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm"
                     maxLength={50}
                     placeholder=""
                     id="headlessui-control-:r35:"
@@ -301,9 +301,9 @@ export default function Psychology() {
                   </svg>
                 </button>
               </div>
-              <div className="w-20 text-center outline-1 outline-slate-500 print:outline-slate-950">
+              <div className="w-20 text-center outline-1 outline-zinc-800 print:outline-slate-950">
                 <div
-                  className="flex items-center p-1 outline-slate-950"
+                  className="flex items-center p-1 outline-zinc-800"
                   data-headlessui-state=""
                 >
                   <label
@@ -316,7 +316,7 @@ export default function Psychology() {
                   </label>
                   <div className="flex gap-0.5">
                     <input
-                      className="span min-h-10 w-full grow rounded-t-md border-b border-slate-500 bg-zinc-300 bg-opacity-70 px-1 py-0.5 text-center hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 print:border-0 print:bg-transparent print:text-sm"
+                      className="span min-h-10 w-full grow rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-1 py-0.5 text-center hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 print:border-0 print:bg-transparent print:text-sm"
                       inputMode="numeric"
                       pattern="[0-9]*"
                       maxLength={3}
@@ -328,7 +328,7 @@ export default function Psychology() {
                     />
                     <div className="hidden flex-col justify-between gap-0 sm:flex print:hidden">
                       <button
-                        className="flex h-3.5 w-4 items-center justify-center rounded-sm border border-slate-600 text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400"
+                        className="flex h-3.5 w-4 items-center justify-center rounded-sm border border-zinc-800 text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400"
                         type="button"
                         data-headlessui-state=""
                       >
@@ -344,7 +344,7 @@ export default function Psychology() {
                         </svg>
                       </button>
                       <button
-                        className="flex h-3.5 w-4 rotate-180 items-center justify-center rounded-sm border border-slate-600 text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400"
+                        className="flex h-3.5 w-4 rotate-180 items-center justify-center rounded-sm border border-zinc-800 text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400"
                         type="button"
                         data-headlessui-state=""
                       >
@@ -369,7 +369,7 @@ export default function Psychology() {
             </div>
           </div>
           <div
-            className="flex w-full flex-col gap-1 px-2 py-1 font-jost outline-1 outline-slate-500 print:gap-0 print:outline-slate-950 grow sm:h-auto h-36"
+            className="flex w-full flex-col gap-1 px-2 py-1 font-jost outline-1 outline-zinc-800 print:gap-0 print:outline-slate-950 grow sm:h-auto h-36"
             data-headlessui-state=""
           >
             <div className="flex items-center justify-between">
@@ -384,7 +384,7 @@ export default function Psychology() {
               <span className="text-xs print:hidden">0/300</span>
             </div>
             <textarea
-              className="min-h-10 w-full justify-self-end rounded-t-md border-b border-slate-500 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm h-full"
+              className="min-h-10 w-full justify-self-end rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm h-full"
               maxLength={300}
               placeholder=""
               id="headlessui-control-:r3b:"
@@ -400,7 +400,7 @@ export default function Psychology() {
               <div className="flex items-center justify-center gap-3 sm:gap-1">
                 <span>Violence</span>
                 <span
-                  className="size-4 flex-none cursor-pointer border border-slate-950 focus-visible:outline-slate-600 data-[checked]:bg-slate-950 sm:size-3"
+                  className="size-4 flex-none cursor-pointer border border-zinc-800 focus-visible:outline-slate-600 data-[checked]:bg-slate-950 sm:size-3"
                   id="headlessui-checkbox-:r3e:"
                   role="checkbox"
                   aria-checked="false"
@@ -408,7 +408,7 @@ export default function Psychology() {
                   data-headlessui-state=""
                 ></span>
                 <span
-                  className="size-4 flex-none cursor-pointer border border-slate-950 focus-visible:outline-slate-600 data-[checked]:bg-slate-950 sm:size-3"
+                  className="size-4 flex-none cursor-pointer border border-zinc-800 focus-visible:outline-slate-600 data-[checked]:bg-slate-950 sm:size-3"
                   id="headlessui-checkbox-:r3f:"
                   role="checkbox"
                   aria-checked="false"
@@ -416,7 +416,7 @@ export default function Psychology() {
                   data-headlessui-state=""
                 ></span>
                 <span
-                  className="size-4 flex-none cursor-pointer border border-slate-950 focus-visible:outline-slate-600 data-[checked]:bg-slate-950 sm:size-3"
+                  className="size-4 flex-none cursor-pointer border border-zinc-800 focus-visible:outline-slate-600 data-[checked]:bg-slate-950 sm:size-3"
                   id="headlessui-checkbox-:r3g:"
                   role="checkbox"
                   aria-checked="false"
@@ -430,7 +430,7 @@ export default function Psychology() {
               <div className="flex items-center justify-center gap-3 sm:gap-1">
                 <span>Helplessness</span>
                 <span
-                  className="size-4 flex-none cursor-pointer border border-slate-950 focus-visible:outline-slate-600 data-[checked]:bg-slate-950 sm:size-3"
+                  className="size-4 flex-none cursor-pointer border border-zinc-800 focus-visible:outline-slate-600 data-[checked]:bg-slate-950 sm:size-3"
                   id="headlessui-checkbox-:r3h:"
                   role="checkbox"
                   aria-checked="false"
@@ -438,7 +438,7 @@ export default function Psychology() {
                   data-headlessui-state=""
                 ></span>
                 <span
-                  className="size-4 flex-none cursor-pointer border border-slate-950 focus-visible:outline-slate-600 data-[checked]:bg-slate-950 sm:size-3"
+                  className="size-4 flex-none cursor-pointer border border-zinc-800 focus-visible:outline-slate-600 data-[checked]:bg-slate-950 sm:size-3"
                   id="headlessui-checkbox-:r3i:"
                   role="checkbox"
                   aria-checked="false"
@@ -446,7 +446,7 @@ export default function Psychology() {
                   data-headlessui-state=""
                 ></span>
                 <span
-                  className="size-4 flex-none cursor-pointer border border-slate-950 focus-visible:outline-slate-600 data-[checked]:bg-slate-950 sm:size-3"
+                  className="size-4 flex-none cursor-pointer border border-zinc-800 focus-visible:outline-slate-600 data-[checked]:bg-slate-950 sm:size-3"
                   id="headlessui-checkbox-:r3j:"
                   role="checkbox"
                   aria-checked="false"

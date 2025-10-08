@@ -4,10 +4,10 @@ export default function Footer() {
   return (
     <div className="flex flex-col gap-4 font-jost">
       <div className="grid grid-cols-1 font-jost text-xs uppercase sm:grid-cols-2 mb-2">
-        <div className="h-12 px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
+        <div className="h-12 px-2 py-1 outline-1 outline-zinc-100 print:outline-slate-950">
           20. Authorizing officer
         </div>
-        <div className="h-12 px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
+        <div className="h-12 px-2 py-1 outline-1 outline-zinc-100 print:outline-slate-950">
           21. Agent signature
         </div>
       </div>

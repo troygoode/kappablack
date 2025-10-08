@@ -1,15 +1,15 @@
 "use client";
 
+import { SideHeader } from "./form/side-header";
+
 export default function Remarks() {
   return (
-    <div className="flex flex-col outline-1 outline-slate-500 sm:flex-row print:outline-slate-950">
-      <h2 className="bg-slate-950 px-1.5 py-1.5 text-center font-jost text-sm font-bold uppercase text-slate-50 outline-1 outline-slate-500 sm:rotate-180 sm:py-5 sm:[writing-mode:vertical-lr] print:py-0 print:outline-slate-950">
-        Remarks
-      </h2>
+    <div className="flex flex-col outline-1 outline-zinc-800 sm:flex-row print:outline-slate-950">
+      <SideHeader>Remarks</SideHeader>
       <div className="w-full">
         <div className="flex flex-col lg:grid lg:grid-cols-2 print:grid print:grid-cols-2">
           <div
-            className="flex h-auto w-full flex-col gap-1 px-2 py-1 font-jost outline-1 outline-slate-500 print:gap-0 print:outline-slate-950"
+            className="flex h-auto w-full flex-col gap-1 px-2 py-1 font-jost outline-1 outline-zinc-800 print:gap-0 print:outline-slate-950"
             data-headlessui-state=""
           >
             <div className="flex items-center justify-between">
@@ -24,7 +24,7 @@ export default function Remarks() {
               <span className="text-xs print:hidden">0/500</span>
             </div>
             <textarea
-              className="min-h-10 w-full justify-self-end rounded-t-md border-b border-slate-500 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm grow h-28 lg:h-auto"
+              className="min-h-10 w-full justify-self-end rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm grow h-28 lg:h-auto"
               maxLength={500}
               placeholder=""
               id="headlessui-control-:r1dt:"
@@ -34,7 +34,7 @@ export default function Remarks() {
           </div>
           <div className="flex flex-col">
             <div
-              className="flex h-auto w-full flex-col gap-1 px-2 py-1 font-jost outline-1 outline-slate-500 print:gap-0 print:outline-slate-950"
+              className="flex h-auto w-full flex-col gap-1 px-2 py-1 font-jost outline-1 outline-zinc-800 print:gap-0 print:outline-slate-950"
               data-headlessui-state=""
             >
               <div className="flex items-center justify-between">
@@ -49,7 +49,7 @@ export default function Remarks() {
                 <span className="text-xs print:hidden">0/300</span>
               </div>
               <textarea
-                className="min-h-10 w-full justify-self-end rounded-t-md border-b border-slate-500 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm grow h-28"
+                className="min-h-10 w-full justify-self-end rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm grow h-28"
                 maxLength={300}
                 placeholder=""
                 id="headlessui-control-:r1e0:"
@@ -59,10 +59,10 @@ export default function Remarks() {
             </div>
             <div className="flex flex-col font-jost">
               <div className="flex text-xs uppercase">
-                <div className="flex w-1/2 justify-between px-2 py-1 outline-1 outline-slate-500 print:outline-slate-950">
+                <div className="flex w-1/2 justify-between px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
                   <h3>19. Special Training</h3>
                 </div>
-                <div className="relative flex h-16 w-1/2 justify-center px-2 py-1 outline-1 outline-slate-500 sm:h-12 print:outline-slate-950">
+                <div className="relative flex h-16 w-1/2 justify-center px-2 py-1 outline-1 outline-zinc-800 sm:h-12 print:outline-slate-950">
                   Skill or stat used
                   <div className="absolute bottom-1 right-1">
                     <button
@@ -86,7 +86,7 @@ export default function Remarks() {
                 </div>
               </div>
               <div className="flex">
-                <div className="flex w-1/2 items-center gap-1.5 px-2 py-1 outline-1 outline-slate-500 print:outline-slate-950">
+                <div className="flex w-1/2 items-center gap-1.5 px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
                   <div className="grow" data-headlessui-state="">
                     <label
                       className="sr-only"
@@ -97,7 +97,7 @@ export default function Remarks() {
                       Special training name
                     </label>
                     <input
-                      className="min-h-10 w-full justify-self-end rounded-t-md border-b border-slate-500 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm"
+                      className="min-h-10 w-full justify-self-end rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm"
                       maxLength={50}
                       placeholder=""
                       id="headlessui-control-:r1e3:"
@@ -123,9 +123,9 @@ export default function Remarks() {
                     </svg>
                   </button>
                 </div>
-                <div className="w-1/2 text-center outline-1 outline-slate-500 print:outline-slate-950">
+                <div className="w-1/2 text-center outline-1 outline-zinc-800 print:outline-slate-950">
                   <div
-                    className="flex h-full w-full flex-col justify-end gap-1 px-2 py-1 font-jost outline-1 outline-slate-500 print:gap-0 print:outline-slate-950"
+                    className="flex h-full w-full flex-col justify-end gap-1 px-2 py-1 font-jost outline-1 outline-zinc-800 print:gap-0 print:outline-slate-950"
                     data-headlessui-state=""
                   >
                     <label
@@ -137,7 +137,7 @@ export default function Remarks() {
                       <h3></h3>
                     </label>
                     <button
-                      className="group flex h-10 w-full items-center justify-between rounded-t-md border-b border-slate-500 bg-zinc-300 bg-opacity-70 px-3 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:h-auto sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm"
+                      className="group flex h-10 w-full items-center justify-between rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-3 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:h-auto sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm"
                       id="headlessui-control-:r1e6:"
                       type="button"
                       aria-haspopup="listbox"
@@ -166,7 +166,7 @@ export default function Remarks() {
                 </div>
               </div>
               <div className="flex">
-                <div className="flex w-1/2 items-center gap-1.5 px-2 py-1 outline-1 outline-slate-500 print:outline-slate-950">
+                <div className="flex w-1/2 items-center gap-1.5 px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
                   <div className="grow" data-headlessui-state="">
                     <label
                       className="sr-only"
@@ -177,7 +177,7 @@ export default function Remarks() {
                       Special training name
                     </label>
                     <input
-                      className="min-h-10 w-full justify-self-end rounded-t-md border-b border-slate-500 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm"
+                      className="min-h-10 w-full justify-self-end rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm"
                       maxLength={50}
                       placeholder=""
                       id="headlessui-control-:r1ee:"
@@ -203,9 +203,9 @@ export default function Remarks() {
                     </svg>
                   </button>
                 </div>
-                <div className="w-1/2 text-center outline-1 outline-slate-500 print:outline-slate-950">
+                <div className="w-1/2 text-center outline-1 outline-zinc-800 print:outline-slate-950">
                   <div
-                    className="flex h-full w-full flex-col justify-end gap-1 px-2 py-1 font-jost outline-1 outline-slate-500 print:gap-0 print:outline-slate-950"
+                    className="flex h-full w-full flex-col justify-end gap-1 px-2 py-1 font-jost outline-1 outline-zinc-800 print:gap-0 print:outline-slate-950"
                     data-headlessui-state=""
                   >
                     <label
@@ -217,7 +217,7 @@ export default function Remarks() {
                       <h3></h3>
                     </label>
                     <button
-                      className="group flex h-10 w-full items-center justify-between rounded-t-md border-b border-slate-500 bg-zinc-300 bg-opacity-70 px-3 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:h-auto sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm"
+                      className="group flex h-10 w-full items-center justify-between rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-3 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:h-auto sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm"
                       id="headlessui-control-:r1eh:"
                       type="button"
                       aria-haspopup="listbox"
@@ -246,7 +246,7 @@ export default function Remarks() {
                 </div>
               </div>
               <div className="flex">
-                <div className="flex w-1/2 items-center gap-1.5 px-2 py-1 outline-1 outline-slate-500 print:outline-slate-950">
+                <div className="flex w-1/2 items-center gap-1.5 px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
                   <div className="grow" data-headlessui-state="">
                     <label
                       className="sr-only"
@@ -257,7 +257,7 @@ export default function Remarks() {
                       Special training name
                     </label>
                     <input
-                      className="min-h-10 w-full justify-self-end rounded-t-md border-b border-slate-500 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm"
+                      className="min-h-10 w-full justify-self-end rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm"
                       maxLength={50}
                       placeholder=""
                       id="headlessui-control-:r1ep:"
@@ -283,9 +283,9 @@ export default function Remarks() {
                     </svg>
                   </button>
                 </div>
-                <div className="w-1/2 text-center outline-1 outline-slate-500 print:outline-slate-950">
+                <div className="w-1/2 text-center outline-1 outline-zinc-800 print:outline-slate-950">
                   <div
-                    className="flex h-full w-full flex-col justify-end gap-1 px-2 py-1 font-jost outline-1 outline-slate-500 print:gap-0 print:outline-slate-950"
+                    className="flex h-full w-full flex-col justify-end gap-1 px-2 py-1 font-jost outline-1 outline-zinc-800 print:gap-0 print:outline-slate-950"
                     data-headlessui-state=""
                   >
                     <label
@@ -297,7 +297,7 @@ export default function Remarks() {
                       <h3></h3>
                     </label>
                     <button
-                      className="group flex h-10 w-full items-center justify-between rounded-t-md border-b border-slate-500 bg-zinc-300 bg-opacity-70 px-3 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:h-auto sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm"
+                      className="group flex h-10 w-full items-center justify-between rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-3 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:h-auto sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm"
                       id="headlessui-control-:r1es:"
                       type="button"
                       aria-haspopup="listbox"

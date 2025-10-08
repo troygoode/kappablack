@@ -1,34 +1,34 @@
 "use client";
 
+import { SideHeader } from "./form/side-header";
+
 export default function Stats() {
   return (
-    <div className="flex flex-col outline-1 outline-slate-500 sm:flex-row print:outline-slate-950 ">
-      <h2 className="bg-slate-950 px-1.5 py-1.5 text-center font-jost text-sm font-bold uppercase text-slate-50 outline-1 outline-slate-500 sm:rotate-180 sm:py-5 sm:[writing-mode:vertical-lr] print:py-0 print:outline-slate-950">
-        Statistical Data
-      </h2>
+    <div className="flex flex-col outline-1 outline-zinc-800 sm:flex-row print:outline-slate-950 ">
+      <SideHeader>Statistical Data</SideHeader>
       <div className="w-full">
         <div className="flex h-full flex-col">
           <div className="flex flex-col font-jost">
             <div className="grid grid-cols-7 text-xs uppercase">
-              <h3 className="col-span-2 px-2 py-1 outline-1 outline-slate-500 print:outline-slate-950">
+              <h3 className="col-span-2 px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
                 8. Statistics
               </h3>
-              <div className="px-2 py-1 text-center outline-1 outline-slate-500 print:outline-slate-950">
+              <div className="px-2 py-1 text-center outline-1 outline-zinc-800 print:outline-slate-950">
                 Score
               </div>
-              <div className="px-2 py-1 text-center outline-1 outline-slate-500 print:outline-slate-950">
+              <div className="px-2 py-1 text-center outline-1 outline-zinc-800 print:outline-slate-950">
                 ×5
               </div>
-              <div className="col-span-3 px-2 py-1 text-center outline-1 outline-slate-500 print:outline-slate-950">
+              <div className="col-span-3 px-2 py-1 text-center outline-1 outline-zinc-800 print:outline-slate-950">
                 Distinguishing features
               </div>
             </div>
             <div className="grid grid-cols-7">
-              <div className="col-span-2 flex flex-wrap items-center gap-1 px-2 py-1 text-sm outline-1 outline-slate-500 print:outline-slate-950">
+              <div className="col-span-2 flex flex-wrap items-center gap-1 px-2 py-1 text-sm outline-1 outline-zinc-800 print:outline-slate-950">
                 Strength <span className="text-xs uppercase">(str)</span>
               </div>
               <div
-                className="flex items-center p-1 outline-1 outline-slate-500 print:outline-slate-950"
+                className="flex items-center p-1 outline-1 outline-zinc-800 print:outline-slate-950"
                 data-headlessui-state=""
               >
                 <label
@@ -41,7 +41,7 @@ export default function Stats() {
                 </label>
                 <div className="flex gap-0.5">
                   <input
-                    className="span min-h-10 w-full grow rounded-t-md border-b border-slate-500 bg-zinc-300 bg-opacity-70 px-1 py-0.5 text-center hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 print:border-0 print:bg-transparent print:text-sm"
+                    className="span min-h-10 w-full grow rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-1 py-0.5 text-center hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 print:border-0 print:bg-transparent print:text-sm"
                     inputMode="numeric"
                     pattern="[0-9]*"
                     maxLength={3}
@@ -53,7 +53,7 @@ export default function Stats() {
                   />
                   <div className="hidden flex-col justify-between gap-0 sm:flex print:hidden">
                     <button
-                      className="flex h-3.5 w-4 items-center justify-center rounded-sm border border-slate-600 text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400"
+                      className="flex h-3.5 w-4 items-center justify-center rounded-sm border border-zinc-800 text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400"
                       type="button"
                       data-headlessui-state=""
                     >
@@ -69,7 +69,7 @@ export default function Stats() {
                       </svg>
                     </button>
                     <button
-                      className="flex h-3.5 w-4 rotate-180 items-center justify-center rounded-sm border border-slate-600 text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400"
+                      className="flex h-3.5 w-4 rotate-180 items-center justify-center rounded-sm border border-zinc-800 text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400"
                       type="button"
                       data-headlessui-state=""
                     >
@@ -87,11 +87,11 @@ export default function Stats() {
                   </div>
                 </div>
               </div>
-              <div className="flex items-center justify-center px-2 py-1 outline-1 outline-slate-500 print:text-sm print:outline-slate-950">
+              <div className="flex items-center justify-center px-2 py-1 outline-1 outline-zinc-800 print:text-sm print:outline-slate-950">
                 55
               </div>
               <div
-                className="col-span-3 flex items-center p-1 outline-1 outline-slate-500 print:px-2 print:outline-slate-950"
+                className="col-span-3 flex items-center p-1 outline-1 outline-zinc-800 print:px-2 print:outline-slate-950"
                 data-headlessui-state=""
               >
                 <label
@@ -103,7 +103,7 @@ export default function Stats() {
                   Strength distinguishing feature
                 </label>
                 <input
-                  className="min-h-10 w-full justify-self-end rounded-t-md border-b border-slate-500 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm disabled:opacity-0 transition-opacity duration-200"
+                  className="min-h-10 w-full justify-self-end rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm disabled:opacity-0 transition-opacity duration-200"
                   maxLength={50}
                   placeholder=""
                   id="headlessui-control-:r1e:"
@@ -116,11 +116,11 @@ export default function Stats() {
               </div>
             </div>
             <div className="grid grid-cols-7">
-              <div className="col-span-2 flex flex-wrap items-center gap-1 px-2 py-1 text-sm outline-1 outline-slate-500 print:outline-slate-950">
+              <div className="col-span-2 flex flex-wrap items-center gap-1 px-2 py-1 text-sm outline-1 outline-zinc-800 print:outline-slate-950">
                 Dexterity <span className="text-xs uppercase">(dex)</span>
               </div>
               <div
-                className="flex items-center p-1 outline-1 outline-slate-500 print:outline-slate-950"
+                className="flex items-center p-1 outline-1 outline-zinc-800 print:outline-slate-950"
                 data-headlessui-state=""
               >
                 <label
@@ -133,7 +133,7 @@ export default function Stats() {
                 </label>
                 <div className="flex gap-0.5">
                   <input
-                    className="span min-h-10 w-full grow rounded-t-md border-b border-slate-500 bg-zinc-300 bg-opacity-70 px-1 py-0.5 text-center hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 print:border-0 print:bg-transparent print:text-sm"
+                    className="span min-h-10 w-full grow rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-1 py-0.5 text-center hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 print:border-0 print:bg-transparent print:text-sm"
                     inputMode="numeric"
                     pattern="[0-9]*"
                     maxLength={3}
@@ -145,7 +145,7 @@ export default function Stats() {
                   />
                   <div className="hidden flex-col justify-between gap-0 sm:flex print:hidden">
                     <button
-                      className="flex h-3.5 w-4 items-center justify-center rounded-sm border border-slate-600 text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400"
+                      className="flex h-3.5 w-4 items-center justify-center rounded-sm border border-zinc-800 text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400"
                       type="button"
                       data-headlessui-state=""
                     >
@@ -161,7 +161,7 @@ export default function Stats() {
                       </svg>
                     </button>
                     <button
-                      className="flex h-3.5 w-4 rotate-180 items-center justify-center rounded-sm border border-slate-600 text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400"
+                      className="flex h-3.5 w-4 rotate-180 items-center justify-center rounded-sm border border-zinc-800 text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400"
                       type="button"
                       data-headlessui-state=""
                     >
@@ -179,11 +179,11 @@ export default function Stats() {
                   </div>
                 </div>
               </div>
-              <div className="flex items-center justify-center px-2 py-1 outline-1 outline-slate-500 print:text-sm print:outline-slate-950">
+              <div className="flex items-center justify-center px-2 py-1 outline-1 outline-zinc-800 print:text-sm print:outline-slate-950">
                 15
               </div>
               <div
-                className="col-span-3 flex items-center p-1 outline-1 outline-slate-500 print:px-2 print:outline-slate-950"
+                className="col-span-3 flex items-center p-1 outline-1 outline-zinc-800 print:px-2 print:outline-slate-950"
                 data-headlessui-state=""
               >
                 <label
@@ -195,7 +195,7 @@ export default function Stats() {
                   Dexterity distinguishing feature
                 </label>
                 <input
-                  className="min-h-10 w-full justify-self-end rounded-t-md border-b border-slate-500 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm disabled:opacity-0 transition-opacity duration-200"
+                  className="min-h-10 w-full justify-self-end rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm disabled:opacity-0 transition-opacity duration-200"
                   maxLength={50}
                   placeholder=""
                   id="headlessui-control-:r1k:"
@@ -206,11 +206,11 @@ export default function Stats() {
               </div>
             </div>
             <div className="grid grid-cols-7">
-              <div className="col-span-2 flex flex-wrap items-center gap-1 px-2 py-1 text-sm outline-1 outline-slate-500 print:outline-slate-950">
+              <div className="col-span-2 flex flex-wrap items-center gap-1 px-2 py-1 text-sm outline-1 outline-zinc-800 print:outline-slate-950">
                 Constitution <span className="text-xs uppercase">(con)</span>
               </div>
               <div
-                className="flex items-center p-1 outline-1 outline-slate-500 print:outline-slate-950"
+                className="flex items-center p-1 outline-1 outline-zinc-800 print:outline-slate-950"
                 data-headlessui-state=""
               >
                 <label
@@ -223,7 +223,7 @@ export default function Stats() {
                 </label>
                 <div className="flex gap-0.5">
                   <input
-                    className="span min-h-10 w-full grow rounded-t-md border-b border-slate-500 bg-zinc-300 bg-opacity-70 px-1 py-0.5 text-center hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 print:border-0 print:bg-transparent print:text-sm"
+                    className="span min-h-10 w-full grow rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-1 py-0.5 text-center hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 print:border-0 print:bg-transparent print:text-sm"
                     inputMode="numeric"
                     pattern="[0-9]*"
                     maxLength={3}
@@ -235,7 +235,7 @@ export default function Stats() {
                   />
                   <div className="hidden flex-col justify-between gap-0 sm:flex print:hidden">
                     <button
-                      className="flex h-3.5 w-4 items-center justify-center rounded-sm border border-slate-600 text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400"
+                      className="flex h-3.5 w-4 items-center justify-center rounded-sm border border-zinc-800 text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400"
                       type="button"
                       data-headlessui-state=""
                     >
@@ -251,7 +251,7 @@ export default function Stats() {
                       </svg>
                     </button>
                     <button
-                      className="flex h-3.5 w-4 rotate-180 items-center justify-center rounded-sm border border-slate-600 text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400"
+                      className="flex h-3.5 w-4 rotate-180 items-center justify-center rounded-sm border border-zinc-800 text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400"
                       type="button"
                       data-headlessui-state=""
                     >
@@ -269,11 +269,11 @@ export default function Stats() {
                   </div>
                 </div>
               </div>
-              <div className="flex items-center justify-center px-2 py-1 outline-1 outline-slate-500 print:text-sm print:outline-slate-950">
+              <div className="flex items-center justify-center px-2 py-1 outline-1 outline-zinc-800 print:text-sm print:outline-slate-950">
                 15
               </div>
               <div
-                className="col-span-3 flex items-center p-1 outline-1 outline-slate-500 print:px-2 print:outline-slate-950"
+                className="col-span-3 flex items-center p-1 outline-1 outline-zinc-800 print:px-2 print:outline-slate-950"
                 data-headlessui-state=""
               >
                 <label
@@ -285,7 +285,7 @@ export default function Stats() {
                   Constitution distinguishing feature
                 </label>
                 <input
-                  className="min-h-10 w-full justify-self-end rounded-t-md border-b border-slate-500 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm disabled:opacity-0 transition-opacity duration-200"
+                  className="min-h-10 w-full justify-self-end rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm disabled:opacity-0 transition-opacity duration-200"
                   maxLength={50}
                   placeholder=""
                   id="headlessui-control-:r1q:"
@@ -296,11 +296,11 @@ export default function Stats() {
               </div>
             </div>
             <div className="grid grid-cols-7">
-              <div className="col-span-2 flex flex-wrap items-center gap-1 px-2 py-1 text-sm outline-1 outline-slate-500 print:outline-slate-950">
+              <div className="col-span-2 flex flex-wrap items-center gap-1 px-2 py-1 text-sm outline-1 outline-zinc-800 print:outline-slate-950">
                 Intelligence <span className="text-xs uppercase">(int)</span>
               </div>
               <div
-                className="flex items-center p-1 outline-1 outline-slate-500 print:outline-slate-950"
+                className="flex items-center p-1 outline-1 outline-zinc-800 print:outline-slate-950"
                 data-headlessui-state=""
               >
                 <label
@@ -313,7 +313,7 @@ export default function Stats() {
                 </label>
                 <div className="flex gap-0.5">
                   <input
-                    className="span min-h-10 w-full grow rounded-t-md border-b border-slate-500 bg-zinc-300 bg-opacity-70 px-1 py-0.5 text-center hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 print:border-0 print:bg-transparent print:text-sm"
+                    className="span min-h-10 w-full grow rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-1 py-0.5 text-center hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 print:border-0 print:bg-transparent print:text-sm"
                     inputMode="numeric"
                     pattern="[0-9]*"
                     maxLength={3}
@@ -325,7 +325,7 @@ export default function Stats() {
                   />
                   <div className="hidden flex-col justify-between gap-0 sm:flex print:hidden">
                     <button
-                      className="flex h-3.5 w-4 items-center justify-center rounded-sm border border-slate-600 text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400"
+                      className="flex h-3.5 w-4 items-center justify-center rounded-sm border border-zinc-800 text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400"
                       type="button"
                       data-headlessui-state=""
                     >
@@ -341,7 +341,7 @@ export default function Stats() {
                       </svg>
                     </button>
                     <button
-                      className="flex h-3.5 w-4 rotate-180 items-center justify-center rounded-sm border border-slate-600 text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400"
+                      className="flex h-3.5 w-4 rotate-180 items-center justify-center rounded-sm border border-zinc-800 text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400"
                       type="button"
                       data-headlessui-state=""
                     >
@@ -359,11 +359,11 @@ export default function Stats() {
                   </div>
                 </div>
               </div>
-              <div className="flex items-center justify-center px-2 py-1 outline-1 outline-slate-500 print:text-sm print:outline-slate-950">
+              <div className="flex items-center justify-center px-2 py-1 outline-1 outline-zinc-800 print:text-sm print:outline-slate-950">
                 15
               </div>
               <div
-                className="col-span-3 flex items-center p-1 outline-1 outline-slate-500 print:px-2 print:outline-slate-950"
+                className="col-span-3 flex items-center p-1 outline-1 outline-zinc-800 print:px-2 print:outline-slate-950"
                 data-headlessui-state=""
               >
                 <label
@@ -375,7 +375,7 @@ export default function Stats() {
                   Intelligence distinguishing feature
                 </label>
                 <input
-                  className="min-h-10 w-full justify-self-end rounded-t-md border-b border-slate-500 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm disabled:opacity-0 transition-opacity duration-200"
+                  className="min-h-10 w-full justify-self-end rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm disabled:opacity-0 transition-opacity duration-200"
                   maxLength={50}
                   placeholder=""
                   id="headlessui-control-:r20:"
@@ -386,11 +386,11 @@ export default function Stats() {
               </div>
             </div>
             <div className="grid grid-cols-7">
-              <div className="col-span-2 flex flex-wrap items-center gap-1 px-2 py-1 text-sm outline-1 outline-slate-500 print:outline-slate-950">
+              <div className="col-span-2 flex flex-wrap items-center gap-1 px-2 py-1 text-sm outline-1 outline-zinc-800 print:outline-slate-950">
                 Power <span className="text-xs uppercase">(pow)</span>
               </div>
               <div
-                className="flex items-center p-1 outline-1 outline-slate-500 print:outline-slate-950"
+                className="flex items-center p-1 outline-1 outline-zinc-800 print:outline-slate-950"
                 data-headlessui-state=""
               >
                 <label
@@ -403,7 +403,7 @@ export default function Stats() {
                 </label>
                 <div className="flex gap-0.5">
                   <input
-                    className="span min-h-10 w-full grow rounded-t-md border-b border-slate-500 bg-zinc-300 bg-opacity-70 px-1 py-0.5 text-center hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 print:border-0 print:bg-transparent print:text-sm"
+                    className="span min-h-10 w-full grow rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-1 py-0.5 text-center hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 print:border-0 print:bg-transparent print:text-sm"
                     inputMode="numeric"
                     pattern="[0-9]*"
                     maxLength={3}
@@ -449,11 +449,11 @@ export default function Stats() {
                   </div>
                 </div>
               </div>
-              <div className="flex items-center justify-center px-2 py-1 outline-1 outline-slate-500 print:text-sm print:outline-slate-950">
+              <div className="flex items-center justify-center px-2 py-1 outline-1 outline-zinc-800 print:text-sm print:outline-slate-950">
                 15
               </div>
               <div
-                className="col-span-3 flex items-center p-1 outline-1 outline-slate-500 print:px-2 print:outline-slate-950"
+                className="col-span-3 flex items-center p-1 outline-1 outline-zinc-800 print:px-2 print:outline-slate-950"
                 data-headlessui-state=""
               >
                 <label
@@ -465,7 +465,7 @@ export default function Stats() {
                   Power distinguishing feature
                 </label>
                 <input
-                  className="min-h-10 w-full justify-self-end rounded-t-md border-b border-slate-500 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm disabled:opacity-0 transition-opacity duration-200"
+                  className="min-h-10 w-full justify-self-end rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm disabled:opacity-0 transition-opacity duration-200"
                   maxLength={50}
                   placeholder=""
                   id="headlessui-control-:r26:"
@@ -476,11 +476,11 @@ export default function Stats() {
               </div>
             </div>
             <div className="grid grid-cols-7">
-              <div className="col-span-2 flex flex-wrap items-center gap-1 px-2 py-1 text-sm outline-1 outline-slate-500 print:outline-slate-950">
+              <div className="col-span-2 flex flex-wrap items-center gap-1 px-2 py-1 text-sm outline-1 outline-zinc-800 print:outline-slate-950">
                 Charisma <span className="text-xs uppercase">(cha)</span>
               </div>
               <div
-                className="flex items-center p-1 outline-1 outline-slate-500 print:outline-slate-950"
+                className="flex items-center p-1 outline-1 outline-zinc-800 print:outline-slate-950"
                 data-headlessui-state=""
               >
                 <label
@@ -493,7 +493,7 @@ export default function Stats() {
                 </label>
                 <div className="flex gap-0.5">
                   <input
-                    className="span min-h-10 w-full grow rounded-t-md border-b border-slate-500 bg-zinc-300 bg-opacity-70 px-1 py-0.5 text-center hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 print:border-0 print:bg-transparent print:text-sm"
+                    className="span min-h-10 w-full grow rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-1 py-0.5 text-center hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 print:border-0 print:bg-transparent print:text-sm"
                     inputMode="numeric"
                     pattern="[0-9]*"
                     maxLength={3}
@@ -539,11 +539,11 @@ export default function Stats() {
                   </div>
                 </div>
               </div>
-              <div className="flex items-center justify-center px-2 py-1 outline-1 outline-slate-500 print:text-sm print:outline-slate-950">
+              <div className="flex items-center justify-center px-2 py-1 outline-1 outline-zinc-800 print:text-sm print:outline-slate-950">
                 15
               </div>
               <div
-                className="col-span-3 flex items-center p-1 outline-1 outline-slate-500 print:px-2 print:outline-slate-950"
+                className="col-span-3 flex items-center p-1 outline-1 outline-zinc-800 print:px-2 print:outline-slate-950"
                 data-headlessui-state=""
               >
                 <label
@@ -555,7 +555,7 @@ export default function Stats() {
                   Charisma distinguishing feature
                 </label>
                 <input
-                  className="min-h-10 w-full justify-self-end rounded-t-md border-b border-slate-500 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm disabled:opacity-0 transition-opacity duration-200"
+                  className="min-h-10 w-full justify-self-end rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm disabled:opacity-0 transition-opacity duration-200"
                   maxLength={50}
                   placeholder=""
                   id="headlessui-control-:r2c:"
@@ -568,27 +568,27 @@ export default function Stats() {
           </div>
           <div className="flex flex-col font-jost">
             <div className="grid grid-cols-7 text-xs uppercase">
-              <h3 className="col-span-3 flex items-center px-2 py-1 outline-1 outline-slate-500 print:outline-slate-950">
+              <h3 className="col-span-3 flex items-center px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
                 9. Derived Attributes
               </h3>
-              <div className="col-span-2 flex items-center justify-center px-2 py-1 align-middle outline-1 outline-slate-500 print:outline-slate-950">
+              <div className="col-span-2 flex items-center justify-center px-2 py-1 align-middle outline-1 outline-zinc-800 print:outline-slate-950">
                 Maximum
               </div>
-              <div className="col-span-2 flex items-center justify-center px-2 py-1 outline-1 outline-slate-500 print:outline-slate-950">
+              <div className="col-span-2 flex items-center justify-center px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
                 Current
               </div>
             </div>
             <div className="grid grid-cols-7 print:text-sm">
-              <div className="col-span-3 flex items-center gap-1 px-2 py-1 text-sm outline-1 outline-slate-500 print:outline-slate-950">
+              <div className="col-span-3 flex items-center gap-1 px-2 py-1 text-sm outline-1 outline-zinc-800 print:outline-slate-950">
                 Hit Points <span className="uppercase">(hp)</span>
               </div>
-              <div className="col-span-2 flex items-center justify-center px-2 py-1 outline-1 outline-slate-500 print:outline-slate-950">
+              <div className="col-span-2 flex items-center justify-center px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
                 <span>7</span>
               </div>
-              <div className="col-span-2 flex items-center justify-center px-2 py-1 outline-1 outline-slate-500 print:outline-slate-950">
+              <div className="col-span-2 flex items-center justify-center px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
                 <div className="flex gap-0.5">
                   <input
-                    className="span min-h-10 w-full grow rounded-t-md border-b border-slate-500 bg-zinc-300 bg-opacity-70 px-1 py-0.5 text-center hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 print:border-0 print:bg-transparent print:text-sm"
+                    className="span min-h-10 w-full grow rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-1 py-0.5 text-center hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 print:border-0 print:bg-transparent print:text-sm"
                     inputMode="numeric"
                     pattern="[0-9]*"
                     maxLength={3}
@@ -635,16 +635,16 @@ export default function Stats() {
               </div>
             </div>
             <div className="grid grid-cols-7 print:text-sm">
-              <div className="col-span-3 flex items-center gap-1 px-2 py-1 text-sm outline-1 outline-slate-500 print:outline-slate-950">
+              <div className="col-span-3 flex items-center gap-1 px-2 py-1 text-sm outline-1 outline-zinc-800 print:outline-slate-950">
                 Willpower Points <span className="uppercase">(wp)</span>
               </div>
-              <div className="col-span-2 flex items-center justify-center px-2 py-1 outline-1 outline-slate-500 print:outline-slate-950">
+              <div className="col-span-2 flex items-center justify-center px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
                 <span>3</span>
               </div>
-              <div className="col-span-2 flex items-center justify-center px-2 py-1 outline-1 outline-slate-500 print:outline-slate-950">
+              <div className="col-span-2 flex items-center justify-center px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
                 <div className="flex gap-0.5">
                   <input
-                    className="span min-h-10 w-full grow rounded-t-md border-b border-slate-500 bg-zinc-300 bg-opacity-70 px-1 py-0.5 text-center hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 print:border-0 print:bg-transparent print:text-sm"
+                    className="span min-h-10 w-full grow rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-1 py-0.5 text-center hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 print:border-0 print:bg-transparent print:text-sm"
                     inputMode="numeric"
                     pattern="[0-9]*"
                     maxLength={3}
@@ -691,16 +691,16 @@ export default function Stats() {
               </div>
             </div>
             <div className="grid grid-cols-7 print:text-sm">
-              <div className="col-span-3 flex items-center gap-1 px-2 py-1 text-sm outline-1 outline-slate-500 print:outline-slate-950">
+              <div className="col-span-3 flex items-center gap-1 px-2 py-1 text-sm outline-1 outline-zinc-800 print:outline-slate-950">
                 Sanity Points <span className="uppercase">(san)</span>
               </div>
-              <div className="col-span-2 flex items-center justify-center px-2 py-1 outline-1 outline-slate-500 print:outline-slate-950">
+              <div className="col-span-2 flex items-center justify-center px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
                 <span>15</span>
               </div>
-              <div className="col-span-2 flex items-center justify-center px-2 py-1 outline-1 outline-slate-500 print:outline-slate-950">
+              <div className="col-span-2 flex items-center justify-center px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
                 <div className="flex gap-0.5">
                   <input
-                    className="span min-h-10 w-full grow rounded-t-md border-b border-slate-500 bg-zinc-300 bg-opacity-70 px-1 py-0.5 text-center hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 print:border-0 print:bg-transparent print:text-sm"
+                    className="span min-h-10 w-full grow rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-1 py-0.5 text-center hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 print:border-0 print:bg-transparent print:text-sm"
                     inputMode="numeric"
                     pattern="[0-9]*"
                     maxLength={3}
@@ -747,16 +747,16 @@ export default function Stats() {
               </div>
             </div>
             <div className="grid grid-cols-7 print:text-sm">
-              <div className="col-span-3 flex items-center gap-1 px-2 py-1 text-sm outline-1 outline-slate-500 print:outline-slate-950">
+              <div className="col-span-3 flex items-center gap-1 px-2 py-1 text-sm outline-1 outline-zinc-800 print:outline-slate-950">
                 Breaking Point <span className="uppercase">(bp)</span>
               </div>
-              <div className="col-span-2 flex items-center justify-center px-2 py-1 outline-1 outline-slate-500 print:outline-slate-950">
+              <div className="col-span-2 flex items-center justify-center px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
                 <span>N/A</span>
               </div>
-              <div className="col-span-2 flex items-center justify-center px-2 py-1 outline-1 outline-slate-500 print:outline-slate-950">
+              <div className="col-span-2 flex items-center justify-center px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
                 <div className="flex gap-0.5">
                   <input
-                    className="span min-h-10 w-full grow rounded-t-md border-b border-slate-500 bg-zinc-300 bg-opacity-70 px-1 py-0.5 text-center hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 print:border-0 print:bg-transparent print:text-sm"
+                    className="span min-h-10 w-full grow rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-1 py-0.5 text-center hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 print:border-0 print:bg-transparent print:text-sm"
                     inputMode="numeric"
                     pattern="[0-9]*"
                     maxLength={3}
@@ -804,7 +804,7 @@ export default function Stats() {
             </div>
           </div>
           <div
-            className="flex w-full flex-col gap-1 px-2 py-1 font-jost outline-1 outline-slate-500 print:gap-0 print:outline-slate-950 grow sm:h-auto h-36"
+            className="flex w-full flex-col gap-1 px-2 py-1 font-jost outline-1 outline-zinc-800 print:gap-0 print:outline-slate-950 grow sm:h-auto h-36"
             data-headlessui-state=""
           >
             <div className="flex items-center justify-between">
@@ -819,7 +819,7 @@ export default function Stats() {
               <span className="text-xs print:hidden">0/300</span>
             </div>
             <textarea
-              className="min-h-10 w-full justify-self-end rounded-t-md border-b border-slate-500 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm h-full"
+              className="min-h-10 w-full justify-self-end rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm h-full"
               maxLength={300}
               placeholder=""
               id="headlessui-control-:r2j:"
