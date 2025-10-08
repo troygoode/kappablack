@@ -1,5 +1,7 @@
 "use client";
 
+import { CirclePlusIcon } from "../ui/icons/lucide-circle-plus";
+import { Trash2Icon } from "../ui/icons/lucide-trash-2";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 import { SideHeader } from "./form/side-header";
@@ -67,16 +69,7 @@ export default function Remarks() {
                       data-headlessui-state=""
                     >
                       Add special training
-                      <svg
-                        role="img"
-                        className="size-6 sm:size-5"
-                        aria-label=""
-                        width="32"
-                        height="32"
-                        viewBox="0 0 32 32"
-                      >
-                        <use href="/icons/add.svg#add"></use>
-                      </svg>
+                      <CirclePlusIcon />
                     </button>
                   </div>
                 </div>
@@ -107,16 +100,7 @@ export default function Remarks() {
                     type="button"
                     data-headlessui-state=""
                   >
-                    <svg
-                      role="img"
-                      className="size-5"
-                      aria-label="Remove bond type"
-                      width="32"
-                      height="32"
-                      viewBox="0 0 32 32"
-                    >
-                      <use href="/icons/trash.svg#trash"></use>
-                    </svg>
+                    <Trash2Icon />
                   </button>
                 </div>
                 <div className="w-1/2 text-center outline-1 outline-zinc-800 print:outline-slate-950">
@@ -132,32 +116,15 @@ export default function Remarks() {
                     >
                       <h3></h3>
                     </label>
-                    <button
-                      className="group flex h-10 w-full items-center justify-between rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-3 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:h-auto sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm"
-                      id="headlessui-control-:r1e6:"
-                      type="button"
-                      aria-haspopup="listbox"
-                      aria-expanded="false"
+                    <Input
+                      className="min-h-10 w-full justify-self-end rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm"
+                      maxLength={50}
+                      placeholder=""
+                      id="headlessui-control-:r1ep:"
                       data-headlessui-state=""
-                      aria-labelledby="headlessui-label-:r1e7: headlessui-control-:r1e6:"
-                    >
-                      <span
-                        className="grow text-left data-[use-spacer=true]:invisible"
-                        data-use-spacer="true"
-                      >
-                        spacer
-                      </span>
-                      <svg
-                        role="img"
-                        className="pointer-events-none size-5 rotate-180 text-zinc-600 group-hover:text-zinc-950 print:hidden"
-                        aria-label="Open combobox"
-                        width="32"
-                        height="32"
-                        viewBox="0 0 32 32"
-                      >
-                        <use href="/icons/caret-up.svg#caret-up"></use>
-                      </svg>
-                    </button>
+                      defaultValue=""
+                      aria-labelledby="headlessui-label-:r1eq:"
+                    />
                   </div>
                 </div>
               </div>
@@ -187,16 +154,7 @@ export default function Remarks() {
                     type="button"
                     data-headlessui-state=""
                   >
-                    <svg
-                      role="img"
-                      className="size-5"
-                      aria-label="Remove bond type"
-                      width="32"
-                      height="32"
-                      viewBox="0 0 32 32"
-                    >
-                      <use href="/icons/trash.svg#trash"></use>
-                    </svg>
+                    <Trash2Icon />
                   </button>
                 </div>
                 <div className="w-1/2 text-center outline-1 outline-zinc-800 print:outline-slate-950">
@@ -212,32 +170,15 @@ export default function Remarks() {
                     >
                       <h3></h3>
                     </label>
-                    <button
-                      className="group flex h-10 w-full items-center justify-between rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-3 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:h-auto sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm"
-                      id="headlessui-control-:r1eh:"
-                      type="button"
-                      aria-haspopup="listbox"
-                      aria-expanded="false"
+                    <Input
+                      className="min-h-10 w-full justify-self-end rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm"
+                      maxLength={50}
+                      placeholder=""
+                      id="headlessui-control-:r1ep:"
                       data-headlessui-state=""
-                      aria-labelledby="headlessui-label-:r1ei: headlessui-control-:r1eh:"
-                    >
-                      <span
-                        className="grow text-left data-[use-spacer=true]:invisible"
-                        data-use-spacer="true"
-                      >
-                        spacer
-                      </span>
-                      <svg
-                        role="img"
-                        className="pointer-events-none size-5 rotate-180 text-zinc-600 group-hover:text-zinc-950 print:hidden"
-                        aria-label="Open combobox"
-                        width="32"
-                        height="32"
-                        viewBox="0 0 32 32"
-                      >
-                        <use href="/icons/caret-up.svg#caret-up"></use>
-                      </svg>
-                    </button>
+                      defaultValue=""
+                      aria-labelledby="headlessui-label-:r1eq:"
+                    />
                   </div>
                 </div>
               </div>
@@ -267,16 +208,7 @@ export default function Remarks() {
                     type="button"
                     data-headlessui-state=""
                   >
-                    <svg
-                      role="img"
-                      className="size-5"
-                      aria-label="Remove bond type"
-                      width="32"
-                      height="32"
-                      viewBox="0 0 32 32"
-                    >
-                      <use href="/icons/trash.svg#trash"></use>
-                    </svg>
+                    <Trash2Icon />
                   </button>
                 </div>
                 <div className="w-1/2 text-center outline-1 outline-zinc-800 print:outline-slate-950">
@@ -292,32 +224,15 @@ export default function Remarks() {
                     >
                       <h3></h3>
                     </label>
-                    <button
-                      className="group flex h-10 w-full items-center justify-between rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-3 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:h-auto sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm"
-                      id="headlessui-control-:r1es:"
-                      type="button"
-                      aria-haspopup="listbox"
-                      aria-expanded="false"
+                    <Input
+                      className="min-h-10 w-full justify-self-end rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm"
+                      maxLength={50}
+                      placeholder=""
+                      id="headlessui-control-:r1ep:"
                       data-headlessui-state=""
-                      aria-labelledby="headlessui-label-:r1et: headlessui-control-:r1es:"
-                    >
-                      <span
-                        className="grow text-left data-[use-spacer=true]:invisible"
-                        data-use-spacer="true"
-                      >
-                        spacer
-                      </span>
-                      <svg
-                        role="img"
-                        className="pointer-events-none size-5 rotate-180 text-zinc-600 group-hover:text-zinc-950 print:hidden"
-                        aria-label="Open combobox"
-                        width="32"
-                        height="32"
-                        viewBox="0 0 32 32"
-                      >
-                        <use href="/icons/caret-up.svg#caret-up"></use>
-                      </svg>
-                    </button>
+                      defaultValue=""
+                      aria-labelledby="headlessui-label-:r1eq:"
+                    />
                   </div>
                 </div>
               </div>

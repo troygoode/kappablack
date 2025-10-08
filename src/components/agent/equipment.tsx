@@ -1,5 +1,7 @@
 "use client";
 
+import { CirclePlusIcon } from "../ui/icons/lucide-circle-plus";
+import { Trash2Icon } from "../ui/icons/lucide-trash-2";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 import { SideHeader } from "./form/side-header";
@@ -124,16 +126,7 @@ export default function Equipment() {
                     data-headlessui-state=""
                   >
                     Add weapon
-                    <svg
-                      role="img"
-                      className="size-6 sm:size-5"
-                      aria-label=""
-                      width="32"
-                      height="32"
-                      viewBox="0 0 32 32"
-                    >
-                      <use href="/icons/add.svg#add"></use>
-                    </svg>
+                    <CirclePlusIcon />
                   </button>
                 </div>
               </th>
@@ -177,16 +170,7 @@ export default function Equipment() {
                     type="button"
                     data-headlessui-state=""
                   >
-                    <svg
-                      role="img"
-                      className="size-5"
-                      aria-label="Remove weapon"
-                      width="32"
-                      height="32"
-                      viewBox="0 0 32 32"
-                    >
-                      <use href="/icons/trash.svg#trash"></use>
-                    </svg>
+                    <Trash2Icon />
                   </button>
                 </div>
               </td>

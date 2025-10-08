@@ -1,5 +1,7 @@
 "use client";
 
+import { SquareArrowDownIcon } from "../ui/icons/lucide-square-arrow-down";
+import { SquareArrowUpIcon } from "../ui/icons/lucide-square-arrow-up";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 import { SideHeader } from "./form/side-header";
@@ -59,32 +61,14 @@ export default function Stats() {
                       type="button"
                       data-headlessui-state=""
                     >
-                      <svg
-                        role="img"
-                        className="h-3.5"
-                        aria-label="Increase score"
-                        width="32"
-                        height="32"
-                        viewBox="0 0 32 32"
-                      >
-                        <use href="/icons/caret-up.svg#caret-up"></use>
-                      </svg>
+                      <SquareArrowUpIcon />
                     </button>
                     <button
-                      className="flex h-3.5 w-4 rotate-180 items-center justify-center rounded-sm border border-zinc-800 text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400"
+                      className="flex h-3.5 w-4 items-center justify-center rounded-sm border border-zinc-800 text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400"
                       type="button"
                       data-headlessui-state=""
                     >
-                      <svg
-                        role="img"
-                        className="h-3.5"
-                        aria-label="Increase score"
-                        width="32"
-                        height="32"
-                        viewBox="0 0 32 32"
-                      >
-                        <use href="/icons/caret-up.svg#caret-up"></use>
-                      </svg>
+                      <SquareArrowDownIcon />
                     </button>
                   </div>
                 </div>
@@ -151,32 +135,14 @@ export default function Stats() {
                       type="button"
                       data-headlessui-state=""
                     >
-                      <svg
-                        role="img"
-                        className="h-3.5"
-                        aria-label="Increase score"
-                        width="32"
-                        height="32"
-                        viewBox="0 0 32 32"
-                      >
-                        <use href="/icons/caret-up.svg#caret-up"></use>
-                      </svg>
+                      <SquareArrowUpIcon />
                     </button>
                     <button
-                      className="flex h-3.5 w-4 rotate-180 items-center justify-center rounded-sm border border-zinc-800 text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400"
+                      className="flex h-3.5 w-4 items-center justify-center rounded-sm border border-zinc-800 text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400"
                       type="button"
                       data-headlessui-state=""
                     >
-                      <svg
-                        role="img"
-                        className="h-3.5"
-                        aria-label="Increase score"
-                        width="32"
-                        height="32"
-                        viewBox="0 0 32 32"
-                      >
-                        <use href="/icons/caret-up.svg#caret-up"></use>
-                      </svg>
+                      <SquareArrowDownIcon />
                     </button>
                   </div>
                 </div>
@@ -241,32 +207,14 @@ export default function Stats() {
                       type="button"
                       data-headlessui-state=""
                     >
-                      <svg
-                        role="img"
-                        className="h-3.5"
-                        aria-label="Increase score"
-                        width="32"
-                        height="32"
-                        viewBox="0 0 32 32"
-                      >
-                        <use href="/icons/caret-up.svg#caret-up"></use>
-                      </svg>
+                      <SquareArrowUpIcon />
                     </button>
                     <button
-                      className="flex h-3.5 w-4 rotate-180 items-center justify-center rounded-sm border border-zinc-800 text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400"
+                      className="flex h-3.5 w-4 items-center justify-center rounded-sm border border-zinc-800 text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400"
                       type="button"
                       data-headlessui-state=""
                     >
-                      <svg
-                        role="img"
-                        className="h-3.5"
-                        aria-label="Increase score"
-                        width="32"
-                        height="32"
-                        viewBox="0 0 32 32"
-                      >
-                        <use href="/icons/caret-up.svg#caret-up"></use>
-                      </svg>
+                      <SquareArrowDownIcon />
                     </button>
                   </div>
                 </div>
@@ -331,32 +279,14 @@ export default function Stats() {
                       type="button"
                       data-headlessui-state=""
                     >
-                      <svg
-                        role="img"
-                        className="h-3.5"
-                        aria-label="Increase score"
-                        width="32"
-                        height="32"
-                        viewBox="0 0 32 32"
-                      >
-                        <use href="/icons/caret-up.svg#caret-up"></use>
-                      </svg>
+                      <SquareArrowUpIcon />
                     </button>
                     <button
-                      className="flex h-3.5 w-4 rotate-180 items-center justify-center rounded-sm border border-zinc-800 text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400"
+                      className="flex h-3.5 w-4 items-center justify-center rounded-sm border border-zinc-800 text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400"
                       type="button"
                       data-headlessui-state=""
                     >
-                      <svg
-                        role="img"
-                        className="h-3.5"
-                        aria-label="Increase score"
-                        width="32"
-                        height="32"
-                        viewBox="0 0 32 32"
-                      >
-                        <use href="/icons/caret-up.svg#caret-up"></use>
-                      </svg>
+                      <SquareArrowDownIcon />
                     </button>
                   </div>
                 </div>
@@ -421,32 +351,14 @@ export default function Stats() {
                       type="button"
                       data-headlessui-state=""
                     >
-                      <svg
-                        role="img"
-                        className="h-3.5"
-                        aria-label="Increase score"
-                        width="32"
-                        height="32"
-                        viewBox="0 0 32 32"
-                      >
-                        <use href="/icons/caret-up.svg#caret-up"></use>
-                      </svg>
+                      <SquareArrowUpIcon />
                     </button>
                     <button
-                      className="flex h-3.5 w-4 rotate-180 items-center justify-center rounded-sm border border-slate-600 text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400"
+                      className="flex h-3.5 w-4 items-center justify-center rounded-sm border border-slate-600 text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400"
                       type="button"
                       data-headlessui-state=""
                     >
-                      <svg
-                        role="img"
-                        className="h-3.5"
-                        aria-label="Increase score"
-                        width="32"
-                        height="32"
-                        viewBox="0 0 32 32"
-                      >
-                        <use href="/icons/caret-up.svg#caret-up"></use>
-                      </svg>
+                      <SquareArrowDownIcon />
                     </button>
                   </div>
                 </div>
@@ -511,32 +423,14 @@ export default function Stats() {
                       type="button"
                       data-headlessui-state=""
                     >
-                      <svg
-                        role="img"
-                        className="h-3.5"
-                        aria-label="Increase score"
-                        width="32"
-                        height="32"
-                        viewBox="0 0 32 32"
-                      >
-                        <use href="/icons/caret-up.svg#caret-up"></use>
-                      </svg>
+                      <SquareArrowUpIcon />
                     </button>
                     <button
-                      className="flex h-3.5 w-4 rotate-180 items-center justify-center rounded-sm border border-slate-600 text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400"
+                      className="flex h-3.5 w-4 items-center justify-center rounded-sm border border-slate-600 text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400"
                       type="button"
                       data-headlessui-state=""
                     >
-                      <svg
-                        role="img"
-                        className="h-3.5"
-                        aria-label="Increase score"
-                        width="32"
-                        height="32"
-                        viewBox="0 0 32 32"
-                      >
-                        <use href="/icons/caret-up.svg#caret-up"></use>
-                      </svg>
+                      <SquareArrowDownIcon />
                     </button>
                   </div>
                 </div>
@@ -605,32 +499,14 @@ export default function Stats() {
                       type="button"
                       data-headlessui-state=""
                     >
-                      <svg
-                        role="img"
-                        className="h-3.5"
-                        aria-label="Increase score"
-                        width="32"
-                        height="32"
-                        viewBox="0 0 32 32"
-                      >
-                        <use href="/icons/caret-up.svg#caret-up"></use>
-                      </svg>
+                      <SquareArrowUpIcon />
                     </button>
                     <button
-                      className="flex h-3.5 w-4 rotate-180 items-center justify-center rounded-sm border border-slate-600 text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400"
+                      className="flex h-3.5 w-4 items-center justify-center rounded-sm border border-slate-600 text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400"
                       type="button"
                       data-headlessui-state=""
                     >
-                      <svg
-                        role="img"
-                        className="h-3.5"
-                        aria-label="Increase score"
-                        width="32"
-                        height="32"
-                        viewBox="0 0 32 32"
-                      >
-                        <use href="/icons/caret-up.svg#caret-up"></use>
-                      </svg>
+                      <SquareArrowDownIcon />
                     </button>
                   </div>
                 </div>
@@ -661,32 +537,14 @@ export default function Stats() {
                       type="button"
                       data-headlessui-state=""
                     >
-                      <svg
-                        role="img"
-                        className="h-3.5"
-                        aria-label="Increase score"
-                        width="32"
-                        height="32"
-                        viewBox="0 0 32 32"
-                      >
-                        <use href="/icons/caret-up.svg#caret-up"></use>
-                      </svg>
+                      <SquareArrowUpIcon />
                     </button>
                     <button
-                      className="flex h-3.5 w-4 rotate-180 items-center justify-center rounded-sm border border-slate-600 text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400"
+                      className="flex h-3.5 w-4 items-center justify-center rounded-sm border border-slate-600 text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400"
                       type="button"
                       data-headlessui-state=""
                     >
-                      <svg
-                        role="img"
-                        className="h-3.5"
-                        aria-label="Increase score"
-                        width="32"
-                        height="32"
-                        viewBox="0 0 32 32"
-                      >
-                        <use href="/icons/caret-up.svg#caret-up"></use>
-                      </svg>
+                      <SquareArrowDownIcon />
                     </button>
                   </div>
                 </div>
@@ -717,32 +575,14 @@ export default function Stats() {
                       type="button"
                       data-headlessui-state=""
                     >
-                      <svg
-                        role="img"
-                        className="h-3.5"
-                        aria-label="Increase score"
-                        width="32"
-                        height="32"
-                        viewBox="0 0 32 32"
-                      >
-                        <use href="/icons/caret-up.svg#caret-up"></use>
-                      </svg>
+                      <SquareArrowUpIcon />
                     </button>
                     <button
-                      className="flex h-3.5 w-4 rotate-180 items-center justify-center rounded-sm border border-slate-600 text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400"
+                      className="flex h-3.5 w-4 items-center justify-center rounded-sm border border-slate-600 text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400"
                       type="button"
                       data-headlessui-state=""
                     >
-                      <svg
-                        role="img"
-                        className="h-3.5"
-                        aria-label="Increase score"
-                        width="32"
-                        height="32"
-                        viewBox="0 0 32 32"
-                      >
-                        <use href="/icons/caret-up.svg#caret-up"></use>
-                      </svg>
+                      <SquareArrowDownIcon />
                     </button>
                   </div>
                 </div>
@@ -773,32 +613,14 @@ export default function Stats() {
                       type="button"
                       data-headlessui-state=""
                     >
-                      <svg
-                        role="img"
-                        className="h-3.5"
-                        aria-label="Increase score"
-                        width="32"
-                        height="32"
-                        viewBox="0 0 32 32"
-                      >
-                        <use href="/icons/caret-up.svg#caret-up"></use>
-                      </svg>
+                      <SquareArrowUpIcon />
                     </button>
                     <button
-                      className="flex h-3.5 w-4 rotate-180 items-center justify-center rounded-sm border border-slate-600 text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400"
+                      className="flex h-3.5 w-4 items-center justify-center rounded-sm border border-slate-600 text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400"
                       type="button"
                       data-headlessui-state=""
                     >
-                      <svg
-                        role="img"
-                        className="h-3.5"
-                        aria-label="Increase score"
-                        width="32"
-                        height="32"
-                        viewBox="0 0 32 32"
-                      >
-                        <use href="/icons/caret-up.svg#caret-up"></use>
-                      </svg>
+                      <SquareArrowDownIcon />
                     </button>
                   </div>
                 </div>

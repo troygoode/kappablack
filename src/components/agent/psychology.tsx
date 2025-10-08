@@ -1,6 +1,10 @@
 "use client";
 
 import { Checkbox } from "../ui/checkbox";
+import { CirclePlusIcon } from "../ui/icons/lucide-circle-plus";
+import { SquareArrowDownIcon } from "../ui/icons/lucide-square-arrow-down";
+import { SquareArrowUpIcon } from "../ui/icons/lucide-square-arrow-up";
+import { Trash2Icon } from "../ui/icons/lucide-trash-2";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 import { SideHeader } from "./form/side-header";
@@ -21,16 +25,7 @@ export default function Psychology() {
                   data-headlessui-state=""
                 >
                   Add bond
-                  <svg
-                    role="img"
-                    className="size-6 sm:size-5"
-                    aria-label=""
-                    width="32"
-                    height="32"
-                    viewBox="0 0 32 32"
-                  >
-                    <use href="/icons/add.svg#add"></use>
-                  </svg>
+                  <CirclePlusIcon />
                 </button>
               </div>
               <div className="flex w-20 items-center justify-center px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
@@ -72,16 +67,7 @@ export default function Psychology() {
                   type="button"
                   data-headlessui-state=""
                 >
-                  <svg
-                    role="img"
-                    className="size-5"
-                    aria-label="Remove bond type"
-                    width="32"
-                    height="32"
-                    viewBox="0 0 32 32"
-                  >
-                    <use href="/icons/trash.svg#trash"></use>
-                  </svg>
+                  <Trash2Icon />
                 </button>
               </div>
               <div className="w-20 text-center outline-1 outline-zinc-800 print:outline-slate-950">
@@ -115,32 +101,14 @@ export default function Psychology() {
                         type="button"
                         data-headlessui-state=""
                       >
-                        <svg
-                          role="img"
-                          className="h-3.5"
-                          aria-label="Increase score"
-                          width="32"
-                          height="32"
-                          viewBox="0 0 32 32"
-                        >
-                          <use href="/icons/caret-up.svg#caret-up"></use>
-                        </svg>
+                        <SquareArrowUpIcon />
                       </button>
                       <button
-                        className="flex h-3.5 w-4 rotate-180 items-center justify-center rounded-sm border border-zinc-800 text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400"
+                        className="flex h-3.5 w-4 items-center justify-center rounded-sm border border-zinc-800 text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400"
                         type="button"
                         data-headlessui-state=""
                       >
-                        <svg
-                          role="img"
-                          className="h-3.5"
-                          aria-label="Increase score"
-                          width="32"
-                          height="32"
-                          viewBox="0 0 32 32"
-                        >
-                          <use href="/icons/caret-up.svg#caret-up"></use>
-                        </svg>
+                        <SquareArrowDownIcon />
                       </button>
                     </div>
                   </div>
@@ -182,16 +150,7 @@ export default function Psychology() {
                   type="button"
                   data-headlessui-state=""
                 >
-                  <svg
-                    role="img"
-                    className="size-5"
-                    aria-label="Remove bond type"
-                    width="32"
-                    height="32"
-                    viewBox="0 0 32 32"
-                  >
-                    <use href="/icons/trash.svg#trash"></use>
-                  </svg>
+                  <Trash2Icon />
                 </button>
               </div>
               <div className="w-20 text-center outline-1 outline-zinc-800 print:outline-slate-950">
@@ -225,32 +184,14 @@ export default function Psychology() {
                         type="button"
                         data-headlessui-state=""
                       >
-                        <svg
-                          role="img"
-                          className="h-3.5"
-                          aria-label="Increase score"
-                          width="32"
-                          height="32"
-                          viewBox="0 0 32 32"
-                        >
-                          <use href="/icons/caret-up.svg#caret-up"></use>
-                        </svg>
+                        <SquareArrowUpIcon />
                       </button>
                       <button
-                        className="flex h-3.5 w-4 rotate-180 items-center justify-center rounded-sm border border-zinc-800 text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400"
+                        className="flex h-3.5 w-4 items-center justify-center rounded-sm border border-zinc-800 text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400"
                         type="button"
                         data-headlessui-state=""
                       >
-                        <svg
-                          role="img"
-                          className="h-3.5"
-                          aria-label="Increase score"
-                          width="32"
-                          height="32"
-                          viewBox="0 0 32 32"
-                        >
-                          <use href="/icons/caret-up.svg#caret-up"></use>
-                        </svg>
+                        <SquareArrowDownIcon />
                       </button>
                     </div>
                   </div>
@@ -292,16 +233,7 @@ export default function Psychology() {
                   type="button"
                   data-headlessui-state=""
                 >
-                  <svg
-                    role="img"
-                    className="size-5"
-                    aria-label="Remove bond type"
-                    width="32"
-                    height="32"
-                    viewBox="0 0 32 32"
-                  >
-                    <use href="/icons/trash.svg#trash"></use>
-                  </svg>
+                  <Trash2Icon />
                 </button>
               </div>
               <div className="w-20 text-center outline-1 outline-zinc-800 print:outline-slate-950">
@@ -335,32 +267,14 @@ export default function Psychology() {
                         type="button"
                         data-headlessui-state=""
                       >
-                        <svg
-                          role="img"
-                          className="h-3.5"
-                          aria-label="Increase score"
-                          width="32"
-                          height="32"
-                          viewBox="0 0 32 32"
-                        >
-                          <use href="/icons/caret-up.svg#caret-up"></use>
-                        </svg>
+                        <SquareArrowUpIcon />
                       </button>
                       <button
-                        className="flex h-3.5 w-4 rotate-180 items-center justify-center rounded-sm border border-zinc-800 text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400"
+                        className="flex h-3.5 w-4 items-center justify-center rounded-sm border border-zinc-800 text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400"
                         type="button"
                         data-headlessui-state=""
                       >
-                        <svg
-                          role="img"
-                          className="h-3.5"
-                          aria-label="Increase score"
-                          width="32"
-                          height="32"
-                          viewBox="0 0 32 32"
-                        >
-                          <use href="/icons/caret-up.svg#caret-up"></use>
-                        </svg>
+                        <SquareArrowDownIcon />
                       </button>
                     </div>
                   </div>

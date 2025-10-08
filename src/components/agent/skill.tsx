@@ -1,4 +1,11 @@
-export function Accounting() {
+import { CirclePlusIcon } from "../ui/icons/lucide-circle-plus";
+import { InfoIcon } from "../ui/icons/lucide-info";
+import { SquareArrowDownIcon } from "../ui/icons/lucide-square-arrow-down";
+import { SquareArrowUpIcon } from "../ui/icons/lucide-square-arrow-up";
+import { Trash2Icon } from "../ui/icons/lucide-trash-2";
+import { Input } from "../ui/input";
+
+export function Skill({ skill, score }: { skill?: string; score?: number }) {
   return (
     <div className="flex grow font-jost">
       <div className="flex w-full items-center gap-1.5 px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
@@ -12,7 +19,7 @@ export function Accounting() {
           data-headlessui-state=""
         ></span>
         <div className="flex grow items-center gap-1.5 text-sm print:text-xs">
-          Accounting <span className="hidden print:inline">(10%)</span>
+          {skill} <span className="hidden print:inline">(10%)</span>
           <div className="relative print:hidden" data-headlessui-state="">
             <button
               className="flex size-10 items-center justify-center rounded-full text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400 sm:size-6"
@@ -21,16 +28,7 @@ export function Accounting() {
               data-headlessui-state=""
               id="headlessui-popover-button-:r3n:"
             >
-              <svg
-                role="img"
-                className="h-5 w-5"
-                aria-label="Accounting info"
-                width="32"
-                height="32"
-                viewBox="0 0 32 32"
-              >
-                <use href="/icons/info.svg#info"></use>
-              </svg>
+              <InfoIcon />
             </button>
           </div>
         </div>
@@ -49,7 +47,7 @@ export function Accounting() {
             Skill Accounting value
           </label>
           <div className="flex gap-0.5">
-            <input
+            <Input
               className="span min-h-10 w-full grow rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-1 py-0.5 text-center hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 print:border-0 print:bg-transparent print:text-sm"
               inputMode="numeric"
               pattern="[0-9]*"
@@ -57,7 +55,7 @@ export function Accounting() {
               id="headlessui-control-:r3r:"
               data-headlessui-state=""
               type="text"
-              defaultValue="10"
+              defaultValue={score ?? "0"}
               aria-labelledby="headlessui-label-:r3s:"
             />
             <div className="hidden flex-col justify-between gap-0 sm:flex print:hidden">
@@ -66,32 +64,14 @@ export function Accounting() {
                 type="button"
                 data-headlessui-state=""
               >
-                <svg
-                  role="img"
-                  className="h-3.5"
-                  aria-label="Increase score"
-                  width="32"
-                  height="32"
-                  viewBox="0 0 32 32"
-                >
-                  <use href="/icons/caret-up.svg#caret-up"></use>
-                </svg>
+                <SquareArrowUpIcon />
               </button>
               <button
-                className="flex h-3.5 w-4 rotate-180 items-center justify-center rounded-sm border border-slate-600 text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400"
+                className="flex h-3.5 w-4 items-center justify-center rounded-sm border border-slate-600 text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400"
                 type="button"
                 data-headlessui-state=""
               >
-                <svg
-                  role="img"
-                  className="h-3.5"
-                  aria-label="Increase score"
-                  width="32"
-                  height="32"
-                  viewBox="0 0 32 32"
-                >
-                  <use href="/icons/caret-up.svg#caret-up"></use>
-                </svg>
+                <SquareArrowDownIcon />
               </button>
             </div>
           </div>
@@ -116,16 +96,7 @@ export function Art() {
                 data-headlessui-state=""
                 id="headlessui-popover-button-:r4u:"
               >
-                <svg
-                  role="img"
-                  className="h-5 w-5"
-                  aria-label="Art info"
-                  width="32"
-                  height="32"
-                  viewBox="0 0 32 32"
-                >
-                  <use href="/icons/info.svg#info"></use>
-                </svg>
+                <InfoIcon />
               </button>
             </div>
           </div>
@@ -135,16 +106,7 @@ export function Art() {
             data-headlessui-state=""
           >
             Add type
-            <svg
-              role="img"
-              className="size-6 sm:size-5"
-              aria-label=""
-              width="32"
-              height="32"
-              viewBox="0 0 32 32"
-            >
-              <use href="/icons/add.svg#add"></use>
-            </svg>
+            <CirclePlusIcon />
           </button>
         </div>
         <div className="flex items-center gap-1.5">
@@ -166,7 +128,7 @@ export function Art() {
             >
               Skill type name
             </label>
-            <input
+            <Input
               className="min-h-10 w-full justify-self-end rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-xs"
               maxLength={50}
               placeholder=""
@@ -181,16 +143,7 @@ export function Art() {
             type="button"
             data-headlessui-state=""
           >
-            <svg
-              role="img"
-              className="size-5"
-              aria-label="Remove skill type"
-              width="32"
-              height="32"
-              viewBox="0 0 32 32"
-            >
-              <use href="/icons/trash.svg#trash"></use>
-            </svg>
+            <Trash2Icon />
           </button>
         </div>
       </div>
@@ -205,7 +158,7 @@ export function Art() {
             Skill type value
           </label>
           <div className="flex gap-0.5">
-            <input
+            <Input
               className="span min-h-10 w-full grow rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-1 py-0.5 text-center hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 print:border-0 print:bg-transparent print:text-sm"
               inputMode="numeric"
               pattern="[0-9]*"
@@ -222,32 +175,14 @@ export function Art() {
                 type="button"
                 data-headlessui-state=""
               >
-                <svg
-                  role="img"
-                  className="h-3.5"
-                  aria-label="Increase score"
-                  width="32"
-                  height="32"
-                  viewBox="0 0 32 32"
-                >
-                  <use href="/icons/caret-up.svg#caret-up"></use>
-                </svg>
+                <SquareArrowUpIcon />
               </button>
               <button
-                className="flex h-3.5 w-4 rotate-180 items-center justify-center rounded-sm border border-slate-600 text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400"
+                className="flex h-3.5 w-4 items-center justify-center rounded-sm border border-slate-600 text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400"
                 type="button"
                 data-headlessui-state=""
               >
-                <svg
-                  role="img"
-                  className="h-3.5"
-                  aria-label="Increase score"
-                  width="32"
-                  height="32"
-                  viewBox="0 0 32 32"
-                >
-                  <use href="/icons/caret-up.svg#caret-up"></use>
-                </svg>
+                <SquareArrowDownIcon />
               </button>
             </div>
           </div>
