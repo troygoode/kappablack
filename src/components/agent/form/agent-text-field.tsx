@@ -1,20 +1,11 @@
 "use client";
 
+import { type IAgent } from "@/IAgent";
+
 import { useState } from "react";
 import { AgentField } from "./agent-field";
 import { AgentLabel } from "./agent-label";
 import { AgentTextInput } from "./agent-text-input";
-
-interface IAgent {
-  name?: string;
-  profession?: string;
-  employer?: string;
-  nationality?: string;
-  sex?: string;
-  sexOther?: string;
-  age?: string;
-  education?: string;
-}
 
 const AgentTextField = ({
   fieldName,

@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 
+import { type IAgent } from "@/IAgent";
+
 import { Label } from "../ui/label";
 import { RadioGroup } from "../ui/radio-group";
 import { AgentField } from "./form/agent-field";
@@ -10,17 +12,6 @@ import { AgentTextField } from "./form/agent-text-field";
 import { AgentTextInput } from "./form/agent-text-input";
 import { SideHeader } from "./form/side-header";
 import { SquareRadioGroupItem } from "./form/square-radio-group-item";
-
-interface IAgent {
-  name?: string;
-  profession?: string;
-  employer?: string;
-  nationality?: string;
-  sex?: string;
-  sexOther?: string;
-  age?: string;
-  education?: string;
-}
 
 const Name = ({ state }: { state: IAgent }) => (
   <AgentTextField
@@ -170,7 +161,7 @@ export default function Personal() {
   return (
     <div>
       <form onChange={onFormChange} className="w-full">
-        <div className="flex flex-col outline-1 outline-slate-500 sm:flex-row print:outline-slate-950 ">
+        <div className="flex flex-col outline-1 outline-zinc-800 sm:flex-row print:outline-slate-950 ">
           <SideHeader>Personal Data</SideHeader>
           <div className="w-full">
             <div className="flex w-full flex-col justify-stretch sm:grid sm:grid-cols-12">
