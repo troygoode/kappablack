@@ -1,10 +1,15 @@
 "use client";
 
+import { useState } from "react";
+
+import { Label } from "../ui/label";
+import { RadioGroup } from "../ui/radio-group";
 import { AgentField } from "./form/agent-field";
 import { AgentLabel } from "./form/agent-label";
 import { AgentTextField } from "./form/agent-text-field";
 import { AgentTextInput } from "./form/agent-text-input";
 import { SideHeader } from "./form/side-header";
+import { SquareRadioGroupItem } from "./form/square-radio-group-item";
 
 interface IAgent {
   name?: string;
@@ -12,6 +17,7 @@ interface IAgent {
   employer?: string;
   nationality?: string;
   sex?: string;
+  sexOther?: string;
   age?: string;
   education?: string;
 }
@@ -76,51 +82,86 @@ const Education = ({ state }: { state: IAgent }) => (
   />
 );
 
-const Sex = ({ state }: { state: IAgent }) => (
-  <AgentField className="col-span-6 lg:col-span-3 print:col-span-3">
-    <AgentLabel length={0} maxLength={100}>
-      5. Sex
-    </AgentLabel>
-    <div className="flex gap-3 print:text-sm">
-      <div
-        className="flex gap-3"
-        id="headlessui-radiogroup-:r13:"
-        role="radiogroup"
+const Sex = ({ state }: { state: IAgent }) => {
+  const maxLength = 100;
+  const [sex, setSex] = useState(
+    state.sex === "m"
+      ? "sex-m"
+      : state.sex === "f"
+      ? "sex-f"
+      : state.sex === "other"
+      ? "sex-other"
+      : "sex-m"
+  );
+  const [sexOther, setSexOther] = useState(state.sex ?? "");
+
+  const onSexOtherChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSexOther(e.target.value);
+    state.sexOther = e.target.value;
+  };
+  const onSexChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.checked) {
+      setSex(e.target.value);
+      switch (e.target.value) {
+        case "sex-m":
+          state.sex = "m";
+          break;
+        case "sex-f":
+          state.sex = "f";
+          break;
+        case "sex-other":
+          state.sex = "other";
+          break;
+        default:
+          state.sex = "m";
+          break;
+      }
+    }
+  };
+
+  return (
+    <AgentField className="col-span-6 lg:col-span-3 print:col-span-3">
+      <AgentLabel
+        length={sex === "sex-other" ? sexOther.length : -1}
+        maxLength={maxLength}
       >
-        <div className="flex items-center gap-1" data-headlessui-state="">
-          <span
-            className="size-4 flex-none cursor-pointer border border-slate-950 focus-visible:outline-slate-600 data-[checked]:bg-slate-950 sm:size-3"
-            id="headlessui-control-:r14:"
-            role="radio"
-            tabIndex={-1}
+        5. Sex
+      </AgentLabel>
+      <div className="flex gap-3 print:text-sm">
+        <RadioGroup
+          className="flex gap-3"
+          defaultValue={sex}
+          onChange={onSexChange}
+        >
+          <div className="flex items-center gap-1">
+            <SquareRadioGroupItem value="sex-m" id="sex-m" />
+            <Label htmlFor="sex-m">M</Label>
+          </div>
+          <div className="flex items-center gap-1">
+            <SquareRadioGroupItem value="sex-f" id="sex-f" />
+            <Label htmlFor="sex-f">F</Label>
+          </div>
+          <div className="flex items-center gap-1">
+            <SquareRadioGroupItem value="sex-other" id="sex-other" />
+          </div>
+        </RadioGroup>
+        <div className="grow">
+          <AgentTextInput
+            disabled={sex !== "sex-other"}
+            fieldName="sexOther"
+            maxLength={maxLength}
+            defaultValue={sexOther}
+            onChange={onSexOtherChange}
           />
-          <label id="headlessui-label-:r16:" htmlFor="headlessui-control-:r14:">
-            F
-          </label>
-        </div>
-        <div className="flex items-center gap-1" data-headlessui-state="">
-          <span
-            className="size-4 flex-none cursor-pointer border border-slate-950 focus-visible:outline-slate-600 data-[checked]:bg-slate-950 sm:size-3"
-            id="headlessui-control-:r17:"
-            role="radio"
-            aria-checked="false"
-            tabIndex={-1}
-            aria-labelledby="headlessui-label-:r19:"
-          />
-          <label id="headlessui-label-:r19:" htmlFor="headlessui-control-:r17:">
-            M
-          </label>
         </div>
       </div>
-      <div className="grow">
-        <AgentTextInput fieldName="sexOther" maxLength={50} defaultValue="" />
-      </div>
-    </div>
-  </AgentField>
-);
+    </AgentField>
+  );
+};
 
 export default function Personal() {
   const onFormChange = (e: React.FormEvent<HTMLFormElement>) => {
+    // console.log("form changed", e.target);
     return;
   };
 

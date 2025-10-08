@@ -1,5 +1,7 @@
 "use client";
 
+import { Label } from "@/components/ui/label";
+
 const AgentLabel = ({
   fieldName,
   length,
@@ -11,16 +13,18 @@ const AgentLabel = ({
   maxLength?: number;
 }>) => (
   <div className="flex items-center justify-between">
-    <label
+    <Label
       className="w-full text-xs uppercase"
       id={fieldName}
       htmlFor={fieldName}
     >
       <h3>{children}</h3>
-    </label>
-    <span className="text-xs print:hidden">
-      {length}/{maxLength}
-    </span>
+    </Label>
+    {(length ?? 0) > 0 ? (
+      <span className="text-xs print:hidden">
+        {length}/{maxLength}
+      </span>
+    ) : null}
   </div>
 );
 

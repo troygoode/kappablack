@@ -11,6 +11,7 @@ interface IAgent {
   employer?: string;
   nationality?: string;
   sex?: string;
+  sexOther?: string;
   age?: string;
   education?: string;
 }
