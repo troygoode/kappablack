@@ -7,8 +7,10 @@ import { useAgentStore } from "./agent-store";
 import { AgentTextInput } from "./form/agent-text-input";
 import { SideHeader } from "./form/side-header";
 import { RefreshCwIcon } from "../ui/icons/lucide-refresh-cw";
+import { Skeleton } from "../ui/skeleton";
 
 const Stat = ({
+  loading,
   label,
   abbreviation,
   score,
@@ -16,6 +18,7 @@ const Stat = ({
   feature,
   setFeature,
 }: {
+  loading: boolean;
   label: string;
   abbreviation: string;
   score: number | undefined;
@@ -32,18 +35,22 @@ const Stat = ({
         className="flex items-center p-1 outline-1 outline-zinc-800 print:outline-slate-950"
         data-headlessui-state=""
       >
-        <div className="flex gap-0.5">
-          <AgentTextInput
-            className="text-center"
-            fieldName={`stat-${abbreviation}-score`}
-            type="number"
-            value={score?.toString() ?? ""}
-            onChange={(value) => {
-              setScore(parseInt(value) || undefined);
-            }}
-            maxLength={3}
-            min={3}
-          />
+        <div className="flex gap-0.5 w-full">
+          {loading ? (
+            <Skeleton className="h-9 w-full" />
+          ) : (
+            <AgentTextInput
+              className="text-center"
+              fieldName={`stat-${abbreviation}-score`}
+              type="number"
+              value={score?.toString() ?? ""}
+              onChange={(value) => {
+                setScore(parseInt(value) || undefined);
+              }}
+              maxLength={3}
+              min={3}
+            />
+          )}
         </div>
       </div>
       <div className="flex items-center justify-center px-2 py-1 outline-1 outline-zinc-800 print:text-sm print:outline-slate-950">
@@ -139,6 +146,7 @@ export default function Stats() {
               </div>
             </div>
             <Stat
+              loading={!agent}
               label="Strength"
               abbreviation="str"
               score={agent?.strength?.score}
@@ -158,6 +166,7 @@ export default function Stats() {
               }}
             />
             <Stat
+              loading={!agent}
               label="Dexterity"
               abbreviation="dex"
               score={agent?.dexterity?.score}
@@ -177,6 +186,7 @@ export default function Stats() {
               }}
             />
             <Stat
+              loading={!agent}
               label="Constitution"
               abbreviation="con"
               score={agent?.constitution?.score}
@@ -196,6 +206,7 @@ export default function Stats() {
               }}
             />
             <Stat
+              loading={!agent}
               label="Intelligence"
               abbreviation="int"
               score={agent?.intelligence?.score}
@@ -215,6 +226,7 @@ export default function Stats() {
               }}
             />
             <Stat
+              loading={!agent}
               label="Power"
               abbreviation="pow"
               score={agent?.power?.score}
@@ -234,6 +246,7 @@ export default function Stats() {
               }}
             />
             <Stat
+              loading={!agent}
               label="Charisma"
               abbreviation="cha"
               score={agent?.charisma?.score}
@@ -334,19 +347,20 @@ export default function Stats() {
               </span>
             </div>
             <Textarea
+              id="physical-description"
+              name="physical-description"
+              value={agent?.physicalDescription ?? ""}
+              maxLength={300}
+              onChange={(e) => {
+                if (!agent) return;
+                update({ ...agent, physicalDescription: e.target.value });
+              }}
               className={classNames(
                 "min-h-15 h-full w-full justify-self-end rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 print:border-0 print:bg-transparent print:p-0 print:text-sm",
                 (agent?.physicalDescription ?? "").length === 0
                   ? "dark:bg-amber-100"
                   : ""
               )}
-              maxLength={300}
-              id="physical-description"
-              value={agent?.physicalDescription ?? ""}
-              onChange={(e) => {
-                if (!agent) return;
-                update({ ...agent, physicalDescription: e.target.value });
-              }}
             />
           </div>
         </div>

@@ -1,83 +1,86 @@
 "use client";
 
+import classNames from "classnames";
 import { Button } from "../ui/button";
-import { Checkbox } from "../ui/checkbox";
 import { CirclePlusIcon } from "../ui/icons/lucide-circle-plus";
-import { SquareArrowDownIcon } from "../ui/icons/lucide-square-arrow-down";
-import { SquareArrowUpIcon } from "../ui/icons/lucide-square-arrow-up";
 import { Trash2Icon } from "../ui/icons/lucide-trash-2";
-import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
+import { useAgentStore } from "./agent-store";
+import { AgentTextInput } from "./form/agent-text-input";
 import { SideHeader } from "./form/side-header";
+import { SquareCheckbox } from "./form/square-checkbox";
+import { Badge } from "../ui/badge";
+import { SkullIcon } from "../ui/icons/lucide-skull";
+import { BrainIcon } from "../ui/icons/lucide-brain";
+import { HeartCrackIcon } from "../ui/icons/lucide-heart-crack";
 
-const Incrementor = ({
-  value,
-  increment,
+const Bond = ({
+  index,
+  bond,
+  score,
+  isMarked,
+  update,
+  remove,
 }: {
-  value?: number;
-  increment: -1 | 1;
+  index: number;
+  bond: string | undefined;
+  score: number | undefined;
+  isMarked: boolean;
+  update: (
+    bond: string | undefined,
+    score: number | undefined,
+    isMarked: boolean
+  ) => void;
+  remove: () => void;
 }) => {
-  return (
-    <button
-      className="cursor-pointer disabled:pointer-default flex h-4.5 w-4.5 items-center justify-center rounded text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:bg-zinc-400"
-      type="button"
-      data-headlessui-state=""
-      disabled={(value ?? 0) + increment < 0}
-    >
-      {increment === -1 ? <SquareArrowDownIcon /> : <SquareArrowUpIcon />}
-    </button>
-  );
-};
-
-const Bond = () => {
   return (
     <div className="flex">
       <div className="flex grow items-center gap-1.5 px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
-        <Checkbox className="cursor-pointer" />
+        <SquareCheckbox
+          className="cursor-pointer"
+          checked={isMarked}
+          onCheckedChange={(e) => {
+            update(bond, score, !!e);
+          }}
+        />
         <div className="grow" data-headlessui-state="">
-          <label
-            className="sr-only"
-            id="headlessui-label-:r2o:"
-            htmlFor="headlessui-control-:r2n:"
-            data-headlessui-state=""
-          >
-            Bond name
-          </label>
-          <Input
-            className="min-h-10 w-full justify-self-end rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm"
+          <AgentTextInput
+            fieldName={`bond-${index}-text`}
+            value={bond ?? ""}
+            onChange={(value) => {
+              update(value, score, isMarked);
+            }}
             maxLength={50}
-            placeholder=""
-            id="headlessui-control-:r2n:"
-            data-headlessui-state=""
-            defaultValue=""
-            aria-labelledby="headlessui-label-:r2o:"
           />
         </div>
-        <Button size="sm" variant="outline" className="cursor-pointer">
+        <Button
+          size="sm"
+          variant="outline"
+          className="cursor-pointer"
+          onClick={() => remove()}
+        >
           <Trash2Icon />
         </Button>
       </div>
       <div className="w-20 text-center outline-1 outline-zinc-800 print:outline-slate-950">
-        <div
-          className="flex items-center p-1 outline-zinc-800"
-          data-headlessui-state=""
-        >
-          <label
-            className="sr-only"
-            id="headlessui-label-:r2r:"
-            htmlFor="headlessui-control-:r2q:"
-            data-headlessui-state=""
-          >
-            score
-          </label>
+        <div className="flex items-center p-1 outline-zinc-800">
           <div className="flex gap-0.5">
-            <Input
+            <AgentTextInput
+              className="text-center"
+              fieldName={`bond-${index}-score`}
               type="number"
-              className="w-full grow rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-1 py-0.5 text-center hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 print:border-0 print:bg-transparent print:text-sm"
-              pattern="[0-9]*"
+              value={score?.toString() ?? ""}
+              onChange={(value) => {
+                update(
+                  bond,
+                  value !== undefined
+                    ? parseInt(value) ?? undefined
+                    : undefined,
+                  isMarked
+                );
+              }}
               maxLength={3}
               min={0}
-              defaultValue="0"
             />
           </div>
         </div>
@@ -87,6 +90,35 @@ const Bond = () => {
 };
 
 export default function Psychology() {
+  const { agent, update } = useAgentStore();
+
+  const addBond = () => {
+    if (!agent) return;
+    const newBond = { bond: undefined, score: undefined, marked: false };
+    agent.bonds = agent.bonds ? [...agent.bonds, newBond] : [newBond];
+    update(agent);
+  };
+
+  const removeBond = (index: number) => {
+    return () => {
+      if (!agent?.bonds) return;
+      agent.bonds = agent.bonds.filter((_, i) => i !== index);
+      update(agent);
+    };
+  };
+
+  const updateBond = (index: number) => {
+    return (
+      bond: string | undefined,
+      score: number | undefined,
+      isMarked: boolean
+    ) => {
+      if (!agent?.bonds) return;
+      agent.bonds[index] = { bond, score, marked: isMarked };
+      update(agent);
+    };
+  };
+
   return (
     <div className="flex h-full flex-col outline-1 outline-zinc-800 sm:flex-row print:outline-slate-950">
       <SideHeader>Psychological Data</SideHeader>
@@ -94,20 +126,49 @@ export default function Psychology() {
         <div className="flex h-full flex-col">
           <div className="flex flex-col font-jost">
             <div className="flex text-xs uppercase">
-              <div className="flex grow items-center justify-between px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
+              <div className="flex h-10 grow items-center justify-between px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
                 <h3>11. Bonds</h3>
-                <Button size="sm" variant="outline" className="cursor-pointer">
-                  <CirclePlusIcon />
-                  Add bond
-                </Button>
+                {(agent?.bonds?.length ?? 0) > 0 ? (
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    className="cursor-pointer"
+                    onClick={() => addBond()}
+                  >
+                    <CirclePlusIcon />
+                  </Button>
+                ) : null}
               </div>
               <div className="flex w-20 items-center justify-center px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
                 Score
               </div>
             </div>
-            <Bond />
-            <Bond />
-            <Bond />
+            {!agent?.bonds?.length ? (
+              <div className="flex py-1.5 w-full items-center justify-center">
+                <Button
+                  size="sm"
+                  variant="outline"
+                  className="cursor-pointer"
+                  onClick={() => addBond()}
+                >
+                  <CirclePlusIcon />
+                  Add a bond
+                </Button>
+              </div>
+            ) : null}
+            {(agent?.bonds?.length &&
+              agent.bonds.map((bond, idx) => (
+                <Bond
+                  key={idx}
+                  index={idx}
+                  bond={bond.bond}
+                  score={bond.score}
+                  isMarked={!!bond.marked}
+                  update={updateBond(idx)}
+                  remove={removeBond(idx)}
+                />
+              ))) ||
+              null}
             <div className="flex justify-center px-2 py-1 text-sm">
               Check a Bond's box when projecting sanity damage.
             </div>
@@ -125,12 +186,25 @@ export default function Psychology() {
               >
                 <h3>12. Motivations and mental disorders</h3>
               </label>
-              <span className="text-xs print:hidden">0/300</span>
+              <span className="text-xs print:hidden">
+                {agent?.motivationsAndDisorders?.length ?? 0}/300
+              </span>
             </div>
             <Textarea
-              className="min-h-10 w-full justify-self-end rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm h-full"
+              id="motivations-and-disorders"
+              name="motivations-and-disorders"
+              value={agent?.motivationsAndDisorders ?? ""}
+              onChange={(e) => {
+                if (!agent) return;
+                update({ ...agent, motivationsAndDisorders: e.target.value });
+              }}
               maxLength={300}
-              id="headlessui-control-:r3b:"
+              className={classNames(
+                "min-h-15 h-full w-full justify-self-end rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 print:border-0 print:bg-transparent print:p-0 print:text-sm",
+                (agent?.motivationsAndDisorders ?? "").length === 0
+                  ? "dark:bg-amber-100"
+                  : ""
+              )}
             />
           </div>
           <div className="flex flex-col px-2 py-1 font-jost text-sm">
@@ -140,39 +214,133 @@ export default function Psychology() {
             <div className="flex flex-col justify-between sm:flex-row">
               <div className="flex items-center justify-center gap-3 sm:gap-1">
                 <span>Violence</span>
-                <Checkbox
-                  id="headlessui-checkbox-:r3e:"
+                <SquareCheckbox
+                  id="violence-adapted-1"
+                  name="violence-adapted-1"
                   className="cursor-pointer"
+                  checked={agent && (agent.violenceAdaptation ?? 0) >= 1}
+                  onCheckedChange={(b) => {
+                    if (!agent) return;
+                    if (b || (agent.violenceAdaptation ?? 0) > 1) {
+                      agent.violenceAdaptation = 1;
+                    } else {
+                      agent.violenceAdaptation = undefined;
+                    }
+                    update(agent);
+                  }}
                 />
-                <Checkbox
-                  id="headlessui-checkbox-:r3e:"
+                <SquareCheckbox
+                  id="violence-adapted-2"
+                  name="violence-adapted-2"
                   className="cursor-pointer"
+                  checked={agent && (agent.violenceAdaptation ?? 0) >= 2}
+                  onCheckedChange={(b) => {
+                    if (!agent) return;
+                    if (b || (agent.violenceAdaptation ?? 0) > 2) {
+                      agent.violenceAdaptation = 2;
+                    } else {
+                      agent.violenceAdaptation = 1;
+                    }
+                    update(agent);
+                  }}
                 />
-                <Checkbox
-                  id="headlessui-checkbox-:r3e:"
+                <SquareCheckbox
+                  id="violence-adapted-3"
+                  name="violence-adapted-3"
                   className="cursor-pointer"
+                  checked={agent && (agent.violenceAdaptation ?? 0) >= 3}
+                  onCheckedChange={(b) => {
+                    if (!agent) return;
+                    if (b || (agent.violenceAdaptation ?? 0) > 3) {
+                      agent.violenceAdaptation = 3;
+                    } else {
+                      agent.violenceAdaptation = 2;
+                    }
+                    update(agent);
+                  }}
                 />
-                <span className="peer rounded-full border border-transparent pl-0.5 pr-1 italic data-[adapted]:border-slate-950">
-                  adapted
-                </span>
+                {agent && (agent.violenceAdaptation ?? 0) >= 3 ? (
+                  <Badge asChild className="ml-2" variant="destructive">
+                    <span>
+                      <HeartCrackIcon />
+                      <span className="pt-0.5">Adapted</span>
+                    </span>
+                  </Badge>
+                ) : (
+                  <Badge asChild className="ml-2 text-accent" variant="outline">
+                    <span>
+                      <HeartCrackIcon />
+                      <span className="pt-0.5">Adapted</span>
+                    </span>
+                  </Badge>
+                )}
               </div>
               <div className="flex items-center justify-center gap-3 sm:gap-1">
                 <span>Helplessness</span>
-                <Checkbox
-                  id="headlessui-checkbox-:r3e:"
+                <SquareCheckbox
+                  id="helpless-adapted-1"
+                  name="helpless-adapted-1"
                   className="cursor-pointer"
+                  checked={agent && (agent.helplessnessAdaptation ?? 0) >= 1}
+                  onCheckedChange={(b) => {
+                    if (!agent) return;
+                    if (b || (agent.helplessnessAdaptation ?? 0) > 1) {
+                      agent.helplessnessAdaptation = 1;
+                    } else {
+                      agent.helplessnessAdaptation = undefined;
+                    }
+                    update(agent);
+                  }}
                 />
-                <Checkbox
-                  id="headlessui-checkbox-:r3e:"
+                <SquareCheckbox
+                  id="helpless-adapted-2"
+                  name="helpless-adapted-2"
                   className="cursor-pointer"
+                  checked={agent && (agent.helplessnessAdaptation ?? 0) >= 2}
+                  onCheckedChange={(b) => {
+                    if (!agent) return;
+                    if (b || (agent.helplessnessAdaptation ?? 0) > 2) {
+                      agent.helplessnessAdaptation = 2;
+                    } else {
+                      agent.helplessnessAdaptation = 1;
+                    }
+                    update(agent);
+                  }}
                 />
-                <Checkbox
-                  id="headlessui-checkbox-:r3e:"
+                <SquareCheckbox
+                  id="helpless-adapted-3"
+                  name="helpless-adapted-3"
                   className="cursor-pointer"
+                  checked={agent && (agent.helplessnessAdaptation ?? 0) >= 3}
+                  onCheckedChange={(b) => {
+                    if (!agent) return;
+                    if (b || (agent.helplessnessAdaptation ?? 0) > 3) {
+                      agent.helplessnessAdaptation = 3;
+                    } else {
+                      agent.helplessnessAdaptation = 2;
+                    }
+                    update(agent);
+                  }}
                 />
-                <span className="peer rounded-full border border-transparent pl-0.5 pr-1 italic data-[adapted]:border-slate-950">
-                  adapted
-                </span>
+                {agent && (agent.helplessnessAdaptation ?? 0) >= 3 ? (
+                  <Badge
+                    asChild
+                    className="ml-2 bg-blue-500"
+                    variant="secondary"
+                  >
+                    <span>
+                      <BrainIcon />
+                      <span className="pt-0.5">Adapted</span>
+                    </span>
+                  </Badge>
+                ) : (
+                  <Badge asChild className="ml-2 text-accent" variant="outline">
+                    <span>
+                      <BrainIcon />
+                      <span className="pt-0.5">Adapted</span>
+                    </span>
+                  </Badge>
+                )}
               </div>
             </div>
           </div>

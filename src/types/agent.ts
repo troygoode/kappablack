@@ -5,12 +5,12 @@ export interface IStat {
 
 export interface IBond {
   marked?: boolean;
-  description?: string;
-  strength?: number;
+  bond?: string;
+  score?: number;
 }
 
 export interface IWeapon {
-  description?: string;
+  weapon?: string;
   skill?: string;
   range?: string;
   damage?: string;
@@ -21,7 +21,7 @@ export interface IWeapon {
 }
 
 export interface ISpecialTraining {
-  description?: string;
+  training?: string;
   skillOrStat?: string;
 }
 
