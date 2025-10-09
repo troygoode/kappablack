@@ -1,14 +1,15 @@
-interface IStat {
+export interface IStat {
   score?: number;
-  distinguishingFeature?: string;
+  feature?: string;
 }
 
-interface IBond {
+export interface IBond {
+  marked?: boolean;
   description?: string;
   strength?: number;
 }
 
-interface IWeapon {
+export interface IWeapon {
   description?: string;
   skill?: string;
   range?: string;
@@ -19,7 +20,7 @@ interface IWeapon {
   ammo?: string;
 }
 
-interface ISpecialTraining {
+export interface ISpecialTraining {
   description?: string;
   skillOrStat?: string;
 }

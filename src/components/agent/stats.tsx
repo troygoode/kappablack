@@ -2,8 +2,6 @@
 
 import classNames from "classnames";
 import { Button } from "../ui/button";
-import { CopyCheckIcon } from "../ui/icons/lucide-copy-check";
-import { SquareArrowRightIcon } from "../ui/icons/lucide-square-arrow-right";
 import { Textarea } from "../ui/textarea";
 import { useAgentStore } from "./agent-store";
 import { AgentTextInput } from "./form/agent-text-input";
@@ -149,12 +147,12 @@ export default function Stats() {
                 agent.strength = { ...agent.strength, score };
                 update(agent);
               }}
-              feature={agent?.strength?.distinguishingFeature ?? ""}
+              feature={agent?.strength?.feature ?? ""}
               setFeature={(feature) => {
                 if (!agent) return;
                 agent.strength = {
                   ...agent.strength,
-                  distinguishingFeature: feature,
+                  feature,
                 };
                 update(agent);
               }}
@@ -168,12 +166,12 @@ export default function Stats() {
                 agent.dexterity = { ...agent.dexterity, score };
                 update(agent);
               }}
-              feature={agent?.dexterity?.distinguishingFeature ?? ""}
+              feature={agent?.dexterity?.feature ?? ""}
               setFeature={(feature) => {
                 if (!agent) return;
                 agent.dexterity = {
                   ...agent.dexterity,
-                  distinguishingFeature: feature,
+                  feature,
                 };
                 update(agent);
               }}
@@ -187,12 +185,12 @@ export default function Stats() {
                 agent.constitution = { ...agent.constitution, score };
                 update(agent);
               }}
-              feature={agent?.constitution?.distinguishingFeature ?? ""}
+              feature={agent?.constitution?.feature ?? ""}
               setFeature={(feature) => {
                 if (!agent) return;
                 agent.constitution = {
                   ...agent.constitution,
-                  distinguishingFeature: feature,
+                  feature,
                 };
                 update(agent);
               }}
@@ -206,12 +204,12 @@ export default function Stats() {
                 agent.intelligence = { ...agent.intelligence, score };
                 update(agent);
               }}
-              feature={agent?.intelligence?.distinguishingFeature ?? ""}
+              feature={agent?.intelligence?.feature ?? ""}
               setFeature={(feature) => {
                 if (!agent) return;
                 agent.intelligence = {
                   ...agent.intelligence,
-                  distinguishingFeature: feature,
+                  feature,
                 };
                 update(agent);
               }}
@@ -225,12 +223,12 @@ export default function Stats() {
                 agent.power = { ...agent.power, score };
                 update(agent);
               }}
-              feature={agent?.power?.distinguishingFeature ?? ""}
+              feature={agent?.power?.feature ?? ""}
               setFeature={(feature) => {
                 if (!agent) return;
                 agent.power = {
                   ...agent.power,
-                  distinguishingFeature: feature,
+                  feature,
                 };
                 update(agent);
               }}
@@ -244,12 +242,12 @@ export default function Stats() {
                 agent.charisma = { ...agent.charisma, score };
                 update(agent);
               }}
-              feature={agent?.charisma?.distinguishingFeature ?? ""}
+              feature={agent?.charisma?.feature ?? ""}
               setFeature={(feature) => {
                 if (!agent) return;
                 agent.charisma = {
                   ...agent.charisma,
-                  distinguishingFeature: feature,
+                  feature,
                 };
                 update(agent);
               }}

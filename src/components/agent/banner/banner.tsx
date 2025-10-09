@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import Image from "next/image";
 
 import KappaBlackCutoutW from "./kappablack_cutout_w.webp";
@@ -14,13 +15,15 @@ export default function Banner({ isLoading }: { isLoading: boolean }) {
           <Spinner className="text-black opacity-0" />
         </div>
       )}
-      <Image
-        priority={true}
-        src={KappaBlackCutoutW}
-        alt="Logo"
-        height="48"
-        className="bg-black"
-      />
+      <Link href="/">
+        <Image
+          priority={true}
+          src={KappaBlackCutoutW}
+          alt="Logo"
+          height="48"
+          className="bg-black"
+        />
+      </Link>
       {isLoading && (
         <div className="flex items-center">
           <Spinner className="text-black" />
