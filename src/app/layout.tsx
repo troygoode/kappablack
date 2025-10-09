@@ -10,7 +10,7 @@ const specialElite = Special_Elite({
 });
 
 export const metadata: Metadata = {
-  title: "Kappa Black",
+  title: "Kappa Black".toUpperCase(),
   description: "Online character sheets for the TTRPG Delta Green.",
 };
 

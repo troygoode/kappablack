@@ -32,14 +32,15 @@ const AgentTextField = ({
   const xSetState =
     setState ??
     ((val: string) => {
-      if (state && fieldName) {
-        state[fieldName as keyof IAgent] = val;
+      if (state && fieldName && state[fieldName as keyof IAgent]) {
+        // state[fieldName as keyof IAgent] = val;
+        Object.defineProperty(state, fieldName, { value: val });
       }
     });
 
-  const [name, setName] = useState(xGetState());
+  const [value, setValue] = useState(xGetState());
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setName(e.target.value);
+    setValue(e.target.value);
     xSetState(e.target.value);
   };
 
@@ -47,7 +48,7 @@ const AgentTextField = ({
     <AgentField className={className}>
       <AgentLabel
         fieldName={fieldName}
-        length={name.length}
+        length={value.toString().length}
         maxLength={maxLength}
       >
         {label}
@@ -56,7 +57,7 @@ const AgentTextField = ({
         fieldName={fieldName}
         onChange={onChange}
         maxLength={maxLength}
-        defaultValue={name}
+        defaultValue={value.toString()}
       />
     </AgentField>
   );
