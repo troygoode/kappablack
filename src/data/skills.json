@@ -1,0 +1,39 @@
+{
+  "skills": [
+    {
+      "name": "Accounting",
+      "base": 10,
+      "tooltip": "Your ability to manage financial records, analyze budgets, and ensure accurate bookkeeping."
+    },
+    {
+      "name": "Alertness",
+      "base": 20,
+      "tooltip": "Alertness detects danger. Use it to hear a safety being switched off, to understand the mumbling on the other side of a wall, to spot the bulge of a pistol hidden under a jacket, or to catch someone who is trying to escape notice using Stealth."
+    },
+    {
+      "name": "Anthropology",
+      "base": 0,
+      "tooltip": "The study of living human cultures. Use it to understand morals, religious beliefs, customs, and mores, and to identify (but not translate) obscure languages. Where History is about the distant past and Archeology studies physical remains, Anthropology is about the behaviors of living cultures, how they relate to each other and the past, and how to navigate them safely."
+    },
+    {
+      "name": "Archeology",
+      "base": 0,
+      "tooltip": "The study of the physical remains of human cultures. Use it to analyze the way of life of a people from ruins, to determine the age of an artifact, to tell a genuine artifact from a fake, and to identify (but not translate) human languages. Where Anthropology is about living cultures and History is a broad study of the past, Archeology discerns meaning from the physical remains of peoples long dead."
+    },
+    {
+      "name": "Art",
+      "tooltip": "Expertise at creating or performing a work that sways emotions and opinions. It also encompasses knowledge of techniques and trends in your field, and the ability to tell a particular creator's real work from a fake. Anyone can draw a rough sketch; the Art skill reflects knowledge, practice, and talent. Each type of Art is a separate skill: Acting, Creative Writing, Dance, Flute, Forgery, Guitar, Painting, Poetry, Scriptwriting, Sculpture, Singing, Violin, etc.",
+      "multi": true
+    },
+    {
+      "name": "Artillery",
+      "base": 0,
+      "tooltip": "Safe and accurate use of mortars, missiles, howitzers, tank cannons, and other heavy gunnery. Use it to destroy troops or a hard target in battle."
+    },
+    {
+      "name": "Athletics",
+      "base": 30,
+      "tooltip": "Your Agent trains to get the most out of his or her strength and agility. Strength and Dexterity cover raw physical power and manual dexterity; the Athletics skill represents long practice doing things like running, jumping, climbing, and throwing."
+    }
+  ]
+}
