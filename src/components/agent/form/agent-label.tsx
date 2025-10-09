@@ -18,7 +18,7 @@ const AgentLabel = ({
       id={fieldName}
       htmlFor={fieldName}
     >
-      <h3>{children}</h3>
+      {children}
     </Label>
     {(length ?? 0) > 0 ? (
       <span className="text-xs print:hidden">

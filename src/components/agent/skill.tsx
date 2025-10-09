@@ -31,7 +31,7 @@ export function Skill({
                 </TooltipTrigger>
                 <TooltipContent>
                   <p className="max-w-60 mb-2">{tooltip}</p>
-                  {base && (
+                  {base != undefined && (
                     <p>
                       <strong>Base value:</strong> {base}%
                     </p>
@@ -48,7 +48,7 @@ export function Skill({
             <Input
               className="span min-h-10 w-full grow rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-1 py-0.5 text-center hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 print:border-0 print:bg-transparent print:text-sm"
               maxLength={3}
-              min={base ?? 0}
+              min={0}
               type="number"
               defaultValue={score ?? "0"}
             />
@@ -84,7 +84,6 @@ export function Art({ skill, tooltip }: { skill?: string; tooltip?: string }) {
           </div>
           <Button size="sm" variant="outline">
             <CirclePlusIcon />
-            Add type
           </Button>
         </div>
         <div className="flex items-center gap-1.5">
@@ -134,5 +133,51 @@ export function Art({ skill, tooltip }: { skill?: string; tooltip?: string }) {
         </div>
       </div>
     </div>
+  );
+}
+
+export function Other() {
+  return (
+    <>
+      <div className="flex grow items-center justify-between px-2 py-1 font-jost text-sm outline-1 outline-zinc-800 print:outline-slate-950">
+        <span className="font-bold">Other skills:</span>
+        <Button size="sm" variant="outline">
+          <CirclePlusIcon />
+          Add skill
+        </Button>
+      </div>
+      <div className="flex grow font-jost">
+        <div className="flex w-full items-center gap-1.5 px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
+          <Checkbox className="cursor-pointer" />
+          <div className="grow" data-headlessui-state="">
+            <Input
+              className="min-h-10 w-full justify-self-end rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm "
+              maxLength={50}
+              placeholder=""
+              id="headlessui-control-:r1t5:"
+              data-headlessui-state=""
+              defaultValue="test"
+              aria-labelledby="headlessui-label-:r1t6:"
+            />
+          </div>
+          <Button size="sm" variant="outline" className="cursor-pointer">
+            <Trash2Icon />
+          </Button>
+        </div>
+        <div className="w-20 p-1 outline-1 outline-zinc-800 print:outline-slate-950">
+          <div data-headlessui-state="">
+            <div className="flex gap-0.5">
+              <Input
+                className="span min-h-10 w-full grow rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-1 py-0.5 text-center hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 print:border-0 print:bg-transparent print:text-sm"
+                maxLength={3}
+                type="number"
+                min={0}
+                defaultValue={0}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }

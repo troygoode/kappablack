@@ -1,25 +1,72 @@
+import { type ISkill, type IMultiSkill } from "@/tskill";
+
 import { SideHeader } from "./form/side-header";
-import { Skill, Art } from "./skill";
+import { Skill, Art, Other } from "./skill";
 import skillData from "@/data/skills.json";
 
+for (const s of skillData.skills) {
+  s.multi = !!s.multi;
+}
+
+const skills: (ISkill | IMultiSkill)[] = skillData.skills as (
+  | ISkill
+  | IMultiSkill
+)[];
+const col1 = skills.slice(0, 16);
+const col2 = skills.slice(16, 16 + 16);
+const col3 = skills.slice(16 + 16);
+
 export default function Skills() {
-  console.log(skillData);
   return (
     <div className="flex flex-col outline-1 outline-zinc-800 sm:flex-row print:outline-slate-950 break-after-page">
       <SideHeader>Applicable Skill Sets</SideHeader>
       <div className="w-full">
         <div className="grid grid-cols-3">
           <div className="flex flex-col">
-            <Skill
-              skill="Accounting"
-              score={10}
-              tooltip="The study of finance and business. Use it to sift through financial records for anomalies, such as a hidden bank account or money laundering."
-              base={10}
-            />
-            <Art
-              skill="Art"
-              tooltip="Expertise at creating or performing a work that sways emotions and opinions. It also encompasses knowledge of techniques and trends in your field, and the ability tell a particular creator’s real work from a fake. Anyone can draw a rough sketch; the Art skill reflects knowledge, practice, and talent. Each type of Art is a separate skill: Acting, Creative Writing, Dance, Flute, Forgery, Guitar, Painting, Poetry, Scriptwriting, Sculpture, Singing, Violin, etc."
-            />
+            {col1.map((s, index) =>
+              s.multi ? (
+                <Art key={index} skill={s.name} tooltip={s.tooltip} />
+              ) : (
+                <Skill
+                  key={index}
+                  skill={s.name}
+                  tooltip={s.tooltip}
+                  base={s.base}
+                  score={0}
+                />
+              )
+            )}
+          </div>
+          <div className="flex flex-col">
+            {col2.map((s, index) =>
+              s.multi ? (
+                <Art key={index} skill={s.name} tooltip={s.tooltip} />
+              ) : (
+                <Skill
+                  key={index}
+                  skill={s.name}
+                  tooltip={s.tooltip}
+                  base={s.base}
+                  score={0}
+                />
+              )
+            )}
+          </div>
+          <div className="flex flex-col">
+            {col3.map((s, index) =>
+              s.multi ? (
+                <Art key={index} skill={s.name} tooltip={s.tooltip} />
+              ) : (
+                <Skill
+                  key={index}
+                  skill={s.name}
+                  tooltip={s.tooltip}
+                  base={s.base}
+                  score={0}
+                />
+              )
+            )}
+            <Other />
           </div>
         </div>
       </div>

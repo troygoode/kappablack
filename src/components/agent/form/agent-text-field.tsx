@@ -1,6 +1,6 @@
 "use client";
 
-import { type IAgent } from "@/IAgent";
+import { type IAgent } from "@/tagent";
 
 import { useState } from "react";
 import { AgentField } from "./agent-field";

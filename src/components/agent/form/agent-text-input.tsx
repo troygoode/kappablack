@@ -21,12 +21,14 @@ const AgentTextInput = ({
     <>
       <Input
         type="text"
+        id={fieldName}
         name={fieldName}
         onChange={onChange}
         maxLength={maxLength}
         defaultValue={defaultValue}
         value={value}
         disabled={disabled}
+        autoComplete="off"
         data-1p-ignore
       />
     </>

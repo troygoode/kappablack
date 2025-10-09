@@ -36,23 +36,10 @@ export default function Equipment() {
         <div className="flex flex-col lg:hidden print:hidden">
           <div className="flex items-center justify-between px-2 py-1 font-jost text-xs uppercase">
             <span>16. Weapons</span>
-            <button
-              className="disabled:hover flex min-h-10 sm:min-h-0 h-fit px-3 sm:px-0 items-center gap-1 text-nowrap rounded-full border border-slate-600 sm:pl-1.5 text-sm text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400 disabled:scale-100 disabled:border-slate-600 disabled:bg-inherit disabled:text-inherit disabled:opacity-30 print:hidden"
-              type="button"
-              data-headlessui-state=""
-            >
+            <Button size="sm" variant="outline" className="cursor-pointer">
+              <CirclePlusIcon />
               Add weapon
-              <svg
-                role="img"
-                className="size-6 sm:size-5"
-                aria-label=""
-                width="32"
-                height="32"
-                viewBox="0 0 32 32"
-              >
-                <use href="/icons/add.svg#add"></use>
-              </svg>
-            </button>
+            </Button>
           </div>
           <div className="m-2 flex flex-col gap-4 rounded-xl bg-zinc-200 p-2 font-jost">
             <div className="flex items-center">
@@ -64,22 +51,9 @@ export default function Equipment() {
                 data-headlessui-state=""
                 defaultValue="Unarmed Attack"
               />
-              <button
-                className="flex size-10 items-center justify-center rounded-full text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400 sm:size-6 print:hidden"
-                type="button"
-                data-headlessui-state=""
-              >
-                <svg
-                  role="img"
-                  className="size-5"
-                  aria-label="Remove weapon"
-                  width="32"
-                  height="32"
-                  viewBox="0 0 32 32"
-                >
-                  <use href="/icons/trash.svg#trash"></use>
-                </svg>
-              </button>
+              <Button size="sm" variant="outline" className="cursor-pointer">
+                <Trash2Icon />
+              </Button>
             </div>
             <div className="grid grid-cols-4 gap-y-4">
               <div className="flex flex-col items-center justify-center leading-none">

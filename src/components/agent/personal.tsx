@@ -1,9 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import classNames from "classnames";
 
-import { type IAgent } from "@/IAgent";
+import { type IAgent } from "@/tagent";
 
 import { Label } from "../ui/label";
 import { RadioGroup } from "../ui/radio-group";

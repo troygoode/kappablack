@@ -24,7 +24,7 @@ interface ISpecialTraining {
   skillOrStat?: string;
 }
 
-interface IAgent {
+export interface IAgent {
   // personal
   name?: string;
   profession?: string;
@@ -69,5 +69,3 @@ interface IAgent {
   developments?: string;
   specialTraining?: ISpecialTraining[];
 }
-
-export { type IAgent };

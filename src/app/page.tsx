@@ -19,24 +19,20 @@ export default function Home() {
       <div>
         <Personal />
       </div>
-      <div className="flex flex-col gap-2 lg:grid lg:grid-cols-2 print:grid print:grid-cols-2">
-        <div className="mt-4 mb-1">
-          <Stats />
-        </div>
-        <div className="mt-4 mb-1">
-          <Psychology />
-        </div>
+      <div className="mt-1 flex flex-col gap-2 lg:grid lg:grid-cols-2 print:grid print:grid-cols-2">
+        <Stats />
+        <Psychology />
       </div>
-      <div className="mt-4 mb-1">
+      <div className="mt-1 mb-1">
         <Skills />
       </div>
-      <div className="mt-4 mb-1">
+      <div className="mt-1 mb-1">
         <Injuries />
       </div>
-      <div className="mt-4 mb-1">
+      <div className="mt-1 mb-1">
         <Equipment />
       </div>
-      <div className="mt-4 mb-2">
+      <div className="mt-1 mb-2">
         <Remarks />
       </div>
       <div className="mb-8">
