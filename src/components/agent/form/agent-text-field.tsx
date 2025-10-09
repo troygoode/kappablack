@@ -1,66 +1,55 @@
 "use client";
 
-import { type IAgent } from "@/types/agent";
-
-import { useState } from "react";
+import { Skeleton } from "@/components/ui/skeleton";
 import { AgentField } from "./agent-field";
 import { AgentLabel } from "./agent-label";
 import { AgentTextInput } from "./agent-text-input";
+import { useAgentStore } from "../agent-store";
+import { IAgent } from "@/types/agent";
 
-const AgentTextField = ({
+export function AgentTextField({
   fieldName,
-  className,
-  state,
-  getState,
-  setState,
   label,
+  value,
+  update,
   maxLength,
+  className,
 }: {
-  fieldName?: string;
-  className?: string;
-  state?: IAgent;
-  getState?: () => string;
-  setState?: (val: string) => void;
+  fieldName: string;
   label: string;
+  value: (agent: IAgent) => string | undefined;
+  update: (agent: IAgent, value: string) => IAgent;
   maxLength: number;
-}) => {
-  const xGetState =
-    getState ??
-    (() => {
-      return state && fieldName ? state[fieldName as keyof IAgent] ?? "" : "";
-    });
-  const xSetState =
-    setState ??
-    ((val: string) => {
-      if (state && fieldName && state[fieldName as keyof IAgent]) {
-        // state[fieldName as keyof IAgent] = val;
-        Object.defineProperty(state, fieldName, { value: val });
-      }
-    });
-
-  const [value, setValue] = useState(xGetState());
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
-    xSetState(e.target.value);
+  className?: string;
+}) {
+  const { agent, update: updateStore } = useAgentStore();
+  const onChange = (value: string) => {
+    if (agent) {
+      updateStore(update(agent, value));
+    }
   };
+
+  const val = agent ? value(agent) ?? "" : "";
 
   return (
     <AgentField className={className}>
       <AgentLabel
         fieldName={fieldName}
-        length={value.toString().length}
+        length={val.length}
         maxLength={maxLength}
       >
         {label}
       </AgentLabel>
-      <AgentTextInput
-        fieldName={fieldName}
-        onChange={onChange}
-        maxLength={maxLength}
-        defaultValue={value.toString()}
-      />
+      {agent ? (
+        <AgentTextInput
+          fieldName={fieldName}
+          value={val}
+          onChange={onChange}
+          maxLength={maxLength}
+        />
+      ) : (
+        <Skeleton className="h-9 w-full" />
+      )}
     </AgentField>
   );
-};
-
-export { AgentTextField };
+}

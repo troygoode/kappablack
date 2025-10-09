@@ -1,19 +1,29 @@
 "use client";
 
-import { Input } from "../ui/input";
+import classNames from "classnames";
+import { Button } from "../ui/button";
+import { CopyCheckIcon } from "../ui/icons/lucide-copy-check";
+import { SquareArrowRightIcon } from "../ui/icons/lucide-square-arrow-right";
 import { Textarea } from "../ui/textarea";
+import { useAgentStore } from "./agent-store";
+import { AgentTextInput } from "./form/agent-text-input";
 import { SideHeader } from "./form/side-header";
+import { RefreshCwIcon } from "../ui/icons/lucide-refresh-cw";
 
 const Stat = ({
   label,
   abbreviation,
   score,
+  setScore,
   feature,
+  setFeature,
 }: {
   label: string;
   abbreviation: string;
-  score: number;
+  score: number | undefined;
+  setScore: (score: number | undefined) => void;
   feature: string;
+  setFeature: (feature: string | undefined) => void;
 }) => {
   return (
     <div className="grid grid-cols-7">
@@ -25,26 +35,31 @@ const Stat = ({
         data-headlessui-state=""
       >
         <div className="flex gap-0.5">
-          <Input
-            className="span min-h-10 w-full grow rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-1 py-0.5 text-center hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 print:border-0 print:bg-transparent print:text-sm"
+          <AgentTextInput
+            className="text-center"
+            fieldName={`stat-${abbreviation}-score`}
             type="number"
-            min="3"
+            value={score?.toString() ?? ""}
+            onChange={(value) => {
+              setScore(parseInt(value) || undefined);
+            }}
             maxLength={3}
-            defaultValue={score}
-            data-1p-ignore
+            min={3}
           />
         </div>
       </div>
       <div className="flex items-center justify-center px-2 py-1 outline-1 outline-zinc-800 print:text-sm print:outline-slate-950">
-        {score * 5}
+        {score ? score * 5 : <>&mdash;</>}
       </div>
       <div className="col-span-3 flex items-center p-1 outline-1 outline-zinc-800 print:px-2 print:outline-slate-950">
-        <Input
-          className="min-h-10 w-full justify-self-end rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm disabled:opacity-0 transition-opacity duration-200"
+        <AgentTextInput
+          fieldName={`stat-${abbreviation}-feature`}
+          value={feature}
+          onChange={(value) => {
+            setFeature(value);
+          }}
           maxLength={100}
-          defaultValue={feature}
-          data-1p-ignore
-          disabled={score > 9 && score < 13}
+          disabled={!score || score < 3 || (score > 9 && score < 13)}
         />
       </div>
     </div>
@@ -56,11 +71,13 @@ const Derived = ({
   abbreviation,
   max,
   current,
+  setCurrent,
 }: {
   label: string;
   abbreviation: string;
-  max: number;
-  current: number;
+  max?: number;
+  current: number | undefined;
+  setCurrent: (current: number | undefined) => void;
 }) => {
   return (
     <div className="grid grid-cols-7 print:text-sm">
@@ -68,17 +85,32 @@ const Derived = ({
         {label} <span className="uppercase">({abbreviation})</span>
       </div>
       <div className="col-span-2 flex items-center justify-center px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
-        <span>{max}</span>
+        {max ?? <>&mdash;</>}
       </div>
       <div className="col-span-2 flex items-center justify-center px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
         <div className="flex gap-0.5">
-          <Input
-            className="span min-h-10 w-full grow rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-1 py-0.5 text-center hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 print:border-0 print:bg-transparent print:text-sm"
+          <AgentTextInput
+            className="text-center"
+            fieldName={`derived-${abbreviation}-current`}
+            type="number"
+            value={current?.toString() ?? ""}
+            onChange={(value) => {
+              setCurrent(parseInt(value) || undefined);
+            }}
             maxLength={3}
             min={0}
-            type="number"
-            defaultValue={current}
+            disabled={max === undefined}
           />
+          {max !== undefined && (
+            <Button
+              size="sm"
+              variant="outline"
+              className="ml-2 cursor-pointer"
+              onClick={() => setCurrent(max)}
+            >
+              <RefreshCwIcon />
+            </Button>
+          )}
         </div>
       </div>
     </div>
@@ -86,6 +118,8 @@ const Derived = ({
 };
 
 export default function Stats() {
+  const { agent, update } = useAgentStore();
+
   return (
     <div className="flex flex-col outline-1 outline-zinc-800 sm:flex-row print:outline-slate-950 ">
       <SideHeader>Statistical Data</SideHeader>
@@ -106,22 +140,120 @@ export default function Stats() {
                 Distinguishing features
               </div>
             </div>
-            <Stat label="Strength" abbreviation="str" score={11} feature="" />
-            <Stat label="Dexterity" abbreviation="dex" score={13} feature="" />
+            <Stat
+              label="Strength"
+              abbreviation="str"
+              score={agent?.strength?.score}
+              setScore={(score) => {
+                if (!agent) return;
+                agent.strength = { ...agent.strength, score };
+                update(agent);
+              }}
+              feature={agent?.strength?.distinguishingFeature ?? ""}
+              setFeature={(feature) => {
+                if (!agent) return;
+                agent.strength = {
+                  ...agent.strength,
+                  distinguishingFeature: feature,
+                };
+                update(agent);
+              }}
+            />
+            <Stat
+              label="Dexterity"
+              abbreviation="dex"
+              score={agent?.dexterity?.score}
+              setScore={(score) => {
+                if (!agent) return;
+                agent.dexterity = { ...agent.dexterity, score };
+                update(agent);
+              }}
+              feature={agent?.dexterity?.distinguishingFeature ?? ""}
+              setFeature={(feature) => {
+                if (!agent) return;
+                agent.dexterity = {
+                  ...agent.dexterity,
+                  distinguishingFeature: feature,
+                };
+                update(agent);
+              }}
+            />
             <Stat
               label="Constitution"
               abbreviation="con"
-              score={10}
-              feature=""
+              score={agent?.constitution?.score}
+              setScore={(score) => {
+                if (!agent) return;
+                agent.constitution = { ...agent.constitution, score };
+                update(agent);
+              }}
+              feature={agent?.constitution?.distinguishingFeature ?? ""}
+              setFeature={(feature) => {
+                if (!agent) return;
+                agent.constitution = {
+                  ...agent.constitution,
+                  distinguishingFeature: feature,
+                };
+                update(agent);
+              }}
             />
             <Stat
               label="Intelligence"
               abbreviation="int"
-              score={10}
-              feature=""
+              score={agent?.intelligence?.score}
+              setScore={(score) => {
+                if (!agent) return;
+                agent.intelligence = { ...agent.intelligence, score };
+                update(agent);
+              }}
+              feature={agent?.intelligence?.distinguishingFeature ?? ""}
+              setFeature={(feature) => {
+                if (!agent) return;
+                agent.intelligence = {
+                  ...agent.intelligence,
+                  distinguishingFeature: feature,
+                };
+                update(agent);
+              }}
             />
-            <Stat label="Power" abbreviation="pow" score={10} feature="" />
-            <Stat label="Charisma" abbreviation="cha" score={9} feature="" />
+            <Stat
+              label="Power"
+              abbreviation="pow"
+              score={agent?.power?.score}
+              setScore={(score) => {
+                if (!agent) return;
+                agent.power = { ...agent.power, score };
+                update(agent);
+              }}
+              feature={agent?.power?.distinguishingFeature ?? ""}
+              setFeature={(feature) => {
+                if (!agent) return;
+                agent.power = {
+                  ...agent.power,
+                  distinguishingFeature: feature,
+                };
+                update(agent);
+              }}
+            />
+            <Stat
+              label="Charisma"
+              abbreviation="cha"
+              score={agent?.charisma?.score}
+              setScore={(score) => {
+                if (!agent) return;
+                agent.charisma = { ...agent.charisma, score };
+                update(agent);
+              }}
+              feature={agent?.charisma?.distinguishingFeature ?? ""}
+              setFeature={(feature) => {
+                if (!agent) return;
+                agent.charisma = {
+                  ...agent.charisma,
+                  distinguishingFeature: feature,
+                };
+                update(agent);
+              }}
+            />
           </div>
           <div className="flex flex-col font-jost">
             <div className="grid grid-cols-7 text-xs uppercase">
@@ -135,24 +267,57 @@ export default function Stats() {
                 Current
               </div>
             </div>
-            <Derived label="Hit Points" abbreviation="hp" max={7} current={3} />
+            <Derived
+              label="Hit Points"
+              abbreviation="hp"
+              max={
+                !agent?.strength?.score || !agent?.constitution?.score
+                  ? undefined
+                  : Math.ceil(
+                      ((agent.strength.score ?? 0) +
+                        (agent.constitution.score ?? 0)) /
+                        2
+                    )
+              }
+              current={agent?.hp}
+              setCurrent={(current) => {
+                if (!agent) return;
+                update({ ...agent, hp: current });
+              }}
+            />
             <Derived
               label="Willpower Points"
               abbreviation="wp"
-              max={3}
-              current={3}
+              max={!agent?.power?.score ? undefined : agent.power.score}
+              current={agent?.wp}
+              setCurrent={(current) => {
+                if (!agent) return;
+                update({ ...agent, wp: current });
+              }}
             />
             <Derived
               label="Sanity Points"
               abbreviation="san"
-              max={15}
-              current={15}
+              max={!agent?.power?.score ? undefined : agent.power.score * 5}
+              current={agent?.san}
+              setCurrent={(current) => {
+                if (!agent) return;
+                update({ ...agent, san: current });
+              }}
             />
             <Derived
               label="Breaking Point"
-              abbreviation="hp"
-              max={40}
-              current={12}
+              abbreviation="bp"
+              max={
+                !agent?.power?.score || !agent?.san
+                  ? undefined
+                  : agent.san - agent.power.score
+              }
+              current={agent?.bp}
+              setCurrent={(current) => {
+                if (!agent) return;
+                update({ ...agent, bp: current });
+              }}
             />
           </div>
           <div
@@ -166,12 +331,24 @@ export default function Stats() {
               >
                 <h3>10. Physical description</h3>
               </label>
-              <span className="text-xs print:hidden">0/300</span>
+              <span className="text-xs print:hidden">
+                {agent?.physicalDescription?.length ?? 0}/300
+              </span>
             </div>
             <Textarea
-              className="min-h-15 h-full w-full justify-self-end rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 print:border-0 print:bg-transparent print:p-0 print:text-sm"
+              className={classNames(
+                "min-h-15 h-full w-full justify-self-end rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 print:border-0 print:bg-transparent print:p-0 print:text-sm",
+                (agent?.physicalDescription ?? "").length === 0
+                  ? "dark:bg-amber-100"
+                  : ""
+              )}
               maxLength={300}
               id="physical-description"
+              value={agent?.physicalDescription ?? ""}
+              onChange={(e) => {
+                if (!agent) return;
+                update({ ...agent, physicalDescription: e.target.value });
+              }}
             />
           </div>
         </div>

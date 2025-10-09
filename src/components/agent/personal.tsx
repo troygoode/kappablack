@@ -2,8 +2,6 @@
 
 import { useState } from "react";
 
-import { type IAgent } from "@/types/agent";
-
 import { Label } from "../ui/label";
 import { RadioGroup } from "../ui/radio-group";
 import { AgentField } from "./form/agent-field";
@@ -12,99 +10,111 @@ import { AgentTextField } from "./form/agent-text-field";
 import { AgentTextInput } from "./form/agent-text-input";
 import { SideHeader } from "./form/side-header";
 import { SquareRadioGroupItem } from "./form/square-radio-group-item";
+import { useAgentStore } from "./agent-store";
+import { Skeleton } from "../ui/skeleton";
 
-const Name = ({ state }: { state: IAgent }) => (
-  <AgentTextField
-    state={state}
-    fieldName="name"
-    className="sm:col-span-6"
-    label="1. Last Name, First Name, Middle Initial"
-    maxLength={100}
-  />
-);
+const Name = () => {
+  return (
+    <AgentTextField
+      fieldName="name"
+      label="1. Last Name, First Name, Middle Initial"
+      value={(agent) => agent.name}
+      update={(agent, value) => ({ ...agent, name: value })}
+      maxLength={100}
+      className="sm:col-span-6"
+    />
+  );
+};
 
-const Profession = ({ state }: { state: IAgent }) => (
+const Profession = () => (
   <AgentTextField
-    state={state}
     fieldName="profession"
-    className="sm:col-span-6"
     label="2. Profession (rank if applicable)"
+    value={(agent) => agent.profession}
+    update={(agent, value) => ({ ...agent, profession: value })}
     maxLength={100}
+    className="sm:col-span-6"
   />
 );
 
-const Employer = ({ state }: { state: IAgent }) => (
+const Employer = () => (
   <AgentTextField
-    state={state}
     fieldName="employer"
-    className="sm:col-span-6"
     label="3. Employer"
+    value={(agent) => agent.employer}
+    update={(agent, value) => ({ ...agent, employer: value })}
     maxLength={100}
-  />
-);
-
-const Nationality = ({ state }: { state: IAgent }) => (
-  <AgentTextField
-    state={state}
-    fieldName="nationality"
     className="sm:col-span-6"
+  />
+);
+
+const Nationality = () => (
+  <AgentTextField
+    fieldName="nationality"
     label="4. Nationality"
+    value={(agent) => agent.nationality}
+    update={(agent, value) => ({ ...agent, nationality: value })}
     maxLength={100}
+    className="sm:col-span-6"
   />
 );
 
-const Age = ({ state }: { state: IAgent }) => (
+const Age = () => (
   <AgentTextField
-    state={state}
     fieldName="age"
-    className="sm:col-span-6 lg:col-span-2 print:col-span-2"
     label="6. Age and D.O.B."
+    value={(agent) => agent.age}
+    update={(agent, value) => ({ ...agent, age: value })}
     maxLength={100}
+    className="sm:col-span-6 lg:col-span-2 print:col-span-2"
   />
 );
 
-const Education = ({ state }: { state: IAgent }) => (
+const Education = () => (
   <AgentTextField
-    state={state}
     fieldName="education"
-    className="sm:col-span-12 lg:col-span-7 print:col-span-7"
     label="7. Education and occupational history"
+    value={(agent) => agent.education}
+    update={(agent, value) => ({ ...agent, education: value })}
     maxLength={100}
+    className="sm:col-span-12 lg:col-span-7 print:col-span-7"
   />
 );
 
-const Sex = ({ state }: { state: IAgent }) => {
+const Sex = () => {
+  const { agent, update } = useAgentStore();
+
   const maxLength = 100;
   const [sex, setSex] = useState(
-    state.sex === "m"
+    agent?.sex === "m"
       ? "sex-m"
-      : state.sex === "f"
+      : agent?.sex === "f"
       ? "sex-f"
-      : state.sex === "other"
+      : agent?.sex === "other"
       ? "sex-other"
       : "sex-m"
   );
-  const [sexOther, setSexOther] = useState(state.sex ?? "");
+  const [sexOther, setSexOther] = useState(agent?.sexOther ?? "");
 
   const onSexOtherChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSexOther(e.target.value);
-    state.sexOther = e.target.value;
+    update({ ...agent, sexOther: e.target.value });
   };
   const onSexChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.checked) {
+    if (agent && e.target.checked) {
       setSex(e.target.value);
       switch (e.target.value) {
         case "sex-m":
-          state.sex = "m";
+          update({ ...agent, sex: "m" });
           break;
         case "sex-f":
-          state.sex = "f";
+          update({ ...agent, sex: "f" });
           break;
         case "sex-other":
-          state.sex = "other";
+          update({ ...agent, sex: "other" });
           break;
         default:
-          state.sex = "m";
+          update({ ...agent, sex: "m" });
           break;
       }
     }
@@ -113,6 +123,7 @@ const Sex = ({ state }: { state: IAgent }) => {
   return (
     <AgentField className="col-span-6 lg:col-span-3 print:col-span-3">
       <AgentLabel
+        fieldName="sexOther"
         length={sex === "sex-other" ? sexOther.length : -1}
         maxLength={maxLength}
       >
@@ -129,6 +140,7 @@ const Sex = ({ state }: { state: IAgent }) => {
               value="sex-m"
               id="sex-m"
               className={sex === "sex-m" ? "cursor-default" : "cursor-pointer"}
+              disabled={!agent}
             />
             <Label htmlFor="sex-m">M</Label>
           </div>
@@ -137,6 +149,7 @@ const Sex = ({ state }: { state: IAgent }) => {
               value="sex-f"
               id="sex-f"
               className={sex === "sex-f" ? "cursor-default" : "cursor-pointer"}
+              disabled={!agent}
             />
             <Label htmlFor="sex-f">F</Label>
           </div>
@@ -147,17 +160,22 @@ const Sex = ({ state }: { state: IAgent }) => {
               className={
                 sex === "sex-other" ? "cursor-default" : "cursor-pointer"
               }
+              disabled={!agent}
             />
           </div>
         </RadioGroup>
         <div className="grow">
-          <AgentTextInput
-            disabled={sex !== "sex-other"}
-            fieldName="sexOther"
-            maxLength={maxLength}
-            defaultValue={sexOther}
-            onChange={onSexOtherChange}
-          />
+          {agent ? (
+            <AgentTextInput
+              fieldName="sexOther"
+              value={sexOther}
+              onChange={onSexOtherChange}
+              maxLength={maxLength}
+              disabled={sex !== "sex-other"}
+            />
+          ) : (
+            <Skeleton className="h-9 w-full" />
+          )}
         </div>
       </div>
     </AgentField>
@@ -170,8 +188,6 @@ export default function Personal() {
     return;
   };
 
-  const state: IAgent = { name: "Unnamed agent" };
-
   return (
     <div>
       <form onChange={onFormChange} className="w-full">
@@ -179,13 +195,13 @@ export default function Personal() {
           <SideHeader>Personal Data</SideHeader>
           <div className="w-full">
             <div className="flex w-full flex-col justify-stretch sm:grid sm:grid-cols-12">
-              <Name state={state} />
-              <Profession state={state} />
-              <Employer state={state} />
-              <Nationality state={state} />
-              <Sex state={state} />
-              <Age state={state} />
-              <Education state={state} />
+              <Name />
+              <Profession />
+              <Employer />
+              <Nationality />
+              <Sex />
+              <Age />
+              <Education />
             </div>
           </div>
         </div>

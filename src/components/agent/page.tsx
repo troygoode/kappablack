@@ -13,6 +13,7 @@ import Disclaimer from "@/components/disclaimer/disclaimer";
 import Navigation from "@/components/navigation";
 import { useAgentStore } from "./agent-store";
 import { useEffect } from "react";
+import { Button } from "../ui/button";
 
 export default function Agent() {
   const { agent, update } = useAgentStore();
@@ -22,7 +23,7 @@ export default function Agent() {
         update({
           player: "Player Name",
         });
-      }, 1000 * 2);
+      }, 1000 * 0.25);
     }
   }, [agent]);
 

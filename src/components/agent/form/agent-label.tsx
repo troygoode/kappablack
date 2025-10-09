@@ -8,7 +8,7 @@ const AgentLabel = ({
   maxLength,
   children,
 }: React.PropsWithChildren<{
-  fieldName?: string;
+  fieldName: string;
   length?: number;
   maxLength?: number;
 }>) => (

@@ -24,14 +24,14 @@ export default function Footer() {
           {agent ? (
             <AgentTextInput
               fieldName="player"
-              onChange={(e) => {
-                update({ ...agent, player: e.target.value });
+              onChange={(value) => {
+                update({ ...agent, player: value });
               }}
               maxLength={MAX_LENGTH}
-              defaultValue={agent.player ?? ""}
+              value={agent.player ?? ""}
             />
           ) : (
-            <Skeleton className="h-10 w-full" />
+            <Skeleton className="h-9 w-full" />
           )}
         </div>
         <div className="h-18 px-2 py-1 outline-1 outline-zinc-100 print:outline-slate-950">
