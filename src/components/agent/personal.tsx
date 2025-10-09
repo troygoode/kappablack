@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import { type IAgent } from "@/tagent";
+import { type IAgent } from "@/types/agent";
 
 import { Label } from "../ui/label";
 import { RadioGroup } from "../ui/radio-group";

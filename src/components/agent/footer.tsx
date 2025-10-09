@@ -1,13 +1,40 @@
 "use client";
 
+import { AgentLabel } from "./form/agent-label";
+import { AgentTextInput } from "./form/agent-text-input";
+import { useAgentStore } from "./agent-store";
+import { Skeleton } from "../ui/skeleton";
+
+const MAX_LENGTH = 100;
+
 export default function Footer() {
+  const { agent, update } = useAgentStore();
+
   return (
     <div className="flex flex-col gap-4 font-jost">
       <div className="grid grid-cols-1 font-jost text-xs uppercase sm:grid-cols-2 mb-2">
-        <div className="h-12 px-2 py-1 outline-1 outline-zinc-100 print:outline-slate-950">
-          20. Authorizing officer
+        <div className="flex h-18 w-full flex-col gap-1 px-2 py-1 font-jost outline-1 outline-zinc-100 print:gap-0 print:outline-slate-950">
+          <AgentLabel
+            fieldName="player"
+            length={agent?.player?.length ?? 0}
+            maxLength={MAX_LENGTH}
+          >
+            20. Authorizing officer
+          </AgentLabel>
+          {agent ? (
+            <AgentTextInput
+              fieldName="player"
+              onChange={(e) => {
+                update({ ...agent, player: e.target.value });
+              }}
+              maxLength={MAX_LENGTH}
+              defaultValue={agent.player ?? ""}
+            />
+          ) : (
+            <Skeleton className="h-10 w-full" />
+          )}
         </div>
-        <div className="h-12 px-2 py-1 outline-1 outline-zinc-100 print:outline-slate-950">
+        <div className="h-18 px-2 py-1 outline-1 outline-zinc-100 print:outline-slate-950">
           21. Agent signature
         </div>
       </div>

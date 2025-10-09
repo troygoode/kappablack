@@ -1,4 +1,4 @@
-import { type ISkill, type IMultiSkill } from "@/tskill";
+import { type ISkill, type IMultiSkill } from "@/types/skill";
 
 import { SideHeader } from "./form/side-header";
 import { Skill, Art, Other } from "./skill";

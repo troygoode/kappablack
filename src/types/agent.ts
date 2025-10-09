@@ -68,4 +68,7 @@ export interface IAgent {
   notes?: string;
   developments?: string;
   specialTraining?: ISpecialTraining[];
+
+  // footer
+  player?: string;
 }
