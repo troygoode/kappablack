@@ -6,7 +6,7 @@ import Logo from "./DeltaGreen-Seal-Scientia1-white-dirty.webp";
 
 export default function Disclaimer() {
   return (
-    <div className="flex border-dashed border-zinc-600 border-2 p-4">
+    <div className="flex border-dashed border-zinc-600 border-2 p-4 print:hidden">
       <div className="mr-4">
         <Image src={Logo} alt="Delta Green" className="w-24" />
       </div>

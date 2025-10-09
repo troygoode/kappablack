@@ -42,7 +42,7 @@ export default function Home() {
       <div className="mb-8">
         <Footer />
       </div>
-      <div>
+      <div className="mb-4">
         <Disclaimer />
       </div>
     </Container>

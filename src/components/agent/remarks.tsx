@@ -1,5 +1,6 @@
 "use client";
 
+import { Button } from "../ui/button";
 import { CirclePlusIcon } from "../ui/icons/lucide-circle-plus";
 import { Trash2Icon } from "../ui/icons/lucide-trash-2";
 import { Input } from "../ui/input";
@@ -63,14 +64,10 @@ export default function Remarks() {
                 <div className="relative flex h-16 w-1/2 justify-center px-2 py-1 outline-1 outline-zinc-800 sm:h-12 print:outline-slate-950">
                   Skill or stat used
                   <div className="absolute bottom-1 right-1">
-                    <button
-                      className="disabled:hover flex min-h-10 sm:min-h-0 h-fit px-3 sm:px-0 items-center gap-1 text-nowrap rounded-full border border-slate-600 sm:pl-1.5 text-sm text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400 disabled:scale-100 disabled:border-slate-600 disabled:bg-inherit disabled:text-inherit disabled:opacity-30 print:hidden"
-                      type="button"
-                      data-headlessui-state=""
-                    >
-                      Add special training
+                    <Button size="sm" variant="outline">
                       <CirclePlusIcon />
-                    </button>
+                      Add special training
+                    </Button>
                   </div>
                 </div>
               </div>
@@ -95,13 +92,13 @@ export default function Remarks() {
                       aria-labelledby="headlessui-label-:r1e4:"
                     />
                   </div>
-                  <button
-                    className="flex h-6 w-6 items-center justify-center rounded-full text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400 print:hidden"
-                    type="button"
-                    data-headlessui-state=""
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    className="cursor-pointer"
                   >
                     <Trash2Icon />
-                  </button>
+                  </Button>
                 </div>
                 <div className="w-1/2 text-center outline-1 outline-zinc-800 print:outline-slate-950">
                   <div
@@ -149,13 +146,13 @@ export default function Remarks() {
                       aria-labelledby="headlessui-label-:r1ef:"
                     />
                   </div>
-                  <button
-                    className="flex h-6 w-6 items-center justify-center rounded-full text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400 print:hidden"
-                    type="button"
-                    data-headlessui-state=""
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    className="cursor-pointer"
                   >
                     <Trash2Icon />
-                  </button>
+                  </Button>
                 </div>
                 <div className="w-1/2 text-center outline-1 outline-zinc-800 print:outline-slate-950">
                   <div
@@ -203,13 +200,13 @@ export default function Remarks() {
                       aria-labelledby="headlessui-label-:r1eq:"
                     />
                   </div>
-                  <button
-                    className="flex h-6 w-6 items-center justify-center rounded-full text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400 print:hidden"
-                    type="button"
-                    data-headlessui-state=""
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    className="cursor-pointer"
                   >
                     <Trash2Icon />
-                  </button>
+                  </Button>
                 </div>
                 <div className="w-1/2 text-center outline-1 outline-zinc-800 print:outline-slate-950">
                   <div

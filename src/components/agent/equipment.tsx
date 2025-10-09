@@ -1,5 +1,6 @@
 "use client";
 
+import { Button } from "../ui/button";
 import { CirclePlusIcon } from "../ui/icons/lucide-circle-plus";
 import { Trash2Icon } from "../ui/icons/lucide-trash-2";
 import { Input } from "../ui/input";
@@ -120,14 +121,10 @@ export default function Equipment() {
               <th className="border-l border-b border-zinc-800 py-0.5 px-2 text-left font-normal">
                 <div className="flex items-center justify-between">
                   16. Weapons
-                  <button
-                    className="disabled:hover flex min-h-10 sm:min-h-0 h-fit px-3 sm:px-0 items-center gap-1 text-nowrap rounded-full border border-slate-600 sm:pl-1.5 text-sm text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400 disabled:scale-100 disabled:border-slate-600 disabled:bg-inherit disabled:text-inherit disabled:opacity-30 print:hidden"
-                    type="button"
-                    data-headlessui-state=""
-                  >
-                    Add weapon
+                  <Button size="sm" variant="outline">
                     <CirclePlusIcon />
-                  </button>
+                    Add weapon
+                  </Button>
                 </div>
               </th>
               <th className="border-l border-b border-zinc-800 px-1 py-0.5 font-normal">
@@ -165,13 +162,13 @@ export default function Equipment() {
                     data-headlessui-state=""
                     defaultValue="Unarmed Attack"
                   />
-                  <button
-                    className="flex h-6 w-6 items-center justify-center rounded-full text-zinc-600 hover:border-slate-950 hover:bg-zinc-300 hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-slate-600 active:scale-95 active:bg-zinc-400 print:hidden"
-                    type="button"
-                    data-headlessui-state=""
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    className="cursor-pointer"
                   >
                     <Trash2Icon />
-                  </button>
+                  </Button>
                 </div>
               </td>
               <td className="border-l border-b border-zinc-800 px-1 py-0.5">
