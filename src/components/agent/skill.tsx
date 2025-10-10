@@ -84,9 +84,9 @@ export function Skill({
 
 function MultiSkillType() {
   return (
-    <div className="flex grow">
-      <div className="flex w-full flex-col px-2 py-1 print:gap-0">
-        <div className="flex items-center pt-2.5">
+    <div className="flex grow mt-2">
+      <div className="flex w-full flex-col px-2">
+        <div className="flex items-center">
           <div className="w-7 pt-1.5">
             <SquareCheckbox className="cursor-pointer" />
           </div>
@@ -103,7 +103,7 @@ function MultiSkillType() {
         </div>
       </div>
 
-      <div className="flex w-20 flex-col gap-1.5 px-1 py-1 print:gap-0">
+      <div className="flex w-20 flex-col px-1">
         <div className="flex h-full items-center">
           <AgentTextInput
             fieldName="multi-skill-score"
@@ -128,9 +128,9 @@ export function MultiSkill({
   types?: ISkillType[];
 }) {
   return (
-    <div className="outline-1 outline-zinc-800 print:outline-slate-950">
+    <div className="py-2 outline-1 outline-zinc-800 print:outline-slate-950">
       <div className="flex grow">
-        <div className="flex justify-center w-full flex-col px-2 py-1 print:gap-0">
+        <div className="flex justify-center w-full flex-col px-2">
           <div className="flex justify-center">
             <div className="w-7 pt-1.5"></div>
             <div className="flex grow items-center gap-1.5 text-sm print:text-xs">
@@ -151,16 +151,18 @@ export function MultiSkill({
                 </div>
               )}
             </div>
-            <Button size="sm" variant="outline">
+            <Button size="sm" variant="outline" className="cursor-pointer">
               <CirclePlusIcon />
             </Button>
           </div>
         </div>
         <div className="flex w-20 items-center flex-col gap-1.5 p-1"></div>
       </div>
-      <MultiSkillType />
-      <MultiSkillType />
-      <MultiSkillType />
+      {types && types.length
+        ? types.map((type, index) => (
+            <MultiSkillType key={`${type.type}-${index}`} />
+          ))
+        : null}
     </div>
   );
 }

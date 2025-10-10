@@ -212,7 +212,7 @@ export default function Psychology() {
             </h3>
             <div className="flex flex-col justify-between sm:flex-row">
               <div className="flex items-center justify-center gap-3 sm:gap-1">
-                <span>Violence</span>
+                <span className="mr-1">Violence</span>
                 <SquareCheckbox
                   id="violence-adapted-1"
                   name="violence-adapted-1"
@@ -275,7 +275,7 @@ export default function Psychology() {
                 )}
               </div>
               <div className="flex items-center justify-center gap-3 sm:gap-1">
-                <span>Helplessness</span>
+                <span className="mr-1">Helplessness</span>
                 <SquareCheckbox
                   id="helpless-adapted-1"
                   name="helpless-adapted-1"
