@@ -14,6 +14,7 @@ const AgentTextInput = ({
   fieldName,
   type = "text",
   value,
+  placeholder,
   onChange,
   className,
   min,
@@ -23,6 +24,7 @@ const AgentTextInput = ({
   fieldName: string;
   type?: "text" | "number";
   value?: string;
+  placeholder?: string;
   onChange: (value: string, e?: React.ChangeEvent<HTMLInputElement>) => void;
   className?: string;
   min?: number;
@@ -42,6 +44,7 @@ const AgentTextInput = ({
       onChange={onChangeDOM(onChange)}
       maxLength={maxLength}
       value={value}
+      placeholder={placeholder}
       disabled={disabled}
       autoComplete="off"
       data-1p-ignore

@@ -22,10 +22,6 @@ export default function Skills() {
   const getSkill = (skill: string) => {
     return agent?.skills?.find((s) => s.skill === skill);
   };
-  const getMultiSkills = (skill: string) => {
-    return agent?.skills?.filter((s) => s.skill === skill);
-  };
-
   const updateSkill = (skill: string) => {
     return (score: number | undefined, marked: boolean | undefined) => {
       if (!agent) return;
@@ -48,16 +44,113 @@ export default function Skills() {
     };
   };
 
+  const getMultiSkills = (skill: string) => {
+    return (
+      agent?.skills
+        ?.filter((s) => s.skill === skill)
+        .map((s) => ({
+          type: s.type,
+          score: s.score,
+          marked: s.marked,
+        })) ?? []
+    );
+  };
+  const addMultiSkill = (skill: string) => () => {
+    if (!agent) return;
+    const agentskills = agent?.skills ?? [];
+    const multiskills = getMultiSkills(skill);
+
+    if (multiskills.length >= 3) {
+      return;
+    } else if (multiskills.length === 0) {
+      agentskills.push({
+        skill,
+        type: undefined,
+        score: undefined,
+        marked: undefined,
+      });
+      agentskills.push({
+        skill,
+        type: undefined,
+        score: undefined,
+        marked: undefined,
+      });
+    } else {
+      agentskills.push({
+        skill,
+        type: undefined,
+        score: undefined,
+        marked: undefined,
+      });
+    }
+    update({ ...agent, skills: agentskills });
+  };
+  const updateMultiSkill = (skill: string) => (index: number) => {
+    return (
+      type: string | undefined,
+      score: number | undefined,
+      marked: boolean | undefined
+    ) => {
+      if (!agent) return;
+      const agentskills = agent?.skills ?? [];
+      const multiskills = getMultiSkills(skill);
+
+      if (multiskills.length) {
+        let count = -1;
+        agent.skills = agentskills.map((s) => {
+          if (s.skill === skill) {
+            count++;
+            if (count === index) {
+              return { ...s, type, score, marked };
+            }
+          }
+          return s;
+        });
+      } else {
+        agent.skills = agentskills.concat([{ skill, type, score, marked }]);
+      }
+      update({ ...agent, skills: agent.skills });
+    };
+  };
+  const removeMultiSkill = (skill: string) => (index: number) => {
+    return () => {
+      if (!agent) return;
+      const agentskills = agent?.skills ?? [];
+      let count = -1;
+      agent.skills = agentskills.filter((s) => {
+        if (s.skill === skill) {
+          count++;
+          if (count === index) {
+            return false;
+          }
+        }
+        return true;
+      });
+      update({ ...agent, skills: agent.skills });
+    };
+  };
+
   const SkillColumn = ({ col }: { col: TSkill[] }) => (
     <>
       {col.map((s, index) => {
         if (s.multi) {
-          // const multiSkills = getMultiSkills(s.name);
-          return <MultiSkill key={index} skill={s.name} tooltip={s.tooltip} />;
+          return (
+            <MultiSkill
+              loading={!agent}
+              key={index}
+              skill={s.name}
+              tooltip={s.tooltip}
+              types={getMultiSkills(s.name)}
+              onAddType={addMultiSkill(s.name)}
+              onUpdateType={updateMultiSkill(s.name)}
+              onRemoveType={removeMultiSkill(s.name)}
+            />
+          );
         } else {
           const skill = getSkill(s.name);
           return (
             <Skill
+              loading={!agent}
               key={index}
               skill={s.name}
               tooltip={s.tooltip}
@@ -85,7 +178,14 @@ export default function Skills() {
           </div>
           <div className="flex flex-col">
             <SkillColumn col={col3} />
-            <MultiSkill skill="Other Skills" />
+            <MultiSkill
+              loading={!agent}
+              skill="Other Skills"
+              types={getMultiSkills("Other Skills")}
+              onAddType={addMultiSkill("Other Skills")}
+              onUpdateType={updateMultiSkill("Other Skills")}
+              onRemoveType={removeMultiSkill("Other Skills")}
+            />
           </div>
         </div>
       </div>

@@ -12,6 +12,7 @@ import { SquareCheckbox } from "./form/square-checkbox";
 import { Badge } from "../ui/badge";
 import { BrainIcon } from "../ui/icons/lucide-brain";
 import { HeartCrackIcon } from "../ui/icons/lucide-heart-crack";
+import { Skeleton } from "../ui/skeleton";
 
 const Bond = ({
   index,
@@ -133,6 +134,7 @@ export default function Psychology() {
                     variant="outline"
                     className="cursor-pointer"
                     onClick={() => addBond()}
+                    disabled={!agent}
                   >
                     <CirclePlusIcon />
                   </Button>
@@ -149,6 +151,7 @@ export default function Psychology() {
                   variant="outline"
                   className="cursor-pointer"
                   onClick={() => addBond()}
+                  disabled={!agent}
                 >
                   <CirclePlusIcon />
                   Add a bond
@@ -185,26 +188,32 @@ export default function Psychology() {
               >
                 <h3>12. Motivations and mental disorders</h3>
               </label>
-              <span className="text-xs print:hidden">
-                {agent?.motivationsAndDisorders?.length ?? 0}/300
-              </span>
-            </div>
-            <Textarea
-              id="motivations-and-disorders"
-              name="motivations-and-disorders"
-              value={agent?.motivationsAndDisorders ?? ""}
-              onChange={(e) => {
-                if (!agent) return;
-                update({ ...agent, motivationsAndDisorders: e.target.value });
-              }}
-              maxLength={300}
-              className={classNames(
-                "min-h-15 h-full w-full justify-self-end rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 print:border-0 print:bg-transparent print:p-0 print:text-sm",
-                (agent?.motivationsAndDisorders ?? "").length === 0
-                  ? "dark:bg-amber-100"
-                  : ""
+              {agent && (agent?.motivationsAndDisorders?.length ?? 0) > 0 && (
+                <span className="text-xs print:hidden">
+                  {agent?.motivationsAndDisorders?.length ?? 0}/300
+                </span>
               )}
-            />
+            </div>
+            {agent ? (
+              <Textarea
+                id="motivations-and-disorders"
+                name="motivations-and-disorders"
+                value={agent?.motivationsAndDisorders ?? ""}
+                onChange={(e) => {
+                  if (!agent) return;
+                  update({ ...agent, motivationsAndDisorders: e.target.value });
+                }}
+                maxLength={300}
+                className={classNames(
+                  "min-h-15 h-full w-full justify-self-end rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 print:border-0 print:bg-transparent print:p-0 print:text-sm",
+                  (agent?.motivationsAndDisorders ?? "").length === 0
+                    ? "dark:bg-amber-100"
+                    : ""
+                )}
+              />
+            ) : (
+              <Skeleton className="min-h-15 h-full rounded-md" />
+            )}
           </div>
           <div className="flex flex-col px-2 py-1 font-jost text-sm">
             <h3 className="text-xs uppercase">
@@ -227,6 +236,7 @@ export default function Psychology() {
                     }
                     update(agent);
                   }}
+                  disabled={!agent}
                 />
                 <SquareCheckbox
                   id="violence-adapted-2"
@@ -242,6 +252,7 @@ export default function Psychology() {
                     }
                     update(agent);
                   }}
+                  disabled={!agent}
                 />
                 <SquareCheckbox
                   id="violence-adapted-3"
@@ -257,6 +268,7 @@ export default function Psychology() {
                     }
                     update(agent);
                   }}
+                  disabled={!agent}
                 />
                 {agent && (agent.violenceAdaptation ?? 0) >= 3 ? (
                   <Badge asChild className="ml-2" variant="destructive">
@@ -290,6 +302,7 @@ export default function Psychology() {
                     }
                     update(agent);
                   }}
+                  disabled={!agent}
                 />
                 <SquareCheckbox
                   id="helpless-adapted-2"
@@ -305,6 +318,7 @@ export default function Psychology() {
                     }
                     update(agent);
                   }}
+                  disabled={!agent}
                 />
                 <SquareCheckbox
                   id="helpless-adapted-3"
@@ -320,6 +334,7 @@ export default function Psychology() {
                     }
                     update(agent);
                   }}
+                  disabled={!agent}
                 />
                 {agent && (agent.helplessnessAdaptation ?? 0) >= 3 ? (
                   <Badge

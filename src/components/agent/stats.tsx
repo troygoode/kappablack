@@ -342,26 +342,32 @@ export default function Stats() {
               >
                 <h3>10. Physical description</h3>
               </label>
-              <span className="text-xs print:hidden">
-                {agent?.physicalDescription?.length ?? 0}/300
-              </span>
-            </div>
-            <Textarea
-              id="physical-description"
-              name="physical-description"
-              value={agent?.physicalDescription ?? ""}
-              maxLength={300}
-              onChange={(e) => {
-                if (!agent) return;
-                update({ ...agent, physicalDescription: e.target.value });
-              }}
-              className={classNames(
-                "min-h-15 h-full w-full justify-self-end rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 print:border-0 print:bg-transparent print:p-0 print:text-sm",
-                (agent?.physicalDescription ?? "").length === 0
-                  ? "dark:bg-amber-100"
-                  : ""
+              {agent && (agent?.physicalDescription?.length ?? 0) > 0 && (
+                <span className="text-xs print:hidden">
+                  {agent?.physicalDescription?.length ?? 0}/300
+                </span>
               )}
-            />
+            </div>
+            {agent ? (
+              <Textarea
+                id="physical-description"
+                name="physical-description"
+                value={agent?.physicalDescription ?? ""}
+                maxLength={300}
+                onChange={(e) => {
+                  if (!agent) return;
+                  update({ ...agent, physicalDescription: e.target.value });
+                }}
+                className={classNames(
+                  "min-h-15 h-full w-full justify-self-end rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 print:border-0 print:bg-transparent print:p-0 print:text-sm",
+                  (agent?.physicalDescription ?? "").length === 0
+                    ? "dark:bg-amber-100"
+                    : ""
+                )}
+              />
+            ) : (
+              <Skeleton className="min-h-15 h-full rounded-md" />
+            )}
           </div>
         </div>
       </div>
