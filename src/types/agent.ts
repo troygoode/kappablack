@@ -25,6 +25,13 @@ export interface ISpecialTraining {
   skillOrStat?: string;
 }
 
+export interface IAgentSkill {
+  skill?: string;
+  type?: string;
+  score?: number;
+  marked?: boolean;
+}
+
 export interface IAgent {
   // personal
   name?: string;
@@ -56,6 +63,7 @@ export interface IAgent {
   helplessnessAdaptation?: number;
 
   // skills
+  skills?: IAgentSkill[];
 
   // injuries
   wounds?: string;

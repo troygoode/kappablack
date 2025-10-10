@@ -5,22 +5,40 @@ import { InfoIcon } from "../ui/icons/lucide-info";
 import { Trash2Icon } from "../ui/icons/lucide-trash-2";
 import { Input } from "../ui/input";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
+import { AgentTextInput } from "./form/agent-text-input";
+import { SquareCheckbox } from "./form/square-checkbox";
+
+interface ISkillType {
+  type: string;
+  score: number | undefined;
+  marked: boolean | undefined;
+}
 
 export function Skill({
   skill,
   score,
+  marked,
   tooltip,
   base,
+  update,
 }: {
   skill?: string;
-  score?: number;
+  score?: number | undefined;
+  marked?: boolean | undefined;
   tooltip?: string;
   base?: number;
+  update: (score: number | undefined, marked: boolean | undefined) => void;
 }) {
   return (
     <div className="flex grow font-jost">
       <div className="flex w-full items-center gap-1.5 px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
-        <Checkbox className="cursor-pointer" />
+        <SquareCheckbox
+          className="cursor-pointer"
+          checked={marked}
+          onCheckedChange={(checked) => {
+            update(score, checked === true);
+          }}
+        />
         <div className="flex grow items-center gap-1.5 text-sm print:text-xs">
           {skill} <span className="hidden print:inline">(10%)</span>
           {tooltip && (
@@ -45,12 +63,15 @@ export function Skill({
       <div className="w-20 p-1 outline-1 outline-zinc-800 print:outline-slate-950">
         <div className="flex h-full items-center justify-center">
           <div className="flex gap-0.5">
-            <Input
-              className="span min-h-10 w-full grow rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-1 py-0.5 text-center hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 print:border-0 print:bg-transparent print:text-sm"
+            <AgentTextInput
+              fieldName={`skills.${skill}.score`}
+              type="number"
               maxLength={3}
               min={0}
-              type="number"
-              defaultValue={score ?? "0"}
+              value={score?.toString() ?? ""}
+              onChange={(value) => {
+                update(value?.length ? parseInt(value) : undefined, marked);
+              }}
             />
           </div>
         </div>
@@ -59,7 +80,24 @@ export function Skill({
   );
 }
 
-export function Art({ skill, tooltip }: { skill?: string; tooltip?: string }) {
+function MultiSkillType() {
+  return (
+    <>
+      <div>hello</div>
+      <div>hello</div>
+    </>
+  );
+}
+
+export function MultiSkill({
+  skill,
+  tooltip,
+  types,
+}: {
+  skill?: string;
+  tooltip?: string;
+  types?: ISkillType[];
+}) {
   return (
     <div className="flex grow font-jost">
       <div className="flex w-full flex-col gap-1.5 px-2 py-1 outline-1 outline-zinc-800 print:gap-0 print:outline-slate-950">
