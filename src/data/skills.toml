@@ -20,7 +20,7 @@ base = 0
 
 [[skills]]
 name = "Art"
-tooltip = "Expertise at creating or performing a work that sways emotions and opinions. It also encompasses knowledge of techniques and trends in your field, and the ability to tell a particular creator's real work from a fake. Anyone can draw a rough sketch; the Art skill reflects knowledge, practice, and talent. Each type of Art is a separate skill: Acting, Creative Writing, Dance, Flute, Forgery, Guitar, Painting, Poetry, Scriptwriting, Sculpture, Singing, Violin, etc."
+tooltip = "Expertise at creating or performing a work that sways emotions and opinions. It also encompasses knowledge of techniques and trends in your field, and the ability to tell a particular creator’s real work from a fake. Anyone can draw a rough sketch; the Art skill reflects knowledge, practice, and talent. Each type of Art is a separate skill: Acting, Creative Writing, Dance, Flute, Forgery, Guitar, Painting, Poetry, Scriptwriting, Sculpture, Singing, Violin, etc."
 multi = true
 
 [[skills]]
@@ -55,12 +55,12 @@ base = 10
 
 [[skills]]
 name = "Demolitions"
-tooltip = "Safe handling of explosives in a crisis. Use it to disarm a bomb, set a charge to destroy a target remotely, jury-rig an explosive from supplies at the hardware store, or analyze a blast to determine exactly what caused it. Failure when handling a bomb means your Agent needs more time. If it's a crisis that requires a roll, a fumble means an accidental explosion."
+tooltip = "Safe handling of explosives in a crisis. Use it to disarm a bomb, set a charge to destroy a target remotely, jury-rig an explosive from supplies at the hardware store, or analyze a blast to determine exactly what caused it. Failure when handling a bomb means your Agent needs more time. If it’s a crisis that requires a roll, a fumble means an accidental explosion."
 base = 0
 
 [[skills]]
 name = "Disguise"
-tooltip = "Alter your Agent's appearance, voice, posture, body language, and mannerisms to avoid recognition with- out drawing attention."
+tooltip = "Alter your Agent’s appearance, voice, posture, body language, and mannerisms to avoid recognition without drawing attention."
 base = 10
 
 [[skills]]
@@ -70,7 +70,7 @@ base = 30
 
 [[skills]]
 name = "Driving"
-tooltip = "Handling an automobile or a motorcycle safely in a crisis. Unless the Handler says otherwise, every Agent has a driver's license and can drive a car safely in normal conditions. Use this skill to keep a vehicle safe in a high-speed pursuit or on dangerous terrain."
+tooltip = "Handling an automobile or a motorcycle safely in a crisis. Unless the Handler says otherwise, every Agent has a driver’s license and can drive a car safely in normal conditions. Use this skill to keep a vehicle safe in a high-speed pursuit or on dangerous terrain."
 base = 20
 
 [[skills]]
@@ -90,7 +90,7 @@ multi = true
 
 [[skills]]
 name = "Forensics"
-tooltip = "Gathering detailed information and evidence using forensic equipment. Use it to record biometric data, determine details about a weapon used or the accelerant that started a fire, discern crucial clues that an ordinary searcher wouldn't recognize, clean a scene of incriminating evidence, or collect, analyze, and com- pare fingerprints and DNA samples."
+tooltip = "Gathering detailed information and evidence using forensic equipment. Use it to record biometric data, determine details about a weapon used or the accelerant that started a fire, discern crucial clues that an ordinary searcher wouldn’t recognize, clean a scene of incriminating evidence, or collect, analyze, and com- pare fingerprints and DNA samples."
 base = 0
 
 [[skills]]
@@ -115,7 +115,7 @@ base = 10
 
 [[skills]]
 name = "Law"
-tooltip = "Using laws and courts to your Agent's advantage. Use it to get your Agent's way in court, to determine the correct procedures for handling evidence in a prosecution or a civil case (and how to undermine them), to bullshit your Agent's way out of legal trouble, or to minimize legal risks. The Law skill applies to your Agent's native country; using it with another country's laws requires special training."
+tooltip = "Using laws and courts to your Agent’s advantage. Use it to get your Agent’s way in court, to determine the correct procedures for handling evidence in a prosecution or a civil case (and how to undermine them), to bullshit your Agent’s way out of legal trouble, or to minimize legal risks. The Law skill applies to your Agent’s native country; using it with another country’s laws requires special training."
 base = 0
 
 [[skills]]
@@ -145,7 +145,7 @@ base = 10
 
 [[skills]]
 name = "Persuade"
-tooltip = "Changing another's deeply-held decision or desire. Use Persuade to get your Agent’s way when the subject is so stubborn, what your Agent wants is so valuable, or the deception is so flagrant that Charisma isn’t enough. With Persuade, your Agent might convince a witness that what she saw was innocuous and not unnatural, talk a detective into helping you cover up evidence for the greater good, or draw useful intelligence out of an unwilling subject. This skill also allows your Agent to resist persuasion and interrogation in opposed Persuade rolls."
+tooltip = "Changing another’s deeply-held decision or desire. Use Persuade to get your Agent’s way when the subject is so stubborn, what your Agent wants is so valuable, or the deception is so flagrant that Charisma isn’t enough. With Persuade, your Agent might convince a witness that what she saw was innocuous and not unnatural, talk a detective into helping you cover up evidence for the greater good, or draw useful intelligence out of an unwilling subject. This skill also allows your Agent to resist persuasion and interrogation in opposed Persuade rolls."
 base = 20
 
 [[skills]]
@@ -210,5 +210,5 @@ base = 40
 
 [[skills]]
 name = "Unnatural"
-tooltip = "Knowledge of the fundamental, mind-rending secrets of the universe. Use it to remember, recognize, or research facts about the things humans consider unnatural. This goes far beyond the occult, because the Unnatural skill represents things that are real. Use it to sift through the darkest parts of myth and folklore and recognize which of it is true. Your Agent's SAN score can never be higher than 99 minus his or her Unnatural skill rating."
+tooltip = "Knowledge of the fundamental, mind-rending secrets of the universe. Use it to remember, recognize, or research facts about the things humans consider unnatural. This goes far beyond the occult, because the Unnatural skill represents things that are real. Use it to sift through the darkest parts of myth and folklore and recognize which of it is true. Your Agent’s SAN score can never be higher than 99 minus his or her Unnatural skill rating."
 base = 0

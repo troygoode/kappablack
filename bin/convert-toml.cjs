@@ -1,7 +1,7 @@
 const fs = require("fs");
 const { parse } = require("smol-toml");
 
-const files = ["skills"];
+const files = ["skills", "stats"];
 
 for (const file of files) {
   const doc = fs.readFileSync(`${__dirname}/../src/data/${file}.toml`, "utf-8");

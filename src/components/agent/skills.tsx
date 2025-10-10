@@ -12,9 +12,11 @@ for (const s of skillData.skills) {
 type TSkill = ISkill | IMultiSkill;
 
 const skills: TSkill[] = skillData.skills as (ISkill | IMultiSkill)[];
-const col1 = skills.slice(0, 16);
-const col2 = skills.slice(16, 16 + 16);
-const col3 = skills.slice(16 + 16);
+const BREAK_1 = 15;
+const BREAK_2 = BREAK_1 + 15;
+const col1 = skills.slice(0, BREAK_1);
+const col2 = skills.slice(BREAK_1, BREAK_2);
+const col3 = skills.slice(BREAK_2);
 
 export default function Skills() {
   const { agent, update } = useAgentStore();

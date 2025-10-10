@@ -12,7 +12,6 @@ import { SquareCheckbox } from "./form/square-checkbox";
 import { Badge } from "../ui/badge";
 import { BrainIcon } from "../ui/icons/lucide-brain";
 import { HeartCrackIcon } from "../ui/icons/lucide-heart-crack";
-import { Skeleton } from "../ui/skeleton";
 import { AgentTextarea } from "./form/agent-textarea";
 
 const Bond = ({
@@ -175,7 +174,7 @@ export default function Psychology() {
               ))) ||
               null}
             <div className="flex justify-center px-2 py-1 text-sm">
-              Check a Bond's box when projecting sanity damage.
+              Check a damaged Bond&rsquo;s box until the next Home scene ends.
             </div>
           </div>
           <div

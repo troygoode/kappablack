@@ -31,7 +31,7 @@ const AgentTextInput = ({
   onChange: (value: string, e?: React.ChangeEvent<HTMLInputElement>) => void;
   className?: string;
   min?: number;
-  maxLength?: number;
+  maxLength: number;
   disabled?: boolean;
   required?: boolean;
 }) => {

@@ -1,10 +1,9 @@
 import { Button } from "../ui/button";
 import { CirclePlusIcon } from "../ui/icons/lucide-circle-plus";
-import { InfoIcon } from "../ui/icons/lucide-info";
 import { Trash2Icon } from "../ui/icons/lucide-trash-2";
 import { Skeleton } from "../ui/skeleton";
-import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 import { AgentTextInput } from "./form/agent-text-input";
+import { AgentTooltip } from "./form/agent-tooltip";
 import { SquareCheckbox } from "./form/square-checkbox";
 
 interface ISkillType {
@@ -46,21 +45,14 @@ export function Skill({
         <div className="flex grow items-center gap-1.5 text-sm print:text-xs">
           {skill} <span className="hidden print:inline">(10%)</span>
           {tooltip && (
-            <div className="relative print:hidden">
-              <Tooltip>
-                <TooltipTrigger>
-                  <InfoIcon size={12} />
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p className="max-w-60 mb-2">{tooltip}</p>
-                  {base != undefined && (
-                    <p>
-                      <strong>Base value:</strong> {base}%
-                    </p>
-                  )}
-                </TooltipContent>
-              </Tooltip>
-            </div>
+            <AgentTooltip>
+              <p className="mb-2">{tooltip}</p>
+              {base != undefined && (
+                <p>
+                  <strong>Base value:</strong> {base}%
+                </p>
+              )}
+            </AgentTooltip>
           )}
         </div>
       </div>
@@ -199,19 +191,12 @@ export function MultiSkill({
             <div className="flex grow items-center gap-1.5 text-sm print:text-xs">
               {skill} <span className="hidden print:inline">(0%)</span>
               {tooltip && (
-                <div className="relative print:hidden">
-                  <Tooltip>
-                    <TooltipTrigger>
-                      <InfoIcon size={12} />
-                    </TooltipTrigger>
-                    <TooltipContent>
-                      <p className="max-w-60 mb-2">{tooltip}</p>
-                      <p>
-                        <strong>Base value:</strong> 0%
-                      </p>
-                    </TooltipContent>
-                  </Tooltip>
-                </div>
+                <AgentTooltip>
+                  <p className="mb-2">{tooltip}</p>
+                  <p>
+                    <strong>Base value:</strong> 0%
+                  </p>
+                </AgentTooltip>
               )}
             </div>
             <Button

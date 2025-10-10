@@ -1,0 +1,12 @@
+{
+  "str": "Physical power, size, and musculature. Examples: Drag a witness to safety. Break down a locked door. Hold a struggling victim down.",
+  "dex": "Health and physical resilience. Examples: Resist illness, exhaustion, or pain. Hold your breath a long time. Keep running longer than everyone else.",
+  "con": "Agility, coordination, and nimbleness. Examples: Keep balance. React quickly.",
+  "int": "How well an Agent notices, remembers, and connects things. Along with profession, it indicates education and overall brilliance. Examples: Recall a detail. Piece together disparate data.",
+  "pow": "Force of personality, motivation, and psychic resilience. Examples: Keep your head in a crisis. Stand up to pressure.",
+  "cha": "Charm, leadership, and personal appeal. May indicate physical attractiveness. Examples: Make a good impression. Talk your way into a private club. Look like you belong.",
+  "hp": "Hit Points represent how much damage your Agent can sustain. When the Agent is injured, subtract the damage from HP. At 2 HP, your Agent falls unconscious. At 0 HP, your Agent dies. Hit Points are regained through rest and medical attention.",
+  "wp": "Willpower Points represent mental fortitude. They fall when your Agent attempts to suppress the symptoms of mental illness, becomes exhausted, attempts to resist persuasion, suffers emotional burnout, or tries to fuel unnatural phenomena. At 2 WP, your Agent has a temporary emotional collapse. At 0 WP, your Agent falls unconscious. Willpower Points are regained with rest.",
+  "san": "Sanity Points represent mental health: how much mental trauma, or exposure to the unnatural your Agent can endure before going insane. In moments of mental trauma your Agent must make a Sanity test by rolling SAN or lower on 1D100. If that fails, your Agent loses SAN. Sanity Points are regained through psychiatric care or by overcoming unnatural threats. At 0 Sanity Points, your Agent goes irretrievably insane and becomes an NPC permanently under the control of the Handler.",
+  "bp": "The Breaking Point is the point at which loss of SAN triggers a long-term mental disorder. The instant the Agent’s SAN reaches the Breaking Point, he or she gains a disorder. Reset the Breaking Point to equal the new SAN score minus POW."
+}

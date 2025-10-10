@@ -20,7 +20,7 @@ export default function Agent() {
     if (!agent) {
       setTimeout(() => {
         update({
-          player: "Player Name",
+          // player: "Player Name",
         });
       }, 1000 * 0.25);
     }
@@ -47,7 +47,7 @@ export default function Agent() {
       <div className="mt-1 mb-1">
         <Equipment />
       </div>
-      <div className="mt-1 mb-2">
+      <div className="mt-1 mb-1">
         <Remarks />
       </div>
       <div className="mb-8">

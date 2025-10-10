@@ -18,7 +18,7 @@ const AgentTextarea = ({
   skeletonClassName?: string;
   value: string | undefined;
   onChange: (value: string, e?: React.ChangeEvent<HTMLTextAreaElement>) => void;
-  maxLength?: number;
+  maxLength: number;
   required?: boolean;
 }) => {
   return !loading ? (
@@ -40,7 +40,10 @@ const AgentTextarea = ({
     />
   ) : (
     <Skeleton
-      className={classNames("min-h-15 h-full rounded-md", skeletonClassName)}
+      className={classNames(
+        "min-h-15 h-full rounded-md",
+        className ?? skeletonClassName
+      )}
     />
   );
 };

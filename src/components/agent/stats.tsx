@@ -1,14 +1,28 @@
 "use client";
 
-import classNames from "classnames";
+import StatsData from "@/data/stats.json";
+
 import { Button } from "../ui/button";
-import { Textarea } from "../ui/textarea";
 import { useAgentStore } from "./stores/agent";
 import { AgentTextInput } from "./form/agent-text-input";
 import { SideHeader } from "./form/side-header";
 import { RefreshCwIcon } from "../ui/icons/lucide-refresh-cw";
 import { Skeleton } from "../ui/skeleton";
 import { AgentTextarea } from "./form/agent-textarea";
+import { AgentTooltip } from "./form/agent-tooltip";
+
+interface IStatsData {
+  str: string;
+  dex: string;
+  con: string;
+  int: string;
+  pow: string;
+  cha: string;
+  hp: string;
+  wp: string;
+  san: string;
+  bp: string;
+}
 
 const Stat = ({
   loading,
@@ -17,7 +31,9 @@ const Stat = ({
   score,
   setScore,
   feature,
+  featurePlaceholder,
   setFeature,
+  tooltip,
 }: {
   loading: boolean;
   label: string;
@@ -25,12 +41,19 @@ const Stat = ({
   score: number | undefined;
   setScore: (score: number | undefined) => void;
   feature: string;
+  featurePlaceholder?: string;
   setFeature: (feature: string | undefined) => void;
+  tooltip?: string;
 }) => {
   return (
     <div className="grid grid-cols-8">
       <div className="col-span-3 flex flex-wrap items-center gap-1 px-2 py-1 text-sm outline-1 outline-zinc-800 print:outline-slate-950">
         {label} <span className="text-xs uppercase">({abbreviation})</span>
+        {tooltip && (
+          <AgentTooltip>
+            <p>{tooltip}</p>
+          </AgentTooltip>
+        )}
       </div>
       <div
         className="flex items-center p-1 outline-1 outline-zinc-800 print:outline-slate-950"
@@ -66,6 +89,7 @@ const Stat = ({
         <AgentTextInput
           fieldName={`stat-${abbreviation}-feature`}
           value={feature}
+          placeholder={featurePlaceholder}
           onChange={(value) => {
             setFeature(value);
           }}
@@ -83,18 +107,25 @@ const Derived = ({
   abbreviation,
   max,
   current,
+  tooltip,
   setCurrent,
 }: {
   label: string;
   abbreviation: string;
   max?: number;
   current: number | undefined;
+  tooltip?: string;
   setCurrent: (current: number | undefined) => void;
 }) => {
   return (
     <div className="grid grid-cols-7 print:text-sm">
       <div className="col-span-3 flex items-center gap-1 px-2 py-1 text-sm outline-1 outline-zinc-800 print:outline-slate-950">
         {label} <span className="uppercase">({abbreviation})</span>
+        {tooltip && (
+          <AgentTooltip>
+            <p>{tooltip}</p>
+          </AgentTooltip>
+        )}
       </div>
       <div className="col-span-2 flex items-center justify-center px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
         {max ?? <span className="text-muted-foreground">&mdash;</span>}
@@ -134,6 +165,35 @@ const Derived = ({
   );
 };
 
+const featurePlaceholders = (
+  score: number | undefined,
+  lowest: string,
+  low: string,
+  high: string,
+  highest: string
+) => {
+  if (!score || (score >= 9 && score <= 12)) return undefined;
+  switch (score) {
+    case 3:
+    case 4:
+      return lowest;
+    case 5:
+    case 6:
+    case 7:
+    case 8:
+      return low;
+    case 13:
+    case 14:
+    case 15:
+    case 16:
+      return high;
+    case 17:
+    case 18:
+      return highest;
+  }
+  return undefined;
+};
+
 export default function Stats() {
   const { agent, update } = useAgentStore();
 
@@ -168,6 +228,13 @@ export default function Stats() {
                 update(agent);
               }}
               feature={agent?.strength?.feature ?? ""}
+              featurePlaceholder={featurePlaceholders(
+                agent?.strength?.score,
+                "Feeble",
+                "Weak",
+                "Muscular",
+                "Huge"
+              )}
               setFeature={(feature) => {
                 if (!agent) return;
                 agent.strength = {
@@ -176,6 +243,7 @@ export default function Stats() {
                 };
                 update(agent);
               }}
+              tooltip={(StatsData as IStatsData).str}
             />
             <Stat
               loading={!agent}
@@ -188,6 +256,13 @@ export default function Stats() {
                 update(agent);
               }}
               feature={agent?.dexterity?.feature ?? ""}
+              featurePlaceholder={featurePlaceholders(
+                agent?.dexterity?.score,
+                "Barely Mobile",
+                "Clumsy",
+                "Nimble",
+                "Acrobatic"
+              )}
               setFeature={(feature) => {
                 if (!agent) return;
                 agent.dexterity = {
@@ -196,6 +271,7 @@ export default function Stats() {
                 };
                 update(agent);
               }}
+              tooltip={(StatsData as IStatsData).dex}
             />
             <Stat
               loading={!agent}
@@ -208,6 +284,13 @@ export default function Stats() {
                 update(agent);
               }}
               feature={agent?.constitution?.feature ?? ""}
+              featurePlaceholder={featurePlaceholders(
+                agent?.constitution?.score,
+                "Bedridden",
+                "Sickly",
+                "Perfect Health",
+                "Indefatigable"
+              )}
               setFeature={(feature) => {
                 if (!agent) return;
                 agent.constitution = {
@@ -216,6 +299,7 @@ export default function Stats() {
                 };
                 update(agent);
               }}
+              tooltip={(StatsData as IStatsData).con}
             />
             <Stat
               loading={!agent}
@@ -228,6 +312,13 @@ export default function Stats() {
                 update(agent);
               }}
               feature={agent?.intelligence?.feature ?? ""}
+              featurePlaceholder={featurePlaceholders(
+                agent?.intelligence?.score,
+                "Imbecilic",
+                "Slow",
+                "Perceptive",
+                "Brilliant"
+              )}
               setFeature={(feature) => {
                 if (!agent) return;
                 agent.intelligence = {
@@ -236,6 +327,7 @@ export default function Stats() {
                 };
                 update(agent);
               }}
+              tooltip={(StatsData as IStatsData).int}
             />
             <Stat
               loading={!agent}
@@ -248,6 +340,13 @@ export default function Stats() {
                 update(agent);
               }}
               feature={agent?.power?.feature ?? ""}
+              featurePlaceholder={featurePlaceholders(
+                agent?.power?.score,
+                "Spineless",
+                "Nervous",
+                "Strong-willed",
+                "Indomitable"
+              )}
               setFeature={(feature) => {
                 if (!agent) return;
                 agent.power = {
@@ -256,6 +355,7 @@ export default function Stats() {
                 };
                 update(agent);
               }}
+              tooltip={(StatsData as IStatsData).pow}
             />
             <Stat
               loading={!agent}
@@ -268,6 +368,13 @@ export default function Stats() {
                 update(agent);
               }}
               feature={agent?.charisma?.feature ?? ""}
+              featurePlaceholder={featurePlaceholders(
+                agent?.charisma?.score,
+                "Unbearable",
+                "Awkward",
+                "Charming",
+                "Magnetic"
+              )}
               setFeature={(feature) => {
                 if (!agent) return;
                 agent.charisma = {
@@ -276,6 +383,7 @@ export default function Stats() {
                 };
                 update(agent);
               }}
+              tooltip={(StatsData as IStatsData).cha}
             />
           </div>
           <div className="flex flex-col font-jost">
@@ -307,6 +415,7 @@ export default function Stats() {
                 if (!agent) return;
                 update({ ...agent, hp: current });
               }}
+              tooltip={(StatsData as IStatsData).hp}
             />
             <Derived
               label="Willpower Points"
@@ -317,6 +426,7 @@ export default function Stats() {
                 if (!agent) return;
                 update({ ...agent, wp: current });
               }}
+              tooltip={(StatsData as IStatsData).wp}
             />
             <Derived
               label="Sanity Points"
@@ -327,6 +437,7 @@ export default function Stats() {
                 if (!agent) return;
                 update({ ...agent, san: current });
               }}
+              tooltip={(StatsData as IStatsData).san}
             />
             <Derived
               label="Breaking Point"
@@ -341,6 +452,7 @@ export default function Stats() {
                 if (!agent) return;
                 update({ ...agent, bp: current });
               }}
+              tooltip={(StatsData as IStatsData).bp}
             />
           </div>
           <div
