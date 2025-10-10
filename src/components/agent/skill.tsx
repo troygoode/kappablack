@@ -40,6 +40,7 @@ export function Skill({
             onCheckedChange={(checked) => {
               update(score, checked === true);
             }}
+            disabled={loading}
           />
         </div>
         <div className="flex grow items-center gap-1.5 text-sm print:text-xs">
@@ -76,6 +77,7 @@ export function Skill({
                 onChange={(value) => {
                   update(value?.length ? parseInt(value) : undefined, marked);
                 }}
+                required
               />
             ) : (
               <Skeleton className="h-9 w-full" />
@@ -114,6 +116,7 @@ function MultiSkillType({
               onCheckedChange={(checked) =>
                 onUpdateType(type, score, !!checked)
               }
+              disabled={loading || !type?.length}
             />
           </div>
           <div className="grow gap-0.5">
@@ -152,6 +155,8 @@ function MultiSkillType({
               }
               maxLength={3}
               min={0}
+              disabled={!type?.length}
+              required
             />
           ) : (
             <Skeleton className="h-9 w-full" />

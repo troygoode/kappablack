@@ -13,6 +13,7 @@ export function AgentTextField({
   value,
   update,
   maxLength,
+  required,
   className,
 }: {
   fieldName: string;
@@ -20,6 +21,7 @@ export function AgentTextField({
   value: (agent: IAgent) => string | undefined;
   update: (agent: IAgent, value: string) => IAgent;
   maxLength: number;
+  required?: boolean;
   className?: string;
 }) {
   const { agent, update: updateStore } = useAgentStore();
@@ -46,6 +48,7 @@ export function AgentTextField({
           value={val}
           onChange={onChange}
           maxLength={maxLength}
+          required={required}
         />
       ) : (
         <Skeleton className="h-9 w-full" />

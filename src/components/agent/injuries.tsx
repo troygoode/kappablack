@@ -3,6 +3,7 @@
 import { Checkbox } from "../ui/checkbox";
 import { Skeleton } from "../ui/skeleton";
 import { Textarea } from "../ui/textarea";
+import { AgentTextarea } from "./form/agent-textarea";
 import { SideHeader } from "./form/side-header";
 import { SquareCheckbox } from "./form/square-checkbox";
 import { useAgentStore } from "./stores/agent";
@@ -33,19 +34,15 @@ export default function Injuries() {
               </span>
             )}
           </div>
-          {agent ? (
-            <Textarea
-              className="min-h-10 h-28 w-full justify-self-end rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm"
-              value={agent.wounds}
-              onChange={(e) => {
-                if (!agent) return;
-                update({ ...agent, wounds: e.target.value });
-              }}
-              maxLength={300}
-            />
-          ) : (
-            <Skeleton className="min-h-10 h-28 rounded-md" />
-          )}
+          <AgentTextarea
+            fieldName="wounds"
+            loading={!agent}
+            value={agent?.wounds}
+            onChange={(value) => {
+              update({ ...agent, wounds: value });
+            }}
+            maxLength={300}
+          />
         </div>
         <div className="flex flex-col items-center justify-center px-2 py-1 font-jost text-sm lg:flex-row lg:gap-4">
           <span>Has First Aid been attempted since the last injury?</span>

@@ -8,6 +8,7 @@ import { AgentTextInput } from "./form/agent-text-input";
 import { SideHeader } from "./form/side-header";
 import { RefreshCwIcon } from "../ui/icons/lucide-refresh-cw";
 import { Skeleton } from "../ui/skeleton";
+import { AgentTextarea } from "./form/agent-textarea";
 
 const Stat = ({
   loading,
@@ -49,6 +50,7 @@ const Stat = ({
               }}
               maxLength={3}
               min={3}
+              required
             />
           )}
         </div>
@@ -69,6 +71,7 @@ const Stat = ({
           }}
           maxLength={100}
           disabled={!score || score < 3 || (score > 9 && score < 13)}
+          required
         />
       </div>
     </div>
@@ -111,6 +114,7 @@ const Derived = ({
                 maxLength={3}
                 min={0}
                 disabled={max === undefined}
+                required
               />
               <Button
                 size="sm"
@@ -356,26 +360,15 @@ export default function Stats() {
                 </span>
               )}
             </div>
-            {agent ? (
-              <Textarea
-                id="physical-description"
-                name="physical-description"
-                value={agent?.physicalDescription ?? ""}
-                maxLength={300}
-                onChange={(e) => {
-                  if (!agent) return;
-                  update({ ...agent, physicalDescription: e.target.value });
-                }}
-                className={classNames(
-                  "min-h-15 h-full w-full justify-self-end rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 print:border-0 print:bg-transparent print:p-0 print:text-sm",
-                  (agent?.physicalDescription ?? "").length === 0
-                    ? "dark:bg-amber-100"
-                    : ""
-                )}
-              />
-            ) : (
-              <Skeleton className="min-h-15 h-full rounded-md" />
-            )}
+            <AgentTextarea
+              loading={!agent}
+              fieldName="physical-description"
+              value={agent?.physicalDescription}
+              maxLength={300}
+              onChange={(value) => {
+                update({ ...agent, physicalDescription: value });
+              }}
+            />
           </div>
         </div>
       </div>

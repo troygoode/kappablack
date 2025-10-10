@@ -21,6 +21,7 @@ const Name = () => {
       value={(agent) => agent.name}
       update={(agent, value) => ({ ...agent, name: value })}
       maxLength={100}
+      required
       className="sm:col-span-6"
     />
   );
@@ -33,6 +34,7 @@ const Profession = () => (
     value={(agent) => agent.profession}
     update={(agent, value) => ({ ...agent, profession: value })}
     maxLength={100}
+    required
     className="sm:col-span-6"
   />
 );

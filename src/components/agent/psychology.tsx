@@ -13,6 +13,7 @@ import { Badge } from "../ui/badge";
 import { BrainIcon } from "../ui/icons/lucide-brain";
 import { HeartCrackIcon } from "../ui/icons/lucide-heart-crack";
 import { Skeleton } from "../ui/skeleton";
+import { AgentTextarea } from "./form/agent-textarea";
 
 const Bond = ({
   index,
@@ -51,6 +52,7 @@ const Bond = ({
               update(value, score, isMarked);
             }}
             maxLength={50}
+            required
           />
         </div>
         <Button
@@ -81,6 +83,7 @@ const Bond = ({
               }}
               maxLength={3}
               min={0}
+              required
             />
           </div>
         </div>
@@ -194,26 +197,16 @@ export default function Psychology() {
                 </span>
               )}
             </div>
-            {agent ? (
-              <Textarea
-                id="motivations-and-disorders"
-                name="motivations-and-disorders"
-                value={agent?.motivationsAndDisorders ?? ""}
-                onChange={(e) => {
-                  if (!agent) return;
-                  update({ ...agent, motivationsAndDisorders: e.target.value });
-                }}
-                maxLength={300}
-                className={classNames(
-                  "min-h-15 h-full w-full justify-self-end rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 print:border-0 print:bg-transparent print:p-0 print:text-sm",
-                  (agent?.motivationsAndDisorders ?? "").length === 0
-                    ? "dark:bg-amber-100"
-                    : ""
-                )}
-              />
-            ) : (
-              <Skeleton className="min-h-15 h-full rounded-md" />
-            )}
+            <AgentTextarea
+              loading={!agent}
+              fieldName="motivations-and-disorders"
+              value={agent?.motivationsAndDisorders ?? ""}
+              onChange={(value) => {
+                update({ ...agent, motivationsAndDisorders: value });
+              }}
+              maxLength={300}
+              required
+            />
           </div>
           <div className="flex flex-col px-2 py-1 font-jost text-sm">
             <h3 className="text-xs uppercase">

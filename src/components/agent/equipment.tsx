@@ -95,7 +95,11 @@ export default function Equipment() {
               <th className="border-l border-b border-zinc-800 py-0.5 px-2 text-left font-normal">
                 <div className="flex items-center justify-between">
                   16. Weapons
-                  <Button size="sm" variant="outline">
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    className="cursor-pointer"
+                  >
                     <CirclePlusIcon />
                     Add weapon
                   </Button>
