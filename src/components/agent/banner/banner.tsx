@@ -14,14 +14,14 @@ import { Button } from "@/components/ui/button";
 
 export default function Banner({ isLoading }: { isLoading: boolean }) {
   return (
-    <div className="flex justify-center bg-black dark:bg-white h-12 px-2">
-      <div className="grid grid-cols-3 w-full">
+    <div className="flex bg-black dark:bg-white h-12">
+      <div className="grid grid-cols-3 w-full px-2">
         <div className="flex items-center justify-start">
           <Link href="/">
             <Button
               size="sm"
               variant="outline"
-              className="dark:bg-black dark:hover:bg-zinc-800 cursor-pointer"
+              className="cursor-pointer bg-black text-zinc-200 border-zinc-800 hover:text-white hover:bg-zinc-800 hover:border-zinc-600 dark:text-black dark:border-zinc-100 dark:hover:bg-zinc-200 dark:hover:text-black dark:hover:border-zinc-200"
             >
               <HouseIcon />
             </Button>
@@ -56,9 +56,9 @@ export default function Banner({ isLoading }: { isLoading: boolean }) {
             </div>
           )}
         </div>
-        <div className="flex items-center justify-end gap-1">
+        <div className="flex items-center justify-end gap-2">
           <ModeSelector />
-          <DarkModeToggle className="dark:bg-black dark:hover:bg-zinc-800 cursor-pointer" />
+          <DarkModeToggle className="cursor-pointer bg-black text-zinc-200 border-zinc-800 hover:text-white hover:bg-zinc-800 hover:border-zinc-600 dark:text-black dark:border-zinc-100 dark:hover:bg-zinc-200 dark:hover:text-black dark:hover:border-zinc-200" />
         </div>
       </div>
     </div>

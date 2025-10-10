@@ -53,7 +53,7 @@ export default function Agent() {
       <div className="mb-8">
         <Footer />
       </div>
-      <div className="mb-4">
+      <div className="mb-16">
         <Disclaimer />
       </div>
     </Container>

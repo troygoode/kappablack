@@ -14,7 +14,7 @@ import { PlayIcon } from "../ui/icons/lucide-play";
 export function ModeSelector() {
   return (
     <Select value="edit">
-      <SelectTrigger className="cursor-pointer w-[180px] bg-input/30 hover:bg-input/50 dark:bg-zinc-800 dark:hover:bg-zinc-700">
+      <SelectTrigger className="cursor-pointer w-[180px] bg-black text-zinc-200 border-zinc-800 hover:text-white hover:bg-zinc-800 hover:border-zinc-600 dark:text-black dark:border-zinc-100 dark:hover:bg-zinc-200 dark:hover:text-black dark:hover:border-zinc-200">
         <SelectValue placeholder="Select edit mode" />
       </SelectTrigger>
       <SelectContent>

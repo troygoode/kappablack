@@ -38,25 +38,25 @@ const AgentTextInput = ({
   const val = value ?? "";
   return (
     <Input
-      className={classNames(
-        className,
-        val.length === 0
-          ? "required:dark:bg-amber-100 disabled:dark:bg-input/10"
-          : ""
-      )}
-      type={type}
       id={fieldName}
       name={fieldName}
-      onChange={onChangeDOM(onChange)}
-      maxLength={maxLength}
+      type={type}
       value={value}
       defaultValue={defaultValue}
       placeholder={placeholder}
+      onChange={onChangeDOM(onChange)}
       disabled={disabled}
       required={required}
+      maxLength={maxLength}
+      min={min}
+      className={classNames(
+        className,
+        val.length === 0
+          ? "required:bg-amber-100 required:border-amber-300 required:dark:bg-amber-100 required:dark:border-zinc-600 disabled:dark:bg-input/10"
+          : ""
+      )}
       autoComplete="off"
       data-1p-ignore
-      min={min}
     />
   );
 };

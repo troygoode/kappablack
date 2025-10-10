@@ -1,10 +1,8 @@
 "use client";
 
-import classNames from "classnames";
 import { Button } from "../ui/button";
 import { CirclePlusIcon } from "../ui/icons/lucide-circle-plus";
 import { Trash2Icon } from "../ui/icons/lucide-trash-2";
-import { Textarea } from "../ui/textarea";
 import { useAgentStore } from "./stores/agent";
 import { AgentTextInput } from "./form/agent-text-input";
 import { SideHeader } from "./form/side-header";
