@@ -27,8 +27,8 @@ const Stat = ({
   setFeature: (feature: string | undefined) => void;
 }) => {
   return (
-    <div className="grid grid-cols-7">
-      <div className="col-span-2 flex flex-wrap items-center gap-1 px-2 py-1 text-sm outline-1 outline-zinc-800 print:outline-slate-950">
+    <div className="grid grid-cols-8">
+      <div className="col-span-3 flex flex-wrap items-center gap-1 px-2 py-1 text-sm outline-1 outline-zinc-800 print:outline-slate-950">
         {label} <span className="text-xs uppercase">({abbreviation})</span>
       </div>
       <div
@@ -131,8 +131,8 @@ export default function Stats() {
       <div className="w-full">
         <div className="flex h-full flex-col">
           <div className="flex flex-col font-jost">
-            <div className="grid grid-cols-7 text-xs uppercase">
-              <h3 className="col-span-2 px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
+            <div className="grid grid-cols-8 text-xs uppercase">
+              <h3 className="col-span-3 px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
                 8. Statistics
               </h3>
               <div className="px-2 py-1 text-center outline-1 outline-zinc-800 print:outline-slate-950">

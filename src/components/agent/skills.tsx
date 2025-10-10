@@ -1,7 +1,7 @@
 import { type ISkill, type IMultiSkill } from "@/types/skill";
 
 import { SideHeader } from "./form/side-header";
-import { Skill, MultiSkill, Other } from "./skill";
+import { Skill, MultiSkill } from "./skill";
 import skillData from "@/data/skills.json";
 import { useAgentStore } from "./stores/agent";
 
@@ -85,7 +85,7 @@ export default function Skills() {
           </div>
           <div className="flex flex-col">
             <SkillColumn col={col3} />
-            <Other />
+            <MultiSkill skill="Other Skills" />
           </div>
         </div>
       </div>
