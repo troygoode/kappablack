@@ -1,10 +1,15 @@
 "use client";
 
 import { Checkbox } from "../ui/checkbox";
+import { Skeleton } from "../ui/skeleton";
 import { Textarea } from "../ui/textarea";
 import { SideHeader } from "./form/side-header";
+import { SquareCheckbox } from "./form/square-checkbox";
+import { useAgentStore } from "./stores/agent";
 
 export default function Injuries() {
+  const { agent, update } = useAgentStore();
+
   return (
     <div className="flex flex-col outline-1 outline-zinc-800 sm:flex-row print:outline-slate-950">
       <SideHeader>Injuries</SideHeader>
@@ -22,17 +27,39 @@ export default function Injuries() {
             >
               <h3>14. Wounds and ailments</h3>
             </label>
-            <span className="text-xs print:hidden">0/300</span>
+            {agent && (agent?.wounds?.length ?? 0) > 0 && (
+              <span className="text-xs print:hidden">
+                {agent?.wounds?.length ?? 0}/300
+              </span>
+            )}
           </div>
-          <Textarea
-            className="min-h-10 w-full justify-self-end rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm h-28"
-            maxLength={300}
-          />
+          {agent ? (
+            <Textarea
+              className="min-h-10 h-28 w-full justify-self-end rounded-t-md border-b border-zinc-800 bg-zinc-300 bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 focus-visible:outline-slate-600 sm:min-h-0 sm:px-1 print:border-0 print:bg-transparent print:p-0 print:text-sm"
+              value={agent.wounds}
+              onChange={(e) => {
+                if (!agent) return;
+                update({ ...agent, wounds: e.target.value });
+              }}
+              maxLength={300}
+            />
+          ) : (
+            <Skeleton className="min-h-10 h-28 rounded-md" />
+          )}
         </div>
         <div className="flex flex-col items-center justify-center px-2 py-1 font-jost text-sm lg:flex-row lg:gap-4">
           <span>Has First Aid been attempted since the last injury?</span>
           <div className="flex items-center gap-1">
-            <Checkbox className="cursor-pointer" id="first-aid-no" />
+            <SquareCheckbox
+              className="cursor-pointer"
+              id="first-aid-no"
+              checked={agent?.firstAidAttempted}
+              disabled={!agent}
+              onCheckedChange={(checked) => {
+                if (!agent) return;
+                update({ ...agent, firstAidAttempted: !!checked });
+              }}
+            />
             <span>
               Yes: Only Medicine, Surgery, or long-term rest can help further.
             </span>

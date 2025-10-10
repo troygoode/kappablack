@@ -56,7 +56,7 @@ const Bond = ({
         <Button
           size="sm"
           variant="outline"
-          className="cursor-pointer"
+          className="cursor-pointer hover:bg-destructive hover:text-destructive-foreground dark:hover:bg-destructive dark:hover:text-destructive-foreground"
           onClick={() => remove()}
         >
           <Trash2Icon />

@@ -131,7 +131,7 @@ function MultiSkillType({
           <Button
             size="sm"
             variant="outline"
-            className="cursor-pointer ml-1.5"
+            className="cursor-pointer ml-1.5 hover:bg-destructive hover:text-destructive-foreground dark:hover:bg-destructive dark:hover:text-destructive-foreground"
             onClick={() => onRemoveType()}
             disabled={loading}
           >

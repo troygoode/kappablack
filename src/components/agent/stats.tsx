@@ -54,7 +54,11 @@ const Stat = ({
         </div>
       </div>
       <div className="flex items-center justify-center px-2 py-1 outline-1 outline-zinc-800 print:text-sm print:outline-slate-950">
-        {score ? score * 5 : <>&mdash;</>}
+        {score ? (
+          score * 5
+        ) : (
+          <span className="text-muted-foreground">&mdash;</span>
+        )}
       </div>
       <div className="col-span-3 flex items-center p-1 outline-1 outline-zinc-800 print:px-2 print:outline-slate-950">
         <AgentTextInput
@@ -90,31 +94,35 @@ const Derived = ({
         {label} <span className="uppercase">({abbreviation})</span>
       </div>
       <div className="col-span-2 flex items-center justify-center px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
-        {max ?? <>&mdash;</>}
+        {max ?? <span className="text-muted-foreground">&mdash;</span>}
       </div>
       <div className="col-span-2 flex items-center justify-center px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
         <div className="flex gap-0.5">
-          <AgentTextInput
-            className="text-center"
-            fieldName={`derived-${abbreviation}-current`}
-            type="number"
-            value={current?.toString() ?? ""}
-            onChange={(value) => {
-              setCurrent(parseInt(value) || undefined);
-            }}
-            maxLength={3}
-            min={0}
-            disabled={max === undefined}
-          />
-          {max !== undefined && (
-            <Button
-              size="sm"
-              variant="outline"
-              className="ml-2 cursor-pointer"
-              onClick={() => setCurrent(max)}
-            >
-              <RefreshCwIcon />
-            </Button>
+          {max !== undefined ? (
+            <>
+              <AgentTextInput
+                className="text-center"
+                fieldName={`derived-${abbreviation}-current`}
+                type="number"
+                value={current?.toString() ?? ""}
+                onChange={(value) => {
+                  setCurrent(parseInt(value) || undefined);
+                }}
+                maxLength={3}
+                min={0}
+                disabled={max === undefined}
+              />
+              <Button
+                size="sm"
+                variant="outline"
+                className="ml-2 cursor-pointer"
+                onClick={() => setCurrent(max)}
+              >
+                <RefreshCwIcon />
+              </Button>
+            </>
+          ) : (
+            <span className="text-muted-foreground">&mdash;</span>
           )}
         </div>
       </div>
