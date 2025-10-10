@@ -3,7 +3,7 @@
 import classNames from "classnames";
 import { Button } from "../ui/button";
 import { Textarea } from "../ui/textarea";
-import { useAgentStore } from "./agent-store";
+import { useAgentStore } from "./stores/agent";
 import { AgentTextInput } from "./form/agent-text-input";
 import { SideHeader } from "./form/side-header";
 import { RefreshCwIcon } from "../ui/icons/lucide-refresh-cw";

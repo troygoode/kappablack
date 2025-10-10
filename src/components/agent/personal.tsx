@@ -10,7 +10,7 @@ import { AgentTextField } from "./form/agent-text-field";
 import { AgentTextInput } from "./form/agent-text-input";
 import { SideHeader } from "./form/side-header";
 import { SquareRadioGroupItem } from "./form/square-radio-group-item";
-import { useAgentStore } from "./agent-store";
+import { useAgentStore } from "./stores/agent";
 import { Skeleton } from "../ui/skeleton";
 
 const Name = () => {
@@ -96,9 +96,9 @@ const Sex = () => {
   );
   const [sexOther, setSexOther] = useState(agent?.sexOther ?? "");
 
-  const onSexOtherChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSexOther(e.target.value);
-    update({ ...agent, sexOther: e.target.value });
+  const onSexOtherChange = (value: string) => {
+    setSexOther(value);
+    update({ ...agent, sexOther: value });
   };
   const onSexChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (agent && e.target.checked) {

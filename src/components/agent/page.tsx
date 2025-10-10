@@ -11,9 +11,8 @@ import Stats from "@/components/agent/stats";
 import { Container } from "@/components/container";
 import Disclaimer from "@/components/disclaimer/disclaimer";
 import Navigation from "@/components/navigation";
-import { useAgentStore } from "./agent-store";
+import { useAgentStore } from "./stores/agent";
 import { useEffect } from "react";
-import { Button } from "../ui/button";
 
 export default function Agent() {
   const { agent, update } = useAgentStore();
