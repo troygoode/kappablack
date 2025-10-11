@@ -11,11 +11,11 @@ import Stats from "@/components/agent/stats";
 import { Container } from "@/components/container";
 import Disclaimer from "@/components/disclaimer/disclaimer";
 import Navigation from "@/components/navigation";
-import { useAgentStore } from "./stores/agent";
+import { useAgentStore } from "./stores/agent-provider";
 import { useEffect } from "react";
 
 export default function Agent() {
-  const { agent, update } = useAgentStore();
+  const { agent, update } = useAgentStore((state) => state);
   useEffect(() => {
     if (!agent) {
       setTimeout(() => {

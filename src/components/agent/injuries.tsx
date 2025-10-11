@@ -3,10 +3,10 @@
 import { AgentTextarea } from "./form/agent-textarea";
 import { SideHeader } from "./form/side-header";
 import { SquareCheckbox } from "./form/square-checkbox";
-import { useAgentStore } from "./stores/agent";
+import { useAgentStore } from "./stores/agent-provider";
 
 export default function Injuries() {
-  const { agent, update } = useAgentStore();
+  const { agent, update } = useAgentStore((state) => state);
 
   return (
     <div className="flex flex-col outline-1 outline-zinc-800 sm:flex-row print:outline-slate-950">

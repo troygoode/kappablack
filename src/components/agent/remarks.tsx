@@ -7,7 +7,7 @@ import { Skeleton } from "../ui/skeleton";
 import { AgentTextInput } from "./form/agent-text-input";
 import { AgentTextarea } from "./form/agent-textarea";
 import { SideHeader } from "./form/side-header";
-import { useAgentStore } from "./stores/agent";
+import { useAgentStore } from "./stores/agent-provider";
 
 const SpecialTraining = ({
   loading,
@@ -70,7 +70,7 @@ const SpecialTraining = ({
 );
 
 export default function Remarks() {
-  const { agent, update } = useAgentStore();
+  const { agent, update } = useAgentStore((state) => state);
   const trainings = agent?.specialTraining || [];
 
   const addTraining = () => {

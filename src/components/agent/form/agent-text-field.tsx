@@ -4,7 +4,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { AgentField } from "./agent-field";
 import { AgentLabel } from "./agent-label";
 import { AgentTextInput } from "./agent-text-input";
-import { useAgentStore } from "../stores/agent";
+import { useAgentStore } from "../stores/agent-provider";
 import { IAgent } from "@/types/agent";
 
 export function AgentTextField({
@@ -24,7 +24,7 @@ export function AgentTextField({
   required?: boolean;
   className?: string;
 }) {
-  const { agent, update: updateStore } = useAgentStore();
+  const { agent, update: updateStore } = useAgentStore((state) => state);
   const onChange = (value: string) => {
     if (agent) {
       updateStore(update(agent, value));

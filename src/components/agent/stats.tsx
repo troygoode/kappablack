@@ -3,7 +3,7 @@
 import StatsData from "@/data/stats.json";
 
 import { Button } from "../ui/button";
-import { useAgentStore } from "./stores/agent";
+import { useAgentStore } from "./stores/agent-provider";
 import { AgentTextInput } from "./form/agent-text-input";
 import { SideHeader } from "./form/side-header";
 import { RefreshCwIcon } from "../ui/icons/lucide-refresh-cw";
@@ -195,7 +195,7 @@ const featurePlaceholders = (
 };
 
 export default function Stats() {
-  const { agent, update } = useAgentStore();
+  const { agent, update } = useAgentStore((state) => state);
 
   return (
     <div className="flex flex-col outline-1 outline-zinc-800 sm:flex-row print:outline-slate-950 ">

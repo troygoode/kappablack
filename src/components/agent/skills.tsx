@@ -5,7 +5,7 @@ import { type ISkill, type IMultiSkill } from "@/types/skill";
 import { SideHeader } from "./form/side-header";
 import { Skill, MultiSkill } from "./skill";
 import skillData from "@/data/skills.json";
-import { useAgentStore } from "./stores/agent";
+import { useAgentStore } from "./stores/agent-provider";
 
 for (const s of skillData.skills) {
   s.multi = !!s.multi;
@@ -21,7 +21,7 @@ const col2 = skills.slice(BREAK_1, BREAK_2);
 const col3 = skills.slice(BREAK_2);
 
 export default function Skills() {
-  const { agent, update } = useAgentStore();
+  const { agent, update } = useAgentStore((state) => state);
 
   const getSkill = (skill: string) => {
     return agent?.skills?.find((s) => s.skill === skill);

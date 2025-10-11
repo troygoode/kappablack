@@ -10,7 +10,7 @@ import { AgentTextField } from "./form/agent-text-field";
 import { AgentTextInput } from "./form/agent-text-input";
 import { SideHeader } from "./form/side-header";
 import { SquareRadioGroupItem } from "./form/square-radio-group-item";
-import { useAgentStore } from "./stores/agent";
+import { useAgentStore } from "./stores/agent-provider";
 import { Skeleton } from "../ui/skeleton";
 
 const Name = () => {
@@ -84,7 +84,7 @@ const Education = () => (
 );
 
 const Sex = () => {
-  const { agent, update } = useAgentStore();
+  const { agent, update } = useAgentStore((state) => state);
 
   const maxLength = 100;
   const [sex, setSex] = useState(

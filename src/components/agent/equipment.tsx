@@ -3,12 +3,12 @@
 import { IWeapon } from "@/types/agent";
 import { AgentTextarea } from "./form/agent-textarea";
 import { SideHeader } from "./form/side-header";
-import { useAgentStore } from "./stores/agent";
+import { useAgentStore } from "./stores/agent-provider";
 import { WeaponsTable } from "./weapons";
 import { StatusEffectWeaponsTable } from "./weapons-statuseffect";
 
 export default function Equipment() {
-  const { agent, update } = useAgentStore();
+  const { agent, update } = useAgentStore((state) => state);
   const weapons = agent?.weapons || [];
 
   const addWeapon = (weapon: IWeapon) => {

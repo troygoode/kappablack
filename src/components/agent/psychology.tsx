@@ -3,7 +3,7 @@
 import { Button } from "../ui/button";
 import { CirclePlusIcon } from "../ui/icons/lucide-circle-plus";
 import { Trash2Icon } from "../ui/icons/lucide-trash-2";
-import { useAgentStore } from "./stores/agent";
+import { useAgentStore } from "./stores/agent-provider";
 import { AgentTextInput } from "./form/agent-text-input";
 import { SideHeader } from "./form/side-header";
 import { SquareCheckbox } from "./form/square-checkbox";
@@ -90,7 +90,7 @@ const Bond = ({
 };
 
 export default function Psychology() {
-  const { agent, update } = useAgentStore();
+  const { agent, update } = useAgentStore((state) => state);
 
   const addBond = () => {
     if (!agent) return;
