@@ -3,7 +3,7 @@
 import { AgentTextarea } from "./form/agent-textarea";
 import { SideHeader } from "./form/side-header";
 import { SquareCheckbox } from "./form/square-checkbox";
-import { useAgentStore } from "./stores/agent-provider";
+import { useAgentStore } from "./stores/agent";
 
 export default function Injuries() {
   const { agent, update } = useAgentStore((state) => state);

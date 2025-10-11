@@ -11,7 +11,7 @@ import Stats from "@/components/agent/stats";
 import { Container } from "@/components/container";
 import Disclaimer from "@/components/disclaimer/disclaimer";
 import Navigation from "@/components/navigation";
-import { useAgentStore } from "./stores/agent-provider";
+import { useAgentStore } from "./stores/agent";
 import { useEffect } from "react";
 
 export default function Agent() {

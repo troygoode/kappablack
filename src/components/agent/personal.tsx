@@ -10,7 +10,7 @@ import { AgentTextField } from "./form/agent-text-field";
 import { AgentTextInput } from "./form/agent-text-input";
 import { SideHeader } from "./form/side-header";
 import { SquareRadioGroupItem } from "./form/square-radio-group-item";
-import { useAgentStore } from "./stores/agent-provider";
+import { useAgentStore } from "./stores/agent";
 import { Skeleton } from "../ui/skeleton";
 
 const Name = () => {

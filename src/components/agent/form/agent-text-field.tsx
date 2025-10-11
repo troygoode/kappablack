@@ -4,7 +4,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { AgentField } from "./agent-field";
 import { AgentLabel } from "./agent-label";
 import { AgentTextInput } from "./agent-text-input";
-import { useAgentStore } from "../stores/agent-provider";
+import { useAgentStore } from "../stores/agent";
 import { IAgent } from "@/types/agent";
 
 export function AgentTextField({

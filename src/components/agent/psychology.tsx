@@ -3,7 +3,6 @@
 import { Button } from "../ui/button";
 import { CirclePlusIcon } from "../ui/icons/lucide-circle-plus";
 import { Trash2Icon } from "../ui/icons/lucide-trash-2";
-import { useAgentStore } from "./stores/agent-provider";
 import { AgentTextInput } from "./form/agent-text-input";
 import { SideHeader } from "./form/side-header";
 import { SquareCheckbox } from "./form/square-checkbox";
@@ -11,6 +10,7 @@ import { Badge } from "../ui/badge";
 import { BrainIcon } from "../ui/icons/lucide-brain";
 import { HeartCrackIcon } from "../ui/icons/lucide-heart-crack";
 import { AgentTextarea } from "./form/agent-textarea";
+import { useAgentStore } from "./stores/agent";
 
 const Bond = ({
   index,

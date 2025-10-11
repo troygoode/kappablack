@@ -52,7 +52,12 @@ const AgentTextInput = ({
       className={classNames(
         className,
         val.length === 0
-          ? "required:bg-amber-100 required:border-amber-300 required:dark:bg-amber-100 required:dark:border-zinc-600 disabled:dark:bg-input/10"
+          ? `
+          required:bg-amber-100 required:border-amber-300 
+          required:focus:bg-white required:focus:border-input
+          required:dark:bg-amber-100 required:dark:border-zinc-600
+          required:focus:dark:bg-zinc-900 required:focus:dark:border-input
+          disabled:dark:bg-input/10`
           : ""
       )}
       autoComplete="off"

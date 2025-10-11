@@ -2,7 +2,7 @@
 
 import { AgentLabel } from "./form/agent-label";
 import { AgentTextInput } from "./form/agent-text-input";
-import { useAgentStore } from "./stores/agent-provider";
+import { useAgentStore } from "./stores/agent";
 import { Skeleton } from "../ui/skeleton";
 
 const MAX_LENGTH = 100;

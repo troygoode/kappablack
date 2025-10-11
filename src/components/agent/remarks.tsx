@@ -7,7 +7,7 @@ import { Skeleton } from "../ui/skeleton";
 import { AgentTextInput } from "./form/agent-text-input";
 import { AgentTextarea } from "./form/agent-textarea";
 import { SideHeader } from "./form/side-header";
-import { useAgentStore } from "./stores/agent-provider";
+import { useAgentStore } from "./stores/agent";
 
 const SpecialTraining = ({
   loading,

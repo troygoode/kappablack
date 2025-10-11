@@ -3,13 +3,13 @@
 import StatsData from "@/data/stats.json";
 
 import { Button } from "../ui/button";
-import { useAgentStore } from "./stores/agent-provider";
 import { AgentTextInput } from "./form/agent-text-input";
 import { SideHeader } from "./form/side-header";
 import { RefreshCwIcon } from "../ui/icons/lucide-refresh-cw";
 import { Skeleton } from "../ui/skeleton";
 import { AgentTextarea } from "./form/agent-textarea";
 import { AgentTooltip } from "./form/agent-tooltip";
+import { useAgentStore } from "./stores/agent";
 
 interface IStatsData {
   str: string;
