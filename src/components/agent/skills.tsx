@@ -1,3 +1,5 @@
+"use client";
+
 import { type ISkill, type IMultiSkill } from "@/types/skill";
 
 import { SideHeader } from "./form/side-header";

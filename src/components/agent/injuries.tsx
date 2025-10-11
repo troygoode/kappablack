@@ -1,8 +1,5 @@
 "use client";
 
-import { Checkbox } from "../ui/checkbox";
-import { Skeleton } from "../ui/skeleton";
-import { Textarea } from "../ui/textarea";
 import { AgentTextarea } from "./form/agent-textarea";
 import { SideHeader } from "./form/side-header";
 import { SquareCheckbox } from "./form/square-checkbox";

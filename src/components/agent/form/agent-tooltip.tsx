@@ -1,3 +1,5 @@
+"use client";
+
 import { InfoIcon } from "@/components/ui/icons/lucide-info";
 import {
   Tooltip,

@@ -14,10 +14,21 @@ export interface IWeapon {
   skill?: string;
   range?: string;
   damage?: string;
-  ap?: string;
-  lethality?: string;
-  killRadius?: string;
-  ammo?: string;
+  ap?: number;
+  lethality?: number;
+  radius?: string;
+  ammo?: number;
+  capacity?: number;
+}
+
+export interface IStatusEffectWeapon {
+  weapon?: string;
+  skill?: string;
+  range?: string;
+  penalty?: string;
+  radius?: string;
+  ammo?: number;
+  capacity?: number;
 }
 
 export interface ISpecialTraining {
@@ -72,6 +83,7 @@ export interface IAgent {
   // equipment
   gear?: string;
   weapons?: IWeapon[];
+  statusEffectWeapons?: IStatusEffectWeapon[];
 
   // remarks
   notes?: string;

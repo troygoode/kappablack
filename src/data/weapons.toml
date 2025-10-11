@@ -1,0 +1,548 @@
+# HAND-TO-HAND WEAPONS
+
+[[weapons]]
+category = "Hand-to-Hand Weapons"
+weapon = "Unarmed Attack"
+skill = "Unarmed Combat"
+damage = "1d4-1"
+
+[[weapons]]
+category = "Hand-to-Hand Weapons"
+weapon = "Brass knuckles, heavy flashlight, Unarmed Combat or steel-toe boots"
+skill = "Unarmed Combat"
+damage = "1d4"
+expense = "Incidental"
+
+[[weapons]]
+category = "Hand-to-Hand Weapons"
+weapon = "Garotte"
+skill = "Unarmed Combat"
+damage = "special"
+expense = "Incidental"
+notes = "Works only from surprise. If it succeeds, the target is pinned and cannot make a sound, and the garrote does 1D6 damage per round until the target escapes or dies. A garotte made from Kevlar can cut through flexible cuffs."
+
+[[weapons]]
+category = "Hand-to-Hand Weapons"
+weapon = "Knife"
+skill = "Melee Weapons"
+damage = "1d4"
+ap = 3
+expense = "Incidental"
+
+[[weapons]]
+category = "Hand-to-Hand Weapons"
+weapon = "Hatchet"
+skill = "Melee Weapons"
+damage = "1d4"
+expense = "Incidental"
+
+
+[[weapons]]
+category = "Hand-to-Hand Weapons"
+weapon = "Large knife or combat dagger"
+skill = "Melee Weapons"
+damage = "1d6"
+ap = 3
+expense = "Incidental"
+
+[[weapons]]
+category = "Hand-to-Hand Weapons"
+weapon = "Club, nightstick, baton, or collapsible baton"
+skill = "Melee Weapons"
+damage = "1d6"
+expense = "Incidental"
+
+[[weapons]]
+category = "Hand-to-Hand Weapons"
+weapon = "Machete, tomahawk, or sword"
+skill = "Melee Weapons"
+damage = "1d8"
+expense = "Incidental"
+
+[[weapons]]
+category = "Hand-to-Hand Weapons"
+weapon = "Baseball bat or rifle butt"
+skill = "Melee Weapons"
+damage = "1d8"
+expense = "Incidental"
+
+[[weapons]]
+category = "Hand-to-Hand Weapons"
+weapon = "Spear or fixed bayonet"
+skill = "Melee Weapons"
+damage = "1d8"
+ap = 3
+expense = "Incidental"
+
+[[weapons]]
+category = "Hand-to-Hand Weapons"
+weapon = "Wood axe"
+skill = "Melee Weapons"
+damage = "1d10"
+expense = "Incidental"
+
+[[weapons]]
+category = "Hand-to-Hand Weapons"
+weapon = "Large sword"
+skill = "Melee Weapons"
+damage = "1d10"
+expense = "Incidental"
+
+[[weapons]]
+category = "Hand-to-Hand Weapons"
+weapon = "Two-handed sword"
+skill = "Melee Weapons"
+damage = "1d12"
+expense = "Incidental"
+notes = "Requires special training."
+
+# FIREARMS
+
+[[weapons]]
+category = "Firearms"
+weapon = "Light pistol"
+skill = "Firearms"
+range = "10m"
+damage = "1d8"
+capacity = 7
+expense = "Standard"
+notes = "Revolver capacity: 6. Examples: .22 LR, .32 ACP, .380 ACP, .38 Special: S&W Model 36 Chief's Special, Walther PPK."
+
+[[weapons]]
+category = "Firearms"
+weapon = "Medium pistol"
+skill = "Firearms"
+range = "15m"
+damage = "1d10"
+capacity = 15
+expense = "Standard"
+notes = "Revolver capacity: 6. Examples: 9x19 mm, .40 S&W, .45 ACP: Beretta Mod 92FS (M9), Colt M1911A1, Glock 17, Glock 22."
+
+[[weapons]]
+category = "Firearms"
+weapon = "Heavy pistol"
+skill = "Firearms"
+range = "20m"
+damage = "1d12"
+capacity = 10
+expense = "Standard"
+notes = "Revolver capacity: 6. Examples: 10x25mm Auto, .357 Magnum, .44 Magnum, .50 AE: Colt Delta Elite, Glock 20, S&W Model 13."
+
+[[weapons]]
+category = "Firearms"
+weapon = "Shotgun (firing shot)"
+skill = "Firearms"
+range = "75m"
+damage = "2d8"
+capacity = 5
+expense = "Standard"
+notes = "Half damage beyond base range. Shotgun examples (12-gauge): Mossberg Model 500, Remington Model 870, Ruger Red Label."
+
+[[weapons]]
+category = "Firearms"
+weapon = "Shotgun (firing slug)"
+skill = "Firearms"
+range = "75m"
+damage = "2d8"
+capacity = 5
+expense = "Standard"
+notes = "Damage reduced to 2D6 beyond base range."
+
+[[weapons]]
+category = "Firearms"
+weapon = "Shotgun (firing nonlethal)"
+skill = "Firearms"
+range = "10m"
+damage = "1d6 and stunned"
+capacity = 5
+expense = "Standard"
+
+[[weapons]]
+category = "Firearms"
+weapon = "Light rifle or carbine"
+skill = "Firearms"
+range = "100m"
+damage = "1d12"
+lethality = 10
+capacity = 10
+ap = 3
+expense = "Standard"
+notes = "RESTRICTED IF CAPABLE OF FULLY AUTOMATIC FIRE. Use the Lethality rating if firing bursts. Examples: 5.45 x 39mm, 5.56mm NATO: AR-15, Colt M4, FN SCAR-L. Heavier rounds such as 7.62x39mm (AK-47) and .30-30 Winchester inflict 1D12+1 damage."
+
+[[weapons]]
+category = "Firearms"
+weapon = "Submachine gun (SMG)"
+skill = "Firearms"
+range = "50m"
+damage = "1d10"
+lethality = 10
+capacity = 30
+expense = "Unusual"
+notes = "RESTRICTED IF CAPABLE OF FULLY AUTOMATIC FIRE. Use the Lethality rating if firing bursts. Examples: 5.7x28 mm, 9x19mm, .45 ACP: B&T MP9, FN P90, H&K MP5, IMI Uzi, KRISS Vector, MAC-Ingram M10."
+
+[[weapons]]
+category = "Firearms"
+weapon = "Heavy rifle"
+skill = "Firearms"
+range = "150m"
+damage = "1d12+2"
+lethality = 10
+capacity = 10
+ap = 5
+expense = "Unusual"
+notes = "RESTRICTED IF CAPABLE OF FULLY AUTOMATIC FIRE. Use the Lethality rating if firing bursts. Examples: 7.62 mm NATO, 7.62x54mm, .30-06: H&K G3, FN FAL, Izhmash SVD, M1 Garand, Remington Model 700 (M24)."
+
+[[weapons]]
+category = "Firearms"
+weapon = "Very heavy rifle"
+skill = "Firearms"
+range = "250m"
+lethality = 20
+capacity = 10
+ap = 5
+expense = "Major"
+notes = "Examples: .408 CheyTac, .50 Browning: Barrett Model 82A1, CheyTac M200."
+
+# HEAVY WEAPONS
+
+[[weapons]]
+category = "Heavy Weapons"
+weapon = "Hand grenade"
+skill = "Athletics"
+range = "20m"
+lethality = 15
+radius = "10m"
+expense = "Incidental"
+notes = "RESTRICTED. Examples: M67, RGO."
+
+[[weapons]]
+category = "Heavy Weapons"
+weapon = "Rocket propelled grenade launcher (RPG)"
+skill = "Heavy Weapons"
+range = "200m"
+lethality = 30
+radius = "10m"
+capacity = 1
+ap = 20
+expense = "Standard"
+notes = "RESTRICTED. Examples: ATK M72 LAW, Bazalt RPG-7V, Bofors AT4 (M136)."
+
+[[weapons]]
+category = "Heavy Weapons"
+weapon = "Handheld flamethrower"
+skill = "Heavy Weapons"
+range = "5m"
+lethality = 10
+radius = "1m"
+capacity = 20
+expense = "Unusual"
+notes = "Example: Ion XM42."
+
+[[weapons]]
+category = "Heavy Weapons"
+weapon = "Military flamethrower"
+skill = "Heavy Weapons"
+range = "10m"
+lethality = 10
+radius = "2m"
+capacity = 5
+expense = "Unusual"
+notes = "RESTRICTED. Example: AEC M9A1-7."
+
+[[weapons]]
+category = "Heavy Weapons"
+weapon = "General-purpose machine gun (GPMG)"
+skill = "Heavy Weapons"
+range = "300m"
+lethality = 15
+radius = "Per burst"
+capacity = 100
+ap = 3
+expense = "Major"
+notes = "RESTRICTED. Examples: FN MAG (M240), Kovrov PKM, Saco M60."
+
+[[weapons]]
+category = "Heavy Weapons"
+weapon = "Grenade launcher (GL)"
+skill = "Heavy Weapons"
+range = "150m"
+lethality = 15
+radius = "10m"
+capacity = 1
+expense = "Major"
+notes = "RESTRICTED. Revolver capacity: 6. Examples: Colt M203, H&K M320, Milkor M32, Springfield M79."
+
+[[weapons]]
+category = "Heavy Weapons"
+weapon = "Grenade machine gun (GMG)"
+skill = "Heavy Weapons"
+range = "300m"
+lethality = 15
+radius = "10m"
+capacity = 30
+expense = "Major"
+notes ="RESTRICTED. If firing a burst (5 grenades), Lethality is 20%. Examples: H&K GMG, Saco MK 19 MOD 3, KBP AGS-17."
+
+[[weapons]]
+category = "Heavy Weapons"
+weapon = "Heavy machine gun (HMG)"
+skill = "Heavy Weapons"
+range = "400m"
+lethality = 20
+radius = "Per burst"
+capacity = 100
+ap = 5
+expense = "Major"
+notes ="RESTRICTED. Examples: Browning M2HB, Degtyaryov DShKM, Kovrov NSV."
+
+[[weapons]]
+category = "Heavy Weapons"
+weapon = "Light machine gun (LMG)"
+skill = "Heavy Weapons"
+range = "200m"
+lethality = 10
+radius = "Per burst"
+capacity = 100
+ap = 3
+expense = "Major"
+notes = "RESTRICTED. Examples: FN MINIMI (M249 SAW), Molot RPK."
+
+[[weapons]]
+category = "Heavy Weapons"
+weapon = "Autocannon"
+skill = "Heavy Weapons"
+range = "400m"
+lethality = 30
+radius = "3m"
+capacity = 100
+ap = 5
+expense = "Extreme"
+notes = "RESTRICTED. Examples: ATK M242 Bushmaster, KBP 2A70."
+
+[[weapons]]
+category = "Heavy Weapons"
+weapon = "Minigun"
+skill = "Heavy Weapons"
+range = "300m"
+lethality = 20
+radius = "3m"
+capacity = 4000
+ap = 5
+expense = "Extreme"
+notes = "RESTRICTED. Examples: Dillon GAU-17/A, GE M134, KBP GShG-7.62."
+
+# DEMOLITIONS
+
+[[weapons]]
+category = "Demolitions"
+weapon = "ANFO explosive"
+skill = "Demolitions"
+lethality = 30
+radius = "20m"
+expense = "Incidental"
+notes = "Ammonium nitrate fuel oil—diesel fuel and fertilizer; requires Science (Chemistry) and Demolitions skills."
+
+[[weapons]]
+category = "Demolitions"
+weapon = "C4 plast explosive block, 570g"
+skill = "Demolitions"
+lethality = 30
+radius = "2m"
+expense = "Incidental"
+notes = "RESTRICTED. Example: M112."
+
+[[weapons]]
+category = "Demolitions"
+weapon = "Improvised explosive device (IED)"
+skill = "Demolitions"
+lethality = 15
+radius = "10m"
+expense = "Incidental"
+notes = "RESTRICTED, though the ingredients usually are not. Example: Pipe bomb. A larger one (a bomb vest) has 30% lethality and 20 m Kill Radius."
+
+[[weapons]]
+category = "Demolitions"
+weapon = "Large IED"
+skill = "Demolitions"
+lethality = 60
+radius = "75m"
+expense = "Standard"
+notes = "RESTRICTED, though the ingredients usually are not. Example: Car bomb."
+
+[[weapons]]
+category = "Demolitions"
+weapon = "Explosively-formed penetrator mine"
+skill = "Demolitions"
+lethality = 25
+radius = "10m"
+ap = 20
+expense = "Standard"
+notes = "RESTRICTED. Example: M21."
+
+# ARTILLERY
+
+[[weapons]]
+category = "Artillery"
+weapon = "General-purpose bomb"
+skill = "Artillery"
+range = "Air-dropped"
+lethality = 70
+radius = "100m"
+ap = 10
+expense = "Unusual"
+notes = "RESTRICTED. Requires special training. Examples: MK 82, FAB-250."
+
+[[weapons]]
+category = "Artillery"
+weapon = "Heavy mortar"
+skill = "Artillery"
+range = "4km"
+lethality = 35
+radius = "50m"
+capacity = 1
+ap = 5
+expense = "Major"
+notes = "RESTRICTED. Examples: M120, 2B11 Sani."
+
+[[weapons]]
+category = "Artillery"
+weapon = "Light mortar"
+skill = "Artillery"
+range = "2km"
+lethality = 20
+radius = "25m"
+capacity = 1
+expense = "Major"
+notes = "RESTRICTED. Examples: M224, Hirtenberger M6."
+
+[[weapons]]
+category = "Artillery"
+weapon = "Anti-tank guided missile (ATGM)"
+skill = "Artillery"
+range = "4km"
+lethality = 45
+radius = "50m"
+ap = 25
+expense = "Extreme"
+notes = "RESTRICTED. Examples: AGM-114 Hellfire, 9M120 Ataka."
+
+[[weapons]]
+category = "Artillery"
+weapon = "Artillery"
+skill = "Artillery"
+range = "5km"
+lethality = 50
+radius = "100m"
+capacity = 1
+ap = 10
+expense = "Extreme"
+notes = "RESTRICTED. Examples: M109, M777, 2A65 Msta-B, 2S19 Msta-S."
+
+[[weapons]]
+category = "Artillery"
+weapon = "Cruise missile"
+skill = "Artillery"
+range = "100km"
+lethality = 80
+radius = "150m"
+ap = 15
+expense = "Extreme"
+notes = "RESTRICTED. Requires special training. Examples: BGM-109 Tomahawk, Kh-55SM."
+
+# Tear Gas and Pepper Spra
+
+[[weapons]]
+category = "Tear Gas and Pepper Spray"
+weapon = "Pepper spray keychain"
+skill = "DEXx5"
+range = "1m"
+capacity = 1
+radius = "1 target"
+penalty = "-20% for 1 hr"
+expense = "Incidental"
+
+[[weapons]]
+category = "Tear Gas and Pepper Spray"
+weapon = "Pepper spray can"
+skill = "DEXx5"
+range = "3m"
+capacity = 12
+radius = "2 targets"
+penalty = "-20% for 1 hr"
+expense = "Incidental"
+
+[[weapons]]
+category = "Tear Gas and Pepper Spray"
+weapon = "Tear gas grenade, thrown"
+skill = "Athletics"
+range = "20m"
+capacity = 1
+radius = "10m"
+penalty = "-40% for 1 hr"
+expense = "Incidental"
+notes = "RESTRICTED. Requires special training."
+
+[[weapons]]
+category = "Tear Gas and Pepper Spray"
+weapon = "Tear gas grenade, launched"
+skill = "Heavy Weapons"
+range = "50m"
+capacity = 1
+radius = "10m"
+penalty = "-40% for 1 hr"
+expense = "Incidental"
+notes = "RESTRICTED."
+
+# Stun Grenades
+
+[[weapons]]
+category = "Stun Grenades"
+weapon = "Flash-bang grenade, thrown"
+skill = "Athletics"
+range = "20m"
+capacity = 1
+radius = "10m"
+penalty = "-40%"
+expense = "Incidental"
+notes = "RESTRICTED. Requires special training. Radius halved outdoors. Victim's penalty lasts 1D6 turns."
+
+[[weapons]]
+category = "Stun Grenades"
+weapon = "Flash-bang grenade, launched"
+skill = "Heavy Weapons"
+range = "50m"
+capacity = 1
+radius = "10m"
+penalty = "-40%"
+expense = "Incidental"
+notes = "RESTRICTED. Radius halved outdoors. Victim's penalty lasts 1D6 turns."
+
+# Electroshock Weapons
+
+[[weapons]]
+category = "Electroshock Weapons"
+weapon = "Stun gun"
+skill = "DEXx5"
+range = "1m"
+capacity = 10
+penalty = "-20% for 1D20 turns"
+expense = "Incidental"
+
+[[weapons]]
+category = "Electroshock Weapons"
+weapon = "Stun baton"
+skill = "DEXx5"
+range = "1m"
+capacity = 200
+penalty = "-20% for 1D20 turns"
+expense = "Incidental"
+
+[[weapons]]
+category = "Electroshock Weapons"
+weapon = "CED pistol"
+skill = "Firearms"
+range = "4m"
+capacity = 4
+penalty = "-20% for 1D20 turns"
+expense = "Standard"
+notes = "Requires special training."
