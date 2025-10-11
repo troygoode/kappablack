@@ -1,5 +1,7 @@
 "use client";
 
+import { useShallow } from "zustand/shallow";
+
 import { AgentLabel } from "./form/agent-label";
 import { AgentTextInput } from "./form/agent-text-input";
 import { useAgentStore } from "./stores/agent";
@@ -8,7 +10,13 @@ import { Skeleton } from "../ui/skeleton";
 const MAX_LENGTH = 100;
 
 export default function Footer() {
-  const { agent, update } = useAgentStore((state) => state);
+  const merge = useAgentStore((state) => state.merge);
+  const { isLoaded, player } = useAgentStore(
+    useShallow((state) => ({
+      isLoaded: state.isLoaded,
+      player: state.agent?.player || "",
+    }))
+  );
 
   return (
     <div className="flex flex-col gap-4 font-jost">
@@ -16,19 +24,19 @@ export default function Footer() {
         <div className="flex h-18 w-full flex-col gap-1 px-2 py-1 font-jost outline-1 outline-zinc-800 dark:outline-zinc-100 print:gap-0 print:outline-slate-950">
           <AgentLabel
             fieldName="player"
-            length={agent?.player?.length ?? 0}
+            length={player.length}
             maxLength={MAX_LENGTH}
           >
             20. Authorizing officer
           </AgentLabel>
-          {agent ? (
+          {isLoaded ? (
             <AgentTextInput
               fieldName="player"
               onChange={(value) => {
-                update({ ...agent, player: value });
+                merge({ player: value });
               }}
               maxLength={MAX_LENGTH}
-              value={agent.player ?? ""}
+              value={player}
             />
           ) : (
             <Skeleton className="h-9 w-full" />

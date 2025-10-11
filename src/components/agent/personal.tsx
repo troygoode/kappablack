@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useShallow } from "zustand/shallow";
 
 import { Label } from "../ui/label";
 import { RadioGroup } from "../ui/radio-group";
@@ -20,6 +21,7 @@ const Name = () => {
       label="1. Last Name, First Name, Middle Initial"
       value={(agent) => agent.name}
       update={(agent, value) => ({ ...agent, name: value })}
+      merge={(value) => ({ name: value })}
       maxLength={100}
       required
       className="sm:col-span-6"
@@ -33,6 +35,7 @@ const Profession = () => (
     label="2. Profession (rank if applicable)"
     value={(agent) => agent.profession}
     update={(agent, value) => ({ ...agent, profession: value })}
+    merge={(value) => ({ profession: value })}
     maxLength={100}
     required
     className="sm:col-span-6"
@@ -45,6 +48,7 @@ const Employer = () => (
     label="3. Employer"
     value={(agent) => agent.employer}
     update={(agent, value) => ({ ...agent, employer: value })}
+    merge={(value) => ({ employer: value })}
     maxLength={100}
     className="sm:col-span-6"
   />
@@ -56,6 +60,7 @@ const Nationality = () => (
     label="4. Nationality"
     value={(agent) => agent.nationality}
     update={(agent, value) => ({ ...agent, nationality: value })}
+    merge={(value) => ({ nationality: value })}
     maxLength={100}
     className="sm:col-span-6"
   />
@@ -67,6 +72,7 @@ const Age = () => (
     label="6. Age and D.O.B."
     value={(agent) => agent.age}
     update={(agent, value) => ({ ...agent, age: value })}
+    merge={(value) => ({ age: value })}
     maxLength={100}
     className="sm:col-span-6 lg:col-span-2 print:col-span-2"
   />
@@ -78,45 +84,57 @@ const Education = () => (
     label="7. Education and occupational history"
     value={(agent) => agent.education}
     update={(agent, value) => ({ ...agent, education: value })}
+    merge={(value) => ({ education: value })}
     maxLength={100}
     className="sm:col-span-12 lg:col-span-7 print:col-span-7"
   />
 );
 
 const Sex = () => {
-  const { agent, update } = useAgentStore((state) => state);
+  const {
+    sex: storeSex,
+    sexOther: storeSexOther,
+    isLoaded,
+  } = useAgentStore(
+    useShallow((state) => ({
+      sex: state.agent?.sex,
+      sexOther: state.agent?.sexOther,
+      isLoaded: state.isLoaded,
+    }))
+  );
+  const merge = useAgentStore((state) => state.merge);
 
   const maxLength = 100;
   const [sex, setSex] = useState(
-    agent?.sex === "m"
+    storeSex === "m"
       ? "sex-m"
-      : agent?.sex === "f"
+      : storeSex === "f"
       ? "sex-f"
-      : agent?.sex === "other"
+      : storeSex === "other"
       ? "sex-other"
       : "sex-m"
   );
-  const [sexOther, setSexOther] = useState(agent?.sexOther ?? "");
+  const [sexOther, setSexOther] = useState(storeSexOther ?? "");
 
   const onSexOtherChange = (value: string) => {
     setSexOther(value);
-    update({ ...agent, sexOther: value });
+    merge({ sexOther: value });
   };
   const onSexChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (agent && e.target.checked) {
+    if (e.target.checked) {
       setSex(e.target.value);
       switch (e.target.value) {
         case "sex-m":
-          update({ ...agent, sex: "m" });
+          merge({ sex: "m" });
           break;
         case "sex-f":
-          update({ ...agent, sex: "f" });
+          merge({ sex: "f" });
           break;
         case "sex-other":
-          update({ ...agent, sex: "other" });
+          merge({ sex: "other" });
           break;
         default:
-          update({ ...agent, sex: "m" });
+          merge({ sex: "m" });
           break;
       }
     }
@@ -142,7 +160,7 @@ const Sex = () => {
               value="sex-m"
               id="sex-m"
               className={sex === "sex-m" ? "cursor-default" : "cursor-pointer"}
-              disabled={!agent}
+              disabled={!isLoaded}
             />
             <Label htmlFor="sex-m">M</Label>
           </div>
@@ -151,7 +169,7 @@ const Sex = () => {
               value="sex-f"
               id="sex-f"
               className={sex === "sex-f" ? "cursor-default" : "cursor-pointer"}
-              disabled={!agent}
+              disabled={!isLoaded}
             />
             <Label htmlFor="sex-f">F</Label>
           </div>
@@ -162,18 +180,19 @@ const Sex = () => {
               className={
                 sex === "sex-other" ? "cursor-default" : "cursor-pointer"
               }
-              disabled={!agent}
+              disabled={!isLoaded}
             />
           </div>
         </RadioGroup>
         <div className="grow">
-          {agent ? (
+          {isLoaded ? (
             <AgentTextInput
               fieldName="sexOther"
               value={sexOther}
               onChange={onSexOtherChange}
               maxLength={maxLength}
               disabled={sex !== "sex-other"}
+              required
             />
           ) : (
             <Skeleton className="h-9 w-full" />

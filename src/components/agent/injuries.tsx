@@ -1,12 +1,21 @@
 "use client";
 
+import { useShallow } from "zustand/shallow";
+
 import { AgentTextarea } from "./form/agent-textarea";
 import { SideHeader } from "./form/side-header";
 import { SquareCheckbox } from "./form/square-checkbox";
 import { useAgentStore } from "./stores/agent";
 
 export default function Injuries() {
-  const { agent, update } = useAgentStore((state) => state);
+  const merge = useAgentStore((state) => state.merge);
+  const { isLoaded, wounds, firstAidAttempted } = useAgentStore(
+    useShallow((state) => ({
+      isLoaded: state.isLoaded,
+      wounds: state.agent?.wounds || "",
+      firstAidAttempted: state.agent?.firstAidAttempted || false,
+    }))
+  );
 
   return (
     <div className="flex flex-col outline-1 outline-zinc-800 sm:flex-row print:outline-slate-950">
@@ -17,26 +26,19 @@ export default function Injuries() {
           data-headlessui-state=""
         >
           <div className="flex items-center justify-between">
-            <label
-              className="w-full text-xs uppercase"
-              id="headlessui-label-:r1dl:"
-              htmlFor="headlessui-control-:r1dk:"
-              data-headlessui-state=""
-            >
+            <label className="w-full text-xs uppercase" htmlFor="wounds">
               <h3>14. Wounds and ailments</h3>
             </label>
-            {agent && (agent?.wounds?.length ?? 0) > 0 && (
-              <span className="text-xs print:hidden">
-                {agent?.wounds?.length ?? 0}/300
-              </span>
+            {wounds.length > 0 && (
+              <span className="text-xs print:hidden">{wounds.length}/300</span>
             )}
           </div>
           <AgentTextarea
             fieldName="wounds"
-            loading={!agent}
-            value={agent?.wounds}
+            loading={!isLoaded}
+            value={wounds}
             onChange={(value) => {
-              update({ ...agent, wounds: value });
+              merge({ wounds: value });
             }}
             maxLength={300}
           />
@@ -47,11 +49,10 @@ export default function Injuries() {
             <SquareCheckbox
               className="cursor-pointer"
               id="first-aid-no"
-              checked={agent?.firstAidAttempted}
-              disabled={!agent}
+              checked={firstAidAttempted}
+              disabled={!isLoaded}
               onCheckedChange={(checked) => {
-                if (!agent) return;
-                update({ ...agent, firstAidAttempted: !!checked });
+                merge({ firstAidAttempted: !!checked });
               }}
             />
             <span>

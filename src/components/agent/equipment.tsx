@@ -25,11 +25,7 @@ export default function Equipment() {
           data-headlessui-state=""
         >
           <div className="flex items-center justify-between">
-            <label
-              className="w-full text-xs uppercase"
-              id="headlessui-label-:r1dp:"
-              htmlFor="headlessui-control-:r1do:"
-            >
+            <label className="w-full text-xs uppercase" htmlFor="gear">
               <h3>15. Armor and gear</h3>
             </label>
             {agent && (agent?.gear?.length ?? 0) > 0 && (

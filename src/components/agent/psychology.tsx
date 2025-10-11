@@ -180,12 +180,7 @@ export default function Psychology() {
             data-headlessui-state=""
           >
             <div className="flex items-center justify-between">
-              <label
-                className="w-full text-xs uppercase"
-                id="headlessui-label-:r3c:"
-                htmlFor="headlessui-control-:r3b:"
-                data-headlessui-state=""
-              >
+              <label className="w-full text-xs uppercase" htmlFor="motivations">
                 <h3>12. Motivations and mental disorders</h3>
               </label>
               {agent && (agent?.motivationsAndDisorders?.length ?? 0) > 0 && (
@@ -196,7 +191,7 @@ export default function Psychology() {
             </div>
             <AgentTextarea
               loading={!agent}
-              fieldName="motivations-and-disorders"
+              fieldName="motivations"
               value={agent?.motivationsAndDisorders ?? ""}
               onChange={(value) => {
                 update({ ...agent, motivationsAndDisorders: value });

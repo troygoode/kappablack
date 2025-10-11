@@ -1,5 +1,7 @@
 "use client";
 
+import { useShallow } from "zustand/shallow";
+
 import { Skeleton } from "@/components/ui/skeleton";
 import { AgentField } from "./agent-field";
 import { AgentLabel } from "./agent-label";
@@ -12,6 +14,7 @@ export function AgentTextField({
   label,
   value,
   update,
+  merge,
   maxLength,
   required,
   className,
@@ -19,19 +22,30 @@ export function AgentTextField({
   fieldName: string;
   label: string;
   value: (agent: IAgent) => string | undefined;
-  update: (agent: IAgent, value: string) => IAgent;
+  update?: (agent: IAgent, value: string) => IAgent;
+  merge?: (value: string) => Partial<IAgent>;
   maxLength: number;
   required?: boolean;
   className?: string;
 }) {
-  const { agent, update: updateStore } = useAgentStore((state) => state);
+  const updateStore = useAgentStore((state) => state.update);
+  const mergeStore = useAgentStore((state) => state.merge);
+
+  const isLoaded = useAgentStore(useShallow((state) => state.isLoaded));
+  const val = useAgentStore(
+    useShallow((state) => (state.agent ? value(state.agent) : "") || "")
+  );
+  const agent = useAgentStore((state) => state.agent);
+
   const onChange = (value: string) => {
     if (agent) {
-      updateStore(update(agent, value));
+      if (merge) {
+        mergeStore(merge(value));
+      } else if (update) {
+        updateStore(update(agent, value));
+      }
     }
   };
-
-  const val = agent ? value(agent) ?? "" : "";
 
   return (
     <AgentField className={className}>
@@ -42,7 +56,7 @@ export function AgentTextField({
       >
         {label}
       </AgentLabel>
-      {agent ? (
+      {isLoaded ? (
         <AgentTextInput
           fieldName={fieldName}
           value={val}

@@ -85,6 +85,7 @@ export function Skill({
 
 function MultiSkillType({
   loading,
+  uniqueKey,
   type,
   score,
   marked,
@@ -92,6 +93,7 @@ function MultiSkillType({
   onRemoveType,
 }: ISkillType & {
   loading: boolean;
+  uniqueKey: string;
   onUpdateType: (
     type: string | undefined,
     score: number | undefined,
@@ -116,7 +118,7 @@ function MultiSkillType({
           <div className="grow gap-0.5">
             {!loading ? (
               <AgentTextInput
-                fieldName="multi-skill-type"
+                fieldName={`${uniqueKey}-type`}
                 value={type}
                 maxLength={50}
                 onChange={(value) => onUpdateType(value, score, marked)}
@@ -141,7 +143,7 @@ function MultiSkillType({
         <div className="flex h-full items-center">
           {!loading ? (
             <AgentTextInput
-              fieldName="multi-skill-score"
+              fieldName={`${uniqueKey}-score`}
               type="number"
               value={score?.toString()}
               onChange={(value) =>
@@ -217,8 +219,9 @@ export function MultiSkill({
       {types && types.length ? (
         types.map((type, index) => (
           <MultiSkillType
-            loading={loading}
             key={`${skill}-type-${index}`}
+            loading={loading}
+            uniqueKey={`${skill}-type-${index}`}
             type={type.type}
             score={type.score}
             marked={type.marked}
@@ -229,7 +232,7 @@ export function MultiSkill({
       ) : (
         <MultiSkillType
           loading={loading}
-          key={`${skill}-type-0`}
+          uniqueKey={`${skill}-type-0`}
           type={undefined}
           score={undefined}
           marked={undefined}

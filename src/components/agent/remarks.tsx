@@ -108,17 +108,9 @@ export default function Remarks() {
       <SideHeader>Remarks</SideHeader>
       <div className="w-full">
         <div className="flex flex-col lg:grid lg:grid-cols-2 print:grid print:grid-cols-2">
-          <div
-            className="flex h-auto w-full flex-col gap-1 px-2 py-1 font-jost outline-1 outline-zinc-800 print:gap-0 print:outline-slate-950"
-            data-headlessui-state=""
-          >
+          <div className="flex h-auto w-full flex-col gap-1 px-2 py-1 font-jost outline-1 outline-zinc-800 print:gap-0 print:outline-slate-950">
             <div className="flex items-center justify-between">
-              <label
-                className="w-full text-xs uppercase"
-                id="headlessui-label-:r1du:"
-                htmlFor="headlessui-control-:r1dt:"
-                data-headlessui-state=""
-              >
+              <label className="w-full text-xs uppercase" htmlFor="notes">
                 <h3>17. Personal details and notes</h3>
               </label>
               {agent && (agent?.notes?.length ?? 0) > 0 && (
@@ -145,9 +137,7 @@ export default function Remarks() {
               <div className="flex items-center justify-between">
                 <label
                   className="w-full text-xs uppercase"
-                  id="headlessui-label-:r1e1:"
-                  htmlFor="headlessui-control-:r1e0:"
-                  data-headlessui-state=""
+                  htmlFor="developments"
                 >
                   <h3>18. Developments which affect home and family</h3>
                 </label>
