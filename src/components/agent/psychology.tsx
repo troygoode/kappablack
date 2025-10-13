@@ -1,5 +1,7 @@
 "use client";
 
+import { useShallow } from "zustand/shallow";
+
 import { Button } from "../ui/button";
 import { CirclePlusIcon } from "../ui/icons/lucide-circle-plus";
 import { Trash2Icon } from "../ui/icons/lucide-trash-2";
@@ -90,6 +92,20 @@ const Bond = ({
 };
 
 export default function Psychology() {
+  const merge = useAgentStore((state) => state.merge);
+  const {
+    isLoaded,
+    motivationsAndDisorders,
+    violenceAdaptation,
+    helplessnessAdaptation,
+  } = useAgentStore(
+    useShallow((state) => ({
+      isLoaded: state.isLoaded,
+      motivationsAndDisorders: state.agent?.motivationsAndDisorders || "",
+      violenceAdaptation: state.agent?.violenceAdaptation || 0,
+      helplessnessAdaptation: state.agent?.helplessnessAdaptation || 0,
+    }))
+  );
   const { agent, update } = useAgentStore((state) => state);
 
   const addBond = () => {
@@ -183,18 +199,18 @@ export default function Psychology() {
               <label className="w-full text-xs uppercase" htmlFor="motivations">
                 <h3>12. Motivations and mental disorders</h3>
               </label>
-              {agent && (agent?.motivationsAndDisorders?.length ?? 0) > 0 && (
+              {motivationsAndDisorders.length > 0 && (
                 <span className="text-xs print:hidden">
-                  {agent?.motivationsAndDisorders?.length ?? 0}/300
+                  {motivationsAndDisorders.length}/300
                 </span>
               )}
             </div>
             <AgentTextarea
               loading={!agent}
               fieldName="motivations"
-              value={agent?.motivationsAndDisorders ?? ""}
+              value={motivationsAndDisorders}
               onChange={(value) => {
-                update({ ...agent, motivationsAndDisorders: value });
+                merge({ motivationsAndDisorders: value });
               }}
               maxLength={300}
               required
@@ -211,51 +227,39 @@ export default function Psychology() {
                   id="violence-adapted-1"
                   name="violence-adapted-1"
                   className="cursor-pointer"
-                  checked={agent && (agent.violenceAdaptation ?? 0) >= 1}
+                  checked={violenceAdaptation >= 1}
                   onCheckedChange={(b) => {
-                    if (!agent) return;
-                    if (b || (agent.violenceAdaptation ?? 0) > 1) {
-                      agent.violenceAdaptation = 1;
-                    } else {
-                      agent.violenceAdaptation = undefined;
-                    }
-                    update(agent);
+                    merge({
+                      violenceAdaptation: b || violenceAdaptation > 1 ? 1 : 0,
+                    });
                   }}
-                  disabled={!agent}
+                  disabled={!isLoaded}
                 />
                 <SquareCheckbox
                   id="violence-adapted-2"
                   name="violence-adapted-2"
                   className="cursor-pointer"
-                  checked={agent && (agent.violenceAdaptation ?? 0) >= 2}
+                  checked={violenceAdaptation >= 2}
                   onCheckedChange={(b) => {
-                    if (!agent) return;
-                    if (b || (agent.violenceAdaptation ?? 0) > 2) {
-                      agent.violenceAdaptation = 2;
-                    } else {
-                      agent.violenceAdaptation = 1;
-                    }
-                    update(agent);
+                    merge({
+                      violenceAdaptation: b || violenceAdaptation > 2 ? 2 : 1,
+                    });
                   }}
-                  disabled={!agent}
+                  disabled={!isLoaded}
                 />
                 <SquareCheckbox
                   id="violence-adapted-3"
                   name="violence-adapted-3"
                   className="cursor-pointer"
-                  checked={agent && (agent.violenceAdaptation ?? 0) >= 3}
+                  checked={violenceAdaptation >= 3}
                   onCheckedChange={(b) => {
-                    if (!agent) return;
-                    if (b || (agent.violenceAdaptation ?? 0) > 3) {
-                      agent.violenceAdaptation = 3;
-                    } else {
-                      agent.violenceAdaptation = 2;
-                    }
-                    update(agent);
+                    merge({
+                      violenceAdaptation: b || violenceAdaptation > 3 ? 3 : 2,
+                    });
                   }}
-                  disabled={!agent}
+                  disabled={!isLoaded}
                 />
-                {agent && (agent.violenceAdaptation ?? 0) >= 3 ? (
+                {violenceAdaptation >= 3 ? (
                   <Badge asChild className="ml-2" variant="destructive">
                     <span>
                       <HeartCrackIcon />
@@ -277,51 +281,42 @@ export default function Psychology() {
                   id="helpless-adapted-1"
                   name="helpless-adapted-1"
                   className="cursor-pointer"
-                  checked={agent && (agent.helplessnessAdaptation ?? 0) >= 1}
+                  checked={helplessnessAdaptation >= 1}
                   onCheckedChange={(b) => {
-                    if (!agent) return;
-                    if (b || (agent.helplessnessAdaptation ?? 0) > 1) {
-                      agent.helplessnessAdaptation = 1;
-                    } else {
-                      agent.helplessnessAdaptation = undefined;
-                    }
-                    update(agent);
+                    merge({
+                      helplessnessAdaptation:
+                        b || helplessnessAdaptation > 1 ? 1 : 0,
+                    });
                   }}
-                  disabled={!agent}
+                  disabled={!isLoaded}
                 />
                 <SquareCheckbox
                   id="helpless-adapted-2"
                   name="helpless-adapted-2"
                   className="cursor-pointer"
-                  checked={agent && (agent.helplessnessAdaptation ?? 0) >= 2}
+                  checked={helplessnessAdaptation >= 2}
                   onCheckedChange={(b) => {
-                    if (!agent) return;
-                    if (b || (agent.helplessnessAdaptation ?? 0) > 2) {
-                      agent.helplessnessAdaptation = 2;
-                    } else {
-                      agent.helplessnessAdaptation = 1;
-                    }
-                    update(agent);
+                    merge({
+                      helplessnessAdaptation:
+                        b || helplessnessAdaptation > 2 ? 2 : 1,
+                    });
                   }}
-                  disabled={!agent}
+                  disabled={!isLoaded}
                 />
                 <SquareCheckbox
                   id="helpless-adapted-3"
                   name="helpless-adapted-3"
                   className="cursor-pointer"
-                  checked={agent && (agent.helplessnessAdaptation ?? 0) >= 3}
+                  checked={helplessnessAdaptation >= 3}
                   onCheckedChange={(b) => {
-                    if (!agent) return;
-                    if (b || (agent.helplessnessAdaptation ?? 0) > 3) {
-                      agent.helplessnessAdaptation = 3;
-                    } else {
-                      agent.helplessnessAdaptation = 2;
-                    }
-                    update(agent);
+                    merge({
+                      helplessnessAdaptation:
+                        b || helplessnessAdaptation > 3 ? 3 : 2,
+                    });
                   }}
-                  disabled={!agent}
+                  disabled={!isLoaded}
                 />
-                {agent && (agent.helplessnessAdaptation ?? 0) >= 3 ? (
+                {helplessnessAdaptation >= 3 ? (
                   <Badge
                     asChild
                     className="ml-2 bg-blue-500"

@@ -5,24 +5,28 @@ import { type IAgent } from "@/types/agent";
 
 interface IAgentState {
   isLoaded: boolean;
-  agent: IAgent | undefined;
+  agent: IAgent;
 }
 interface IAgentActions {
   markLoaded: () => void;
   update: (agent: IAgent) => void;
-  update2: (get: () => IAgent | undefined) => void;
   merge: (agent: Partial<IAgent>) => void;
 }
 
 const store = generateStore<IAgentState, IAgentActions>({
   initState: () => ({
     isLoaded: false,
-    agent: undefined,
+    agent: {
+      bonds: [],
+      skills: [],
+      weapons: [],
+      statusEffectWeapons: [],
+      specialTraining: [],
+    },
   }),
   actions: ({ set }) => ({
     markLoaded: () => set(() => ({ isLoaded: true })),
     update: (agent: IAgent) => set(() => ({ agent })),
-    update2: (get: () => IAgent | undefined) => set(() => ({ agent: get() })),
     merge: (agent: Partial<IAgent>) =>
       set((state) => ({
         agent: { ...state.agent, ...agent },

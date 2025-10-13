@@ -6,7 +6,7 @@ const SHOW_RULER = false;
 
 export function Container({ children }: React.PropsWithChildren) {
   return (
-    <div className="w-full md:w-7xl mx-auto">
+    <div className="w-full md:w-6xl mx-auto">
       {SHOW_RULER && (
         <div className="flex gap-2">
           <span className="sm:hidden">XS</span>

@@ -97,8 +97,8 @@ const Sex = () => {
     isLoaded,
   } = useAgentStore(
     useShallow((state) => ({
-      sex: state.agent?.sex,
-      sexOther: state.agent?.sexOther,
+      sex: state.agent.sex,
+      sexOther: state.agent.sexOther,
       isLoaded: state.isLoaded,
     }))
   );
@@ -147,7 +147,7 @@ const Sex = () => {
         length={sex === "sex-other" ? sexOther.length : -1}
         maxLength={maxLength}
       >
-        5. Sex
+        5. Sex ({isLoaded ? "loaded" : "loading"})
       </AgentLabel>
       <div className="flex gap-3 print:text-sm">
         <RadioGroup

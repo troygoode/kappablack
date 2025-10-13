@@ -9,9 +9,9 @@ import { useAgentStore } from "./stores/agent";
 
 export default function Injuries() {
   const merge = useAgentStore((state) => state.merge);
-  const { isLoaded, wounds, firstAidAttempted } = useAgentStore(
+  const isLoaded = useAgentStore((state) => state.isLoaded);
+  const { wounds, firstAidAttempted } = useAgentStore(
     useShallow((state) => ({
-      isLoaded: state.isLoaded,
       wounds: state.agent?.wounds || "",
       firstAidAttempted: state.agent?.firstAidAttempted || false,
     }))
