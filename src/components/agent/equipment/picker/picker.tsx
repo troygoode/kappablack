@@ -1,6 +1,5 @@
 "use client";
 
-import { type IWeapon } from "@/types/agent";
 import { type IWeaponData } from "@/types/data";
 
 import {

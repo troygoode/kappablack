@@ -1,6 +1,6 @@
 "use client";
 
-import { type IStatusEffectWeapon } from "@/types/agent";
+import { type IStunWeapon } from "@/types/agent";
 import { type IWeaponData } from "@/types/data";
 
 import { Button } from "@/components/ui/button";
@@ -27,7 +27,7 @@ export const StunWeaponsTable = ({
   add,
 }: {
   loading: boolean;
-  weapons: IStatusEffectWeapon[];
+  weapons: IStunWeapon[];
   add: (weapon: IWeaponData) => void;
 }) => {
   return (
@@ -92,7 +92,7 @@ export const StunWeaponsTable = ({
             </td>
           </tr>
         )}
-        {weapons.map((weapon: IStatusEffectWeapon, index: number) => (
+        {weapons.map((weapon: IStunWeapon, index: number) => (
           <tr className="text-center" key={index}>
             <td
               className={`border-l border-b border-zinc-800 px-1 py-0.5 ${WIDTHS.name}`}

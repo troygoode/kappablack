@@ -20,7 +20,7 @@ const store = generateStore<IAgentState, IAgentActions>({
       bonds: [],
       skills: [],
       weapons: [],
-      statusEffectWeapons: [],
+      stunWeapons: [],
       specialTraining: [],
     },
   }),

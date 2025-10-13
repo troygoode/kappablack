@@ -8,7 +8,7 @@ import { AgentTextarea } from "../form/agent-textarea";
 import { SideHeader } from "../form/side-header";
 import { useAgentStore } from "../stores/agent";
 import { WeaponsTable } from "./weapons";
-import { StunWeaponsTable } from "./weapons-statuseffect";
+import { StunWeaponsTable } from "./weapons-stun";
 
 export default function Equipment() {
   const merge = useAgentStore((state) => state.merge);
@@ -18,7 +18,7 @@ export default function Equipment() {
     useShallow((state) => state.agent?.weapons || [])
   );
   const statusEffectWeapons = useAgentStore(
-    useShallow((state) => state.agent?.statusEffectWeapons || [])
+    useShallow((state) => state.agent?.stunWeapons || [])
   );
 
   const addWeapon = (weapon: IWeaponData) => {
@@ -27,7 +27,7 @@ export default function Equipment() {
         ...weapon,
         ammo: weapon.capacity ? weapon.capacity : undefined,
       });
-      merge({ statusEffectWeapons });
+      merge({ stunWeapons: statusEffectWeapons });
     } else {
       weapons.push({
         ...weapon,

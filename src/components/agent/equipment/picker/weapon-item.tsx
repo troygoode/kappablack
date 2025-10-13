@@ -8,8 +8,6 @@ import {
   ItemContent,
   ItemTitle,
   ItemDescription,
-  // ItemActions,
-  // ItemMedia,
 } from "@/components/ui/item";
 import { BrainIcon } from "@/components/ui/icons/lucide-brain";
 import { Badge } from "@/components/ui/badge";

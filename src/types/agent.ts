@@ -21,7 +21,7 @@ export interface IWeapon {
   capacity?: number;
 }
 
-export interface IStatusEffectWeapon {
+export interface IStunWeapon {
   weapon?: string;
   skill?: string;
   range?: string;
@@ -83,7 +83,7 @@ export interface IAgent {
   // equipment
   gear?: string;
   weapons?: IWeapon[];
-  statusEffectWeapons?: IStatusEffectWeapon[];
+  stunWeapons?: IStunWeapon[];
 
   // remarks
   notes?: string;

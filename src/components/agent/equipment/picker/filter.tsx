@@ -28,7 +28,7 @@ export function WeaponFilter({
             All Weapons
           </SelectItem>
 
-          <SelectLabel>Lethal Weapons</SelectLabel>
+          <SelectLabel className="mt-4">Lethal Weapons</SelectLabel>
           {[
             "Hand-to-Hand Weapons",
             "Firearms",
@@ -41,7 +41,7 @@ export function WeaponFilter({
             </SelectItem>
           ))}
 
-          <SelectLabel>Stun Weapons</SelectLabel>
+          <SelectLabel className="mt-4">Stun Weapons</SelectLabel>
           {[
             "Tear Gas and Pepper Spray",
             "Stun Grenades",
