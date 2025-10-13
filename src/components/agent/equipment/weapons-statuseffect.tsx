@@ -1,22 +1,34 @@
 "use client";
 
-import { type IWeapon } from "@/types/agent";
+import { type IStatusEffectWeapon } from "@/types/agent";
+import { type IWeaponData } from "@/types/data";
 
-import { Button } from "../ui/button";
-import { CirclePlusIcon } from "../ui/icons/lucide-circle-plus";
-import { Trash2Icon } from "../ui/icons/lucide-trash-2";
-import { Skeleton } from "../ui/skeleton";
-import { AgentTextInput } from "./form/agent-text-input";
-import { WeaponPicker } from "./weapons-picker";
+import { Button } from "@/components/ui/button";
+import { CirclePlusIcon } from "@/components/ui/icons/lucide-circle-plus";
+import { Trash2Icon } from "@/components/ui/icons/lucide-trash-2";
+import { Skeleton } from "@/components/ui/skeleton";
+import { AgentTextInput } from "../form/agent-text-input";
+import { WeaponPicker } from "./picker/picker";
 
-export const WeaponsTable = ({
+const WIDTHS = {
+  name: "w-80",
+  skill: "w-38",
+  range: "w-32",
+  radius: "w-28",
+  ammo: "w-18",
+  capacity: "w-18",
+
+  penalty: "",
+};
+
+export const StunWeaponsTable = ({
   loading,
   weapons,
   add,
 }: {
   loading: boolean;
-  weapons: IWeapon[];
-  add: (weapon: IWeapon) => void;
+  weapons: IStatusEffectWeapon[];
+  add: (weapon: IWeaponData) => void;
 }) => {
   return (
     <table className="w-full">
@@ -24,7 +36,7 @@ export const WeaponsTable = ({
         <tr>
           <th className="border-l border-b border-zinc-800 py-0.5 pl-2 pr-1 text-left font-normal h-10">
             <div className="flex items-center justify-between">
-              16.1. Weapons
+              16.b. Stun Weapons
               {weapons.length > 0 && (
                 <WeaponPicker add={add}>
                   <Button
@@ -46,13 +58,7 @@ export const WeaponsTable = ({
             Base range
           </th>
           <th className="border-l border-b border-zinc-800 px-1 py-0.5 font-normal">
-            Damage
-          </th>
-          <th className="border-l border-b border-zinc-800 px-1 py-0.5 font-normal">
-            Armor piercing
-          </th>
-          <th className="border-l border-b border-zinc-800 px-1 py-0.5 font-normal">
-            Lethality
+            Victim's Penalty
           </th>
           <th className="border-l border-b border-zinc-800 px-1 py-0.5 font-normal">
             Radius
@@ -69,7 +75,7 @@ export const WeaponsTable = ({
         {weapons.length === 0 && (
           <tr className="text-center">
             <td
-              colSpan={9}
+              colSpan={7}
               className="border-l border-b border-zinc-800 px-1 py-3"
             >
               <WeaponPicker add={add}>
@@ -80,15 +86,17 @@ export const WeaponsTable = ({
                   disabled={loading}
                 >
                   <CirclePlusIcon />
-                  Add weapon
+                  Add stun weapon
                 </Button>
               </WeaponPicker>
             </td>
           </tr>
         )}
-        {weapons.map((weapon: IWeapon, index: number) => (
+        {weapons.map((weapon: IStatusEffectWeapon, index: number) => (
           <tr className="text-center" key={index}>
-            <td className="border-l border-b border-zinc-800 px-1 py-0.5 w-80">
+            <td
+              className={`border-l border-b border-zinc-800 px-1 py-0.5 ${WIDTHS.name}`}
+            >
               <div className="flex items-center gap-1.5">
                 {!loading ? (
                   <AgentTextInput
@@ -110,7 +118,9 @@ export const WeaponsTable = ({
                 </Button>
               </div>
             </td>
-            <td className="border-l border-b border-zinc-800 px-1 py-0.5 w-40">
+            <td
+              className={`border-l border-b border-zinc-800 px-1 py-0.5 ${WIDTHS.skill}`}
+            >
               {!loading ? (
                 <AgentTextInput
                   fieldName="weapon-1-skill"
@@ -122,7 +132,9 @@ export const WeaponsTable = ({
                 <Skeleton className="h-9 w-full" />
               )}
             </td>
-            <td className="border-l border-b border-zinc-800 px-1 py-0.5 w-35">
+            <td
+              className={`border-l border-b border-zinc-800 px-1 py-0.5 ${WIDTHS.range}`}
+            >
               {!loading ? (
                 <AgentTextInput
                   fieldName="weapon-1-range"
@@ -134,47 +146,23 @@ export const WeaponsTable = ({
                 <Skeleton className="h-9 w-full" />
               )}
             </td>
-            <td className="border-l border-b border-zinc-800 px-1 py-0.5">
+            <td
+              className={`border-l border-b border-zinc-800 px-1 py-0.5 ${WIDTHS.penalty}`}
+            >
               {!loading ? (
                 <AgentTextInput
-                  fieldName="weapon-1-damage"
+                  fieldName="weapon-1-penalty"
                   maxLength={10}
-                  value={weapon.damage || ""}
+                  value={weapon.penalty || ""}
                   onChange={() => {}}
                 />
               ) : (
                 <Skeleton className="h-9 w-full" />
               )}
             </td>
-            <td className="border-l border-b border-zinc-800 px-1 py-0.5 w-30">
-              {!loading ? (
-                <AgentTextInput
-                  fieldName="weapon-1-ap"
-                  type="number"
-                  maxLength={2}
-                  min={0}
-                  value={weapon.ap?.toString() || ""}
-                  onChange={() => {}}
-                />
-              ) : (
-                <Skeleton className="h-9 w-full" />
-              )}
-            </td>
-            <td className="border-l border-b border-zinc-800 px-1 py-0.5 w-20">
-              {!loading ? (
-                <AgentTextInput
-                  fieldName="weapon-1-lethality"
-                  type="number"
-                  maxLength={2}
-                  min={0}
-                  value={weapon.lethality?.toString() || ""}
-                  onChange={() => {}}
-                />
-              ) : (
-                <Skeleton className="h-9 w-full" />
-              )}
-            </td>
-            <td className="border-l border-b border-zinc-800 px-1 py-0.5 w-30">
+            <td
+              className={`border-l border-b border-zinc-800 px-1 py-0.5 ${WIDTHS.radius}`}
+            >
               {!loading ? (
                 <AgentTextInput
                   fieldName="weapon-1-radius"
@@ -186,7 +174,9 @@ export const WeaponsTable = ({
                 <Skeleton className="h-9 w-full" />
               )}
             </td>
-            <td className="border-l border-b border-zinc-800 px-1 py-0.5 w-20">
+            <td
+              className={`border-l border-b border-zinc-800 px-1 py-0.5 ${WIDTHS.ammo}`}
+            >
               {!loading ? (
                 <AgentTextInput
                   fieldName="weapon-1-ammo"
@@ -200,7 +190,9 @@ export const WeaponsTable = ({
                 <Skeleton className="h-9 w-full" />
               )}
             </td>
-            <td className="border-l border-b border-zinc-800 px-1 py-0.5 w-20">
+            <td
+              className={`border-l border-b border-zinc-800 px-1 py-0.5 ${WIDTHS.capacity}`}
+            >
               {!loading ? (
                 <AgentTextInput
                   fieldName="weapon-1-capacity"

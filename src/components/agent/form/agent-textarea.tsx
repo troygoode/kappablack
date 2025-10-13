@@ -35,7 +35,6 @@ const AgentTextarea = ({
         onChange(e.target.value, e);
       }}
       className={classNames(
-        className,
         `min-h-15 h-full w-full justify-self-end rounded-t-md border-b
         border-input bg-zinc-300 focus-visible:outline-slate-600
         bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 print:border-0 print:bg-transparent print:p-0 print:text-sm`,
@@ -52,7 +51,8 @@ const AgentTextarea = ({
 
           disabled:required:dark:border-input/10
           `
-          : ""
+          : "",
+        className
       )}
     />
   ) : (

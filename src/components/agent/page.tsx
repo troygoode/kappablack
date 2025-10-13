@@ -1,6 +1,6 @@
 "use client";
 
-import Equipment from "@/components/agent/equipment";
+import Equipment from "@/components/agent/equipment/equipment";
 import Footer from "@/components/agent/footer";
 import Injuries from "@/components/agent/injuries";
 import Personal from "@/components/agent/personal";

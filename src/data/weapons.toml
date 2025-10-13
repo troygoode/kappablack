@@ -4,20 +4,21 @@
 category = "Hand-to-Hand Weapons"
 weapon = "Unarmed Attack"
 skill = "Unarmed Combat"
-damage = "1d4-1"
+damage = "1D4-1"
+expense = "None"
 
 [[weapons]]
 category = "Hand-to-Hand Weapons"
-weapon = "Brass knuckles, heavy flashlight, Unarmed Combat or steel-toe boots"
+weapon = "Brass knuckles, heavy flashlight, or steel-toe boots"
 skill = "Unarmed Combat"
-damage = "1d4"
+damage = "1D4"
 expense = "Incidental"
 
 [[weapons]]
 category = "Hand-to-Hand Weapons"
 weapon = "Garotte"
 skill = "Unarmed Combat"
-damage = "special"
+damage = "1D6"
 expense = "Incidental"
 notes = "Works only from surprise. If it succeeds, the target is pinned and cannot make a sound, and the garrote does 1D6 damage per round until the target escapes or dies. A garotte made from Kevlar can cut through flexible cuffs."
 
@@ -25,7 +26,7 @@ notes = "Works only from surprise. If it succeeds, the target is pinned and cann
 category = "Hand-to-Hand Weapons"
 weapon = "Knife"
 skill = "Melee Weapons"
-damage = "1d4"
+damage = "1D4"
 ap = 3
 expense = "Incidental"
 
@@ -33,7 +34,7 @@ expense = "Incidental"
 category = "Hand-to-Hand Weapons"
 weapon = "Hatchet"
 skill = "Melee Weapons"
-damage = "1d4"
+damage = "1D4"
 expense = "Incidental"
 
 
@@ -41,7 +42,7 @@ expense = "Incidental"
 category = "Hand-to-Hand Weapons"
 weapon = "Large knife or combat dagger"
 skill = "Melee Weapons"
-damage = "1d6"
+damage = "1D6"
 ap = 3
 expense = "Incidental"
 
@@ -49,28 +50,28 @@ expense = "Incidental"
 category = "Hand-to-Hand Weapons"
 weapon = "Club, nightstick, baton, or collapsible baton"
 skill = "Melee Weapons"
-damage = "1d6"
+damage = "1D6"
 expense = "Incidental"
 
 [[weapons]]
 category = "Hand-to-Hand Weapons"
 weapon = "Machete, tomahawk, or sword"
 skill = "Melee Weapons"
-damage = "1d8"
+damage = "1D8"
 expense = "Incidental"
 
 [[weapons]]
 category = "Hand-to-Hand Weapons"
 weapon = "Baseball bat or rifle butt"
 skill = "Melee Weapons"
-damage = "1d8"
+damage = "1D8"
 expense = "Incidental"
 
 [[weapons]]
 category = "Hand-to-Hand Weapons"
 weapon = "Spear or fixed bayonet"
 skill = "Melee Weapons"
-damage = "1d8"
+damage = "1D8"
 ap = 3
 expense = "Incidental"
 
@@ -78,21 +79,21 @@ expense = "Incidental"
 category = "Hand-to-Hand Weapons"
 weapon = "Wood axe"
 skill = "Melee Weapons"
-damage = "1d10"
+damage = "1D10"
 expense = "Incidental"
 
 [[weapons]]
 category = "Hand-to-Hand Weapons"
 weapon = "Large sword"
 skill = "Melee Weapons"
-damage = "1d10"
+damage = "1D10"
 expense = "Incidental"
 
 [[weapons]]
 category = "Hand-to-Hand Weapons"
 weapon = "Two-handed sword"
 skill = "Melee Weapons"
-damage = "1d12"
+damage = "1D12"
 expense = "Incidental"
 notes = "Requires special training."
 
@@ -103,7 +104,7 @@ category = "Firearms"
 weapon = "Light pistol"
 skill = "Firearms"
 range = "10m"
-damage = "1d8"
+damage = "1D8"
 capacity = 7
 expense = "Standard"
 notes = "Revolver capacity: 6. Examples: .22 LR, .32 ACP, .380 ACP, .38 Special: S&W Model 36 Chief's Special, Walther PPK."
@@ -113,7 +114,7 @@ category = "Firearms"
 weapon = "Medium pistol"
 skill = "Firearms"
 range = "15m"
-damage = "1d10"
+damage = "1D10"
 capacity = 15
 expense = "Standard"
 notes = "Revolver capacity: 6. Examples: 9x19 mm, .40 S&W, .45 ACP: Beretta Mod 92FS (M9), Colt M1911A1, Glock 17, Glock 22."
@@ -123,7 +124,7 @@ category = "Firearms"
 weapon = "Heavy pistol"
 skill = "Firearms"
 range = "20m"
-damage = "1d12"
+damage = "1D12"
 capacity = 10
 expense = "Standard"
 notes = "Revolver capacity: 6. Examples: 10x25mm Auto, .357 Magnum, .44 Magnum, .50 AE: Colt Delta Elite, Glock 20, S&W Model 13."
@@ -153,7 +154,7 @@ category = "Firearms"
 weapon = "Shotgun (firing nonlethal)"
 skill = "Firearms"
 range = "10m"
-damage = "1d6 and stunned"
+damage = "1D6 and stunned"
 capacity = 5
 expense = "Standard"
 
@@ -162,7 +163,7 @@ category = "Firearms"
 weapon = "Light rifle or carbine"
 skill = "Firearms"
 range = "100m"
-damage = "1d12"
+damage = "1D12"
 lethality = 10
 capacity = 10
 ap = 3
@@ -174,7 +175,7 @@ category = "Firearms"
 weapon = "Submachine gun (SMG)"
 skill = "Firearms"
 range = "50m"
-damage = "1d10"
+damage = "1D10"
 lethality = 10
 capacity = 30
 expense = "Unusual"
@@ -185,7 +186,7 @@ category = "Firearms"
 weapon = "Heavy rifle"
 skill = "Firearms"
 range = "150m"
-damage = "1d12+2"
+damage = "1D12+2"
 lethality = 10
 capacity = 10
 ap = 5

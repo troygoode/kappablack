@@ -41,6 +41,7 @@ export default function Injuries() {
               merge({ wounds: value });
             }}
             maxLength={300}
+            className="h-26"
           />
         </div>
         <div className="flex flex-col items-center justify-center px-2 py-1 font-jost text-sm lg:flex-row lg:gap-4">
