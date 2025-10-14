@@ -1,5 +1,7 @@
 "use client";
 
+import { useShallow } from "zustand/shallow";
+
 import { Button } from "../ui/button";
 import { CirclePlusIcon } from "../ui/icons/lucide-circle-plus";
 import { Trash2Icon } from "../ui/icons/lucide-trash-2";
@@ -70,37 +72,40 @@ const SpecialTraining = ({
 );
 
 export default function Remarks() {
-  const { agent, update } = useAgentStore((state) => state);
-  const trainings = agent?.specialTraining || [];
+  const merge = useAgentStore((state) => state.merge);
+  const { isLoaded, notes, developments } = useAgentStore(
+    useShallow((state) => ({
+      isLoaded: state.isLoaded,
+      notes: state.agent?.notes || "",
+      developments: state.agent?.developments || "",
+    }))
+  );
+  const trainings = useAgentStore(
+    useShallow((state) => state.agent?.specialTraining || [])
+  );
 
   const addTraining = () => {
     if (trainings.length >= 6) {
       return;
-    } else if (trainings.length === 0) {
-      trainings.push({ training: undefined, skillOrStat: undefined });
-      trainings.push({ training: undefined, skillOrStat: undefined });
-    } else {
-      trainings.push({ training: undefined, skillOrStat: undefined });
     }
-    update({ ...agent, specialTraining: trainings });
+    const updated = [...trainings];
+    const newItem = { training: undefined, skillOrStat: undefined };
+    updated.push(newItem);
+    merge({ specialTraining: updated });
   };
 
   const updateTraining =
     (index: number) =>
     (training: string | undefined, skillOrStat: string | undefined) => {
-      if (trainings.length === 0) {
-        trainings.push({ training: undefined, skillOrStat: undefined });
-      }
-
-      const updatedTrainings = trainings.map((t, i) =>
-        i === index ? { ...t, training, skillOrStat } : t
-      );
-      update({ ...agent, specialTraining: updatedTrainings });
+      const updated = [...trainings];
+      updated[index] = { training, skillOrStat };
+      merge({ specialTraining: updated });
     };
 
   const removeTraining = (index: number) => () => {
-    const updatedTrainings = trainings.filter((_, i) => i !== index);
-    update({ ...agent, specialTraining: updatedTrainings });
+    const updated = [...trainings];
+    updated.splice(index, 1);
+    merge({ specialTraining: updated });
   };
 
   return (
@@ -113,18 +118,18 @@ export default function Remarks() {
               <label className="w-full text-xs uppercase" htmlFor="notes">
                 <h3>17. Personal details and notes</h3>
               </label>
-              {agent && (agent?.notes?.length ?? 0) > 0 && (
+              {notes.length ? (
                 <span className="text-xs print:hidden">
-                  {agent?.notes?.length ?? 0}/500
+                  {notes.length ?? 0}/500
                 </span>
-              )}
+              ) : null}
             </div>
             <AgentTextarea
               fieldName="notes"
-              loading={!agent}
-              value={agent?.notes || ""}
+              loading={!isLoaded}
+              value={notes}
               onChange={(value) => {
-                update({ ...agent, notes: value });
+                merge({ notes: value });
               }}
               maxLength={500}
             />
@@ -141,18 +146,18 @@ export default function Remarks() {
                 >
                   <h3>18. Developments which affect home and family</h3>
                 </label>
-                {agent && (agent?.developments?.length ?? 0) > 0 && (
+                {developments.length ? (
                   <span className="text-xs print:hidden">
-                    {agent?.developments?.length ?? 0}/300
+                    {developments.length ?? 0}/300
                   </span>
-                )}
+                ) : null}
               </div>
               <AgentTextarea
                 fieldName="developments"
-                loading={!agent}
-                value={agent?.developments || ""}
+                loading={!isLoaded}
+                value={developments}
                 onChange={(value) => {
-                  update({ ...agent, developments: value });
+                  merge({ developments: value });
                 }}
                 maxLength={300}
               />
@@ -166,7 +171,7 @@ export default function Remarks() {
                     variant="outline"
                     className="cursor-pointer"
                     onClick={() => addTraining()}
-                    disabled={!agent || trainings.length >= 6}
+                    disabled={!isLoaded || trainings.length >= 6}
                   >
                     <CirclePlusIcon />
                   </Button>
@@ -175,28 +180,17 @@ export default function Remarks() {
                   Skill or stat used
                 </div>
               </div>
-              {trainings && trainings.length ? (
-                trainings.map((training, index) => (
-                  <SpecialTraining
-                    key={`special-training-${index}`}
-                    index={index}
-                    loading={!agent}
-                    training={training.training}
-                    skillOrStat={training.skillOrStat}
-                    update={updateTraining(index)}
-                    remove={removeTraining(index)}
-                  />
-                ))
-              ) : (
+              {trainings.map((training, index) => (
                 <SpecialTraining
-                  loading={!agent}
-                  index={0}
-                  training={undefined}
-                  skillOrStat={undefined}
-                  update={updateTraining(0)}
-                  remove={removeTraining(0)}
+                  key={`special-training-${index}`}
+                  index={index}
+                  loading={!isLoaded}
+                  training={training.training}
+                  skillOrStat={training.skillOrStat}
+                  update={updateTraining(index)}
+                  remove={removeTraining(index)}
                 />
-              )}
+              ))}
             </div>
           </div>
         </div>
