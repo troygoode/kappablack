@@ -25,10 +25,14 @@ export const StunWeaponsTable = ({
   loading,
   weapons,
   add,
+  onChange,
+  remove,
 }: {
   loading: boolean;
   weapons: IStunWeapon[];
   add: (weapon: IWeaponData) => void;
+  onChange: (weapon: IStunWeapon, index: number) => void;
+  remove: (index: number) => void;
 }) => {
   return (
     <table className="w-full">
@@ -100,10 +104,12 @@ export const StunWeaponsTable = ({
               <div className="flex items-center gap-1.5">
                 {!loading ? (
                   <AgentTextInput
-                    fieldName="weapon-1-name"
+                    fieldName={`weapon-stun-${index}-name`}
                     maxLength={100}
                     value={weapon.weapon || ""}
-                    onChange={() => {}}
+                    onChange={(value) =>
+                      onChange({ ...weapon, weapon: value }, index)
+                    }
                   />
                 ) : (
                   <Skeleton className="h-9 w-full" />
@@ -113,6 +119,7 @@ export const StunWeaponsTable = ({
                   variant="outline"
                   className="cursor-pointer hover:bg-destructive hover:text-destructive-foreground dark:hover:bg-destructive dark:hover:text-destructive-foreground"
                   disabled={loading}
+                  onClick={() => remove(index)}
                 >
                   <Trash2Icon />
                 </Button>
@@ -123,10 +130,12 @@ export const StunWeaponsTable = ({
             >
               {!loading ? (
                 <AgentTextInput
-                  fieldName="weapon-1-skill"
+                  fieldName={`weapon-stun-${index}-skill`}
                   maxLength={10}
                   value={weapon.skill || ""}
-                  onChange={() => {}}
+                  onChange={(value) =>
+                    onChange({ ...weapon, skill: value }, index)
+                  }
                 />
               ) : (
                 <Skeleton className="h-9 w-full" />
@@ -137,10 +146,12 @@ export const StunWeaponsTable = ({
             >
               {!loading ? (
                 <AgentTextInput
-                  fieldName="weapon-1-range"
+                  fieldName={`weapon-stun-${index}-range`}
                   maxLength={10}
                   value={weapon.range || ""}
-                  onChange={() => {}}
+                  onChange={(value) =>
+                    onChange({ ...weapon, range: value }, index)
+                  }
                 />
               ) : (
                 <Skeleton className="h-9 w-full" />
@@ -151,10 +162,12 @@ export const StunWeaponsTable = ({
             >
               {!loading ? (
                 <AgentTextInput
-                  fieldName="weapon-1-penalty"
-                  maxLength={10}
+                  fieldName={`weapon-stun-${index}-penalty`}
+                  maxLength={100}
                   value={weapon.penalty || ""}
-                  onChange={() => {}}
+                  onChange={(value) =>
+                    onChange({ ...weapon, penalty: value }, index)
+                  }
                 />
               ) : (
                 <Skeleton className="h-9 w-full" />
@@ -165,10 +178,12 @@ export const StunWeaponsTable = ({
             >
               {!loading ? (
                 <AgentTextInput
-                  fieldName="weapon-1-radius"
+                  fieldName={`weapon-stun-${index}-radius`}
                   maxLength={10}
                   value={weapon.radius || ""}
-                  onChange={() => {}}
+                  onChange={(value) =>
+                    onChange({ ...weapon, radius: value }, index)
+                  }
                 />
               ) : (
                 <Skeleton className="h-9 w-full" />
@@ -179,12 +194,17 @@ export const StunWeaponsTable = ({
             >
               {!loading ? (
                 <AgentTextInput
-                  fieldName="weapon-1-ammo"
+                  fieldName={`weapon-stun-${index}-ammo`}
                   type="number"
                   maxLength={2}
                   min={0}
                   value={weapon.ammo?.toString() || ""}
-                  onChange={() => {}}
+                  onChange={(value) =>
+                    onChange(
+                      { ...weapon, ammo: parseInt(value) ?? undefined },
+                      index
+                    )
+                  }
                 />
               ) : (
                 <Skeleton className="h-9 w-full" />
@@ -195,12 +215,17 @@ export const StunWeaponsTable = ({
             >
               {!loading ? (
                 <AgentTextInput
-                  fieldName="weapon-1-capacity"
+                  fieldName={`weapon-stun-${index}-capacity`}
                   type="number"
                   maxLength={2}
                   min={0}
                   value={weapon.capacity?.toString() || ""}
-                  onChange={() => {}}
+                  onChange={(value) =>
+                    onChange(
+                      { ...weapon, capacity: parseInt(value) ?? undefined },
+                      index
+                    )
+                  }
                 />
               ) : (
                 <Skeleton className="h-9 w-full" />

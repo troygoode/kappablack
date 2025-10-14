@@ -1,5 +1,6 @@
 "use client";
 
+import { type IStunWeapon, type IWeapon } from "@/types/agent";
 import { type IWeaponData } from "@/types/data";
 
 import { useShallow } from "zustand/shallow";
@@ -17,17 +18,17 @@ export default function Equipment() {
   const weapons = useAgentStore(
     useShallow((state) => state.agent?.weapons || [])
   );
-  const statusEffectWeapons = useAgentStore(
+  const stunWeapons = useAgentStore(
     useShallow((state) => state.agent?.stunWeapons || [])
   );
 
   const addWeapon = (weapon: IWeaponData) => {
     if (weapon.penalty !== undefined) {
-      statusEffectWeapons.push({
+      stunWeapons.push({
         ...weapon,
         ammo: weapon.capacity ? weapon.capacity : undefined,
       });
-      merge({ stunWeapons: statusEffectWeapons });
+      merge({ stunWeapons: stunWeapons });
     } else {
       weapons.push({
         ...weapon,
@@ -35,6 +36,30 @@ export default function Equipment() {
       });
       merge({ weapons });
     }
+  };
+
+  const handleWeaponChange = (weapon: IWeapon, index: number) => {
+    const updatedWeapons = [...weapons];
+    updatedWeapons[index] = weapon;
+    merge({ weapons: updatedWeapons });
+  };
+
+  const handleStunWeaponChange = (weapon: IStunWeapon, index: number) => {
+    const updatedWeapons = [...stunWeapons];
+    updatedWeapons[index] = weapon;
+    merge({ stunWeapons: updatedWeapons });
+  };
+
+  const removeWeapon = (index: number) => {
+    const updatedWeapons = [...weapons];
+    updatedWeapons.splice(index, 1);
+    merge({ weapons: updatedWeapons });
+  };
+
+  const removeStunWeapon = (index: number) => {
+    const updatedWeapons = [...stunWeapons];
+    updatedWeapons.splice(index, 1);
+    merge({ stunWeapons: updatedWeapons });
   };
 
   return (
@@ -68,13 +93,17 @@ export default function Equipment() {
           loading={!isLoaded}
           weapons={weapons}
           add={addWeapon}
-          hasStunWeapons={statusEffectWeapons.length > 0}
+          onChange={handleWeaponChange}
+          remove={removeWeapon}
+          hasStunWeapons={stunWeapons.length > 0}
         />
-        {statusEffectWeapons.length > 0 && (
+        {stunWeapons.length > 0 && (
           <StunWeaponsTable
             loading={!isLoaded}
-            weapons={statusEffectWeapons}
+            weapons={stunWeapons}
             add={addWeapon}
+            onChange={handleStunWeaponChange}
+            remove={removeStunWeapon}
           />
         )}
       </div>
