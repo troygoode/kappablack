@@ -106,20 +106,20 @@ export default function Psychology() {
       helplessnessAdaptation: state.agent?.helplessnessAdaptation || 0,
     }))
   );
-  const { agent, update } = useAgentStore((state) => state);
+  const bonds = useAgentStore(useShallow((state) => state.agent?.bonds || []));
 
   const addBond = () => {
-    if (!agent) return;
+    const updatedBonds = [...bonds];
     const newBond = { bond: undefined, score: undefined, marked: false };
-    agent.bonds = agent.bonds ? [...agent.bonds, newBond] : [newBond];
-    update(agent);
+    updatedBonds.push(newBond);
+    merge({ bonds: updatedBonds });
   };
 
   const removeBond = (index: number) => {
     return () => {
-      if (!agent?.bonds) return;
-      agent.bonds = agent.bonds.filter((_, i) => i !== index);
-      update(agent);
+      const updatedBonds = [...bonds];
+      updatedBonds.splice(index, 1);
+      merge({ bonds: updatedBonds });
     };
   };
 
@@ -129,9 +129,9 @@ export default function Psychology() {
       score: number | undefined,
       isMarked: boolean
     ) => {
-      if (!agent?.bonds) return;
-      agent.bonds[index] = { bond, score, marked: isMarked };
-      update(agent);
+      const updatedBonds = [...bonds];
+      updatedBonds[index] = { bond, score, marked: isMarked };
+      merge({ bonds: updatedBonds });
     };
   };
 
@@ -144,13 +144,13 @@ export default function Psychology() {
             <div className="flex text-xs uppercase">
               <div className="flex h-10 grow items-center justify-between px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
                 <h3>11. Bonds</h3>
-                {(agent?.bonds?.length ?? 0) > 0 ? (
+                {bonds.length ? (
                   <Button
                     size="sm"
                     variant="outline"
                     className="cursor-pointer"
                     onClick={() => addBond()}
-                    disabled={!agent}
+                    disabled={!isLoaded}
                   >
                     <CirclePlusIcon />
                   </Button>
@@ -160,33 +160,31 @@ export default function Psychology() {
                 Score
               </div>
             </div>
-            {!agent?.bonds?.length ? (
+            {!bonds.length ? (
               <div className="flex py-1.5 w-full items-center justify-center">
                 <Button
                   size="sm"
                   variant="outline"
                   className="cursor-pointer"
                   onClick={() => addBond()}
-                  disabled={!agent}
+                  disabled={!isLoaded}
                 >
                   <CirclePlusIcon />
                   Add a bond
                 </Button>
               </div>
             ) : null}
-            {(agent?.bonds?.length &&
-              agent.bonds.map((bond, idx) => (
-                <Bond
-                  key={idx}
-                  index={idx}
-                  bond={bond.bond}
-                  score={bond.score}
-                  isMarked={!!bond.marked}
-                  update={updateBond(idx)}
-                  remove={removeBond(idx)}
-                />
-              ))) ||
-              null}
+            {bonds.map((bond, idx) => (
+              <Bond
+                key={idx}
+                index={idx}
+                bond={bond.bond}
+                score={bond.score}
+                isMarked={!!bond.marked}
+                update={updateBond(idx)}
+                remove={removeBond(idx)}
+              />
+            ))}
             <div className="flex justify-center px-2 py-1 text-sm text-muted-foreground">
               Check a damaged Bond&rsquo;s box until the next Home scene ends.
             </div>
@@ -206,7 +204,7 @@ export default function Psychology() {
               )}
             </div>
             <AgentTextarea
-              loading={!agent}
+              loading={!isLoaded}
               fieldName="motivations"
               value={motivationsAndDisorders}
               onChange={(value) => {
