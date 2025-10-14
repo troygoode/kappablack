@@ -1,8 +1,5 @@
 "use client";
 
-import { type IStunWeapon, type IWeapon } from "@/types/agent";
-import { type IWeaponData } from "@/types/data";
-
 import { useShallow } from "zustand/shallow";
 
 import { AgentTextarea } from "../form/agent-textarea";
@@ -15,6 +12,11 @@ import { StunWeaponsCards } from "./cards/weapons-stun";
 
 export default function Equipment() {
   const merge = useAgentStore((state) => state.merge);
+  const addWeapon = useAgentStore((state) => state.addWeapon);
+  const updateWeapon = useAgentStore((state) => state.updateWeapon);
+  const updateStunWeapon = useAgentStore((state) => state.updateStunWeapon);
+  const removeWeapon = useAgentStore((state) => state.removeWeapon);
+  const removeStunWeapon = useAgentStore((state) => state.removeStunWeapon);
   const isLoaded = useAgentStore((state) => state.isLoaded);
   const gear = useAgentStore((state) => state.agent?.gear || "");
   const weapons = useAgentStore(
@@ -24,46 +26,6 @@ export default function Equipment() {
     useShallow((state) => state.agent?.stunWeapons || [])
   );
 
-  const addWeapon = (weapon: IWeaponData) => {
-    if (weapon.penalty !== undefined) {
-      stunWeapons.push({
-        ...weapon,
-        ammo: weapon.capacity ? weapon.capacity : undefined,
-      });
-      merge({ stunWeapons: stunWeapons });
-    } else {
-      weapons.push({
-        ...weapon,
-        ammo: weapon.capacity ? weapon.capacity : undefined,
-      });
-      merge({ weapons });
-    }
-  };
-
-  const handleWeaponChange = (weapon: IWeapon, index: number) => {
-    const updatedWeapons = [...weapons];
-    updatedWeapons[index] = weapon;
-    merge({ weapons: updatedWeapons });
-  };
-
-  const handleStunWeaponChange = (weapon: IStunWeapon, index: number) => {
-    const updatedWeapons = [...stunWeapons];
-    updatedWeapons[index] = weapon;
-    merge({ stunWeapons: updatedWeapons });
-  };
-
-  const removeWeapon = (index: number) => {
-    const updatedWeapons = [...weapons];
-    updatedWeapons.splice(index, 1);
-    merge({ weapons: updatedWeapons });
-  };
-
-  const removeStunWeapon = (index: number) => {
-    const updatedWeapons = [...stunWeapons];
-    updatedWeapons.splice(index, 1);
-    merge({ stunWeapons: updatedWeapons });
-  };
-
   return (
     <div className="flex flex-col outline-1 outline-zinc-800 sm:flex-row print:outline-slate-950">
       <SideHeader>Equipment</SideHeader>
@@ -71,7 +33,7 @@ export default function Equipment() {
         <div className="flex w-full flex-col gap-1 px-2 py-1 outline-1 outline-zinc-800 print:gap-0 print:outline-slate-950">
           <div className="flex items-center justify-between">
             <label className="w-full text-xs uppercase" htmlFor="gear">
-              <h3>15. Armor and gear</h3>
+              <h3>15. Armor and gear: {weapons?.length}</h3>
             </label>
             {isLoaded && gear.length ? (
               <span className="text-xs print:hidden">{gear.length}/500</span>
@@ -91,9 +53,9 @@ export default function Equipment() {
         <div className="md:hidden print:hidden">
           <WeaponsCards
             loading={!isLoaded}
-            weapons={weapons}
+            weapons={weapons ?? []}
             add={addWeapon}
-            onChange={handleWeaponChange}
+            onChange={updateWeapon}
             remove={removeWeapon}
             stunWeapons={
               stunWeapons.length > 0 ? (
@@ -101,7 +63,7 @@ export default function Equipment() {
                   loading={!isLoaded}
                   weapons={stunWeapons}
                   add={addWeapon}
-                  onChange={handleStunWeaponChange}
+                  onChange={updateStunWeapon}
                   remove={removeStunWeapon}
                 />
               ) : null
@@ -111,9 +73,9 @@ export default function Equipment() {
         <div className="hidden md:block print:block">
           <WeaponsTable
             loading={!isLoaded}
-            weapons={weapons}
+            weapons={weapons ?? []}
             add={addWeapon}
-            onChange={handleWeaponChange}
+            onChange={updateWeapon}
             remove={removeWeapon}
             hasStunWeapons={stunWeapons.length > 0}
           />
@@ -122,7 +84,7 @@ export default function Equipment() {
               loading={!isLoaded}
               weapons={stunWeapons}
               add={addWeapon}
-              onChange={handleStunWeaponChange}
+              onChange={updateStunWeapon}
               remove={removeStunWeapon}
             />
           )}

@@ -5,6 +5,7 @@ import { type IWeaponData } from "@/types/data";
 import {
   Sheet,
   SheetContent,
+  SheetDescription,
   SheetFooter,
   SheetHeader,
   SheetTitle,
@@ -62,6 +63,7 @@ export const WeaponPicker = ({
   return (
     <Sheet>
       <SheetTrigger asChild>{children}</SheetTrigger>
+      <SheetDescription className="hidden">Weapon Picker</SheetDescription>
       <SheetContent>
         <div className="flex h-full w-full flex-col">
           <SheetHeader>

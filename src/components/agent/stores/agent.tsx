@@ -1,7 +1,14 @@
 "use client";
 
+import { type IWeaponData } from "@/types/data";
+import {
+  type IWeapon,
+  type IStunWeapon,
+  type IAgent,
+  type IAgentSkill,
+} from "@/types/agent";
+
 import { generateStore } from "@/lib/zustand-helpers";
-import { type IAgent, type IAgentSkill } from "@/types/agent";
 
 interface IAgentState {
   isLoaded: boolean;
@@ -10,6 +17,12 @@ interface IAgentState {
 interface IAgentActions {
   reset: (state: IAgentState) => void;
   merge: (agent: Partial<IAgent>) => void;
+
+  addWeapon: (weapon: IWeaponData) => void;
+  updateWeapon: (weapon: IWeapon, index: number) => void;
+  updateStunWeapon: (weapon: IStunWeapon, index: number) => void;
+  removeWeapon: (index: number) => void;
+  removeStunWeapon: (index: number) => void;
 
   getSkill: (skill: string) => IAgentSkill;
   updateSkill: (skill: string, score?: number, marked?: boolean) => void;
@@ -42,6 +55,74 @@ const store = generateStore<IAgentState, IAgentActions>({
       set((state) => ({
         agent: { ...state.agent, ...agent },
       })),
+
+    addWeapon: (weapon: IWeaponData) => {
+      if (weapon.penalty !== undefined) {
+        const stunWeapons = [...(get().agent.stunWeapons ?? [])];
+        stunWeapons.push({
+          ...weapon,
+          ammo: weapon.capacity ? weapon.capacity : undefined,
+        });
+        set({
+          agent: {
+            ...get().agent,
+            stunWeapons,
+          },
+        });
+      } else {
+        const weapons = [...(get().agent.weapons ?? [])];
+        weapons.push({
+          ...weapon,
+          ammo: weapon.capacity ? weapon.capacity : undefined,
+        });
+        set({
+          agent: {
+            ...get().agent,
+            weapons,
+          },
+        });
+      }
+    },
+    updateWeapon: (weapon: IWeapon, index: number) => {
+      const weapons = [...(get().agent.weapons ?? [])];
+      weapons[index] = weapon;
+      set({
+        agent: {
+          ...get().agent,
+          weapons,
+        },
+      });
+    },
+    updateStunWeapon: (weapon: IStunWeapon, index: number) => {
+      const stunWeapons = [...(get().agent.stunWeapons ?? [])];
+      stunWeapons[index] = weapon;
+      set({
+        agent: {
+          ...get().agent,
+          stunWeapons,
+        },
+      });
+    },
+    removeWeapon: (index: number) => {
+      const weapons = [...(get().agent.weapons ?? [])];
+      weapons.splice(index, 1);
+      set({
+        agent: {
+          ...get().agent,
+          weapons,
+        },
+      });
+    },
+    removeStunWeapon: (index: number) => {
+      const stunWeapons = [...(get().agent.stunWeapons ?? [])];
+      stunWeapons.splice(index, 1);
+      set({
+        agent: {
+          ...get().agent,
+          stunWeapons,
+        },
+      });
+    },
 
     getSkill: (skill: string) => {
       const { agent } = get();
