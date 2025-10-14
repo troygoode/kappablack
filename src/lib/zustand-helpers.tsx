@@ -37,8 +37,8 @@ export const generateStore = <IState, IActions>({
     store,
   }: {
     set: TSet<IState & IActions>;
-    get?: () => IState & IActions;
-    store?: StoreApi<IState & IActions>;
+    get: () => IState & IActions;
+    store: StoreApi<IState & IActions>;
   }) => IActions;
 }) => {
   const StoreContext = createContext<IState, IActions>();

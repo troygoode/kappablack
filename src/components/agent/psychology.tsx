@@ -106,11 +106,14 @@ export default function Psychology() {
       helplessnessAdaptation: state.agent?.helplessnessAdaptation || 0,
     }))
   );
+  const charismaScore = useAgentStore(
+    useShallow((state) => state.agent?.charisma?.score)
+  );
   const bonds = useAgentStore(useShallow((state) => state.agent?.bonds || []));
 
   const addBond = () => {
     const updatedBonds = [...bonds];
-    const newBond = { bond: undefined, score: undefined, marked: false };
+    const newBond = { bond: undefined, score: charismaScore, marked: false };
     updatedBonds.push(newBond);
     merge({ bonds: updatedBonds });
   };

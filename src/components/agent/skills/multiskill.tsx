@@ -1,33 +1,40 @@
 "use client";
 
+import { useShallow } from "zustand/shallow";
+
 import { Button } from "../../ui/button";
 import { CirclePlusIcon } from "../../ui/icons/lucide-circle-plus";
 import { AgentTooltip } from "../form/agent-tooltip";
+import { useAgentStore } from "../stores/agent";
 import { MultiSkillType, type ISkillType } from "./multiskill-type";
 
 export function MultiSkill({
-  loading,
   skill,
   tooltip,
-  types,
-  onAddType,
-  onUpdateType,
-  onRemoveType,
 }: {
-  loading: boolean;
-  skill?: string;
+  skill: string;
   tooltip?: string;
-  types?: ISkillType[];
-  onAddType: () => void;
-  onUpdateType: (
-    index: number
-  ) => (
-    type: string | undefined,
-    score: number | undefined,
-    marked: boolean | undefined
-  ) => void;
-  onRemoveType: (index: number) => () => void;
 }) {
+  const addMultiSkillType = useAgentStore((state) => state.addMultiSkillType);
+  const updateMultiSkillType = useAgentStore(
+    (state) => state.updateMultiSkillType
+  );
+  const removeMultiSkillType = useAgentStore(
+    (state) => state.removeMultiSkillType
+  );
+  const isLoaded = useAgentStore((state) => state.isLoaded);
+  const types = useAgentStore(
+    useShallow((state) => state.getMultiSkillTypes(skill))
+  );
+
+  const onUpdateType =
+    (index: number) => (type?: string, score?: number, marked?: boolean) => {
+      updateMultiSkillType(skill, index, type, score, marked);
+    };
+  const onRemoveType = (index: number) => () => {
+    removeMultiSkillType(skill, index);
+  };
+
   return (
     <div className="py-2 outline-1 outline-zinc-800 print:outline-slate-950">
       <div className="flex grow">
@@ -49,8 +56,8 @@ export function MultiSkill({
               size="sm"
               variant="outline"
               className="cursor-pointer"
-              onClick={() => onAddType()}
-              disabled={loading || (types && types.length >= 3)}
+              onClick={() => addMultiSkillType(skill)}
+              disabled={!isLoaded || types.length >= 3}
             >
               <CirclePlusIcon />
             </Button>
@@ -58,30 +65,20 @@ export function MultiSkill({
         </div>
         <div className="flex w-20 items-center flex-col gap-1.5 p-1"></div>
       </div>
-      {types && types.length ? (
-        types.map((type, index) => (
-          <MultiSkillType
-            key={`${skill}-type-${index}`}
-            loading={loading}
-            uniqueKey={`${skill}-type-${index}`}
-            type={type.type}
-            score={type.score}
-            marked={type.marked}
-            onUpdateType={onUpdateType(index)}
-            onRemoveType={onRemoveType(index)}
-          />
-        ))
-      ) : (
-        <MultiSkillType
-          loading={loading}
-          uniqueKey={`${skill}-type-0`}
-          type={undefined}
-          score={undefined}
-          marked={undefined}
-          onUpdateType={onUpdateType(0)}
-          onRemoveType={onRemoveType(0)}
-        />
-      )}
+      {types && types.length
+        ? types.map((type, index) => (
+            <MultiSkillType
+              key={`${skill}-type-${index}`}
+              loading={!isLoaded}
+              uniqueKey={`${skill}-type-${index}`}
+              type={type.type}
+              score={type.score}
+              marked={type.marked}
+              onUpdateType={onUpdateType(index)}
+              onRemoveType={onRemoveType(index)}
+            />
+          ))
+        : null}
     </div>
   );
 }

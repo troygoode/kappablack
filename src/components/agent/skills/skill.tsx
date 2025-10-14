@@ -1,27 +1,28 @@
 "use client";
 
+import { useShallow } from "zustand/shallow";
+
 import { Skeleton } from "../../ui/skeleton";
 import { AgentTextInput } from "../form/agent-text-input";
 import { AgentTooltip } from "../form/agent-tooltip";
 import { SquareCheckbox } from "../form/square-checkbox";
+import { useAgentStore } from "../stores/agent";
 
 export function Skill({
-  loading,
   skill,
-  score,
-  marked,
   tooltip,
   base,
-  update,
 }: {
-  loading: boolean;
-  skill?: string;
-  score?: number | undefined;
-  marked?: boolean | undefined;
+  skill: string;
   tooltip?: string;
   base?: number;
-  update: (score: number | undefined, marked: boolean | undefined) => void;
 }) {
+  const updateSkill = useAgentStore((state) => state.updateSkill);
+  const isLoaded = useAgentStore((state) => state.isLoaded);
+  const { marked, score } = useAgentStore(
+    useShallow((state) => state.getSkill(skill))
+  );
+
   return (
     <div className="flex grow">
       <div className="flex w-full items-center px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
@@ -30,9 +31,9 @@ export function Skill({
             className="cursor-pointer"
             checked={marked}
             onCheckedChange={(checked) => {
-              update(score, checked === true);
+              updateSkill(skill, score, checked === true);
             }}
-            disabled={loading}
+            disabled={!isLoaded}
           />
         </div>
         <div className="flex grow items-center gap-1.5 text-sm print:text-xs">
@@ -52,7 +53,7 @@ export function Skill({
       <div className="w-20 p-1 outline-1 outline-zinc-800 print:outline-slate-950">
         <div className="flex h-full items-center justify-center">
           <div className="flex gap-0.5 w-full">
-            {!loading ? (
+            {isLoaded ? (
               <AgentTextInput
                 fieldName={`skills.${skill}.score`}
                 type="number"
@@ -61,7 +62,11 @@ export function Skill({
                 maxLength={3}
                 min={0}
                 onChange={(value) => {
-                  update(value?.length ? parseInt(value) : undefined, marked);
+                  updateSkill(
+                    skill,
+                    value?.length ? parseInt(value) : undefined,
+                    marked
+                  );
                 }}
                 required
               />

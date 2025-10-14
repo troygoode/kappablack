@@ -48,7 +48,7 @@ export function MultiSkillType({
             {!loading ? (
               <AgentTextInput
                 fieldName={`${uniqueKey}-type`}
-                value={type}
+                value={type ?? ""}
                 maxLength={50}
                 onChange={(value) => onUpdateType(value, score, marked)}
               />
@@ -74,7 +74,7 @@ export function MultiSkillType({
             <AgentTextInput
               fieldName={`${uniqueKey}-score`}
               type="number"
-              value={score?.toString()}
+              value={score?.toString() ?? ""}
               onChange={(value) =>
                 onUpdateType(type, value ? parseInt(value) : undefined, marked)
               }

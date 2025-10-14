@@ -36,11 +36,12 @@ export interface ISpecialTraining {
   skillOrStat?: string;
 }
 
+// TODO deprecate
 export interface IAgentSkill {
   skill?: string;
-  type?: string;
   score?: number;
   marked?: boolean;
+  type?: string;
 }
 
 export interface IAgent {

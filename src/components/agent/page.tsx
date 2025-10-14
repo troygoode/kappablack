@@ -15,15 +15,16 @@ import { useAgentStore } from "./stores/agent";
 import { useEffect } from "react";
 
 export default function Agent() {
-  const { isLoaded, agent, update } = useAgentStore((state) => state);
-  const markLoaded = useAgentStore((state) => state.markLoaded);
+  const { isLoaded, agent, reset } = useAgentStore((state) => state);
   useEffect(() => {
     if (isLoaded) return;
     setTimeout(() => {
-      update({
-        // player: "Player Name",
+      reset({
+        isLoaded: true,
+        agent: {
+          // player: "Player Name",
+        },
       });
-      markLoaded();
     }, 1000 * 0.25);
   }, [agent]);
 
