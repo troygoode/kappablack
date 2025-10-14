@@ -1,0 +1,461 @@
+{
+  "id": "tbcBCRHp73ZBHjMyFyBwt",
+  "lastEdited": 1760478110661,
+  "personal": {
+    "name": "Rampart, Agent, Test",
+    "profession": "computer-scientist-engineer",
+    "employer": "Rampart",
+    "nationality": "USA",
+    "sex": "non-binary",
+    "age": "21",
+    "education": "School of hard knocks"
+  },
+  "stats": [
+    {
+      "id": "str",
+      "name": "Strength",
+      "score": 8,
+      "distinguishingFeature": "weak"
+    },
+    { "id": "dex", "name": "Dexterity", "score": 10 },
+    { "id": "con", "name": "Constitution", "score": 10 },
+    { "id": "int", "name": "Intelligence", "score": 10 },
+    { "id": "pow", "name": "Power", "score": 10 },
+    {
+      "id": "cha",
+      "name": "Charisma",
+      "score": 13,
+      "distinguishingFeature": "suave"
+    }
+  ],
+  "derived": [
+    { "id": "hp", "name": "Hit Points", "current": 3, "max": 9 },
+    { "id": "wp", "name": "Willpower Points", "current": 3, "max": 10 },
+    { "id": "san", "name": "Sanity Points", "current": 15, "max": 50 },
+    { "id": "bp", "name": "Breaking Point", "current": 12 }
+  ],
+  "physicalDescription": "light mode and dark mode compatible",
+  "bonds": [
+    {
+      "id": "sample-bond-1",
+      "name": "my laptop",
+      "value": 13,
+      "isDamaged": false
+    },
+    {
+      "id": "sample-bond-2",
+      "name": "my Switch",
+      "value": 13,
+      "isDamaged": true
+    },
+    { "id": "sample-bond-3", "name": "my dog", "value": 4, "isDamaged": false }
+  ],
+  "mentalDisorders": "to host an online character sheet viewable by others",
+  "sanityLoss": { "violence": 3, "helplessness": 0 },
+  "skills": [
+    {
+      "id": "accounting",
+      "elements": [{ "id": "accounting", "name": "", "value": 10 }]
+    },
+    {
+      "id": "alertness",
+      "elements": [
+        { "id": "alertness", "name": "", "value": 20, "hasFailed": true }
+      ]
+    },
+    {
+      "id": "anthropology",
+      "elements": [
+        { "id": "anthropology", "name": "", "value": 0, "hasFailed": false }
+      ]
+    },
+    {
+      "id": "archeology",
+      "elements": [{ "id": "archeology", "name": "", "value": 0 }]
+    },
+    {
+      "id": "art",
+      "elements": [
+        { "id": "art", "name": "mini painting", "value": 0 },
+        {
+          "id": "fzvS20c0m7zcmpJcq9myZ",
+          "name": "",
+          "value": 0,
+          "hasFailed": false
+        }
+      ]
+    },
+    {
+      "id": "artillery",
+      "elements": [{ "id": "artillery", "name": "", "value": 0 }]
+    },
+    {
+      "id": "athletics",
+      "elements": [{ "id": "athletics", "name": "", "value": 30 }]
+    },
+    {
+      "id": "bureaucracy",
+      "elements": [{ "id": "bureaucracy", "name": "", "value": 10 }]
+    },
+    {
+      "id": "computer-science",
+      "elements": [{ "id": "computer-science", "name": "", "value": 0 }]
+    },
+    {
+      "id": "craft",
+      "elements": [
+        {
+          "id": "b3rXWafnTSMcq_Ok7wqFP",
+          "name": "3d printing",
+          "value": 0,
+          "hasFailed": false
+        }
+      ]
+    },
+    {
+      "id": "criminology",
+      "elements": [{ "id": "criminology", "name": "", "value": 10 }]
+    },
+    {
+      "id": "demolitions",
+      "elements": [{ "id": "demolitions", "name": "", "value": 0 }]
+    },
+    {
+      "id": "disguise",
+      "elements": [{ "id": "disguise", "name": "", "value": 10 }]
+    },
+    { "id": "dodge", "elements": [{ "id": "dodge", "name": "", "value": 30 }] },
+    { "id": "drive", "elements": [{ "id": "drive", "name": "", "value": 20 }] },
+    {
+      "id": "firearms",
+      "elements": [{ "id": "firearms", "name": "", "value": 20 }]
+    },
+    {
+      "id": "first-aid",
+      "elements": [{ "id": "first-aid", "name": "", "value": 10 }]
+    },
+    {
+      "id": "foreign-language",
+      "elements": [{ "id": "foreign-language", "name": "", "value": 0 }]
+    },
+    {
+      "id": "forensics",
+      "elements": [{ "id": "forensics", "name": "", "value": 0 }]
+    },
+    {
+      "id": "heavy-machinery",
+      "elements": [{ "id": "heavy-machinery", "name": "", "value": 10 }]
+    },
+    {
+      "id": "heavy-weapons",
+      "elements": [{ "id": "heavy-weapons", "name": "", "value": 0 }]
+    },
+    {
+      "id": "history",
+      "elements": [{ "id": "history", "name": "", "value": 10 }]
+    },
+    {
+      "id": "humint",
+      "elements": [{ "id": "humint", "name": "", "value": 10 }]
+    },
+    { "id": "law", "elements": [{ "id": "law", "name": "", "value": 0 }] },
+    {
+      "id": "medicine",
+      "elements": [{ "id": "medicine", "name": "", "value": 0 }]
+    },
+    {
+      "id": "melee-weapons",
+      "elements": [{ "id": "melee-weapons", "name": "", "value": 30 }]
+    },
+    {
+      "id": "military-science",
+      "elements": [{ "id": "military-science", "name": "", "value": 0 }]
+    },
+    {
+      "id": "navigate",
+      "elements": [{ "id": "navigate", "name": "", "value": 10 }]
+    },
+    {
+      "id": "occult",
+      "elements": [{ "id": "occult", "name": "", "value": 10 }]
+    },
+    {
+      "id": "persuade",
+      "elements": [{ "id": "persuade", "name": "", "value": 20 }]
+    },
+    {
+      "id": "pharmacy",
+      "elements": [{ "id": "pharmacy", "name": "", "value": 0 }]
+    },
+    { "id": "pilot", "elements": [{ "id": "pilot", "name": "", "value": 0 }] },
+    {
+      "id": "psychotherapy",
+      "elements": [{ "id": "psychotherapy", "name": "", "value": 10 }]
+    },
+    { "id": "ride", "elements": [{ "id": "ride", "name": "", "value": 10 }] },
+    {
+      "id": "science",
+      "elements": [{ "id": "science", "name": "", "value": 0 }]
+    },
+    {
+      "id": "search",
+      "elements": [{ "id": "search", "name": "", "value": 20 }]
+    },
+    {
+      "id": "sigint",
+      "elements": [{ "id": "sigint", "name": "", "value": 0 }]
+    },
+    {
+      "id": "stealth",
+      "elements": [{ "id": "stealth", "name": "", "value": 10 }]
+    },
+    {
+      "id": "surgery",
+      "elements": [{ "id": "surgery", "name": "", "value": 0 }]
+    },
+    {
+      "id": "survival",
+      "elements": [{ "id": "survival", "name": "", "value": 10 }]
+    },
+    { "id": "swim", "elements": [{ "id": "swim", "name": "", "value": 20 }] },
+    {
+      "id": "unarmed-combat",
+      "elements": [{ "id": "unarmed-combat", "name": "", "value": 40 }]
+    },
+    {
+      "id": "unnatural",
+      "elements": [{ "id": "unnatural", "name": "", "value": 0 }]
+    },
+    {
+      "id": "9tNYlc7VAFFTvN3C1e_9D",
+      "isCustom": true,
+      "elements": [
+        {
+          "id": "9tNYlc7VAFFTvN3C1e_9D",
+          "name": "test",
+          "hasFailed": false,
+          "value": 0
+        }
+      ]
+    }
+  ],
+  "wounds": "none",
+  "isFirstAidAttempted": false,
+  "equipment": {
+    "gear": "my FBI jacket",
+    "weapons": [
+      {
+        "id": "unarmed-attack",
+        "baseWeapon": {
+          "id": "unarmed-attack",
+          "name": "Unarmed attack",
+          "type": "hand-to-hand",
+          "category": "Hand-to-Hand",
+          "skill": "unarmed-combat",
+          "damage": { "die": 4, "totalBonus": -1, "count": 1 },
+          "armorPiercing": 0,
+          "expense": "none"
+        },
+        "name": "Unarmed Attack",
+        "currentCapacity": 0,
+        "selectedMaxCapacity": 0
+      },
+      {
+        "id": "iYQCLd7euNKjaPvWhiIoU",
+        "name": "Pepper spray keychain",
+        "currentCapacity": 0,
+        "selectedMaxCapacity": 1,
+        "baseWeapon": {
+          "id": "pepper-spray-keychain",
+          "name": "Pepper spray keychain",
+          "type": "stun",
+          "category": "Tear Gas and Pepper Spray",
+          "skill": "dex",
+          "range": "1 m",
+          "capacity": 1,
+          "expense": "incidental",
+          "radius": "1 target",
+          "penalty": { "value": -20, "duration": "1 hr" }
+        }
+      },
+      {
+        "id": "uvQF4rovMxinohLCE9--E",
+        "name": "Flash-bang grenade, thrown",
+        "currentCapacity": 0,
+        "selectedMaxCapacity": 1,
+        "baseWeapon": {
+          "id": "flash-bang-grenade-thrown",
+          "name": "Flash-bang grenade, thrown",
+          "type": "stun",
+          "category": "Stun Grenades",
+          "skill": "athletics",
+          "range": "20 m",
+          "capacity": 1,
+          "expense": "incidental",
+          "radius": "10 m",
+          "penalty": {
+            "value": -40,
+            "duration": { "count": 1, "die": 6, "unit": "turns" }
+          },
+          "description": "Restricted. Requires special training. Radius halved outdoors."
+        }
+      },
+      {
+        "id": "PVCytVC6M55qmY8MC324q",
+        "name": "Flash-bang grenade, launched",
+        "currentCapacity": 0,
+        "selectedMaxCapacity": 1,
+        "baseWeapon": {
+          "id": "flash-bang-grenade-launched",
+          "name": "Flash-bang grenade, launched",
+          "type": "stun",
+          "category": "Stun Grenades",
+          "skill": "heavy-weapons",
+          "range": "50 m",
+          "capacity": 1,
+          "expense": "incidental",
+          "radius": "10 m",
+          "penalty": {
+            "value": -40,
+            "duration": { "count": 1, "die": 6, "unit": "turns" }
+          },
+          "description": "Restricted. Requires special training. Radius halved outdoors."
+        }
+      },
+      {
+        "id": "HEwUxuRyM-kgZmvDSjYqT",
+        "name": "CED pistol",
+        "currentCapacity": 0,
+        "selectedMaxCapacity": 4,
+        "baseWeapon": {
+          "id": "ced-pistol",
+          "name": "CED pistol",
+          "type": "stun",
+          "category": "Electroshock Weapons",
+          "skill": "firearms",
+          "range": "4 m",
+          "capacity": 4,
+          "expense": "standard",
+          "penalty": {
+            "value": -20,
+            "duration": { "count": 1, "die": 20, "unit": "turns" }
+          },
+          "description": "Requires special training."
+        }
+      },
+      {
+        "id": "-TZ1kv023qlIj13e1e9xb",
+        "name": "Heavy rifle",
+        "currentCapacity": 0,
+        "selectedMaxCapacity": 10,
+        "baseWeapon": {
+          "id": "heavy-rifle",
+          "name": "Heavy rifle",
+          "type": "ranged",
+          "category": "Firearms",
+          "skill": "firearms",
+          "range": "150 m",
+          "capacity": [10, 20],
+          "damage": { "count": 1, "die": 12, "totalBonus": 2 },
+          "lethality": 10,
+          "armorPiercing": 5,
+          "expense": "unusual",
+          "examples": [
+            "7.62mm NATO",
+            "7.62×54mm",
+            ".30-06",
+            "H&K G3",
+            "FN FAL",
+            "Izmash SVD",
+            "M1 Garand",
+            "Remington Model 700 (M24)"
+          ],
+          "description": "Restricted if capable of fully automatic fire. Use the lethality rating if firing bursts."
+        }
+      },
+      {
+        "id": "9XLlYdVvnpHEL6PAWM17-",
+        "name": "General-purpose machine gun (GPMG)",
+        "currentCapacity": 0,
+        "selectedMaxCapacity": 100,
+        "baseWeapon": {
+          "id": "general-purpose-machine-gun-gpmg",
+          "name": "General-purpose machine gun (GPMG)",
+          "type": "ranged",
+          "category": "Heavy Weapons",
+          "skill": "heavy-weapons",
+          "range": "300 m",
+          "capacity": 100,
+          "lethality": 15,
+          "armorPiercing": 3,
+          "expense": "major",
+          "radius": "Per burst (p. 56)",
+          "examples": ["FN MAG (M240)", "Kovrov PKM", "Saco M60"],
+          "description": "Restricted."
+        }
+      },
+      {
+        "id": "Gtgs8upVIZUT8Exqi2LTb",
+        "name": "ANFO explosive",
+        "currentCapacity": 0,
+        "selectedMaxCapacity": 0,
+        "baseWeapon": {
+          "id": "anfo-explosive",
+          "name": "ANFO explosive",
+          "type": "ranged",
+          "category": "Demolitions",
+          "skill": "demolitions",
+          "capacity": 0,
+          "lethality": 30,
+          "armorPiercing": 0,
+          "expense": "incidental",
+          "radius": "20 m",
+          "description": "Ammonium nitrate fuel oil—diesel fuel and fertilizer; requires Science (Chemistry) and Demolitions skills."
+        }
+      },
+      {
+        "id": "UGhIxmbchXFLoQ2mAMpDH",
+        "name": "General-purpose bomb",
+        "currentCapacity": 0,
+        "selectedMaxCapacity": 0,
+        "baseWeapon": {
+          "id": "general-purpose-bomb",
+          "name": "General-purpose bomb",
+          "type": "ranged",
+          "category": "Artillery",
+          "skill": "artillery",
+          "range": "Air-dropped",
+          "capacity": 0,
+          "lethality": 70,
+          "armorPiercing": 10,
+          "expense": "unusual",
+          "radius": "100 m",
+          "description": "Restricted. Requires special training.",
+          "examples": ["MK 82", "FAB-250"]
+        }
+      },
+      {
+        "id": "nL4YHMJ1ZJXhhjXY31G_k",
+        "name": "Unarmed attack",
+        "currentCapacity": 0,
+        "baseWeapon": {
+          "id": "unarmed-attack",
+          "name": "Unarmed attack",
+          "type": "hand-to-hand",
+          "category": "Hand-to-Hand",
+          "skill": "unarmed-combat",
+          "damage": { "die": 4, "totalBonus": -1, "count": 1 },
+          "armorPiercing": 0,
+          "expense": "none"
+        }
+      }
+    ]
+  },
+  "notes": "no notes",
+  "homeDevelopments": "no developments",
+  "specialTraining": [
+    { "id": "sample-training-3", "name": "training 1", "abilityId": "str" },
+    { "id": "Letw3VVN8o0IOMOuPmFxN", "name": "", "abilityId": "" },
+    { "id": "lPZKSjUUGsQAi7PYi3CiI", "name": "", "abilityId": "" }
+  ]
+}

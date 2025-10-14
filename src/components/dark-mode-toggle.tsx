@@ -11,6 +11,10 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
+{
+  /* <DarkModeToggle className="cursor-pointer bg-black text-zinc-200 border-zinc-800 hover:text-white hover:bg-zinc-800 hover:border-zinc-600 dark:text-black dark:border-zinc-100 dark:hover:bg-zinc-200 dark:hover:text-black dark:hover:border-zinc-200" /> */
+}
+
 export function DarkModeToggle({ className }: { className?: string }) {
   const { setTheme } = useTheme();
 

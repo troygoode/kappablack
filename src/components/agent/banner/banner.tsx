@@ -7,8 +7,8 @@ import KappaBlackCutoutW from "./kappablack_cutout_w.webp";
 import KappaBlackCutoutK from "./kappablack_cutout_k.webp";
 import DeltaGreenLogo from "./deltagreen_cutout_k.webp";
 
+import { Settings } from "./settings";
 import { Spinner } from "@/components/ui/spinner";
-import { DarkModeToggle } from "@/components/dark-mode-toggle";
 import { ModeSelector } from "../mode-selector";
 import { HouseIcon } from "@/components/ui/icons/lucide-house";
 import { Button } from "@/components/ui/button";
@@ -91,7 +91,7 @@ export default function Banner({ isLoading }: { isLoading: boolean }) {
         </div>
         <div className="flex items-center justify-end gap-2">
           <ModeSelector className="print:hidden" />
-          <DarkModeToggle className="cursor-pointer bg-black text-zinc-200 border-zinc-800 hover:text-white hover:bg-zinc-800 hover:border-zinc-600 dark:text-black dark:border-zinc-100 dark:hover:bg-zinc-200 dark:hover:text-black dark:hover:border-zinc-200 print:hidden" />
+          <Settings className="print:hidden" />
         </div>
       </div>
     </div>
