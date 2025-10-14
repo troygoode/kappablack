@@ -1,6 +1,6 @@
 "use client";
 
-import StatsData from "@/data/stats.json";
+import { useShallow } from "zustand/shallow";
 
 import { Button } from "../ui/button";
 import { AgentTextInput } from "./form/agent-text-input";
@@ -10,6 +10,8 @@ import { Skeleton } from "../ui/skeleton";
 import { AgentTextarea } from "./form/agent-textarea";
 import { AgentTooltip } from "./form/agent-tooltip";
 import { useAgentStore } from "./stores/agent";
+
+import StatsData from "@/data/stats.json";
 
 interface IStatsData {
   str: string;
@@ -195,7 +197,53 @@ const featurePlaceholders = (
 };
 
 export default function Stats() {
-  const { agent, update } = useAgentStore((state) => state);
+  const merge = useAgentStore((state) => state.merge);
+  const { isLoaded, hp, wp, san, bp, physicalDescription } = useAgentStore(
+    useShallow((state) => ({
+      isLoaded: state.isLoaded,
+      hp: state.agent?.hp,
+      wp: state.agent?.wp,
+      san: state.agent?.san,
+      bp: state.agent?.bp,
+      physicalDescription: state.agent?.physicalDescription || "",
+    }))
+  );
+  const strength = useAgentStore(
+    useShallow((state) => ({
+      ...{ score: undefined, feature: "" },
+      ...state.agent?.strength,
+    }))
+  );
+  const dexterity = useAgentStore(
+    useShallow((state) => ({
+      ...{ score: undefined, feature: "" },
+      ...state.agent?.dexterity,
+    }))
+  );
+  const constitution = useAgentStore(
+    useShallow((state) => ({
+      ...{ score: undefined, feature: "" },
+      ...state.agent?.constitution,
+    }))
+  );
+  const intelligence = useAgentStore(
+    useShallow((state) => ({
+      ...{ score: undefined, feature: "" },
+      ...state.agent?.intelligence,
+    }))
+  );
+  const power = useAgentStore(
+    useShallow((state) => ({
+      ...{ score: undefined, feature: "" },
+      ...state.agent?.power,
+    }))
+  );
+  const charisma = useAgentStore(
+    useShallow((state) => ({
+      ...{ score: undefined, feature: "" },
+      ...state.agent?.charisma,
+    }))
+  );
 
   return (
     <div className="flex flex-col outline-1 outline-zinc-800 sm:flex-row print:outline-slate-950 ">
@@ -218,170 +266,132 @@ export default function Stats() {
               </div>
             </div>
             <Stat
-              loading={!agent}
+              loading={!isLoaded}
               label="Strength"
               abbreviation="str"
-              score={agent?.strength?.score}
+              score={strength.score}
               setScore={(score) => {
-                if (!agent) return;
-                agent.strength = { ...agent.strength, score };
-                update(agent);
+                merge({ strength: { score, feature: strength.feature } });
               }}
-              feature={agent?.strength?.feature ?? ""}
+              feature={strength.feature}
               featurePlaceholder={featurePlaceholders(
-                agent?.strength?.score,
+                strength.score,
                 "Feeble",
                 "Weak",
                 "Muscular",
                 "Huge"
               )}
               setFeature={(feature) => {
-                if (!agent) return;
-                agent.strength = {
-                  ...agent.strength,
-                  feature,
-                };
-                update(agent);
+                merge({ strength: { score: strength.score, feature } });
               }}
               tooltip={(StatsData as IStatsData).str}
             />
             <Stat
-              loading={!agent}
+              loading={!isLoaded}
               label="Dexterity"
               abbreviation="dex"
-              score={agent?.dexterity?.score}
+              score={dexterity.score}
               setScore={(score) => {
-                if (!agent) return;
-                agent.dexterity = { ...agent.dexterity, score };
-                update(agent);
+                merge({ dexterity: { score, feature: dexterity.feature } });
               }}
-              feature={agent?.dexterity?.feature ?? ""}
+              feature={dexterity.feature}
               featurePlaceholder={featurePlaceholders(
-                agent?.dexterity?.score,
+                dexterity.score,
                 "Barely Mobile",
                 "Clumsy",
                 "Nimble",
                 "Acrobatic"
               )}
               setFeature={(feature) => {
-                if (!agent) return;
-                agent.dexterity = {
-                  ...agent.dexterity,
-                  feature,
-                };
-                update(agent);
+                merge({ dexterity: { score: dexterity.score, feature } });
               }}
               tooltip={(StatsData as IStatsData).dex}
             />
             <Stat
-              loading={!agent}
+              loading={!isLoaded}
               label="Constitution"
               abbreviation="con"
-              score={agent?.constitution?.score}
+              score={constitution.score}
               setScore={(score) => {
-                if (!agent) return;
-                agent.constitution = { ...agent.constitution, score };
-                update(agent);
+                merge({
+                  constitution: { score, feature: constitution.feature },
+                });
               }}
-              feature={agent?.constitution?.feature ?? ""}
+              feature={constitution.feature}
               featurePlaceholder={featurePlaceholders(
-                agent?.constitution?.score,
+                constitution.score,
                 "Bedridden",
                 "Sickly",
                 "Perfect Health",
                 "Indefatigable"
               )}
               setFeature={(feature) => {
-                if (!agent) return;
-                agent.constitution = {
-                  ...agent.constitution,
-                  feature,
-                };
-                update(agent);
+                merge({ constitution: { score: constitution.score, feature } });
               }}
               tooltip={(StatsData as IStatsData).con}
             />
             <Stat
-              loading={!agent}
+              loading={!isLoaded}
               label="Intelligence"
               abbreviation="int"
-              score={agent?.intelligence?.score}
+              score={intelligence.score}
               setScore={(score) => {
-                if (!agent) return;
-                agent.intelligence = { ...agent.intelligence, score };
-                update(agent);
+                merge({
+                  intelligence: { score, feature: intelligence.feature },
+                });
               }}
-              feature={agent?.intelligence?.feature ?? ""}
+              feature={intelligence.feature}
               featurePlaceholder={featurePlaceholders(
-                agent?.intelligence?.score,
+                intelligence.score,
                 "Imbecilic",
                 "Slow",
                 "Perceptive",
                 "Brilliant"
               )}
               setFeature={(feature) => {
-                if (!agent) return;
-                agent.intelligence = {
-                  ...agent.intelligence,
-                  feature,
-                };
-                update(agent);
+                merge({ intelligence: { score: intelligence.score, feature } });
               }}
               tooltip={(StatsData as IStatsData).int}
             />
             <Stat
-              loading={!agent}
+              loading={!isLoaded}
               label="Power"
               abbreviation="pow"
-              score={agent?.power?.score}
+              score={power.score}
               setScore={(score) => {
-                if (!agent) return;
-                agent.power = { ...agent.power, score };
-                update(agent);
+                merge({ power: { score, feature: power.feature } });
               }}
-              feature={agent?.power?.feature ?? ""}
+              feature={power.feature}
               featurePlaceholder={featurePlaceholders(
-                agent?.power?.score,
+                power.score,
                 "Spineless",
                 "Nervous",
                 "Strong-willed",
                 "Indomitable"
               )}
               setFeature={(feature) => {
-                if (!agent) return;
-                agent.power = {
-                  ...agent.power,
-                  feature,
-                };
-                update(agent);
+                merge({ power: { score: power.score, feature } });
               }}
               tooltip={(StatsData as IStatsData).pow}
             />
             <Stat
-              loading={!agent}
+              loading={!isLoaded}
               label="Charisma"
               abbreviation="cha"
-              score={agent?.charisma?.score}
+              score={charisma.score}
               setScore={(score) => {
-                if (!agent) return;
-                agent.charisma = { ...agent.charisma, score };
-                update(agent);
+                merge({ charisma: { score, feature: charisma.feature } });
               }}
-              feature={agent?.charisma?.feature ?? ""}
+              feature={charisma.feature}
               featurePlaceholder={featurePlaceholders(
-                agent?.charisma?.score,
+                charisma.score,
                 "Unbearable",
                 "Awkward",
                 "Charming",
                 "Magnetic"
               )}
               setFeature={(feature) => {
-                if (!agent) return;
-                agent.charisma = {
-                  ...agent.charisma,
-                  feature,
-                };
-                update(agent);
+                merge({ charisma: { score: charisma.score, feature } });
               }}
               tooltip={(StatsData as IStatsData).cha}
             />
@@ -402,55 +412,45 @@ export default function Stats() {
               label="Hit Points"
               abbreviation="hp"
               max={
-                !agent?.strength?.score || !agent?.constitution?.score
+                !strength.score || !constitution.score
                   ? undefined
                   : Math.ceil(
-                      ((agent.strength.score ?? 0) +
-                        (agent.constitution.score ?? 0)) /
-                        2
+                      ((strength.score ?? 0) + (constitution.score ?? 0)) / 2
                     )
               }
-              current={agent?.hp}
+              current={hp}
               setCurrent={(current) => {
-                if (!agent) return;
-                update({ ...agent, hp: current });
+                merge({ hp: current });
               }}
               tooltip={(StatsData as IStatsData).hp}
             />
             <Derived
               label="Willpower Points"
               abbreviation="wp"
-              max={!agent?.power?.score ? undefined : agent.power.score}
-              current={agent?.wp}
+              max={!power.score ? undefined : power.score}
+              current={wp}
               setCurrent={(current) => {
-                if (!agent) return;
-                update({ ...agent, wp: current });
+                merge({ wp: current });
               }}
               tooltip={(StatsData as IStatsData).wp}
             />
             <Derived
               label="Sanity Points"
               abbreviation="san"
-              max={!agent?.power?.score ? undefined : agent.power.score * 5}
-              current={agent?.san}
+              max={!power.score ? undefined : power.score * 5}
+              current={san}
               setCurrent={(current) => {
-                if (!agent) return;
-                update({ ...agent, san: current });
+                merge({ san: current });
               }}
               tooltip={(StatsData as IStatsData).san}
             />
             <Derived
               label="Breaking Point"
               abbreviation="bp"
-              max={
-                !agent?.power?.score || !agent?.san
-                  ? undefined
-                  : agent.san - agent.power.score
-              }
-              current={agent?.bp}
+              max={!power.score || !san ? undefined : san - power.score}
+              current={bp}
               setCurrent={(current) => {
-                if (!agent) return;
-                update({ ...agent, bp: current });
+                merge({ bp: current });
               }}
               tooltip={(StatsData as IStatsData).bp}
             />
@@ -466,19 +466,19 @@ export default function Stats() {
               >
                 <h3>10. Physical description</h3>
               </label>
-              {agent && (agent?.physicalDescription?.length ?? 0) > 0 && (
+              {physicalDescription.length ? (
                 <span className="text-xs print:hidden">
-                  {agent?.physicalDescription?.length ?? 0}/300
+                  {physicalDescription.length}/300
                 </span>
-              )}
+              ) : null}
             </div>
             <AgentTextarea
-              loading={!agent}
+              loading={!isLoaded}
               fieldName="physical-description"
-              value={agent?.physicalDescription}
+              value={physicalDescription}
               maxLength={300}
               onChange={(value) => {
-                update({ ...agent, physicalDescription: value });
+                merge({ physicalDescription: value });
               }}
             />
           </div>
