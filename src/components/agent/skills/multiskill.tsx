@@ -60,7 +60,7 @@ export function MultiSkill({
             <Button
               size="sm"
               variant="outline"
-              className="cursor-pointer"
+              className="cursor-pointer print:hidden"
               onClick={() => addMultiSkillType(skill)}
               disabled={!isLoaded || types.length >= 3}
             >

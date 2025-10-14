@@ -64,6 +64,8 @@ const AgentTextInput = ({
           required:focus:dark:bg-zinc-900 required:focus:dark:border-input
 
           disabled:required:dark:border-input/10
+
+          print:border-0 print:outline-0
           `
           : ""
       )}

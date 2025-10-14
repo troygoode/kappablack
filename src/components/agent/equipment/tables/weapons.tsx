@@ -50,7 +50,7 @@ export const WeaponsTable = ({
                   <Button
                     size="sm"
                     variant="outline"
-                    className="cursor-pointer"
+                    className="cursor-pointer print:hidden"
                     disabled={loading}
                   >
                     <CirclePlusIcon />
@@ -90,7 +90,7 @@ export const WeaponsTable = ({
       </thead>
       <tbody>
         {weapons.length === 0 && (
-          <tr className="text-center">
+          <tr className="text-center print:hidden">
             <td
               colSpan={9}
               className="border-l border-b border-zinc-800 px-1 py-3"
@@ -131,7 +131,7 @@ export const WeaponsTable = ({
                 <Button
                   size="sm"
                   variant="outline"
-                  className="cursor-pointer hover:bg-destructive hover:text-destructive-foreground dark:hover:bg-destructive dark:hover:text-destructive-foreground"
+                  className="cursor-pointer hover:bg-destructive hover:text-destructive-foreground dark:hover:bg-destructive dark:hover:text-destructive-foreground print:hidden"
                   disabled={loading}
                   onClick={() => remove(index)}
                 >

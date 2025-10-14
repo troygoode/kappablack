@@ -1,5 +1,7 @@
 "use client";
 
+import testAgent from "@/data/test-agent.json";
+
 import { useEffect } from "react";
 
 import Equipment from "@/components/agent/equipment/equipment";
@@ -20,16 +22,15 @@ const DEBUG_ENABLE_WAIT = false;
 const DEBUG_WAIT_SECONDS = 2.25;
 
 export default function Agent() {
-  const { isLoaded, reset } = useAgentStore((state) => state);
+  const reset = useAgentStore((state) => state.reset);
+  const isLoaded = useAgentStore((state) => state.isLoaded);
   useEffect(() => {
     if (isLoaded) return;
     setTimeout(
       () => {
         reset({
           isLoaded: true,
-          agent: {
-            // player: "Player Name",
-          },
+          agent: testAgent,
         });
       },
       DEBUG_ENABLE_WAIT ? 1000 * DEBUG_WAIT_SECONDS : 50

@@ -1,8 +1,12 @@
 "use client";
 
+import { useAgentStore } from "./stores/agent";
+
 export default function Footer() {
+  const agent = useAgentStore((state) => state.agent);
+
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4" onClick={() => console.log(agent)}>
       <div className="flex flex-col gap-2 uppercase lg:flex-row lg:justify-between print:flex-row print:justify-between">
         <div className="flex items-center justify-center">
           <span className="font-roboto-condensed text-3xl">DD</span>

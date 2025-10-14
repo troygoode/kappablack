@@ -88,7 +88,7 @@ export default function Equipment() {
             className="h-58"
           />
         </div>
-        <div className="md:hidden">
+        <div className="md:hidden print:hidden">
           <WeaponsCards
             loading={!isLoaded}
             weapons={weapons}
@@ -108,7 +108,7 @@ export default function Equipment() {
             }
           />
         </div>
-        <div className="hidden md:block">
+        <div className="hidden md:block print:block">
           <WeaponsTable
             loading={!isLoaded}
             weapons={weapons}

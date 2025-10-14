@@ -46,7 +46,7 @@ const SpecialTraining = ({
       <Button
         size="sm"
         variant="outline"
-        className="cursor-pointer hover:bg-destructive hover:text-destructive-foreground dark:hover:bg-destructive dark:hover:text-destructive-foreground"
+        className="cursor-pointer hover:bg-destructive hover:text-destructive-foreground dark:hover:bg-destructive dark:hover:text-destructive-foreground print:hidden"
         onClick={() => remove()}
         disabled={loading}
       >
@@ -169,7 +169,7 @@ export default function Remarks() {
                   <Button
                     size="sm"
                     variant="outline"
-                    className="cursor-pointer"
+                    className="cursor-pointer print:hidden"
                     onClick={() => addTraining()}
                     disabled={!isLoaded || trainings.length >= 6}
                   >

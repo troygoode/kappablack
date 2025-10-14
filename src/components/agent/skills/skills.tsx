@@ -42,7 +42,7 @@ export default function Skills() {
     <div className="flex flex-col outline-1 outline-zinc-800 sm:flex-row print:outline-slate-950 break-after-page">
       <SideHeader>Applicable Skill Sets</SideHeader>
 
-      <div className="md:hidden w-full">
+      <div className="md:hidden w-full print:hidden">
         <div className="flex flex-col">
           <SkillColumn col={col2_1} />
           <SkillColumn col={col2_2} />
@@ -50,7 +50,7 @@ export default function Skills() {
         </div>
       </div>
 
-      <div className="hidden md:block lg:hidden w-full">
+      <div className="hidden md:block lg:hidden w-full print:hidden">
         <div className="grid grid-cols-2">
           <div className="flex flex-col">
             <SkillColumn col={col2_1} />
@@ -62,7 +62,7 @@ export default function Skills() {
         </div>
       </div>
 
-      <div className="hidden lg:block w-full">
+      <div className="hidden lg:block w-full print:block">
         <div className="grid grid-cols-3">
           <div className="flex flex-col">
             <SkillColumn col={col3_1} />

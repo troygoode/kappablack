@@ -1,0 +1,250 @@
+{
+  "name": "Goode, Troy, M",
+  "profession": "FBI Agent",
+  "employer": "FBI",
+  "nationality": "USA",
+  "age": "45",
+  "education": "None",
+  "strength": {
+    "score": 10,
+    "feature": ""
+  },
+  "dexterity": {
+    "score": 10,
+    "feature": ""
+  },
+  "constitution": {
+    "score": 10,
+    "feature": ""
+  },
+  "intelligence": {
+    "score": 10,
+    "feature": ""
+  },
+  "power": {
+    "score": 13,
+    "feature": "Strong-willed"
+  },
+  "charisma": {
+    "score": 8,
+    "feature": "Awkward"
+  },
+  "hp": 10,
+  "wp": 13,
+  "san": 65,
+  "bp": 52,
+  "motivationsAndDisorders": "To serve my country.",
+  "bonds": [
+    {
+      "bond": "My dog, Yoshi",
+      "score": 8,
+      "marked": false
+    }
+  ],
+  "skills": [
+    {
+      "skill": "Accounting",
+      "score": 10
+    },
+    {
+      "skill": "Alertness",
+      "score": 20
+    },
+    {
+      "skill": "Anthropology",
+      "score": 0
+    },
+    {
+      "skill": "Archeology",
+      "score": 0
+    },
+    {
+      "skill": "Artillery",
+      "score": 0
+    },
+    {
+      "skill": "Art",
+      "score": 20,
+      "type": "Mini Painting"
+    },
+    {
+      "skill": "Athletics",
+      "score": 30
+    },
+    {
+      "skill": "Bureaucracy",
+      "score": 10
+    },
+    {
+      "skill": "Computer Science",
+      "score": 0
+    },
+    {
+      "skill": "Criminology",
+      "score": 10
+    },
+    {
+      "skill": "Demolitions",
+      "score": 0
+    },
+    {
+      "skill": "Disguise",
+      "score": 10
+    },
+    {
+      "skill": "Dodge",
+      "score": 30
+    },
+    {
+      "skill": "Driving",
+      "score": 20
+    },
+    {
+      "skill": "Firearms",
+      "score": 20
+    },
+    {
+      "skill": "First Aid",
+      "score": 10
+    },
+    {
+      "skill": "Forensics",
+      "score": 0
+    },
+    {
+      "skill": "Heavy Machiner",
+      "score": 10
+    },
+    {
+      "skill": "History",
+      "score": 10
+    },
+    {
+      "skill": "Heavy Weapons",
+      "score": 0
+    },
+    {
+      "skill": "HUMINT",
+      "score": 10
+    },
+    {
+      "skill": "Law",
+      "score": 0
+    },
+    {
+      "skill": "Medicine",
+      "score": 0
+    },
+    {
+      "skill": "Melee Weapons",
+      "score": 30
+    },
+    {
+      "skill": "Navigate",
+      "score": 10
+    },
+    {
+      "skill": "Occult",
+      "score": 10
+    },
+    {
+      "skill": "Persuade",
+      "score": 20
+    },
+    {
+      "skill": "Craft"
+    },
+    {
+      "skill": "Foreign Language"
+    },
+    {
+      "skill": "Military Science"
+    },
+    {
+      "skill": "Pilot"
+    },
+    {
+      "skill": "Pharmacy",
+      "score": 0
+    },
+    {
+      "skill": "Psychotherapy",
+      "score": 10
+    },
+    {
+      "skill": "Ride",
+      "score": 10
+    },
+    {
+      "skill": "Search",
+      "score": 20
+    },
+    {
+      "skill": "SIGINT",
+      "score": 0
+    },
+    {
+      "skill": "Stealth",
+      "score": 10
+    },
+    {
+      "skill": "Surgery",
+      "score": 0
+    },
+    {
+      "skill": "Survival",
+      "score": 10
+    },
+    {
+      "skill": "Swim",
+      "score": 20
+    },
+    {
+      "skill": "Unarmed Combat",
+      "score": 40
+    },
+    {
+      "skill": "Unnatural",
+      "score": 0
+    },
+    {
+      "skill": "Science"
+    }
+  ],
+  "gear": "My FBI windbreaker",
+  "weapons": [
+    {
+      "category": "Hand-to-Hand Weapons",
+      "weapon": "Unarmed Attack",
+      "skill": "Unarmed Combat",
+      "damage": "1D4-1",
+      "expense": "None"
+    },
+    {
+      "category": "Firearms",
+      "weapon": "Light pistol",
+      "skill": "Firearms",
+      "range": "10m",
+      "damage": "1D8",
+      "capacity": 7,
+      "expense": "Standard",
+      "notes": "Revolver capacity: 6. Examples: .22 LR, .32 ACP, .380 ACP, .38 Special: S&W Model 36 Chief's Special, Walther PPK.",
+      "ammo": 7
+    }
+  ],
+  "stunWeapons": [
+    {
+      "category": "Tear Gas and Pepper Spray",
+      "weapon": "Pepper spray keychain",
+      "skill": "DEXx5",
+      "range": "1m",
+      "capacity": 1,
+      "radius": "1 target",
+      "penalty": "-20% for 1 hr",
+      "expense": "Incidental",
+      "ammo": 1
+    }
+  ],
+  "notes": "N/A",
+  "player": "Troy  Goode"
+}
