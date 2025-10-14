@@ -51,6 +51,7 @@ const AgentTextInput = ({
       min={min}
       className={classNames(
         className,
+        "dark:placeholder:text-zinc-600",
         val.length === 0
           ? `
           disabled:dark:bg-input/10

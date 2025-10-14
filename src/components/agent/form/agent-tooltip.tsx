@@ -7,21 +7,14 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 
-const AgentTooltip = ({
-  maxWidth = 70,
-  children,
-}: React.PropsWithChildren<{
-  maxWidth?: number;
-}>) => (
+const AgentTooltip = ({ children }: React.PropsWithChildren) => (
   <div className="relative print:hidden">
     <Tooltip>
       <TooltipTrigger>
         <InfoIcon size={12} className="text-muted-foreground" />
       </TooltipTrigger>
-      <TooltipContent className="outline-1 outline-zinc-800">
-        <div className={`${maxWidth ? `max-w-${maxWidth}` : ""}`}>
-          {children}
-        </div>
+      <TooltipContent className="outline-1 outline-zinc-800 max-w-80">
+        {children}
       </TooltipContent>
     </Tooltip>
   </div>

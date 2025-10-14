@@ -66,6 +66,7 @@ export function Skill({
                 fieldName={`skills.${skill}.score`}
                 type="number"
                 value={score?.toString() ?? ""}
+                placeholder={base && base !== 0 ? base.toString() : undefined}
                 maxLength={3}
                 min={0}
                 onChange={(value) => {
