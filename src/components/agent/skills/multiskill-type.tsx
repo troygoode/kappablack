@@ -14,7 +14,7 @@ export interface ISkillType {
 
 export function MultiSkillType({
   loading,
-  uniqueKey,
+  fieldName,
   type,
   score,
   marked,
@@ -22,7 +22,7 @@ export function MultiSkillType({
   onRemoveType,
 }: ISkillType & {
   loading: boolean;
-  uniqueKey: string;
+  fieldName: string;
   onUpdateType: (
     type: string | undefined,
     score: number | undefined,
@@ -47,7 +47,7 @@ export function MultiSkillType({
           <div className="grow gap-0.5 lg:pl-2 xl:pl-0">
             {!loading ? (
               <AgentTextInput
-                fieldName={`${uniqueKey}-type`}
+                fieldName={`${fieldName}-type`}
                 value={type ?? ""}
                 maxLength={50}
                 onChange={(value) => onUpdateType(value, score, marked)}
@@ -72,7 +72,7 @@ export function MultiSkillType({
         <div className="flex h-full items-center">
           {!loading ? (
             <AgentTextInput
-              fieldName={`${uniqueKey}-score`}
+              fieldName={`${fieldName}-score`}
               type="number"
               value={score?.toString() ?? ""}
               onChange={(value) =>

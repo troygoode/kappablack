@@ -18,6 +18,7 @@ import Disclaimer from "@/components/disclaimer/disclaimer";
 import Navigation from "@/components/navigation";
 import { useAgentStore } from "./stores/agent";
 
+const DEBUG_LOAD_TEST_AGENT = false;
 const DEBUG_ENABLE_WAIT = false;
 const DEBUG_WAIT_SECONDS = 2.25;
 
@@ -30,7 +31,15 @@ export default function Agent() {
       () => {
         reset({
           isLoaded: true,
-          agent: testAgent,
+          agent: DEBUG_LOAD_TEST_AGENT
+            ? testAgent
+            : {
+                bonds: [],
+                skills: [],
+                weapons: [],
+                stunWeapons: [],
+                specialTraining: [],
+              },
         });
       },
       DEBUG_ENABLE_WAIT ? 1000 * DEBUG_WAIT_SECONDS : 50

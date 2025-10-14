@@ -6,12 +6,14 @@ import { Button } from "../../ui/button";
 import { CirclePlusIcon } from "../../ui/icons/lucide-circle-plus";
 import { AgentTooltip } from "../form/agent-tooltip";
 import { useAgentStore } from "../stores/agent";
-import { MultiSkillType, type ISkillType } from "./multiskill-type";
+import { MultiSkillType } from "./multiskill-type";
 
 export function MultiSkill({
+  fieldName,
   skill,
   tooltip,
 }: {
+  fieldName: string;
   skill: string;
   tooltip?: string;
 }) {
@@ -75,7 +77,7 @@ export function MultiSkill({
             <MultiSkillType
               key={`${skill}-type-${index}`}
               loading={!isLoaded}
-              uniqueKey={`${skill}-type-${index}`}
+              fieldName={`${fieldName}-${index}`}
               type={type.type}
               score={type.score}
               marked={type.marked}

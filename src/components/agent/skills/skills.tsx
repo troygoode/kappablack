@@ -26,13 +26,32 @@ const COL2_ROW_COUNT = 23;
 const col2_1 = skills.slice(0, COL2_ROW_COUNT);
 const col2_2 = skills.slice(COL2_ROW_COUNT);
 
-const SkillColumn = ({ col }: { col: TSkill[] }) =>
+const SkillColumn = ({
+  fieldPrefix,
+  col,
+}: {
+  fieldPrefix: string;
+  col: TSkill[];
+}) =>
   col.map((s, index) => {
     if (s.multi) {
-      return <MultiSkill key={index} skill={s.name} tooltip={s.tooltip} />;
+      return (
+        <MultiSkill
+          key={index}
+          fieldName={`${fieldPrefix}-${s.name}`}
+          skill={s.name}
+          tooltip={s.tooltip}
+        />
+      );
     } else {
       return (
-        <Skill key={index} skill={s.name} tooltip={s.tooltip} base={s.base} />
+        <Skill
+          fieldName={`${fieldPrefix}-${s.name}`}
+          key={index}
+          skill={s.name}
+          tooltip={s.tooltip}
+          base={s.base}
+        />
       );
     }
   });
@@ -44,20 +63,20 @@ export default function Skills() {
 
       <div className="md:hidden w-full print:hidden">
         <div className="flex flex-col">
-          <SkillColumn col={col2_1} />
-          <SkillColumn col={col2_2} />
-          <MultiSkill skill="Other Skills" />
+          <SkillColumn fieldPrefix="1col" col={col2_1} />
+          <SkillColumn fieldPrefix="1col" col={col2_2} />
+          <MultiSkill fieldName="1col-OtherSkills" skill="Other Skills" />
         </div>
       </div>
 
       <div className="hidden md:block lg:hidden w-full print:hidden">
         <div className="grid grid-cols-2">
           <div className="flex flex-col">
-            <SkillColumn col={col2_1} />
+            <SkillColumn fieldPrefix="2col" col={col2_1} />
           </div>
           <div className="flex flex-col">
-            <SkillColumn col={col2_2} />
-            <MultiSkill skill="Other Skills" />
+            <SkillColumn fieldPrefix="2col" col={col2_2} />
+            <MultiSkill fieldName="2col-OtherSkills" skill="Other Skills" />
           </div>
         </div>
       </div>
@@ -65,14 +84,14 @@ export default function Skills() {
       <div className="hidden lg:block w-full print:block">
         <div className="grid grid-cols-3">
           <div className="flex flex-col">
-            <SkillColumn col={col3_1} />
+            <SkillColumn fieldPrefix="3col" col={col3_1} />
           </div>
           <div className="flex flex-col">
-            <SkillColumn col={col3_2} />
+            <SkillColumn fieldPrefix="3col" col={col3_2} />
           </div>
           <div className="flex flex-col">
-            <SkillColumn col={col3_3} />
-            <MultiSkill skill="Other Skills" />
+            <SkillColumn fieldPrefix="3col" col={col3_3} />
+            <MultiSkill fieldName="3col-OtherSkills" skill="Other Skills" />
           </div>
         </div>
       </div>

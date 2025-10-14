@@ -9,10 +9,12 @@ import { SquareCheckbox } from "../form/square-checkbox";
 import { useAgentStore } from "../stores/agent";
 
 export function Skill({
+  fieldName,
   skill,
   tooltip,
   base,
 }: {
+  fieldName: string;
   skill: string;
   tooltip?: string;
   base?: number;
@@ -58,7 +60,7 @@ export function Skill({
           <div className="flex gap-0.5 w-full">
             {isLoaded ? (
               <AgentTextInput
-                fieldName={`skills.${skill}.score`}
+                fieldName={`${fieldName}-score`}
                 type="number"
                 value={score?.toString() ?? ""}
                 placeholder={base && base !== 0 ? base.toString() : undefined}
