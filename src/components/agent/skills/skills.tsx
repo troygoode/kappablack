@@ -2,10 +2,11 @@
 
 import { type ISkill, type IMultiSkill } from "@/types/skill";
 
-import { SideHeader } from "./form/side-header";
-import { Skill, MultiSkill } from "./skill";
+import { SideHeader } from "../form/side-header";
+import { Skill } from "./skill";
+import { MultiSkill } from "./multiskill";
 import skillData from "@/data/skills.json";
-import { useAgentStore } from "./stores/agent";
+import { useAgentStore } from "../stores/agent";
 
 for (const s of skillData.skills) {
   s.multi = !!s.multi;
