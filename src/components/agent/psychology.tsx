@@ -187,7 +187,7 @@ export default function Psychology() {
                 />
               ))) ||
               null}
-            <div className="flex justify-center px-2 py-1 text-sm">
+            <div className="flex justify-center px-2 py-1 text-sm text-muted-foreground">
               Check a damaged Bond&rsquo;s box until the next Home scene ends.
             </div>
           </div>

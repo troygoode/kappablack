@@ -1,11 +1,13 @@
 "use client";
 
 import { useShallow } from "zustand/shallow";
+import classNames from "classnames";
 
 import { AgentTextarea } from "./form/agent-textarea";
 import { SideHeader } from "./form/side-header";
 import { SquareCheckbox } from "./form/square-checkbox";
 import { useAgentStore } from "./stores/agent";
+import { Badge } from "../ui/badge";
 
 export default function Injuries() {
   const merge = useAgentStore((state) => state.merge);
@@ -48,7 +50,7 @@ export default function Injuries() {
           <span>Has First Aid been attempted since the last injury?</span>
           <div className="flex items-center gap-1">
             <SquareCheckbox
-              className="cursor-pointer"
+              className="cursor-pointer mr-1"
               id="first-aid-no"
               checked={firstAidAttempted}
               disabled={!isLoaded}
@@ -56,8 +58,22 @@ export default function Injuries() {
                 merge({ firstAidAttempted: !!checked });
               }}
             />
-            <span>
-              Yes: Only Medicine, Surgery, or long-term rest can help further.
+            <span
+              className={classNames(
+                "pt-1",
+                firstAidAttempted ? "" : "text-muted-foreground opacity-20"
+              )}
+            >
+              <Badge
+                variant={firstAidAttempted ? "default" : "outline"}
+                className={classNames(
+                  firstAidAttempted ? "" : "text-muted-foreground",
+                  "mr-2"
+                )}
+              >
+                Yes
+              </Badge>
+              Only Medicine, Surgery, or long-term rest can help further.
             </span>
           </div>
         </div>

@@ -110,6 +110,7 @@ export const StunWeaponsTable = ({
                     onChange={(value) =>
                       onChange({ ...weapon, weapon: value }, index)
                     }
+                    required
                   />
                 ) : (
                   <Skeleton className="h-9 w-full" />
@@ -136,6 +137,7 @@ export const StunWeaponsTable = ({
                   onChange={(value) =>
                     onChange({ ...weapon, skill: value }, index)
                   }
+                  required
                 />
               ) : (
                 <Skeleton className="h-9 w-full" />
@@ -168,6 +170,7 @@ export const StunWeaponsTable = ({
                   onChange={(value) =>
                     onChange({ ...weapon, penalty: value }, index)
                   }
+                  required
                 />
               ) : (
                 <Skeleton className="h-9 w-full" />

@@ -200,7 +200,7 @@ export default function Remarks() {
             </div>
           </div>
         </div>
-        <div className="flex justify-center px-2 py-1 font-jost text-sm">
+        <div className="flex justify-center px-2 py-1 text-sm text-muted-foreground">
           Please indicate why this agent was recruited and why the agent agreed
           to be recruited.
         </div>
