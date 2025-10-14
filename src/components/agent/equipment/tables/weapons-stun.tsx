@@ -1,14 +1,14 @@
 "use client";
 
-import { type IWeapon } from "@/types/agent";
+import { type IStunWeapon } from "@/types/agent";
 import { type IWeaponData } from "@/types/data";
 
 import { Button } from "@/components/ui/button";
 import { CirclePlusIcon } from "@/components/ui/icons/lucide-circle-plus";
 import { Trash2Icon } from "@/components/ui/icons/lucide-trash-2";
 import { Skeleton } from "@/components/ui/skeleton";
-import { AgentTextInput } from "../form/agent-text-input";
-import { WeaponPicker } from "./picker/picker";
+import { AgentTextInput } from "../../form/agent-text-input";
+import { WeaponPicker } from "../picker/picker";
 
 const WIDTHS = {
   name: "w-80",
@@ -18,24 +18,20 @@ const WIDTHS = {
   ammo: "w-18",
   capacity: "w-18",
 
-  damage: "",
-  ap: "w-18",
-  lethality: "w-22",
+  penalty: "",
 };
 
-export const WeaponsTable = ({
+export const StunWeaponsTable = ({
   loading,
   weapons,
   add,
   onChange,
-  hasStunWeapons,
   remove,
 }: {
   loading: boolean;
-  weapons: IWeapon[];
+  weapons: IStunWeapon[];
   add: (weapon: IWeaponData) => void;
-  hasStunWeapons: boolean;
-  onChange: (weapon: IWeapon, index: number) => void;
+  onChange: (weapon: IStunWeapon, index: number) => void;
   remove: (index: number) => void;
 }) => {
   return (
@@ -44,7 +40,7 @@ export const WeaponsTable = ({
         <tr>
           <th className="border-l border-b border-zinc-800 py-0.5 pl-2 pr-1 text-left font-normal h-10">
             <div className="flex items-center justify-between">
-              {hasStunWeapons ? "16.a. Lethal Weapons" : "16. Weapons"}
+              16.b. Stun Weapons
               {weapons.length > 0 && (
                 <WeaponPicker add={add}>
                   <Button
@@ -66,16 +62,7 @@ export const WeaponsTable = ({
             Base range
           </th>
           <th className="border-l border-b border-zinc-800 px-1 py-0.5 font-normal">
-            Damage
-          </th>
-          <th
-            className="border-l border-b border-zinc-800 px-1 py-0.5 font-normal"
-            title="Armor Piercing"
-          >
-            A.P.
-          </th>
-          <th className="border-l border-b border-zinc-800 px-1 py-0.5 font-normal">
-            Lethality
+            Victim's Penalty
           </th>
           <th className="border-l border-b border-zinc-800 px-1 py-0.5 font-normal">
             Radius
@@ -92,7 +79,7 @@ export const WeaponsTable = ({
         {weapons.length === 0 && (
           <tr className="text-center">
             <td
-              colSpan={9}
+              colSpan={7}
               className="border-l border-b border-zinc-800 px-1 py-3"
             >
               <WeaponPicker add={add}>
@@ -103,13 +90,13 @@ export const WeaponsTable = ({
                   disabled={loading}
                 >
                   <CirclePlusIcon />
-                  Add weapon
+                  Add stun weapon
                 </Button>
               </WeaponPicker>
             </td>
           </tr>
         )}
-        {weapons.map((weapon: IWeapon, index: number) => (
+        {weapons.map((weapon: IStunWeapon, index: number) => (
           <tr className="text-center" key={index}>
             <td
               className={`border-l border-b border-zinc-800 px-1 py-0.5 ${WIDTHS.name}`}
@@ -117,7 +104,7 @@ export const WeaponsTable = ({
               <div className="flex items-center gap-1.5">
                 {!loading ? (
                   <AgentTextInput
-                    fieldName={`weapon-${index}-name`}
+                    fieldName={`weapon-stun-${index}-name`}
                     maxLength={100}
                     value={weapon.weapon || ""}
                     onChange={(value) =>
@@ -144,8 +131,8 @@ export const WeaponsTable = ({
             >
               {!loading ? (
                 <AgentTextInput
-                  fieldName={`weapon-${index}-skill`}
-                  maxLength={10}
+                  fieldName={`weapon-stun-${index}-skill`}
+                  maxLength={16}
                   value={weapon.skill || ""}
                   onChange={(value) =>
                     onChange({ ...weapon, skill: value }, index)
@@ -161,8 +148,8 @@ export const WeaponsTable = ({
             >
               {!loading ? (
                 <AgentTextInput
-                  fieldName={`weapon-${index}-range`}
-                  maxLength={10}
+                  fieldName={`weapon-stun-${index}-range`}
+                  maxLength={11}
                   value={weapon.range || ""}
                   onChange={(value) =>
                     onChange({ ...weapon, range: value }, index)
@@ -173,58 +160,17 @@ export const WeaponsTable = ({
               )}
             </td>
             <td
-              className={`border-l border-b border-zinc-800 px-1 py-0.5 ${WIDTHS.damage}`}
+              className={`border-l border-b border-zinc-800 px-1 py-0.5 ${WIDTHS.penalty}`}
             >
               {!loading ? (
                 <AgentTextInput
-                  fieldName={`weapon-${index}-damage`}
-                  maxLength={10}
-                  value={weapon.damage || ""}
+                  fieldName={`weapon-stun-${index}-penalty`}
+                  maxLength={20}
+                  value={weapon.penalty || ""}
                   onChange={(value) =>
-                    onChange({ ...weapon, damage: value }, index)
+                    onChange({ ...weapon, penalty: value }, index)
                   }
-                />
-              ) : (
-                <Skeleton className="h-9 w-full" />
-              )}
-            </td>
-            <td
-              className={`border-l border-b border-zinc-800 px-1 py-0.5 ${WIDTHS.ap}`}
-            >
-              {!loading ? (
-                <AgentTextInput
-                  fieldName={`weapon-${index}-ap`}
-                  type="number"
-                  maxLength={2}
-                  min={0}
-                  value={weapon.ap?.toString() || ""}
-                  onChange={(value) =>
-                    onChange(
-                      { ...weapon, ap: parseInt(value) ?? undefined },
-                      index
-                    )
-                  }
-                />
-              ) : (
-                <Skeleton className="h-9 w-full" />
-              )}
-            </td>
-            <td
-              className={`border-l border-b border-zinc-800 px-1 py-0.5 ${WIDTHS.lethality}`}
-            >
-              {!loading ? (
-                <AgentTextInput
-                  fieldName={`weapon-${index}-lethality`}
-                  type="number"
-                  maxLength={2}
-                  min={0}
-                  value={weapon.lethality?.toString() || ""}
-                  onChange={(value) =>
-                    onChange(
-                      { ...weapon, lethality: parseInt(value) ?? undefined },
-                      index
-                    )
-                  }
+                  required
                 />
               ) : (
                 <Skeleton className="h-9 w-full" />
@@ -235,8 +181,8 @@ export const WeaponsTable = ({
             >
               {!loading ? (
                 <AgentTextInput
-                  fieldName={`weapon-${index}-radius`}
-                  maxLength={10}
+                  fieldName={`weapon-stun-${index}-radius`}
+                  maxLength={9}
                   value={weapon.radius || ""}
                   onChange={(value) =>
                     onChange({ ...weapon, radius: value }, index)
@@ -251,9 +197,9 @@ export const WeaponsTable = ({
             >
               {!loading ? (
                 <AgentTextInput
-                  fieldName={`weapon-${index}-ammo`}
+                  fieldName={`weapon-stun-${index}-ammo`}
                   type="number"
-                  maxLength={2}
+                  maxLength={3}
                   min={0}
                   value={weapon.ammo?.toString() || ""}
                   onChange={(value) =>
@@ -272,9 +218,9 @@ export const WeaponsTable = ({
             >
               {!loading ? (
                 <AgentTextInput
-                  fieldName={`weapon-${index}-capacity`}
+                  fieldName={`weapon-stun-${index}-capacity`}
                   type="number"
-                  maxLength={2}
+                  maxLength={3}
                   min={0}
                   value={weapon.capacity?.toString() || ""}
                   onChange={(value) =>

@@ -1,7 +1,7 @@
 "use client";
 
 export const Ruler = () => (
-  <div className="flex items-center m-2 fixed bottom-0 right-0 border rounded p-2 text-sm bg-background text-foreground">
+  <div className="flex items-center m-2 fixed bottom-0 right-0 border rounded p-2 text-sm bg-white dark:bg-zinc-800 text-foreground">
     <span className="text-sm">Breakpoint:</span>
     <span className="ml-1 xs:hidden sm:hidden md:hidden lg:hidden xl:hidden">
       default (&lt; 640px)
