@@ -141,30 +141,12 @@ export default function Psychology() {
   return (
     <div className="flex h-full flex-col outline-1 outline-zinc-800 sm:flex-row print:outline-slate-950">
       <SideHeader>Psychological Data</SideHeader>
-      <div className="w-full">
-        <div className="flex h-full flex-col">
-          <div className="flex flex-col font-jost">
-            <div className="flex text-xs uppercase">
-              <div className="flex h-10 grow items-center justify-between px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
-                <h3>11. Bonds</h3>
-                {bonds.length ? (
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    className="cursor-pointer"
-                    onClick={() => addBond()}
-                    disabled={!isLoaded}
-                  >
-                    <CirclePlusIcon />
-                  </Button>
-                ) : null}
-              </div>
-              <div className="flex w-20 items-center justify-center px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
-                Score
-              </div>
-            </div>
-            {!bonds.length ? (
-              <div className="flex py-1.5 w-full items-center justify-center">
+      <div className="flex w-full h-full flex-col">
+        <div className="flex flex-col">
+          <div className="flex text-xs uppercase">
+            <div className="flex h-10 grow items-center justify-between px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
+              <h3>11. Bonds</h3>
+              {bonds.length ? (
                 <Button
                   size="sm"
                   variant="outline"
@@ -173,170 +155,189 @@ export default function Psychology() {
                   disabled={!isLoaded}
                 >
                   <CirclePlusIcon />
-                  Add a bond
                 </Button>
-              </div>
-            ) : null}
-            {bonds.map((bond, idx) => (
-              <Bond
-                key={idx}
-                index={idx}
-                bond={bond.bond}
-                score={bond.score}
-                isMarked={!!bond.marked}
-                update={updateBond(idx)}
-                remove={removeBond(idx)}
-              />
-            ))}
-            <div className="flex justify-center px-2 py-1 text-sm text-muted-foreground">
-              Check a damaged Bond&rsquo;s box until the next Home scene ends.
+              ) : null}
+            </div>
+            <div className="flex w-20 items-center justify-center px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
+              Score
             </div>
           </div>
-          <div
-            className="flex w-full flex-col gap-1 px-2 py-1 font-jost outline-1 outline-zinc-800 print:gap-0 print:outline-slate-950 grow sm:h-auto h-36"
-            data-headlessui-state=""
-          >
-            <div className="flex items-center justify-between">
-              <label className="w-full text-xs uppercase" htmlFor="motivations">
-                <h3>12. Motivations and mental disorders</h3>
-              </label>
-              {motivationsAndDisorders.length > 0 && (
-                <span className="text-xs print:hidden">
-                  {motivationsAndDisorders.length}/300
-                </span>
+          {!bonds.length ? (
+            <div className="flex py-1.5 w-full items-center justify-center">
+              <Button
+                size="sm"
+                variant="outline"
+                className="cursor-pointer"
+                onClick={() => addBond()}
+                disabled={!isLoaded}
+              >
+                <CirclePlusIcon />
+                Add a bond
+              </Button>
+            </div>
+          ) : null}
+          {bonds.map((bond, idx) => (
+            <Bond
+              key={idx}
+              index={idx}
+              bond={bond.bond}
+              score={bond.score}
+              isMarked={!!bond.marked}
+              update={updateBond(idx)}
+              remove={removeBond(idx)}
+            />
+          ))}
+          <div className="flex justify-center px-2 py-1 text-sm text-muted-foreground">
+            Check a damaged Bond&rsquo;s box until the next Home scene ends.
+          </div>
+        </div>
+        <div className="flex w-full flex-col gap-1 px-2 py-1 outline-1 outline-zinc-800 print:gap-0 print:outline-slate-950 grow sm:h-auto h-36">
+          <div className="flex items-center justify-between">
+            <label className="w-full text-xs uppercase" htmlFor="motivations">
+              <h3>12. Motivations and mental disorders</h3>
+            </label>
+            {motivationsAndDisorders.length > 0 && (
+              <span className="text-xs print:hidden">
+                {motivationsAndDisorders.length}/300
+              </span>
+            )}
+          </div>
+          <AgentTextarea
+            loading={!isLoaded}
+            fieldName="motivations"
+            value={motivationsAndDisorders}
+            onChange={(value) => {
+              merge({ motivationsAndDisorders: value });
+            }}
+            maxLength={300}
+            required
+          />
+        </div>
+        <div className="flex flex-col px-2 py-1 text-sm">
+          <h3 className="text-xs uppercase">
+            13. Incidents of san loss without going insane
+          </h3>
+          <div className="flex justify-between sm:flex-row">
+            <div className="flex items-center justify-center gap-3 sm:gap-1">
+              <span className="mr-1 text-xs">Violence</span>
+              <SquareCheckbox
+                id="violence-adapted-1"
+                name="violence-adapted-1"
+                className="cursor-pointer"
+                checked={violenceAdaptation >= 1}
+                onCheckedChange={(b) => {
+                  merge({
+                    violenceAdaptation: b || violenceAdaptation > 1 ? 1 : 0,
+                  });
+                }}
+                disabled={!isLoaded}
+              />
+              <SquareCheckbox
+                id="violence-adapted-2"
+                name="violence-adapted-2"
+                className="cursor-pointer"
+                checked={violenceAdaptation >= 2}
+                onCheckedChange={(b) => {
+                  merge({
+                    violenceAdaptation: b || violenceAdaptation > 2 ? 2 : 1,
+                  });
+                }}
+                disabled={!isLoaded}
+              />
+              <SquareCheckbox
+                id="violence-adapted-3"
+                name="violence-adapted-3"
+                className="cursor-pointer"
+                checked={violenceAdaptation >= 3}
+                onCheckedChange={(b) => {
+                  merge({
+                    violenceAdaptation: b || violenceAdaptation > 3 ? 3 : 2,
+                  });
+                }}
+                disabled={!isLoaded}
+              />
+              {violenceAdaptation >= 3 ? (
+                <Badge
+                  asChild
+                  className="ml-2"
+                  variant="destructive"
+                  title="Adapted"
+                >
+                  <span>
+                    <HeartCrackIcon className="" />
+                    <span className="pt-0.5 lg:hidden xl:inline">Adapted</span>
+                  </span>
+                </Badge>
+              ) : (
+                <Badge asChild className="ml-2 text-accent" variant="outline">
+                  <span>
+                    <HeartCrackIcon className="" />
+                    <span className="pt-0.5 lg:hidden xl:inline">Adapted</span>
+                  </span>
+                </Badge>
               )}
             </div>
-            <AgentTextarea
-              loading={!isLoaded}
-              fieldName="motivations"
-              value={motivationsAndDisorders}
-              onChange={(value) => {
-                merge({ motivationsAndDisorders: value });
-              }}
-              maxLength={300}
-              required
-            />
-          </div>
-          <div className="flex flex-col px-2 py-1 font-jost text-sm">
-            <h3 className="text-xs uppercase">
-              13. Incidents of san loss without going insane
-            </h3>
-            <div className="flex flex-col justify-between sm:flex-row">
-              <div className="flex items-center justify-center gap-3 sm:gap-1">
-                <span className="mr-1">Violence</span>
-                <SquareCheckbox
-                  id="violence-adapted-1"
-                  name="violence-adapted-1"
-                  className="cursor-pointer"
-                  checked={violenceAdaptation >= 1}
-                  onCheckedChange={(b) => {
-                    merge({
-                      violenceAdaptation: b || violenceAdaptation > 1 ? 1 : 0,
-                    });
-                  }}
-                  disabled={!isLoaded}
-                />
-                <SquareCheckbox
-                  id="violence-adapted-2"
-                  name="violence-adapted-2"
-                  className="cursor-pointer"
-                  checked={violenceAdaptation >= 2}
-                  onCheckedChange={(b) => {
-                    merge({
-                      violenceAdaptation: b || violenceAdaptation > 2 ? 2 : 1,
-                    });
-                  }}
-                  disabled={!isLoaded}
-                />
-                <SquareCheckbox
-                  id="violence-adapted-3"
-                  name="violence-adapted-3"
-                  className="cursor-pointer"
-                  checked={violenceAdaptation >= 3}
-                  onCheckedChange={(b) => {
-                    merge({
-                      violenceAdaptation: b || violenceAdaptation > 3 ? 3 : 2,
-                    });
-                  }}
-                  disabled={!isLoaded}
-                />
-                {violenceAdaptation >= 3 ? (
-                  <Badge asChild className="ml-2" variant="destructive">
-                    <span>
-                      <HeartCrackIcon />
-                      <span className="pt-0.5">Adapted</span>
-                    </span>
-                  </Badge>
-                ) : (
-                  <Badge asChild className="ml-2 text-accent" variant="outline">
-                    <span>
-                      <HeartCrackIcon />
-                      <span className="pt-0.5">Adapted</span>
-                    </span>
-                  </Badge>
-                )}
-              </div>
-              <div className="flex items-center justify-center gap-3 sm:gap-1">
-                <span className="mr-1">Helplessness</span>
-                <SquareCheckbox
-                  id="helpless-adapted-1"
-                  name="helpless-adapted-1"
-                  className="cursor-pointer"
-                  checked={helplessnessAdaptation >= 1}
-                  onCheckedChange={(b) => {
-                    merge({
-                      helplessnessAdaptation:
-                        b || helplessnessAdaptation > 1 ? 1 : 0,
-                    });
-                  }}
-                  disabled={!isLoaded}
-                />
-                <SquareCheckbox
-                  id="helpless-adapted-2"
-                  name="helpless-adapted-2"
-                  className="cursor-pointer"
-                  checked={helplessnessAdaptation >= 2}
-                  onCheckedChange={(b) => {
-                    merge({
-                      helplessnessAdaptation:
-                        b || helplessnessAdaptation > 2 ? 2 : 1,
-                    });
-                  }}
-                  disabled={!isLoaded}
-                />
-                <SquareCheckbox
-                  id="helpless-adapted-3"
-                  name="helpless-adapted-3"
-                  className="cursor-pointer"
-                  checked={helplessnessAdaptation >= 3}
-                  onCheckedChange={(b) => {
-                    merge({
-                      helplessnessAdaptation:
-                        b || helplessnessAdaptation > 3 ? 3 : 2,
-                    });
-                  }}
-                  disabled={!isLoaded}
-                />
-                {helplessnessAdaptation >= 3 ? (
-                  <Badge
-                    asChild
-                    className="ml-2 bg-blue-500"
-                    variant="secondary"
-                  >
-                    <span>
-                      <BrainIcon />
-                      <span className="pt-0.5">Adapted</span>
-                    </span>
-                  </Badge>
-                ) : (
-                  <Badge asChild className="ml-2 text-accent" variant="outline">
-                    <span>
-                      <BrainIcon />
-                      <span className="pt-0.5">Adapted</span>
-                    </span>
-                  </Badge>
-                )}
-              </div>
+            <div className="flex items-center justify-center gap-3 sm:gap-1">
+              <span className="mr-1 text-xs">Helplessness</span>
+              <SquareCheckbox
+                id="helpless-adapted-1"
+                name="helpless-adapted-1"
+                className="cursor-pointer"
+                checked={helplessnessAdaptation >= 1}
+                onCheckedChange={(b) => {
+                  merge({
+                    helplessnessAdaptation:
+                      b || helplessnessAdaptation > 1 ? 1 : 0,
+                  });
+                }}
+                disabled={!isLoaded}
+              />
+              <SquareCheckbox
+                id="helpless-adapted-2"
+                name="helpless-adapted-2"
+                className="cursor-pointer"
+                checked={helplessnessAdaptation >= 2}
+                onCheckedChange={(b) => {
+                  merge({
+                    helplessnessAdaptation:
+                      b || helplessnessAdaptation > 2 ? 2 : 1,
+                  });
+                }}
+                disabled={!isLoaded}
+              />
+              <SquareCheckbox
+                id="helpless-adapted-3"
+                name="helpless-adapted-3"
+                className="cursor-pointer"
+                checked={helplessnessAdaptation >= 3}
+                onCheckedChange={(b) => {
+                  merge({
+                    helplessnessAdaptation:
+                      b || helplessnessAdaptation > 3 ? 3 : 2,
+                  });
+                }}
+                disabled={!isLoaded}
+              />
+              {helplessnessAdaptation >= 3 ? (
+                <Badge
+                  asChild
+                  className="ml-2 bg-blue-500 text-white"
+                  variant="secondary"
+                  title="Adapted"
+                >
+                  <span>
+                    <BrainIcon className="" />
+                    <span className="pt-0.5 lg:hidden xl:inline">Adapted</span>
+                  </span>
+                </Badge>
+              ) : (
+                <Badge asChild className="ml-2 text-accent" variant="outline">
+                  <span>
+                    <BrainIcon className="" />
+                    <span className="pt-0.5 lg:hidden xl:inline">Adapted</span>
+                  </span>
+                </Badge>
+              )}
             </div>
           </div>
         </div>

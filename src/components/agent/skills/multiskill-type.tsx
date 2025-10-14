@@ -44,7 +44,7 @@ export function MultiSkillType({
               disabled={loading || !type?.length}
             />
           </div>
-          <div className="grow gap-0.5">
+          <div className="grow gap-0.5 lg:pl-2 xl:pl-0">
             {!loading ? (
               <AgentTextInput
                 fieldName={`${uniqueKey}-type`}

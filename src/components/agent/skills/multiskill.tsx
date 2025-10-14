@@ -42,15 +42,20 @@ export function MultiSkill({
           <div className="flex justify-center">
             <div className="w-7 pt-1.5"></div>
             <div className="flex grow items-center gap-1.5 text-sm print:text-xs">
-              {skill} <span className="hidden print:inline">(0%)</span>
               {tooltip && (
-                <AgentTooltip>
-                  <p className="mb-2">{tooltip}</p>
-                  <p>
-                    <strong>Base value:</strong> 0%
-                  </p>
-                </AgentTooltip>
+                <span className="inline">
+                  <AgentTooltip>
+                    <p className="mb-2">{tooltip}</p>
+                    <p>
+                      <strong>Base value:</strong> 0%
+                    </p>
+                  </AgentTooltip>
+                </span>
               )}
+              <span>
+                <span className="inline">{skill}</span>
+              </span>
+              <span className="hidden print:inline">(0%)</span>
             </div>
             <Button
               size="sm"

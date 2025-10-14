@@ -13,7 +13,10 @@ const AgentLabel = ({
   maxLength?: number;
 }>) => (
   <div className="flex items-center justify-between">
-    <Label className="w-full text-xs uppercase" htmlFor={fieldName}>
+    <Label
+      className="w-full text-xs uppercase overflow-ellipsis"
+      htmlFor={fieldName}
+    >
       {children}
     </Label>
     {(length ?? 0) > 0 ? (

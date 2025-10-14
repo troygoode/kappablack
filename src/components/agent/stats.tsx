@@ -48,19 +48,19 @@ const Stat = ({
   tooltip?: string;
 }) => {
   return (
-    <div className="grid grid-cols-8">
+    <div className="grid grid-cols-9">
       <div className="col-span-3 flex flex-wrap items-center gap-1 px-2 py-1 text-sm outline-1 outline-zinc-800 print:outline-slate-950">
-        {label} <span className="text-xs uppercase">({abbreviation})</span>
         {tooltip && (
           <AgentTooltip>
             <p>{tooltip}</p>
           </AgentTooltip>
         )}
+        <span className="">{label}</span>
+        <span className="text-xs uppercase hidden sm:inline lg:hidden xl:inline">
+          ({abbreviation})
+        </span>
       </div>
-      <div
-        className="flex items-center p-1 outline-1 outline-zinc-800 print:outline-slate-950"
-        data-headlessui-state=""
-      >
+      <div className="col-span-2 flex items-center p-1 outline-1 outline-zinc-800 print:outline-slate-950">
         <div className="flex gap-0.5 w-full">
           {loading ? (
             <Skeleton className="h-9 w-full" />
@@ -80,7 +80,7 @@ const Stat = ({
           )}
         </div>
       </div>
-      <div className="flex items-center justify-center px-2 py-1 outline-1 outline-zinc-800 print:text-sm print:outline-slate-950">
+      <div className="col-span-1 flex items-center justify-center px-2 py-1 outline-1 outline-zinc-800 print:text-sm print:outline-slate-950">
         {score ? (
           score * 5
         ) : (
@@ -96,7 +96,7 @@ const Stat = ({
             setFeature(value);
           }}
           maxLength={100}
-          disabled={!score || score < 3 || (score > 9 && score < 13)}
+          disabled={!score || score < 3 || (score > 8 && score < 13)}
           required
         />
       </div>
@@ -111,6 +111,8 @@ const Derived = ({
   current,
   tooltip,
   setCurrent,
+  reset,
+  disabled,
 }: {
   label: string;
   abbreviation: string;
@@ -118,23 +120,28 @@ const Derived = ({
   current: number | undefined;
   tooltip?: string;
   setCurrent: (current: number | undefined) => void;
+  reset?: () => void;
+  disabled?: boolean;
 }) => {
   return (
-    <div className="grid grid-cols-7 print:text-sm">
-      <div className="col-span-3 flex items-center gap-1 px-2 py-1 text-sm outline-1 outline-zinc-800 print:outline-slate-950">
-        {label} <span className="uppercase">({abbreviation})</span>
+    <div className="grid grid-cols-9 print:text-sm">
+      <div className="col-span-4 flex items-center gap-1 px-2 py-1 text-sm outline-1 outline-zinc-800 print:outline-slate-950">
         {tooltip && (
           <AgentTooltip>
             <p>{tooltip}</p>
           </AgentTooltip>
         )}
+        <span>{label}</span>
+        <span className="uppercase hidden sm:inline lg:hidden xl:inline">
+          ({abbreviation})
+        </span>
       </div>
       <div className="col-span-2 flex items-center justify-center px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
         {max ?? <span className="text-muted-foreground">&mdash;</span>}
       </div>
-      <div className="col-span-2 flex items-center justify-center px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
+      <div className="col-span-3 flex items-center justify-center px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
         <div className="flex gap-0.5">
-          {max !== undefined ? (
+          {!disabled && max !== undefined ? (
             <>
               <AgentTextInput
                 className="text-center"
@@ -146,14 +153,14 @@ const Derived = ({
                 }}
                 maxLength={3}
                 min={0}
-                disabled={max === undefined}
+                disabled={max === undefined || disabled}
                 required
               />
               <Button
                 size="sm"
                 variant="outline"
                 className="ml-2 cursor-pointer"
-                onClick={() => setCurrent(max)}
+                onClick={() => (reset ? reset() : setCurrent(max))}
               >
                 <RefreshCwIcon />
               </Button>
@@ -244,6 +251,9 @@ export default function Stats() {
       ...state.agent?.charisma,
     }))
   );
+  const unnatural = useAgentStore(
+    useShallow((state) => state.getSkill("Unnatural"))
+  );
 
   return (
     <div className="flex flex-col outline-1 outline-zinc-800 sm:flex-row print:outline-slate-950 ">
@@ -251,18 +261,21 @@ export default function Stats() {
       <div className="w-full">
         <div className="flex h-full flex-col">
           <div className="flex flex-col font-jost">
-            <div className="grid grid-cols-8 text-xs uppercase">
-              <h3 className="col-span-3 px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
-                8. Statistics
+            <div className="grid grid-cols-9 text-xs uppercase">
+              <h3 className="col-span-3 flex items-center justify-start px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
+                <span>8. Statistics</span>
               </h3>
-              <div className="px-2 py-1 text-center outline-1 outline-zinc-800 print:outline-slate-950">
-                Score
+              <div className="col-span-2 flex items-center justify-center px-2 py-1 text-center outline-1 outline-zinc-800 print:outline-slate-950">
+                <span>Score</span>
               </div>
-              <div className="px-2 py-1 text-center outline-1 outline-zinc-800 print:outline-slate-950">
-                &#10799;5
+              <div className="col-span-1 flex items-center justify-center px-2 py-1 text-center outline-1 outline-zinc-800 print:outline-slate-950">
+                <span>&#10799;5</span>
               </div>
-              <div className="col-span-3 px-2 py-1 text-center outline-1 outline-zinc-800 print:outline-slate-950">
-                Distinguishing features
+              <div className="col-span-3 flex items-center justify-center px-2 py-1 text-center outline-1 outline-zinc-800 print:outline-slate-950">
+                <span className="sm:hidden lg:inline xl:hidden">Features</span>
+                <span className="hidden sm:inline lg:hidden xl:inline">
+                  Distinguishing features
+                </span>
               </div>
             </div>
             <Stat
@@ -397,14 +410,14 @@ export default function Stats() {
             />
           </div>
           <div className="flex flex-col font-jost">
-            <div className="grid grid-cols-7 text-xs uppercase">
-              <h3 className="col-span-3 flex items-center px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
+            <div className="grid grid-cols-9 text-xs uppercase">
+              <h3 className="col-span-4 flex items-center px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
                 9. Derived Attributes
               </h3>
               <div className="col-span-2 flex items-center justify-center px-2 py-1 align-middle outline-1 outline-zinc-800 print:outline-slate-950">
                 Maximum
               </div>
-              <div className="col-span-2 flex items-center justify-center px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
+              <div className="col-span-3 flex items-center justify-center px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
                 Current
               </div>
             </div>
@@ -437,12 +450,16 @@ export default function Stats() {
             <Derived
               label="Sanity Points"
               abbreviation="san"
-              max={!power.score ? undefined : power.score * 5}
+              max={99 - (unnatural.score ?? 0)}
               current={san}
               setCurrent={(current) => {
                 merge({ san: current });
               }}
+              reset={() => {
+                if (power.score) merge({ san: power.score * 5 });
+              }}
               tooltip={(StatsData as IStatsData).san}
+              disabled={!power.score}
             />
             <Derived
               label="Breaking Point"

@@ -37,7 +37,6 @@ export function Skill({
           />
         </div>
         <div className="flex grow items-center gap-1.5 text-sm print:text-xs">
-          {skill} <span className="hidden print:inline">(10%)</span>
           {tooltip && (
             <AgentTooltip>
               <p className="mb-2">{tooltip}</p>
@@ -47,6 +46,10 @@ export function Skill({
                 </p>
               )}
             </AgentTooltip>
+          )}
+          <span>{skill}</span>
+          {base !== undefined && base !== 0 && (
+            <span className="hidden print:inline">({base}%)</span>
           )}
         </div>
       </div>

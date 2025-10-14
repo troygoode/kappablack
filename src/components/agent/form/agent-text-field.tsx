@@ -13,7 +13,6 @@ export function AgentTextField({
   fieldName,
   label,
   value,
-  update,
   merge,
   maxLength,
   required,
@@ -22,13 +21,11 @@ export function AgentTextField({
   fieldName: string;
   label: string;
   value: (agent: IAgent) => string | undefined;
-  update?: (agent: IAgent, value: string) => IAgent;
-  merge?: (value: string) => Partial<IAgent>;
+  merge: (value: string) => Partial<IAgent>;
   maxLength: number;
   required?: boolean;
   className?: string;
 }) {
-  const updateStore = useAgentStore((state) => state.update);
   const mergeStore = useAgentStore((state) => state.merge);
 
   const isLoaded = useAgentStore(useShallow((state) => state.isLoaded));
@@ -39,11 +36,7 @@ export function AgentTextField({
 
   const onChange = (value: string) => {
     if (agent) {
-      if (merge) {
-        mergeStore(merge(value));
-      } else if (update) {
-        updateStore(update(agent, value));
-      }
+      mergeStore(merge(value));
     }
   };
 

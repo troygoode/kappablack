@@ -1,21 +1,14 @@
 "use client";
 
 import * as React from "react";
+import { Ruler } from "./ruler";
 
-const SHOW_RULER = false;
+const SHOW_RULER = true;
 
 export function Container({ children }: React.PropsWithChildren) {
   return (
-    <div className="w-full md:w-6xl mx-auto">
-      {SHOW_RULER && (
-        <div className="flex gap-2">
-          <span className="sm:hidden">XS</span>
-          <span className="md:hidden">SM</span>
-          <span className="lg:hidden">MD</span>
-          <span className="xl:hidden">LG</span>
-          <span className="">XL</span>
-        </div>
-      )}
+    <div className="w-sm sm:w-xl md:w-2xl lg:w-4xl xl:w-6xl mx-auto overflow-clip">
+      {SHOW_RULER && <Ruler />}
       <div>{children}</div>
     </div>
   );

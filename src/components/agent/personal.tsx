@@ -20,7 +20,6 @@ const Name = () => {
       fieldName="name"
       label="1. Last Name, First Name, Middle Initial"
       value={(agent) => agent.name}
-      update={(agent, value) => ({ ...agent, name: value })}
       merge={(value) => ({ name: value })}
       maxLength={100}
       required
@@ -34,7 +33,6 @@ const Profession = () => (
     fieldName="profession"
     label="2. Profession (rank if applicable)"
     value={(agent) => agent.profession}
-    update={(agent, value) => ({ ...agent, profession: value })}
     merge={(value) => ({ profession: value })}
     maxLength={100}
     required
@@ -47,7 +45,6 @@ const Employer = () => (
     fieldName="employer"
     label="3. Employer"
     value={(agent) => agent.employer}
-    update={(agent, value) => ({ ...agent, employer: value })}
     merge={(value) => ({ employer: value })}
     maxLength={100}
     className="sm:col-span-6"
@@ -59,7 +56,6 @@ const Nationality = () => (
     fieldName="nationality"
     label="4. Nationality"
     value={(agent) => agent.nationality}
-    update={(agent, value) => ({ ...agent, nationality: value })}
     merge={(value) => ({ nationality: value })}
     maxLength={100}
     className="sm:col-span-6"
@@ -71,7 +67,6 @@ const Age = () => (
     fieldName="age"
     label="6. Age and D.O.B."
     value={(agent) => agent.age}
-    update={(agent, value) => ({ ...agent, age: value })}
     merge={(value) => ({ age: value })}
     maxLength={100}
     className="sm:col-span-6 lg:col-span-2 print:col-span-2"
@@ -83,7 +78,6 @@ const Education = () => (
     fieldName="education"
     label="7. Education and occupational history"
     value={(agent) => agent.education}
-    update={(agent, value) => ({ ...agent, education: value })}
     merge={(value) => ({ education: value })}
     maxLength={100}
     className="sm:col-span-12 lg:col-span-7 print:col-span-7"
