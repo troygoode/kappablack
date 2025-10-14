@@ -16,24 +16,30 @@ import Disclaimer from "@/components/disclaimer/disclaimer";
 import Navigation from "@/components/navigation";
 import { useAgentStore } from "./stores/agent";
 
+const DEBUG_ENABLE_WAIT = false;
+const DEBUG_WAIT_SECONDS = 2.25;
+
 export default function Agent() {
-  const { isLoaded, agent, reset } = useAgentStore((state) => state);
+  const { isLoaded, reset } = useAgentStore((state) => state);
   useEffect(() => {
     if (isLoaded) return;
-    setTimeout(() => {
-      reset({
-        isLoaded: true,
-        agent: {
-          // player: "Player Name",
-        },
-      });
-    }, 1000 * 0.25);
-  }, [agent]);
+    setTimeout(
+      () => {
+        reset({
+          isLoaded: true,
+          agent: {
+            // player: "Player Name",
+          },
+        });
+      },
+      DEBUG_ENABLE_WAIT ? 1000 * DEBUG_WAIT_SECONDS : 50
+    );
+  }, [isLoaded]);
 
   return (
     <Container>
       <div className="mt-4 mb-1">
-        <Navigation isLoading={!agent} />
+        <Navigation isLoading={!isLoaded} />
       </div>
       <div className="border-2">
         <Personal />

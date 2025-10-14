@@ -19,7 +19,7 @@ export function AgentTextField({
   className,
 }: {
   fieldName: string;
-  label: string;
+  label: React.ReactNode;
   value: (agent: IAgent) => string | undefined;
   merge: (value: string) => Partial<IAgent>;
   maxLength: number;

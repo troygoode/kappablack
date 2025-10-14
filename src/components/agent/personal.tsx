@@ -18,7 +18,16 @@ const Name = () => {
   return (
     <AgentTextField
       fieldName="name"
-      label="1. Last Name, First Name, Middle Initial"
+      label={
+        <>
+          <span className="sm:hidden md:inline">
+            1. Last Name, First Name, Middle Initial
+          </span>
+          <span className="hidden sm:inline md:hidden">
+            1. Last Name, First Name, Middle
+          </span>
+        </>
+      }
       value={(agent) => agent.name}
       merge={(value) => ({ name: value })}
       maxLength={100}
