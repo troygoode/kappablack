@@ -18,6 +18,7 @@ export default function Equipment() {
   const removeWeapon = useAgentStore((state) => state.removeWeapon);
   const removeStunWeapon = useAgentStore((state) => state.removeStunWeapon);
   const isLoaded = useAgentStore((state) => state.isLoaded);
+  const mode = useAgentStore((state) => state.mode);
   const gear = useAgentStore((state) => state.agent?.gear || "");
   const weapons = useAgentStore(
     useShallow((state) => state.agent?.weapons || [])
@@ -35,7 +36,7 @@ export default function Equipment() {
             <label className="w-full text-xs uppercase" htmlFor="gear">
               <h3>15. Armor and gear: {weapons?.length}</h3>
             </label>
-            {isLoaded && gear.length ? (
+            {isLoaded && gear.length && mode === "edit" ? (
               <span className="text-xs print:hidden">{gear.length}/500</span>
             ) : null}
           </div>

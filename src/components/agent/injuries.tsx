@@ -11,6 +11,7 @@ import { Badge } from "../ui/badge";
 
 export default function Injuries() {
   const merge = useAgentStore((state) => state.merge);
+  const mode = useAgentStore((state) => state.mode);
   const isLoaded = useAgentStore((state) => state.isLoaded);
   const { wounds, firstAidAttempted } = useAgentStore(
     useShallow((state) => ({
@@ -31,9 +32,9 @@ export default function Injuries() {
             <label className="w-full text-xs uppercase" htmlFor="wounds">
               <h3>14. Wounds and ailments</h3>
             </label>
-            {wounds.length > 0 && (
+            {wounds.length > 0 && mode === "edit" ? (
               <span className="text-xs print:hidden">{wounds.length}/300</span>
-            )}
+            ) : null}
           </div>
           <AgentTextarea
             fieldName="wounds"
@@ -47,13 +48,15 @@ export default function Injuries() {
           />
         </div>
         <div className="flex flex-col items-center justify-center px-2 py-1 font-jost text-sm lg:flex-row lg:gap-4">
-          <span>Has First Aid been attempted since the last injury?</span>
+          <span className="text-muted-foreground">
+            Has First Aid been attempted since the last injury?
+          </span>
           <div className="flex items-center gap-1">
             <SquareCheckbox
               className="cursor-pointer mr-1"
               id="first-aid-no"
               checked={firstAidAttempted}
-              disabled={!isLoaded}
+              disabled={!isLoaded || mode === "view"}
               onCheckedChange={(checked) => {
                 merge({ firstAidAttempted: !!checked });
               }}

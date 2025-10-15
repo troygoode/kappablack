@@ -65,7 +65,8 @@
     {
       "skill": "Art",
       "score": 20,
-      "type": "Mini Painting"
+      "type": "Mini Painting",
+      "marked": false
     },
     {
       "skill": "Athletics",
@@ -245,6 +246,20 @@
       "ammo": 1
     }
   ],
-  "notes": "N/A",
-  "player": "Troy  Goode"
+  "notes": "N/A notes",
+  "player": "Troy  Goode",
+  "physicalDescription": "tall dark and handsome",
+  "developments": "N/A developments",
+  "specialTraining": [
+    {
+      "training": "training 1",
+      "skillOrStat": "Dexterity"
+    },
+    {
+      "training": "training 2",
+      "skillOrStat": "DEXx5"
+    }
+  ],
+  "firstAidAttempted": false,
+  "wounds": "scrapes and bruises"
 }

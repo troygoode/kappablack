@@ -1,8 +1,11 @@
 "use client";
 
+import classNames from "classnames";
+
 import { Skeleton } from "@/components/ui/skeleton";
 import { Textarea } from "@/components/ui/textarea";
-import classNames from "classnames";
+import { useAgentStore } from "../stores/agent";
+import { AgentText } from "./agent-text";
 
 const AgentTextarea = ({
   loading,
@@ -23,23 +26,25 @@ const AgentTextarea = ({
   maxLength: number;
   required?: boolean;
 }) => {
+  const mode = useAgentStore((state) => state.mode);
   return !loading ? (
-    <Textarea
-      id={fieldName}
-      name={fieldName}
-      value={value ?? ""}
-      maxLength={maxLength}
-      required={required}
-      onChange={(e) => {
-        if (loading) return;
-        onChange(e.target.value, e);
-      }}
-      className={classNames(
-        `min-h-15 h-full w-full justify-self-end rounded-t-md border-b
+    mode === "edit" ? (
+      <Textarea
+        id={fieldName}
+        name={fieldName}
+        value={value ?? ""}
+        maxLength={maxLength}
+        required={required}
+        onChange={(e) => {
+          if (loading) return;
+          onChange(e.target.value, e);
+        }}
+        className={classNames(
+          `min-h-15 h-full w-full justify-self-end rounded-t-md border-b
         border-input bg-zinc-300 focus-visible:outline-slate-600
         bg-opacity-70 px-2 py-0.5 hover:bg-opacity-100 focus-visible:border-b-0 focus-visible:bg-opacity-100 focus-visible:outline-2 print:border-0 print:bg-transparent print:p-0 print:text-sm`,
-        (value?.length ?? 0) === 0
-          ? `
+          (value?.length ?? 0) === 0
+            ? `
           disabled:dark:bg-input/10
 
           required:bg-amber-100 required:border-amber-300
@@ -51,10 +56,13 @@ const AgentTextarea = ({
 
           disabled:required:dark:border-input/10
           `
-          : "",
-        className
-      )}
-    />
+            : "",
+          className
+        )}
+      />
+    ) : (
+      <AgentText value={value ?? ""} className="min-h-15 h-full" />
+    )
   ) : (
     <Skeleton
       className={classNames(

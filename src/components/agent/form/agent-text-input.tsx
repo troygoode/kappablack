@@ -1,8 +1,11 @@
 "use client";
 
-import { Input } from "@/components/ui/input";
-import classNames from "classnames";
 import React from "react";
+import classNames from "classnames";
+
+import { Input } from "@/components/ui/input";
+import { useAgentStore } from "../stores/agent";
+import { AgentText } from "./agent-text";
 
 const onChangeDOM =
   (change: (value: string, e?: React.ChangeEvent<HTMLInputElement>) => void) =>
@@ -35,8 +38,10 @@ const AgentTextInput = ({
   disabled?: boolean;
   required?: boolean;
 }) => {
+  const mode = useAgentStore((state) => state.mode);
   const val = value ?? "";
-  return (
+
+  return mode === "edit" ? (
     <Input
       id={fieldName}
       name={fieldName}
@@ -72,6 +77,8 @@ const AgentTextInput = ({
       autoComplete="off"
       data-1p-ignore
     />
+  ) : (
+    <AgentText value={value} type={type} className={className} />
   );
 };
 

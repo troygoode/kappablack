@@ -33,6 +33,7 @@ const Bond = ({
   ) => void;
   remove: () => void;
 }) => {
+  const mode = useAgentStore((state) => state.mode);
   return (
     <div className="flex">
       <div className="flex grow items-center gap-1.5 px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
@@ -42,6 +43,7 @@ const Bond = ({
           onCheckedChange={(e) => {
             update(bond, score, !!e);
           }}
+          disabled={mode === "view"}
         />
         <div className="grow" data-headlessui-state="">
           <AgentTextInput
@@ -54,18 +56,20 @@ const Bond = ({
             required
           />
         </div>
-        <Button
-          size="sm"
-          variant="outline"
-          className="cursor-pointer hover:bg-destructive hover:text-destructive-foreground dark:hover:bg-destructive dark:hover:text-destructive-foreground print:hidden"
-          onClick={() => remove()}
-        >
-          <Trash2Icon />
-        </Button>
+        {mode === "edit" && (
+          <Button
+            size="sm"
+            variant="outline"
+            className="cursor-pointer hover:bg-destructive hover:text-destructive-foreground dark:hover:bg-destructive dark:hover:text-destructive-foreground print:hidden"
+            onClick={() => remove()}
+          >
+            <Trash2Icon />
+          </Button>
+        )}
       </div>
       <div className="w-20 text-center outline-1 outline-zinc-800 print:outline-slate-950">
         <div className="flex items-center p-1 outline-zinc-800">
-          <div className="flex gap-0.5">
+          <div className="flex gap-0.5 w-full">
             <AgentTextInput
               className="text-center"
               fieldName={`bond-${index}-score`}
@@ -95,12 +99,14 @@ export default function Psychology() {
   const merge = useAgentStore((state) => state.merge);
   const {
     isLoaded,
+    mode,
     motivationsAndDisorders,
     violenceAdaptation,
     helplessnessAdaptation,
   } = useAgentStore(
     useShallow((state) => ({
       isLoaded: state.isLoaded,
+      mode: state.mode,
       motivationsAndDisorders: state.agent?.motivationsAndDisorders || "",
       violenceAdaptation: state.agent?.violenceAdaptation || 0,
       helplessnessAdaptation: state.agent?.helplessnessAdaptation || 0,
@@ -146,7 +152,7 @@ export default function Psychology() {
           <div className="flex text-xs uppercase">
             <div className="flex h-10 grow items-center justify-between px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
               <h3>11. Bonds</h3>
-              {bonds.length ? (
+              {mode === "edit" && bonds.length ? (
                 <Button
                   size="sm"
                   variant="outline"
@@ -196,7 +202,7 @@ export default function Psychology() {
             <label className="w-full text-xs uppercase" htmlFor="motivations">
               <h3>12. Motivations and mental disorders</h3>
             </label>
-            {motivationsAndDisorders.length > 0 && (
+            {mode === "edit" && motivationsAndDisorders.length > 0 && (
               <span className="text-xs print:hidden">
                 {motivationsAndDisorders.length}/300
               </span>
@@ -230,7 +236,7 @@ export default function Psychology() {
                     violenceAdaptation: b || violenceAdaptation > 1 ? 1 : 0,
                   });
                 }}
-                disabled={!isLoaded}
+                disabled={!isLoaded || mode === "view"}
               />
               <SquareCheckbox
                 id="violence-adapted-2"
@@ -242,7 +248,7 @@ export default function Psychology() {
                     violenceAdaptation: b || violenceAdaptation > 2 ? 2 : 1,
                   });
                 }}
-                disabled={!isLoaded}
+                disabled={!isLoaded || mode === "view"}
               />
               <SquareCheckbox
                 id="violence-adapted-3"
@@ -254,7 +260,7 @@ export default function Psychology() {
                     violenceAdaptation: b || violenceAdaptation > 3 ? 3 : 2,
                   });
                 }}
-                disabled={!isLoaded}
+                disabled={!isLoaded || mode === "view"}
               />
               {violenceAdaptation >= 3 ? (
                 <Badge
@@ -290,7 +296,7 @@ export default function Psychology() {
                       b || helplessnessAdaptation > 1 ? 1 : 0,
                   });
                 }}
-                disabled={!isLoaded}
+                disabled={!isLoaded || mode === "view"}
               />
               <SquareCheckbox
                 id="helpless-adapted-2"
@@ -303,7 +309,7 @@ export default function Psychology() {
                       b || helplessnessAdaptation > 2 ? 2 : 1,
                   });
                 }}
-                disabled={!isLoaded}
+                disabled={!isLoaded || mode === "view"}
               />
               <SquareCheckbox
                 id="helpless-adapted-3"
@@ -316,7 +322,7 @@ export default function Psychology() {
                       b || helplessnessAdaptation > 3 ? 3 : 2,
                   });
                 }}
-                disabled={!isLoaded}
+                disabled={!isLoaded || mode === "view"}
               />
               {helplessnessAdaptation >= 3 ? (
                 <Badge

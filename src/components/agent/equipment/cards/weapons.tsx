@@ -12,6 +12,7 @@ import { Trash2Icon } from "@/components/ui/icons/lucide-trash-2";
 import { WeaponPicker } from "../picker/picker";
 import { AgentTextInput } from "../../form/agent-text-input";
 import { AgentLabel } from "../../form/agent-label";
+import { useAgentStore } from "../../stores/agent";
 
 const WeaponCardField = ({
   loading,
@@ -72,6 +73,7 @@ export const WeaponsCards = ({
   remove: (index: number) => void;
   stunWeapons?: React.ReactNode;
 }) => {
+  const mode = useAgentStore((state) => state.mode);
   return (
     <div className="w-full">
       <div className="flex w-full flex-col gap-1 px-2 py-1 outline-1 outline-zinc-800 print:gap-0 print:outline-slate-950">
@@ -79,7 +81,7 @@ export const WeaponsCards = ({
           <label className="w-full text-xs uppercase" htmlFor="gear">
             <h3>16. Weapons</h3>
           </label>
-          {(weapons.length > 0 || stunWeapons) && (
+          {(weapons.length > 0 || stunWeapons) && mode === "edit" && (
             <WeaponPicker add={add}>
               <Button
                 size="sm"
@@ -122,15 +124,17 @@ export const WeaponsCards = ({
                     className="bg-zinc-800 text-white dark:bg-white dark:text-zinc-800"
                     required
                   />
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    className="cursor-pointer"
-                    onClick={() => remove(index)}
-                    disabled={loading}
-                  >
-                    <Trash2Icon />
-                  </Button>
+                  {mode === "edit" && (
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      className="cursor-pointer"
+                      onClick={() => remove(index)}
+                      disabled={loading}
+                    >
+                      <Trash2Icon />
+                    </Button>
+                  )}
                 </ItemTitle>
                 <table>
                   <tbody>

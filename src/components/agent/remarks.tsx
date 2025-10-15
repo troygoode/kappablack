@@ -28,54 +28,60 @@ const SpecialTraining = ({
     skillOrStat: string | undefined
   ) => void;
   remove: () => void;
-}) => (
-  <div className="flex">
-    <div className="flex w-1/2 items-center gap-1.5 px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
-      <div className="grow">
-        {!loading ? (
-          <AgentTextInput
-            fieldName={`special-training-${index}`}
-            value={training ?? ""}
-            onChange={(value) => update(value, skillOrStat)}
-            maxLength={50}
-          />
-        ) : (
-          <Skeleton className="h-9 w-full" />
-        )}
+}) => {
+  const mode = useAgentStore((state) => state.mode);
+  return (
+    <div className="flex">
+      <div className="flex w-1/2 items-center gap-1.5 px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
+        <div className="grow">
+          {!loading ? (
+            <AgentTextInput
+              fieldName={`special-training-${index}`}
+              value={training ?? ""}
+              onChange={(value) => update(value, skillOrStat)}
+              maxLength={50}
+            />
+          ) : (
+            <Skeleton className="h-9 w-full" />
+          )}
+        </div>
+        {mode === "edit" ? (
+          <Button
+            size="sm"
+            variant="outline"
+            className="cursor-pointer hover:bg-destructive hover:text-destructive-foreground dark:hover:bg-destructive dark:hover:text-destructive-foreground print:hidden"
+            onClick={() => remove()}
+            disabled={loading}
+          >
+            <Trash2Icon />
+          </Button>
+        ) : null}
       </div>
-      <Button
-        size="sm"
-        variant="outline"
-        className="cursor-pointer hover:bg-destructive hover:text-destructive-foreground dark:hover:bg-destructive dark:hover:text-destructive-foreground print:hidden"
-        onClick={() => remove()}
-        disabled={loading}
-      >
-        <Trash2Icon />
-      </Button>
-    </div>
-    <div className="w-1/2 text-center outline-1 outline-zinc-800 print:outline-slate-950">
-      <div className="flex h-full w-full flex-col justify-end gap-1 px-2 py-1 font-jost outline-1 outline-zinc-800 print:gap-0 print:outline-slate-950">
-        {!loading ? (
-          <AgentTextInput
-            fieldName={`special-training-${index}-skill`}
-            value={skillOrStat ?? ""}
-            onChange={(value) => update(training, value)}
-            maxLength={50}
-            disabled={!training?.length}
-          />
-        ) : (
-          <Skeleton className="h-9 w-full" />
-        )}
+      <div className="w-1/2 text-center outline-1 outline-zinc-800 print:outline-slate-950">
+        <div className="flex h-full w-full flex-col justify-end gap-1 px-2 py-1 font-jost outline-1 outline-zinc-800 print:gap-0 print:outline-slate-950">
+          {!loading ? (
+            <AgentTextInput
+              fieldName={`special-training-${index}-skill`}
+              value={skillOrStat ?? ""}
+              onChange={(value) => update(training, value)}
+              maxLength={50}
+              disabled={!training?.length}
+            />
+          ) : (
+            <Skeleton className="h-9 w-full" />
+          )}
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default function Remarks() {
   const merge = useAgentStore((state) => state.merge);
-  const { isLoaded, notes, developments } = useAgentStore(
+  const { isLoaded, mode, notes, developments } = useAgentStore(
     useShallow((state) => ({
       isLoaded: state.isLoaded,
+      mode: state.mode,
       notes: state.agent?.notes || "",
       developments: state.agent?.developments || "",
     }))
@@ -118,7 +124,7 @@ export default function Remarks() {
               <label className="w-full text-xs uppercase" htmlFor="notes">
                 <h3>17. Personal details and notes</h3>
               </label>
-              {notes.length ? (
+              {notes.length && mode === "edit" ? (
                 <span className="text-xs print:hidden">
                   {notes.length ?? 0}/500
                 </span>
@@ -146,7 +152,7 @@ export default function Remarks() {
                 >
                   <h3>18. Developments which affect home and family</h3>
                 </label>
-                {developments.length ? (
+                {developments.length && mode === "edit" ? (
                   <span className="text-xs print:hidden">
                     {developments.length ?? 0}/300
                   </span>
@@ -166,15 +172,17 @@ export default function Remarks() {
               <div className="flex text-xs uppercase">
                 <div className="flex w-1/2 items-center justify-between px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
                   <h3>19. Special Training</h3>
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    className="cursor-pointer print:hidden"
-                    onClick={() => addTraining()}
-                    disabled={!isLoaded || trainings.length >= 6}
-                  >
-                    <CirclePlusIcon />
-                  </Button>
+                  {mode === "edit" ? (
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      className="cursor-pointer print:hidden"
+                      onClick={() => addTraining()}
+                      disabled={!isLoaded || trainings.length >= 6}
+                    >
+                      <CirclePlusIcon />
+                    </Button>
+                  ) : null}
                 </div>
                 <div className="relative items-center flex h-16 w-1/2 justify-center px-2 py-1 outline-1 outline-zinc-800 sm:h-12 print:outline-slate-950">
                   Skill or stat used

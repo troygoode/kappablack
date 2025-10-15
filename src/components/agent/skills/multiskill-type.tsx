@@ -5,6 +5,7 @@ import { Trash2Icon } from "../../ui/icons/lucide-trash-2";
 import { Skeleton } from "../../ui/skeleton";
 import { AgentTextInput } from "../form/agent-text-input";
 import { SquareCheckbox } from "../form/square-checkbox";
+import { useAgentStore } from "../stores/agent";
 
 export interface ISkillType {
   type: string | undefined;
@@ -30,6 +31,7 @@ export function MultiSkillType({
   ) => void;
   onRemoveType: () => void;
 }) {
+  const mode = useAgentStore((state) => state.mode);
   return (
     <div className="flex grow mt-2">
       <div className="flex w-full flex-col px-2">
@@ -41,7 +43,7 @@ export function MultiSkillType({
               onCheckedChange={(checked) =>
                 onUpdateType(type, score, !!checked)
               }
-              disabled={loading || !type?.length}
+              disabled={loading || !type?.length || mode === "view"}
             />
           </div>
           <div className="grow gap-0.5 lg:pl-2 xl:pl-0">
@@ -56,15 +58,17 @@ export function MultiSkillType({
               <Skeleton className="h-9 w-full" />
             )}
           </div>
-          <Button
-            size="sm"
-            variant="outline"
-            className="cursor-pointer ml-1.5 hover:bg-destructive hover:text-destructive-foreground dark:hover:bg-destructive dark:hover:text-destructive-foreground print:hidden"
-            onClick={() => onRemoveType()}
-            disabled={loading}
-          >
-            <Trash2Icon />
-          </Button>
+          {mode === "edit" && (
+            <Button
+              size="sm"
+              variant="outline"
+              className="cursor-pointer ml-1.5 hover:bg-destructive hover:text-destructive-foreground dark:hover:bg-destructive dark:hover:text-destructive-foreground print:hidden"
+              onClick={() => onRemoveType()}
+              disabled={loading}
+            >
+              <Trash2Icon />
+            </Button>
+          )}
         </div>
       </div>
 

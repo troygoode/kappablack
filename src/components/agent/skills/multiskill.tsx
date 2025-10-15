@@ -1,6 +1,7 @@
 "use client";
 
 import { useShallow } from "zustand/shallow";
+import classNames from "classnames";
 
 import { Button } from "../../ui/button";
 import { CirclePlusIcon } from "../../ui/icons/lucide-circle-plus";
@@ -25,6 +26,7 @@ export function MultiSkill({
     (state) => state.removeMultiSkillType
   );
   const isLoaded = useAgentStore((state) => state.isLoaded);
+  const mode = useAgentStore((state) => state.mode);
   const types = useAgentStore(
     useShallow((state) => state.getMultiSkillTypes(skill))
   );
@@ -37,8 +39,18 @@ export function MultiSkill({
     removeMultiSkillType(skill, index);
   };
 
+  const maxScore = types.reduce((max, t) => {
+    if (t.score && t.score > max) return t.score;
+    return max;
+  }, 0);
+
   return (
-    <div className="py-2 outline-1 outline-zinc-800 print:outline-slate-950">
+    <div
+      className={classNames(
+        "py-2 outline-1 outline-zinc-800 print:outline-slate-950",
+        mode === "play" && !maxScore ? "text-zinc-300 dark:text-zinc-700" : ""
+      )}
+    >
       <div className="flex grow">
         <div className="flex justify-center w-full flex-col px-2">
           <div className="flex justify-center">
@@ -59,15 +71,17 @@ export function MultiSkill({
               </span>
               <span className="hidden print:inline">(0%)</span>
             </div>
-            <Button
-              size="sm"
-              variant="outline"
-              className="cursor-pointer print:hidden"
-              onClick={() => addMultiSkillType(skill)}
-              disabled={!isLoaded || types.length >= 3}
-            >
-              <CirclePlusIcon />
-            </Button>
+            {mode === "edit" && (
+              <Button
+                size="sm"
+                variant="outline"
+                className="cursor-pointer print:hidden"
+                onClick={() => addMultiSkillType(skill)}
+                disabled={!isLoaded || types.length >= 3}
+              >
+                <CirclePlusIcon />
+              </Button>
+            )}
           </div>
         </div>
         <div className="flex w-20 items-center flex-col gap-1.5 p-1"></div>

@@ -9,6 +9,7 @@ import { Trash2Icon } from "@/components/ui/icons/lucide-trash-2";
 import { Skeleton } from "@/components/ui/skeleton";
 import { AgentTextInput } from "../../form/agent-text-input";
 import { WeaponPicker } from "../picker/picker";
+import { useAgentStore } from "../../stores/agent";
 
 const WIDTHS = {
   name: "w-80",
@@ -34,6 +35,7 @@ export const StunWeaponsTable = ({
   onChange: (weapon: IStunWeapon, index: number) => void;
   remove: (index: number) => void;
 }) => {
+  const mode = useAgentStore((state) => state.mode);
   return (
     <table className="w-full">
       <thead className="text-xs uppercase">
@@ -41,7 +43,7 @@ export const StunWeaponsTable = ({
           <th className="border-l border-b border-zinc-800 py-0.5 pl-2 pr-1 text-left font-normal h-10">
             <div className="flex items-center justify-between">
               16.b. Stun Weapons
-              {weapons.length > 0 && (
+              {weapons.length > 0 && mode === "edit" ? (
                 <WeaponPicker add={add}>
                   <Button
                     size="sm"
@@ -52,7 +54,7 @@ export const StunWeaponsTable = ({
                     <CirclePlusIcon />
                   </Button>
                 </WeaponPicker>
-              )}
+              ) : null}
             </div>
           </th>
           <th className="border-l border-b border-zinc-800 px-1 py-0.5 font-normal">
@@ -76,7 +78,7 @@ export const StunWeaponsTable = ({
         </tr>
       </thead>
       <tbody>
-        {weapons.length === 0 && (
+        {weapons.length === 0 && mode === "edit" ? (
           <tr className="text-center print:hidden">
             <td
               colSpan={7}
@@ -95,7 +97,7 @@ export const StunWeaponsTable = ({
               </WeaponPicker>
             </td>
           </tr>
-        )}
+        ) : null}
         {weapons.map((weapon: IStunWeapon, index: number) => (
           <tr className="text-center" key={index}>
             <td
@@ -110,20 +112,23 @@ export const StunWeaponsTable = ({
                     onChange={(value) =>
                       onChange({ ...weapon, weapon: value }, index)
                     }
+                    className="text-left"
                     required
                   />
                 ) : (
                   <Skeleton className="h-9 w-full" />
                 )}
-                <Button
-                  size="sm"
-                  variant="outline"
-                  className="cursor-pointer hover:bg-destructive hover:text-destructive-foreground dark:hover:bg-destructive dark:hover:text-destructive-foreground print:hidden"
-                  disabled={loading}
-                  onClick={() => remove(index)}
-                >
-                  <Trash2Icon />
-                </Button>
+                {mode === "edit" ? (
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    className="cursor-pointer hover:bg-destructive hover:text-destructive-foreground dark:hover:bg-destructive dark:hover:text-destructive-foreground print:hidden"
+                    disabled={loading}
+                    onClick={() => remove(index)}
+                  >
+                    <Trash2Icon />
+                  </Button>
+                ) : null}
               </div>
             </td>
             <td
@@ -137,6 +142,7 @@ export const StunWeaponsTable = ({
                   onChange={(value) =>
                     onChange({ ...weapon, skill: value }, index)
                   }
+                  className="text-left"
                   required
                 />
               ) : (
@@ -170,6 +176,7 @@ export const StunWeaponsTable = ({
                   onChange={(value) =>
                     onChange({ ...weapon, penalty: value }, index)
                   }
+                  className="text-left"
                   required
                 />
               ) : (

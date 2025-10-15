@@ -47,9 +47,14 @@ const Stat = ({
   setFeature: (feature: string | undefined) => void;
   tooltip?: string;
 }) => {
+  const mode = useAgentStore((state) => state.mode);
   return (
     <div className="grid grid-cols-9">
-      <div className="col-span-3 flex flex-wrap items-center gap-1 px-2 py-1 text-sm outline-1 outline-zinc-800 print:outline-slate-950">
+      <div
+        className={`col-span-${
+          mode === "edit" ? 3 : 4
+        } flex flex-wrap items-center gap-1 px-2 py-1 text-sm outline-1 outline-zinc-800 print:outline-slate-950`}
+      >
         {tooltip && (
           <AgentTooltip>
             <p>{tooltip}</p>
@@ -60,7 +65,11 @@ const Stat = ({
           ({abbreviation})
         </span>
       </div>
-      <div className="col-span-2 flex items-center p-1 outline-1 outline-zinc-800 print:outline-slate-950">
+      <div
+        className={`col-span-${
+          mode === "edit" ? 2 : 1
+        } flex items-center p-1 outline-1 outline-zinc-800 print:outline-slate-950`}
+      >
         <div className="flex gap-0.5 w-full">
           {loading ? (
             <Skeleton className="h-9 w-full" />
@@ -123,6 +132,7 @@ const Derived = ({
   reset?: () => void;
   disabled?: boolean;
 }) => {
+  const mode = useAgentStore((state) => state.mode);
   return (
     <div className="grid grid-cols-9 print:text-sm">
       <div className="col-span-4 flex items-center gap-1 px-2 py-1 text-sm outline-1 outline-zinc-800 print:outline-slate-950">
@@ -156,14 +166,16 @@ const Derived = ({
                 disabled={max === undefined || disabled}
                 required
               />
-              <Button
-                size="sm"
-                variant="outline"
-                className="ml-2 cursor-pointer print:hidden"
-                onClick={() => (reset ? reset() : setCurrent(max))}
-              >
-                <RefreshCwIcon />
-              </Button>
+              {mode === "edit" ? (
+                <Button
+                  size="sm"
+                  variant="outline"
+                  className="ml-2 cursor-pointer print:hidden"
+                  onClick={() => (reset ? reset() : setCurrent(max))}
+                >
+                  <RefreshCwIcon />
+                </Button>
+              ) : null}
             </>
           ) : (
             <span className="text-muted-foreground">&mdash;</span>
@@ -205,16 +217,18 @@ const featurePlaceholders = (
 
 export default function Stats() {
   const merge = useAgentStore((state) => state.merge);
-  const { isLoaded, hp, wp, san, bp, physicalDescription } = useAgentStore(
-    useShallow((state) => ({
-      isLoaded: state.isLoaded,
-      hp: state.agent?.hp,
-      wp: state.agent?.wp,
-      san: state.agent?.san,
-      bp: state.agent?.bp,
-      physicalDescription: state.agent?.physicalDescription || "",
-    }))
-  );
+  const { isLoaded, mode, hp, wp, san, bp, physicalDescription } =
+    useAgentStore(
+      useShallow((state) => ({
+        isLoaded: state.isLoaded,
+        mode: state.mode,
+        hp: state.agent?.hp,
+        wp: state.agent?.wp,
+        san: state.agent?.san,
+        bp: state.agent?.bp,
+        physicalDescription: state.agent?.physicalDescription || "",
+      }))
+    );
   const strength = useAgentStore(
     useShallow((state) => ({
       ...{ score: undefined, feature: "" },
@@ -262,10 +276,18 @@ export default function Stats() {
         <div className="flex h-full flex-col">
           <div className="flex flex-col font-jost">
             <div className="grid grid-cols-9 text-xs uppercase">
-              <h3 className="col-span-3 flex items-center justify-start px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
+              <h3
+                className={`col-span-${
+                  mode === "edit" ? 3 : 4
+                } flex items-center justify-start px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950`}
+              >
                 <span>8. Statistics</span>
               </h3>
-              <div className="col-span-2 flex items-center justify-center px-2 py-1 text-center outline-1 outline-zinc-800 print:outline-slate-950">
+              <div
+                className={`col-span-${
+                  mode === "edit" ? 2 : 1
+                } flex items-center justify-center px-2 py-1 text-center outline-1 outline-zinc-800 print:outline-slate-950`}
+              >
                 <span>Score</span>
               </div>
               <div className="col-span-1 flex items-center justify-center px-2 py-1 text-center outline-1 outline-zinc-800 print:outline-slate-950">
@@ -483,7 +505,7 @@ export default function Stats() {
               >
                 <h3>10. Physical description</h3>
               </label>
-              {physicalDescription.length ? (
+              {physicalDescription.length && mode === "edit" ? (
                 <span className="text-xs print:hidden">
                   {physicalDescription.length}/300
                 </span>

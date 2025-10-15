@@ -12,11 +12,13 @@ import { generateStore } from "@/lib/zustand-helpers";
 
 interface IAgentState {
   isLoaded: boolean;
+  mode: "view" | "edit" | "play";
   agent: IAgent;
 }
 interface IAgentActions {
   reset: (state: IAgentState) => void;
   merge: (agent: Partial<IAgent>) => void;
+  setMode: (mode: "view" | "edit" | "play") => void;
 
   addWeapon: (weapon: IWeaponData) => void;
   updateWeapon: (weapon: IWeapon, index: number) => void;
@@ -41,6 +43,7 @@ interface IAgentActions {
 const store = generateStore<IAgentState, IAgentActions>({
   initState: () => ({
     isLoaded: false,
+    mode: "view",
     agent: {
       bonds: [],
       skills: [],
@@ -55,6 +58,7 @@ const store = generateStore<IAgentState, IAgentActions>({
       set((state) => ({
         agent: { ...state.agent, ...agent },
       })),
+    setMode: (mode: "view" | "edit" | "play") => set(() => ({ mode })),
 
     addWeapon: (weapon: IWeaponData) => {
       if (weapon.penalty !== undefined) {

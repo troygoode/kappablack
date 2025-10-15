@@ -10,6 +10,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Trash2Icon } from "@/components/ui/icons/lucide-trash-2";
 import { AgentTextInput } from "../../form/agent-text-input";
 import { AgentLabel } from "../../form/agent-label";
+import { useAgentStore } from "../../stores/agent";
 
 const WeaponCardField = ({
   loading,
@@ -68,6 +69,7 @@ export const StunWeaponsCards = ({
   onChange: (weapon: IStunWeapon, index: number) => void;
   remove: (index: number) => void;
 }) => {
+  const mode = useAgentStore((state) => state.mode);
   return weapons.map((weapon, index) => (
     <Item key={index} variant="outline">
       <ItemContent>
@@ -79,18 +81,20 @@ export const StunWeaponsCards = ({
               onChange({ ...weapon, weapon: value }, index);
             }}
             maxLength={100}
-            className="bg-zinc-800 text-white dark:bg-white dark:text-zinc-800"
+            className="bg-zinc-800 text-white dark:bg-white dark:text-zinc-800 font-weight-bold"
             required
           />
-          <Button
-            size="sm"
-            variant="outline"
-            className="cursor-pointer"
-            onClick={() => remove(index)}
-            disabled={loading}
-          >
-            <Trash2Icon />
-          </Button>
+          {mode === "edit" && (
+            <Button
+              size="sm"
+              variant="outline"
+              className="cursor-pointer"
+              onClick={() => remove(index)}
+              disabled={loading}
+            >
+              <Trash2Icon />
+            </Button>
+          )}
         </ItemTitle>
         <table>
           <tbody>

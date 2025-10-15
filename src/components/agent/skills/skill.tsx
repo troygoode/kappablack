@@ -1,6 +1,7 @@
 "use client";
 
 import { useShallow } from "zustand/shallow";
+import classNames from "classnames";
 
 import { Skeleton } from "../../ui/skeleton";
 import { AgentTextInput } from "../form/agent-text-input";
@@ -21,12 +22,18 @@ export function Skill({
 }) {
   const updateSkill = useAgentStore((state) => state.updateSkill);
   const isLoaded = useAgentStore((state) => state.isLoaded);
+  const mode = useAgentStore((state) => state.mode);
   const { marked, score } = useAgentStore(
     useShallow((state) => state.getSkill(skill))
   );
 
   return (
-    <div className="flex grow">
+    <div
+      className={classNames(
+        "flex grow",
+        mode === "play" && !score ? "text-zinc-300 dark:text-zinc-700" : ""
+      )}
+    >
       <div className="flex w-full items-center px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
         <div className="w-7 pt-1.5">
           <SquareCheckbox
@@ -35,7 +42,7 @@ export function Skill({
             onCheckedChange={(checked) => {
               updateSkill(skill, score, checked === true);
             }}
-            disabled={!isLoaded}
+            disabled={!isLoaded || mode === "view"}
           />
         </div>
         <div className="flex grow items-center gap-1.5 text-sm print:text-xs">

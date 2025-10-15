@@ -13,6 +13,7 @@ import { SideHeader } from "./form/side-header";
 import { SquareRadioGroupItem } from "./form/square-radio-group-item";
 import { useAgentStore } from "./stores/agent";
 import { Skeleton } from "../ui/skeleton";
+import { AgentText } from "./form/agent-text";
 
 const Name = () => {
   return (
@@ -106,6 +107,7 @@ const Sex = () => {
     }))
   );
   const merge = useAgentStore((state) => state.merge);
+  const mode = useAgentStore((state) => state.mode);
 
   const maxLength = 100;
   const [sex, setSex] = useState(
@@ -150,58 +152,68 @@ const Sex = () => {
         length={sex === "sex-other" ? sexOther.length : -1}
         maxLength={maxLength}
       >
-        5. Sex ({isLoaded ? "loaded" : "loading"})
+        5. Sex
       </AgentLabel>
-      <div className="flex gap-3 print:text-sm">
-        <RadioGroup
-          className="flex gap-3"
-          defaultValue={sex}
-          onChange={onSexChange}
-        >
-          <div className="flex items-center gap-1">
-            <SquareRadioGroupItem
-              value="sex-m"
-              id="sex-m"
-              className={sex === "sex-m" ? "cursor-default" : "cursor-pointer"}
-              disabled={!isLoaded}
-            />
-            <Label htmlFor="sex-m">M</Label>
+      {mode === "edit" ? (
+        <div className="flex gap-3 print:text-sm">
+          <RadioGroup
+            className="flex gap-3"
+            defaultValue={sex}
+            onChange={onSexChange}
+          >
+            <div className="flex items-center gap-1">
+              <SquareRadioGroupItem
+                value="sex-m"
+                id="sex-m"
+                className={
+                  sex === "sex-m" ? "cursor-default" : "cursor-pointer"
+                }
+                disabled={!isLoaded}
+              />
+              <Label htmlFor="sex-m">M</Label>
+            </div>
+            <div className="flex items-center gap-1">
+              <SquareRadioGroupItem
+                value="sex-f"
+                id="sex-f"
+                className={
+                  sex === "sex-f" ? "cursor-default" : "cursor-pointer"
+                }
+                disabled={!isLoaded}
+              />
+              <Label htmlFor="sex-f">F</Label>
+            </div>
+            <div className="flex items-center gap-1">
+              <SquareRadioGroupItem
+                value="sex-other"
+                id="sex-other"
+                className={
+                  sex === "sex-other" ? "cursor-default" : "cursor-pointer"
+                }
+                disabled={!isLoaded}
+              />
+            </div>
+          </RadioGroup>
+          <div className="grow">
+            {isLoaded ? (
+              <AgentTextInput
+                fieldName="sexOther"
+                value={sexOther}
+                onChange={onSexOtherChange}
+                maxLength={maxLength}
+                disabled={sex !== "sex-other"}
+                required
+              />
+            ) : (
+              <Skeleton className="h-9 w-full" />
+            )}
           </div>
-          <div className="flex items-center gap-1">
-            <SquareRadioGroupItem
-              value="sex-f"
-              id="sex-f"
-              className={sex === "sex-f" ? "cursor-default" : "cursor-pointer"}
-              disabled={!isLoaded}
-            />
-            <Label htmlFor="sex-f">F</Label>
-          </div>
-          <div className="flex items-center gap-1">
-            <SquareRadioGroupItem
-              value="sex-other"
-              id="sex-other"
-              className={
-                sex === "sex-other" ? "cursor-default" : "cursor-pointer"
-              }
-              disabled={!isLoaded}
-            />
-          </div>
-        </RadioGroup>
-        <div className="grow">
-          {isLoaded ? (
-            <AgentTextInput
-              fieldName="sexOther"
-              value={sexOther}
-              onChange={onSexOtherChange}
-              maxLength={maxLength}
-              disabled={sex !== "sex-other"}
-              required
-            />
-          ) : (
-            <Skeleton className="h-9 w-full" />
-          )}
         </div>
-      </div>
+      ) : (
+        <AgentText
+          value={sex === "sex-m" ? "M" : sex === "sex-f" ? "F" : sexOther || ""}
+        />
+      )}
     </AgentField>
   );
 };
