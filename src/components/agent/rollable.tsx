@@ -182,7 +182,7 @@ export function Rollable({
   return (
     <div
       className={`
-        w-full border-1 text-center relative cursor-pointer hover:*:block
+        w-full text-center relative cursor-pointer hover:*:block
         hover:bg-zinc-800 hover:text-white hover:dark:bg-white hover:dark:text-black
         `}
       onClick={roll}

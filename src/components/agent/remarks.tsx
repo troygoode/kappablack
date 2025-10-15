@@ -10,6 +10,7 @@ import { AgentTextInput } from "./form/agent-text-input";
 import { AgentTextarea } from "./form/agent-textarea";
 import { SideHeader } from "./form/side-header";
 import { useAgentStore } from "./stores/agent";
+import { RollableLookup } from "./rollable-lookup";
 
 const SpecialTraining = ({
   loading,
@@ -60,13 +61,19 @@ const SpecialTraining = ({
       <div className="w-1/2 text-center outline-1 outline-zinc-800 print:outline-slate-950">
         <div className="flex h-full w-full flex-col justify-end gap-1 px-2 py-1 font-jost outline-1 outline-zinc-800 print:gap-0 print:outline-slate-950">
           {!loading ? (
-            <AgentTextInput
-              fieldName={`special-training-${index}-skill`}
+            <RollableLookup
+              source={training ?? ""}
               value={skillOrStat ?? ""}
-              onChange={(value) => update(training, value)}
-              maxLength={50}
-              disabled={!training?.length}
-            />
+              enabled={!!skillOrStat && mode === "play"}
+            >
+              <AgentTextInput
+                fieldName={`special-training-${index}-skill`}
+                value={skillOrStat ?? ""}
+                onChange={(value) => update(training, value)}
+                maxLength={50}
+                disabled={!training?.length}
+              />
+            </RollableLookup>
           ) : (
             <Skeleton className="h-9 w-full" />
           )}

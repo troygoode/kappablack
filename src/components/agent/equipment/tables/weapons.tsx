@@ -11,6 +11,7 @@ import { AgentTextInput } from "../../form/agent-text-input";
 import { WeaponPicker } from "../picker/picker";
 import { useAgentStore } from "../../stores/agent";
 import { Rollable } from "../../rollable";
+import { RollableLookup } from "../../rollable-lookup";
 
 const WIDTHS = {
   name: "w-80",
@@ -149,16 +150,22 @@ export const WeaponsTable = ({
               className={`border-l border-b border-zinc-800 px-1 py-0.5 ${WIDTHS.skill}`}
             >
               {!loading ? (
-                <AgentTextInput
-                  fieldName={`weapon-${index}-skill`}
-                  maxLength={16}
-                  value={weapon.skill || ""}
-                  onChange={(value) =>
-                    onChange({ ...weapon, skill: value }, index)
-                  }
-                  className="text-left"
-                  required
-                />
+                <RollableLookup
+                  source={weapon.weapon ?? ""}
+                  value={weapon.skill ?? ""}
+                  enabled={!!weapon.skill && mode === "play"}
+                >
+                  <AgentTextInput
+                    fieldName={`weapon-${index}-skill`}
+                    maxLength={16}
+                    value={weapon.skill || ""}
+                    onChange={(value) =>
+                      onChange({ ...weapon, skill: value }, index)
+                    }
+                    className="text-left"
+                    required
+                  />
+                </RollableLookup>
               ) : (
                 <Skeleton className="h-9 w-full" />
               )}
