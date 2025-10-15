@@ -10,6 +10,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { AgentTextInput } from "../../form/agent-text-input";
 import { WeaponPicker } from "../picker/picker";
 import { useAgentStore } from "../../stores/agent";
+import { Rollable } from "../../rollable";
 
 const WIDTHS = {
   name: "w-80",
@@ -182,14 +183,20 @@ export const WeaponsTable = ({
               className={`border-l border-b border-zinc-800 px-1 py-0.5 ${WIDTHS.damage}`}
             >
               {!loading ? (
-                <AgentTextInput
-                  fieldName={`weapon-${index}-damage`}
-                  maxLength={10}
-                  value={weapon.damage || ""}
-                  onChange={(value) =>
-                    onChange({ ...weapon, damage: value }, index)
-                  }
-                />
+                <Rollable
+                  value={weapon.damage}
+                  source={weapon.weapon || ""}
+                  enabled={mode === "play" && !!weapon.damage}
+                >
+                  <AgentTextInput
+                    fieldName={`weapon-${index}-damage`}
+                    maxLength={10}
+                    value={weapon.damage || ""}
+                    onChange={(value) =>
+                      onChange({ ...weapon, damage: value }, index)
+                    }
+                  />
+                </Rollable>
               ) : (
                 <Skeleton className="h-9 w-full" />
               )}

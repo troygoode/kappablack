@@ -24,6 +24,7 @@ const AgentTextInput = ({
   min,
   maxLength,
   disabled,
+  editableDuringPlay,
   required,
 }: {
   fieldName: string;
@@ -36,12 +37,13 @@ const AgentTextInput = ({
   min?: number;
   maxLength: number;
   disabled?: boolean;
+  editableDuringPlay?: boolean;
   required?: boolean;
 }) => {
   const mode = useAgentStore((state) => state.mode);
   const val = value ?? "";
 
-  return mode === "edit" ? (
+  return mode === "edit" || (editableDuringPlay && mode === "play") ? (
     <Input
       id={fieldName}
       name={fieldName}

@@ -12,12 +12,12 @@ export default function Disclaimer() {
         <Image
           src={LogoW}
           alt="Delta Green"
-          className="w-12 hidden dark:inline"
+          className="w-56 md:w-56 lg:w-28 xl:w-22 hidden dark:inline"
         />
         <Image
           src={LogoK}
           alt="Delta Green"
-          className="w-12 inline dark:hidden"
+          className="w-56 md:w-56 lg:w-28 xl:w-22 inline dark:hidden"
         />
       </div>
       <div className="text-xs">

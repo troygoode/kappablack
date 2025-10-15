@@ -5,6 +5,7 @@ import { Trash2Icon } from "../../ui/icons/lucide-trash-2";
 import { Skeleton } from "../../ui/skeleton";
 import { AgentTextInput } from "../form/agent-text-input";
 import { SquareCheckbox } from "../form/square-checkbox";
+import { Rollable } from "../rollable";
 import { useAgentStore } from "../stores/agent";
 
 export interface ISkillType {
@@ -75,18 +76,28 @@ export function MultiSkillType({
       <div className="flex w-20 flex-col px-1">
         <div className="flex h-full items-center">
           {!loading ? (
-            <AgentTextInput
-              fieldName={`${fieldName}-score`}
-              type="number"
-              value={score?.toString() ?? ""}
-              onChange={(value) =>
-                onUpdateType(type, value ? parseInt(value) : undefined, marked)
-              }
-              maxLength={3}
-              min={0}
-              disabled={!type?.length}
-              required
-            />
+            <Rollable
+              value={score}
+              source={type ?? ""}
+              enabled={mode === "play" && !!type?.length}
+            >
+              <AgentTextInput
+                fieldName={`${fieldName}-score`}
+                type="number"
+                value={score?.toString() ?? ""}
+                onChange={(value) =>
+                  onUpdateType(
+                    type,
+                    value ? parseInt(value) : undefined,
+                    marked
+                  )
+                }
+                maxLength={3}
+                min={0}
+                disabled={!type?.length}
+                required
+              />
+            </Rollable>
           ) : (
             <Skeleton className="h-9 w-full" />
           )}

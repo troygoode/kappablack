@@ -8,6 +8,7 @@ import { AgentTextInput } from "../form/agent-text-input";
 import { AgentTooltip } from "../form/agent-tooltip";
 import { SquareCheckbox } from "../form/square-checkbox";
 import { useAgentStore } from "../stores/agent";
+import { Rollable } from "../rollable";
 
 export function Skill({
   fieldName,
@@ -66,22 +67,28 @@ export function Skill({
         <div className="flex h-full items-center justify-center">
           <div className="flex gap-0.5 w-full">
             {isLoaded ? (
-              <AgentTextInput
-                fieldName={`${fieldName}-score`}
-                type="number"
-                value={score?.toString() ?? ""}
-                placeholder={base && base !== 0 ? base.toString() : undefined}
-                maxLength={3}
-                min={0}
-                onChange={(value) => {
-                  updateSkill(
-                    skill,
-                    value?.length ? parseInt(value) : undefined,
-                    marked
-                  );
-                }}
-                required
-              />
+              <Rollable
+                value={score}
+                source={skill}
+                enabled={mode === "play" && !!score}
+              >
+                <AgentTextInput
+                  fieldName={`${fieldName}-score`}
+                  type="number"
+                  value={score?.toString() ?? ""}
+                  placeholder={base && base !== 0 ? base.toString() : undefined}
+                  maxLength={3}
+                  min={0}
+                  onChange={(value) => {
+                    updateSkill(
+                      skill,
+                      value?.length ? parseInt(value) : undefined,
+                      marked
+                    );
+                  }}
+                  required
+                />
+              </Rollable>
             ) : (
               <Skeleton className="h-9 w-full" />
             )}

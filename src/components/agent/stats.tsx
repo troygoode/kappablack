@@ -175,9 +175,10 @@ const Derived = ({
                 maxLength={3}
                 min={0}
                 disabled={max === undefined || disabled}
+                editableDuringPlay={true}
                 required
               />
-              {mode === "edit" ? (
+              {mode === "edit" || mode === "play" ? (
                 <Button
                   size="sm"
                   variant="outline"
