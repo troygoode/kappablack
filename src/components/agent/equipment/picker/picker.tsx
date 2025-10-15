@@ -1,6 +1,6 @@
 "use client";
 
-import { type IWeaponData } from "@/types/data";
+import type { IWeaponData } from "@/types/data";
 
 import {
   Sheet,

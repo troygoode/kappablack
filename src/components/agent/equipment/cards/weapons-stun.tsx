@@ -1,7 +1,6 @@
 "use client";
 
-import { type IStunWeapon } from "@/types/agent";
-import { type IWeaponData } from "@/types/data";
+import type { IStunWeapon } from "@/types/agent";
 
 import { Item, ItemContent, ItemTitle } from "@/components/ui/item";
 
@@ -59,13 +58,11 @@ const WeaponCardField = ({
 export const StunWeaponsCards = ({
   loading,
   weapons,
-  add,
   onChange,
   remove,
 }: {
   loading: boolean;
   weapons: IStunWeapon[];
-  add: (weapon: IWeaponData) => void;
   onChange: (weapon: IStunWeapon, index: number) => void;
   remove: (index: number) => void;
 }) => {
@@ -161,7 +158,7 @@ export const StunWeaponsCards = ({
                   maxLength={2}
                   value={weapon.ammo?.toString() ?? ""}
                   onChange={(value) => {
-                    onChange({ ...weapon, ammo: parseInt(value) }, index);
+                    onChange({ ...weapon, ammo: parseInt(value, 10) }, index);
                   }}
                 />
               </td>
@@ -174,7 +171,10 @@ export const StunWeaponsCards = ({
                   maxLength={2}
                   value={weapon.capacity?.toString() ?? ""}
                   onChange={(value) => {
-                    onChange({ ...weapon, capacity: parseInt(value) }, index);
+                    onChange(
+                      { ...weapon, capacity: parseInt(value, 10) },
+                      index
+                    );
                   }}
                 />
               </td>

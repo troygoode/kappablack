@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import type React from "react";
 import { useTheme } from "next-themes";
 
 import {
@@ -9,38 +9,38 @@ import {
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuPortal,
-  DropdownMenuSeparator,
-  DropdownMenuShortcut,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
+  // DropdownMenuShortcut,
+  // DropdownMenuPortal,
+  // DropdownMenuSeparator,
+  // DropdownMenuSub,
+  // DropdownMenuSubContent,
+  // DropdownMenuSubTrigger,
 } from "@/components/ui/dropdown-menu";
 import { CheckIcon } from "@/components/ui/icons/lucide-check";
 
-const Team = () => (
-  <>
-    <DropdownMenuGroup>
-      <DropdownMenuItem>Team</DropdownMenuItem>
-      <DropdownMenuSub>
-        <DropdownMenuSubTrigger>Invite users</DropdownMenuSubTrigger>
-        <DropdownMenuPortal>
-          <DropdownMenuSubContent>
-            <DropdownMenuItem>Email</DropdownMenuItem>
-            <DropdownMenuItem>Message</DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>More...</DropdownMenuItem>
-          </DropdownMenuSubContent>
-        </DropdownMenuPortal>
-      </DropdownMenuSub>
-      <DropdownMenuItem>
-        New Team
-        <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
-      </DropdownMenuItem>
-    </DropdownMenuGroup>
-  </>
-);
+// const Team = () => (
+//   <>
+//     <DropdownMenuGroup>
+//       <DropdownMenuItem>Team</DropdownMenuItem>
+//       <DropdownMenuSub>
+//         <DropdownMenuSubTrigger>Invite users</DropdownMenuSubTrigger>
+//         <DropdownMenuPortal>
+//           <DropdownMenuSubContent>
+//             <DropdownMenuItem>Email</DropdownMenuItem>
+//             <DropdownMenuItem>Message</DropdownMenuItem>
+//             <DropdownMenuSeparator />
+//             <DropdownMenuItem>More...</DropdownMenuItem>
+//           </DropdownMenuSubContent>
+//         </DropdownMenuPortal>
+//       </DropdownMenuSub>
+//       <DropdownMenuItem>
+//         New Team
+//         <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
+//       </DropdownMenuItem>
+//     </DropdownMenuGroup>
+//   </>
+// );
 
 const Theme = () => {
   const { theme, setTheme } = useTheme();
@@ -65,14 +65,14 @@ const Theme = () => {
   );
 };
 
-const Logout = () => (
-  <>
-    <DropdownMenuItem>
-      Log out
-      <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
-    </DropdownMenuItem>
-  </>
-);
+// const Logout = () => (
+//   <>
+//     <DropdownMenuItem>
+//       Log out
+//       <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
+//     </DropdownMenuItem>
+//   </>
+// );
 
 export const SettingsMenu = ({ children }: React.PropsWithChildren) => (
   <DropdownMenu>

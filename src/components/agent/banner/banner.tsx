@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 
 import KappaBlackCutoutW from "./kappablack_cutout_w.webp";
 import KappaBlackCutoutK from "./kappablack_cutout_k.webp";

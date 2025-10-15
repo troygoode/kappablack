@@ -1,4 +1,4 @@
-const fs = require("fs");
+const fs = require("node:fs");
 const { parse } = require("smol-toml");
 
 const files = ["skills", "stats", "weapons"];

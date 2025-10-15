@@ -1,8 +1,8 @@
 "use client";
 
-import testAgent from "@/data/test-agent.json";
-
 import { useEffect } from "react";
+
+import testAgent from "@/data/test-agent.json";
 
 import { Toaster } from "@/components/ui/sonner";
 import Equipment from "@/components/agent/equipment/equipment";

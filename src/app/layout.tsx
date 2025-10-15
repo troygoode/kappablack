@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Special_Elite } from "next/font/google";
-import "./globals.css";
 
 import { ThemeProvider } from "@/components/theme-provider";
+
+import "./globals.css";
 
 const specialElite = Special_Elite({
   subsets: ["latin"],

@@ -1,7 +1,5 @@
 "use client";
 
-import React from "react";
-
 import { Button } from "@/components/ui/button";
 import { SettingsIcon } from "@/components/ui/icons/lucide-settings";
 import { SettingsMenu } from "./settings-menu";

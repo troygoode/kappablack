@@ -1,7 +1,7 @@
 "use client";
 
-import { type IWeapon } from "@/types/agent";
-import { type IWeaponData } from "@/types/data";
+import type { IWeapon } from "@/types/agent";
+import type { IWeaponData } from "@/types/data";
 
 import { Item, ItemContent, ItemTitle } from "@/components/ui/item";
 
@@ -187,7 +187,10 @@ export const WeaponsCards = ({
                           maxLength={2}
                           value={weapon.ap?.toString() ?? ""}
                           onChange={(value) => {
-                            onChange({ ...weapon, ap: parseInt(value) }, index);
+                            onChange(
+                              { ...weapon, ap: parseInt(value, 10) },
+                              index
+                            );
                           }}
                         />
                       </td>
@@ -203,7 +206,7 @@ export const WeaponsCards = ({
                           value={weapon.lethality?.toString() ?? ""}
                           onChange={(value) => {
                             onChange(
-                              { ...weapon, lethality: parseInt(value) },
+                              { ...weapon, lethality: parseInt(value, 10) },
                               index
                             );
                           }}
@@ -233,7 +236,7 @@ export const WeaponsCards = ({
                           value={weapon.ammo?.toString() ?? ""}
                           onChange={(value) => {
                             onChange(
-                              { ...weapon, ammo: parseInt(value) },
+                              { ...weapon, ammo: parseInt(value, 10) },
                               index
                             );
                           }}
@@ -249,7 +252,7 @@ export const WeaponsCards = ({
                           value={weapon.capacity?.toString() ?? ""}
                           onChange={(value) => {
                             onChange(
-                              { ...weapon, capacity: parseInt(value) },
+                              { ...weapon, capacity: parseInt(value, 10) },
                               index
                             );
                           }}
