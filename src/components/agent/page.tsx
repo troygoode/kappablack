@@ -4,6 +4,7 @@ import testAgent from "@/data/test-agent.json";
 
 import { useEffect } from "react";
 
+import { Toaster } from "@/components/ui/sonner";
 import Equipment from "@/components/agent/equipment/equipment";
 import Footer from "@/components/agent/footer";
 import Injuries from "@/components/agent/injuries";
@@ -31,7 +32,7 @@ export default function Agent() {
       () => {
         reset({
           isLoaded: true,
-          mode: "view",
+          mode: "play",
           agent: DEBUG_LOAD_TEST_AGENT
             ? testAgent
             : {
@@ -84,6 +85,7 @@ export default function Agent() {
       <div className="mb-16">
         <Disclaimer />
       </div>
+      <Toaster expand richColors />
     </Container>
   );
 }

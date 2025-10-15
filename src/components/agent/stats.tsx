@@ -10,6 +10,7 @@ import { Skeleton } from "../ui/skeleton";
 import { AgentTextarea } from "./form/agent-textarea";
 import { AgentTooltip } from "./form/agent-tooltip";
 import { useAgentStore } from "./stores/agent";
+import { Rollable } from "./rollable";
 
 import StatsData from "@/data/stats.json";
 
@@ -89,12 +90,22 @@ const Stat = ({
           )}
         </div>
       </div>
-      <div className="col-span-1 flex items-center justify-center px-2 py-1 outline-1 outline-zinc-800 print:text-sm print:outline-slate-950">
-        {score ? (
-          score * 5
-        ) : (
-          <span className="text-muted-foreground">&mdash;</span>
-        )}
+      <div
+        className={`col-span-1 flex items-center justify-center py-0 px-0.5 outline-1 outline-zinc-800 print:text-sm print:outline-slate-950`}
+      >
+        <Rollable
+          value={(score ?? 0) * 5}
+          source={label}
+          enabled={!!score && mode === "play"}
+        >
+          <div className="p-2 ">
+            {score ? (
+              score * 5
+            ) : (
+              <span className="text-muted-foreground">&mdash;</span>
+            )}
+          </div>
+        </Rollable>
       </div>
       <div className="col-span-3 flex items-center p-1 outline-1 outline-zinc-800 print:px-2 print:outline-slate-950">
         <AgentTextInput
