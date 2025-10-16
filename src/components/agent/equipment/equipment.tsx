@@ -63,7 +63,6 @@ export default function Equipment() {
                 <StunWeaponsCards
                   loading={!isLoaded}
                   weapons={stunWeapons}
-                  add={addWeapon}
                   onChange={updateStunWeapon}
                   remove={removeStunWeapon}
                 />
