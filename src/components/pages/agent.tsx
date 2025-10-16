@@ -17,7 +17,7 @@ import Signature from "@/components/agent/signature";
 import { Container } from "@/components/container";
 import Disclaimer from "@/components/disclaimer/disclaimer";
 import Navigation from "@/components/navigation";
-import { useAgentStore } from "./stores/agent";
+import { useAgentStore } from "@/components/agent/stores/agent";
 
 const DEBUG_LOAD_TEST_AGENT = true;
 const DEBUG_ENABLE_WAIT = false;

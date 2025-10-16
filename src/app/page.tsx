@@ -1,14 +1,5 @@
-import { SessionProvider } from "next-auth/react";
-
-import AgentPage from "@/components/agent/page";
-import { AgentStoreProvider } from "@/components/agent/stores/agent";
+import HomePage from "@/components/pages/home";
 
 export default function Page() {
-  return (
-    <SessionProvider>
-      <AgentStoreProvider>
-        <AgentPage />
-      </AgentStoreProvider>
-    </SessionProvider>
-  );
+  return <HomePage />;
 }
