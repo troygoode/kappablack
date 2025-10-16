@@ -1,27 +1,34 @@
 import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
 
-export const { handlers, signIn, signOut, auth } = NextAuth({
-  callbacks: {
-    async jwt({ token, profile }) {
-      if (profile?.sub?.length) {
-        token.sub = profile.sub;
-      }
-      token.picture = profile?.picture;
-      return token;
-    },
-    async session({ session, token }) {
-      if (token.sub) {
-        session.userId = token.sub;
-      }
-      session.user.image = token.picture;
-      session.user.id = session.userId;
-      return session;
-    },
+import { DynamoDB, DynamoDBClientConfig } from "@aws-sdk/client-dynamodb";
+import { DynamoDBDocument } from "@aws-sdk/lib-dynamodb";
+import { DynamoDBAdapter } from "@auth/dynamodb-adapter";
 
-    // async signIn({ profile }) {
-    //   return !!profile?.email_verified;
-    // },
+const config: DynamoDBClientConfig = {
+  credentials: {
+    accessKeyId: process.env.AUTH_DYNAMODB_ID ?? "",
+    secretAccessKey: process.env.AUTH_DYNAMODB_SECRET ?? "",
+  },
+  region: process.env.AUTH_DYNAMODB_REGION,
+};
+
+const client = DynamoDBDocument.from(new DynamoDB(config), {
+  marshallOptions: {
+    convertEmptyValues: true,
+    removeUndefinedValues: true,
+    convertClassInstanceToMap: true,
+  },
+});
+
+const options = {
+  tableName: process.env.AUTH_DYNAMODB_TABLE ?? "next-auth",
+};
+
+export const { handlers, signIn, signOut, auth } = NextAuth({
+  adapter: DynamoDBAdapter(client, options),
+  session: {
+    strategy: "database",
   },
 
   providers: [
@@ -33,15 +40,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           response_type: "code",
         },
       },
-
-      // profile: async (profile) => {
-      //   return {
-      //     ...profile,
-
-      //     // https://github.com/nextauthjs/next-auth/issues/12808
-      //     id: profile.sub, // If you don't do this, signing in, then signing out, then signing in again will NOT work
-      //   };
-      // },
     }),
   ],
 });
