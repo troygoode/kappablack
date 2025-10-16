@@ -2,6 +2,7 @@
 
 import type React from "react";
 import { useTheme } from "next-themes";
+import { useSession, signIn, signOut } from "next-auth/react";
 
 import {
   DropdownMenu,
@@ -10,9 +11,9 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuTrigger,
+  DropdownMenuSeparator,
   // DropdownMenuShortcut,
   // DropdownMenuPortal,
-  // DropdownMenuSeparator,
   // DropdownMenuSub,
   // DropdownMenuSubContent,
   // DropdownMenuSubTrigger,
@@ -49,15 +50,24 @@ const Theme = () => {
       <DropdownMenuLabel className="text-muted-foreground">
         Theme
       </DropdownMenuLabel>
-      <DropdownMenuItem onClick={() => setTheme("light")}>
+      <DropdownMenuItem
+        onClick={() => setTheme("light")}
+        className="cursor-pointer"
+      >
         {theme === "light" && <CheckIcon />}
         Light
       </DropdownMenuItem>
-      <DropdownMenuItem onClick={() => setTheme("dark")}>
+      <DropdownMenuItem
+        onClick={() => setTheme("dark")}
+        className="cursor-pointer"
+      >
         {theme === "dark" && <CheckIcon />}
         Dark
       </DropdownMenuItem>
-      <DropdownMenuItem onClick={() => setTheme("system")}>
+      <DropdownMenuItem
+        onClick={() => setTheme("system")}
+        className="cursor-pointer"
+      >
         {theme === "system" && <CheckIcon />}
         System
       </DropdownMenuItem>
@@ -65,24 +75,42 @@ const Theme = () => {
   );
 };
 
-// const Logout = () => (
-//   <>
-//     <DropdownMenuItem>
-//       Log out
-//       <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
-//     </DropdownMenuItem>
-//   </>
-// );
+const Logout = () => {
+  const { data: session } = useSession();
+  return (
+    <DropdownMenuGroup>
+      <DropdownMenuLabel className="text-muted-foreground">
+        Account
+      </DropdownMenuLabel>
+      {session ? (
+        <DropdownMenuItem className="cursor-pointer" onClick={() => signOut()}>
+          Sign out
+          {/* <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut> */}
+        </DropdownMenuItem>
+      ) : (
+        <DropdownMenuItem
+          className="cursor-pointer"
+          onClick={() => signIn("google")}
+        >
+          Sign in via Google
+          {/* <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut> */}
+        </DropdownMenuItem>
+      )}
+    </DropdownMenuGroup>
+  );
+};
 
-export const SettingsMenu = ({ children }: React.PropsWithChildren) => (
-  <DropdownMenu>
-    <DropdownMenuTrigger asChild>{children}</DropdownMenuTrigger>
-    <DropdownMenuContent className="w-56" align="start">
-      {/* <Team /> */}
-      {/* <DropdownMenuSeparator /> */}
-      <Theme />
-      {/* <DropdownMenuSeparator /> */}
-      {/* <Logout /> */}
-    </DropdownMenuContent>
-  </DropdownMenu>
-);
+export const SettingsMenu = ({ children }: React.PropsWithChildren) => {
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>{children}</DropdownMenuTrigger>
+      <DropdownMenuContent className="w-56" align="start">
+        {/* <Team /> */}
+        {/* <DropdownMenuSeparator /> */}
+        <Theme />
+        <DropdownMenuSeparator />
+        <Logout />
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+};
