@@ -82,7 +82,7 @@ export default function Banner({ isLoading }: { isLoading: boolean }) {
               src={DeltaGreenLogo}
               alt="Delta Green logo"
               height="48"
-              className="bg-white inline dark:hidden print:inline"
+              className="bg-white hidden dark:hidden print:inline"
             />
           </Link>
           {isLoading && (

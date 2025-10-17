@@ -8,6 +8,16 @@ import { auth } from "@/auth";
 
 const idGenerator = customAlphabet(nolookalikesSafe, 6);
 
+const plusDays = (now: Date, days: number): Date => {
+  var date = new Date(now.valueOf());
+  date.setDate(date.getDate() + days);
+  return date;
+};
+
+const toTTL = (date: Date): number => {
+  return Math.floor(date.getTime() / 1000);
+};
+
 export async function create() {
   const session = await auth();
   const pk = !session?.user?.id?.length
@@ -23,6 +33,7 @@ export async function create() {
     GSI1SK: `AGENT#${sharedId}`,
     version: "2025-10-16",
     created: new Date().toISOString(),
+    expires: session?.user?.id ? undefined : toTTL(plusDays(new Date(), 7)),
     agent: undefined,
   };
 
@@ -38,24 +49,6 @@ export async function create() {
 
   return {
     pk: session?.user?.id ?? undefined,
-    id: agentId,
+    sk: agentId,
   };
-}
-
-export async function putAgent(pk: string, sk: string, data: object) {
-  try {
-    const cmd = new PutCommand({
-      TableName: process.env.DYNAMODB_TABLE as string,
-      Item: {
-        pk,
-        sk,
-        GSI1PK: undefined,
-        GSI1SK: undefined,
-        ...data,
-      },
-    });
-    await dynamodb(cmd);
-  } catch (error) {
-    console.error("Error:", error);
-  }
 }

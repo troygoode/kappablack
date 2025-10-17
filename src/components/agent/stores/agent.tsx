@@ -43,7 +43,7 @@ interface IAgentActions {
 const _debouncedSave = debounce(save, 1000);
 const debouncedSave = (get: () => IAgentState & IAgentActions) => {
   const { pk, sk, agent: agent2 } = get();
-  if (pk && sk && agent2) {
+  if (sk && agent2) {
     _debouncedSave(pk, sk, agent2);
   }
 };

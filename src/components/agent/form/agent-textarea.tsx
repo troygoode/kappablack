@@ -61,7 +61,10 @@ const AgentTextarea = ({
         )}
       />
     ) : (
-      <AgentText value={value ?? ""} className="min-h-15 h-full" />
+      <AgentText
+        value={value ?? ""}
+        className="min-h-15 h-full whitespace-pre-wrap"
+      />
     )
   ) : (
     <Skeleton

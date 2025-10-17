@@ -4,7 +4,7 @@ import { ArrowUpRightIcon, FolderArchiveIcon, DotIcon } from "lucide-react";
 import { signOut } from "next-auth/react";
 import { redirect, RedirectType } from "next/navigation";
 
-import { create } from "@/actions/put-agent";
+import { create } from "@/actions/create-agent";
 
 import {
   Empty,
@@ -20,9 +20,9 @@ import { RainbowButton } from "../ui/rainbow-button";
 async function createAgent() {
   const agent = await create();
   if (agent.pk?.length) {
-    redirect(`/agents/${agent.pk}/${agent.id}`, RedirectType.push);
+    redirect(`/agents/${agent.pk}/${agent.sk}`, RedirectType.push);
   } else {
-    redirect(`/public/${agent.id}`, RedirectType.push);
+    redirect(`/public/${agent.sk}`, RedirectType.push);
   }
 }
 

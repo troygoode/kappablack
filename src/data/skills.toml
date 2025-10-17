@@ -94,7 +94,7 @@ tooltip = "Gathering detailed information and evidence using forensic equipment.
 base = 0
 
 [[skills]]
-name = "Heavy Machiner"
+name = "Heavy Machinery"
 tooltip = "Safe operation of a tractor, crane, bulldozer, tank, heavy truck, or other big machine in a crisis."
 base = 10
 

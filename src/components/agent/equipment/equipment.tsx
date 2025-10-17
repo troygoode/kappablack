@@ -37,7 +37,7 @@ export default function Equipment() {
               <h3>15. Armor and gear: {weapons?.length}</h3>
             </label>
             {isLoaded && gear.length && mode === "edit" ? (
-              <span className="text-xs print:hidden">{gear.length}/500</span>
+              <span className="text-xs print:hidden">{gear.length}/1200</span>
             ) : null}
           </div>
           <AgentTextarea
@@ -47,7 +47,7 @@ export default function Equipment() {
             onChange={(value) => {
               merge({ gear: value });
             }}
-            maxLength={500}
+            maxLength={1200}
             className="h-58"
           />
         </div>

@@ -133,7 +133,7 @@ export default function Remarks() {
               </label>
               {notes.length && mode === "edit" ? (
                 <span className="text-xs print:hidden">
-                  {notes.length ?? 0}/500
+                  {notes.length ?? 0}/1200
                 </span>
               ) : null}
             </div>
@@ -144,7 +144,7 @@ export default function Remarks() {
               onChange={(value) => {
                 merge({ notes: value });
               }}
-              maxLength={500}
+              maxLength={1200}
             />
           </div>
           <div className="flex flex-col">

@@ -7,7 +7,7 @@ import { dynamodb, GetCommand, QueryCommand } from "@/lib/dynamodb";
 import { auth } from "@/auth";
 
 export interface IAgentRecord {
-  pk: string;
+  pk: string | undefined;
   sk: string;
 }
 
@@ -49,14 +49,14 @@ export async function findAgents(): Promise<TAgentRecord<IAgent>[]> {
 }
 
 export async function getAgent(
-  pk: string,
+  pk: string | undefined,
   sk: string
 ): Promise<TAgentRecord<IAgent> | undefined> {
   try {
     const cmd = new GetCommand({
       TableName: process.env.DYNAMODB_TABLE as string,
       Key: {
-        pk,
+        pk: pk ?? "ANONUSER#",
         sk,
       },
     });

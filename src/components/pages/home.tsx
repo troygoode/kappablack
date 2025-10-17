@@ -10,7 +10,7 @@ import { signOut } from "next-auth/react";
 
 import KappaBlackCutoutK from "../agent/banner/kappablack_cutout_k.webp";
 
-import { create } from "@/actions/put-agent";
+import { create } from "@/actions/create-agent";
 
 import { RainbowButton } from "@/components/ui/rainbow-button";
 import { Button } from "@/components/ui/button";
@@ -24,9 +24,9 @@ import { LogOutIcon } from "../ui/icons/lucide-log-out";
 async function createAgent() {
   const agent = await create();
   if (agent.pk?.length) {
-    redirect(`/agents/${agent.pk}/${agent.id}`, RedirectType.push);
+    redirect(`/agents/${agent.pk}/${agent.sk}`, RedirectType.push);
   } else {
-    redirect(`/public/${agent.id}`, RedirectType.push);
+    redirect(`/agents/public/${agent.sk}`, RedirectType.push);
   }
 }
 
