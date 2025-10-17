@@ -17,6 +17,7 @@ import {
 import { CheckIcon } from "@/components/ui/icons/lucide-check";
 import { useAgentStore } from "../stores/agent";
 import { deleteAgent } from "@/actions/delete-agent";
+import { copyAgent } from "@/actions/create-agent";
 
 const Theme = () => {
   const { theme, setTheme } = useTheme();
@@ -57,11 +58,24 @@ const CharacterSheet = () => {
   const isEditable = useAgentStore((state) => state.isEditable);
   const pk = useAgentStore((state) => state.pk);
   const sk = useAgentStore((state) => state.sk);
-  if (!isEditable || !pk || !sk) return null;
 
   const onDelete = async () => {
+    if (!pk || !sk) return;
     await deleteAgent(pk, sk);
     redirect("/", RedirectType.push);
+  };
+
+  const onCopy = async () => {
+    if (!sk) return;
+
+    const agent = await copyAgent(pk, sk);
+    if (!agent) {
+      return;
+    } else if (agent.pk?.length) {
+      redirect(`/agents/${agent.pk}/${agent.sk}`, RedirectType.push);
+    } else {
+      redirect(`/agents/public/${agent.sk}`, RedirectType.push);
+    }
   };
 
   return (
@@ -70,9 +84,18 @@ const CharacterSheet = () => {
         <DropdownMenuLabel className="text-muted-foreground">
           Character Sheet
         </DropdownMenuLabel>
-        <DropdownMenuItem className="cursor-pointer" onClick={() => onDelete()}>
-          Delete Agent
+        <DropdownMenuItem className="cursor-pointer" onClick={() => onCopy()}>
+          Create Copy of Agent
         </DropdownMenuItem>
+        {isEditable && !!pk && !!sk && (
+          <DropdownMenuItem
+            className="cursor-pointer"
+            onClick={() => onDelete()}
+            variant="destructive"
+          >
+            Delete Agent
+          </DropdownMenuItem>
+        )}
       </DropdownMenuGroup>
       <DropdownMenuSeparator />
     </>
