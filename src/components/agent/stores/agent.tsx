@@ -14,6 +14,7 @@ interface IAgentState {
   showDeleteDialog: boolean;
   showExportDialog: boolean;
   showShareDialog: boolean;
+  exportText: string | undefined;
   pk: string | undefined;
   sk: string | undefined;
   agent: IAgent;
@@ -25,6 +26,7 @@ interface IAgentActions {
   setDeleteDialog: (show: boolean) => void;
   setExportDialog: (show: boolean) => void;
   setShareDialog: (show: boolean) => void;
+  setExportText: (text: string | undefined) => void;
 
   addWeapon: (weapon: IWeaponData) => void;
   updateWeapon: (weapon: IWeapon, index: number) => void;
@@ -62,6 +64,7 @@ const store = generateStore<IAgentState, IAgentActions>({
     showDeleteDialog: false,
     showExportDialog: false,
     showShareDialog: false,
+    exportText: undefined,
     agent: {
       bonds: [],
       skills: [],
@@ -84,6 +87,8 @@ const store = generateStore<IAgentState, IAgentActions>({
     setDeleteDialog: (show: boolean) => set(() => ({ showDeleteDialog: show })),
     setExportDialog: (show: boolean) => set(() => ({ showExportDialog: show })),
     setShareDialog: (show: boolean) => set(() => ({ showShareDialog: show })),
+    setExportText: (text: string | undefined) =>
+      set(() => ({ exportText: text })),
 
     addWeapon: (weapon: IWeaponData) => {
       if (weapon.penalty !== undefined) {

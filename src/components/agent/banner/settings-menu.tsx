@@ -28,6 +28,7 @@ import { Share2Icon } from "@/components/ui/icons/lucide-share-2";
 import { CloudDownloadIcon } from "@/components/ui/icons/lucide-cloud-download";
 import { ExportDialog } from "./export-dialog";
 import { ShareDialog } from "./share-dialog";
+import { exportAgent } from "@/actions/export-agent";
 
 const Theme = () => {
   const { theme, setTheme } = useTheme();
@@ -68,6 +69,7 @@ const CharacterSheet = () => {
   const isEditable = useAgentStore((state) => state.isEditable);
   const setDeleteDialog = useAgentStore((state) => state.setDeleteDialog);
   const setExportDialog = useAgentStore((state) => state.setExportDialog);
+  const setExportText = useAgentStore((state) => state.setExportText);
   const setShareDialog = useAgentStore((state) => state.setShareDialog);
   const pk = useAgentStore((state) => state.pk);
   const sk = useAgentStore((state) => state.sk);
@@ -85,6 +87,13 @@ const CharacterSheet = () => {
     }
   };
 
+  const onExport = async () => {
+    if (!sk) return;
+    const text = await exportAgent(pk, sk);
+    setExportText(text ?? "");
+    setExportDialog(true);
+  };
+
   return (
     <>
       <DropdownMenuGroup>
@@ -99,8 +108,8 @@ const CharacterSheet = () => {
           <span className="relative top-0.5">Share Agent</span>
         </DropdownMenuItem>
         <DropdownMenuItem
-          className="cursor-pointer hidden"
-          onSelect={() => setExportDialog(true)}
+          className="cursor-pointer"
+          onSelect={() => onExport()}
         >
           <CloudDownloadIcon />
           <span className="relative top-0.5">Export Agent</span>

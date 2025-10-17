@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -58,7 +58,11 @@ export function ShareDialog({
   open: boolean;
   onOpenChange: (open: boolean) => void;
 }) {
-  const url = window.location.href;
+  const [url, setUrl] = useState("");
+  useEffect(() => {
+    setUrl(window.location.href);
+  }, []);
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[425px]">
