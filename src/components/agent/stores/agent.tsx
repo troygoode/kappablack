@@ -11,6 +11,7 @@ interface IAgentState {
   isLoaded: boolean;
   mode: "view" | "edit" | "play";
   isEditable: boolean;
+  showDeleteDialog: boolean;
   pk: string | undefined;
   sk: string | undefined;
   agent: IAgent;
@@ -19,6 +20,7 @@ interface IAgentActions {
   reset: (state: IAgentState) => void;
   merge: (agent: Partial<IAgent>) => void;
   setMode: (mode: "view" | "edit" | "play") => void;
+  setDeleteDialog: (show: boolean) => void;
 
   addWeapon: (weapon: IWeaponData) => void;
   updateWeapon: (weapon: IWeapon, index: number) => void;
@@ -53,6 +55,7 @@ const store = generateStore<IAgentState, IAgentActions>({
     isLoaded: false,
     mode: "view",
     isEditable: false,
+    showDeleteDialog: false,
     agent: {
       bonds: [],
       skills: [],
@@ -72,6 +75,7 @@ const store = generateStore<IAgentState, IAgentActions>({
       debouncedSave(get);
     },
     setMode: (mode: "view" | "edit" | "play") => set(() => ({ mode })),
+    setDeleteDialog: (show: boolean) => set(() => ({ showDeleteDialog: show })),
 
     addWeapon: (weapon: IWeaponData) => {
       if (weapon.penalty !== undefined) {

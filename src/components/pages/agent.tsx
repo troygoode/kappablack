@@ -37,6 +37,7 @@ export default function Agent({
       isLoaded: true,
       mode: isEditable ? "edit" : "view",
       isEditable,
+      showDeleteDialog: false,
       agent: {
         bonds: [],
         skills: [],
