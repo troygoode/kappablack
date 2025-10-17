@@ -6,17 +6,6 @@ import { useSession, signIn, signOut } from "next-auth/react";
 import { redirect, RedirectType } from "next/navigation";
 
 import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
-import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
@@ -27,9 +16,18 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { CheckIcon } from "@/components/ui/icons/lucide-check";
 import { useAgentStore } from "../stores/agent";
-import { deleteAgent } from "@/actions/delete-agent";
 import { copyAgent } from "@/actions/create-agent";
-import { useState } from "react";
+import { ConfirmDeleteDialog } from "./delete-dialog";
+import { Trash2Icon } from "@/components/ui/icons/lucide-trash-2";
+import { LogOutIcon } from "@/components/ui/icons/lucide-log-out";
+import { CopyPlusIcon } from "@/components/ui/icons/lucide-copy-plus";
+import { SunIcon } from "@/components/ui/icons/lucide-sun";
+import { MoonStarIcon } from "@/components/ui/icons/lucide-moon-star";
+import { ComputerIcon } from "@/components/ui/icons/lucide-computer";
+import { Share2Icon } from "@/components/ui/icons/lucide-share-2";
+import { CloudDownloadIcon } from "@/components/ui/icons/lucide-cloud-download";
+import { ExportDialog } from "./export-dialog";
+import { ShareDialog } from "./share-dialog";
 
 const Theme = () => {
   const { theme, setTheme } = useTheme();
@@ -43,21 +41,21 @@ const Theme = () => {
           onClick={() => setTheme("light")}
           className="cursor-pointer"
         >
-          {theme === "light" && <CheckIcon />}
+          {theme === "light" ? <CheckIcon /> : <SunIcon />}
           Light
         </DropdownMenuItem>
         <DropdownMenuItem
           onClick={() => setTheme("dark")}
           className="cursor-pointer"
         >
-          {theme === "dark" && <CheckIcon />}
+          {theme === "dark" ? <CheckIcon /> : <MoonStarIcon />}
           Dark
         </DropdownMenuItem>
         <DropdownMenuItem
           onClick={() => setTheme("system")}
           className="cursor-pointer"
         >
-          {theme === "system" && <CheckIcon />}
+          {theme === "system" ? <CheckIcon /> : <ComputerIcon />}
           System
         </DropdownMenuItem>
       </DropdownMenuGroup>
@@ -66,51 +64,11 @@ const Theme = () => {
   );
 };
 
-export function ConfirmDeleteDialog({
-  open,
-  onOpenChange,
-}: {
-  open: boolean;
-  onOpenChange: (open: boolean) => void;
-}) {
-  const pk = useAgentStore((state) => state.pk);
-  const sk = useAgentStore((state) => state.sk);
-
-  const onDelete = async () => {
-    if (!pk || !sk) return;
-    await deleteAgent(pk, sk);
-    redirect("/", RedirectType.push);
-  };
-
-  return (
-    <AlertDialog open={open} onOpenChange={onOpenChange}>
-      <AlertDialogContent>
-        <AlertDialogHeader>
-          <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-          <AlertDialogDescription>
-            This action cannot be undone. This will permanently delete this
-            agent&apos;s character sheet and remove the data from our servers.
-          </AlertDialogDescription>
-        </AlertDialogHeader>
-        <AlertDialogFooter>
-          <AlertDialogCancel className="cursor-pointer">
-            Cancel
-          </AlertDialogCancel>
-          <AlertDialogAction
-            className="cursor-pointer"
-            onClick={() => onDelete()}
-          >
-            Delete Agent
-          </AlertDialogAction>
-        </AlertDialogFooter>
-      </AlertDialogContent>
-    </AlertDialog>
-  );
-}
-
 const CharacterSheet = () => {
   const isEditable = useAgentStore((state) => state.isEditable);
   const setDeleteDialog = useAgentStore((state) => state.setDeleteDialog);
+  const setExportDialog = useAgentStore((state) => state.setExportDialog);
+  const setShareDialog = useAgentStore((state) => state.setShareDialog);
   const pk = useAgentStore((state) => state.pk);
   const sk = useAgentStore((state) => state.sk);
 
@@ -133,8 +91,23 @@ const CharacterSheet = () => {
         <DropdownMenuLabel className="text-muted-foreground">
           Character Sheet
         </DropdownMenuLabel>
+        <DropdownMenuItem
+          className="cursor-pointer"
+          onSelect={() => setShareDialog(true)}
+        >
+          <Share2Icon />
+          <span className="relative top-0.5">Share Agent</span>
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          className="cursor-pointer hidden"
+          onSelect={() => setExportDialog(true)}
+        >
+          <CloudDownloadIcon />
+          <span className="relative top-0.5">Export Agent</span>
+        </DropdownMenuItem>
         <DropdownMenuItem className="cursor-pointer" onSelect={() => onCopy()}>
-          Create Copy of Agent
+          <CopyPlusIcon />
+          <span className="relative top-0.5">Create Copy of Agent</span>
         </DropdownMenuItem>
         {isEditable && !!pk && !!sk && (
           <DropdownMenuItem
@@ -142,7 +115,8 @@ const CharacterSheet = () => {
             variant="destructive"
             onSelect={() => setDeleteDialog(true)}
           >
-            Delete Agent
+            <Trash2Icon />
+            <span className="relative top-0.5">Delete Agent</span>
           </DropdownMenuItem>
         )}
       </DropdownMenuGroup>
@@ -160,7 +134,8 @@ const Logout = () => {
       </DropdownMenuLabel>
       {session ? (
         <DropdownMenuItem className="cursor-pointer" onClick={() => signOut()}>
-          Sign out
+          <LogOutIcon />
+          <span className="relative top-0.5">Sign out</span>
           {/* <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut> */}
         </DropdownMenuItem>
       ) : (
@@ -179,6 +154,11 @@ const Logout = () => {
 export const SettingsMenu = ({ children }: React.PropsWithChildren) => {
   const showDeleteDialog = useAgentStore((state) => state.showDeleteDialog);
   const setDeleteDialog = useAgentStore((state) => state.setDeleteDialog);
+  const showExportDialog = useAgentStore((state) => state.showExportDialog);
+  const setExportDialog = useAgentStore((state) => state.setExportDialog);
+  const showShareDialog = useAgentStore((state) => state.showShareDialog);
+  const setShareDialog = useAgentStore((state) => state.setShareDialog);
+
   return (
     <>
       <DropdownMenu modal={false}>
@@ -193,6 +173,8 @@ export const SettingsMenu = ({ children }: React.PropsWithChildren) => {
         open={showDeleteDialog}
         onOpenChange={setDeleteDialog}
       />
+      <ExportDialog open={showExportDialog} onOpenChange={setExportDialog} />
+      <ShareDialog open={showShareDialog} onOpenChange={setShareDialog} />
     </>
   );
 };

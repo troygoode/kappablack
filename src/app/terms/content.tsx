@@ -2,6 +2,7 @@ export default async function Policy() {
   return (
     <>
       <h1>Terms of Service</h1>
+      <p>Last updated: October 17, 2025</p>
       <p>This document governs</p>
       <ul>
         <li>the use of our website (Kappa Black), and,</li>

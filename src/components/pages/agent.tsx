@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { Toaster } from "@/components/ui/sonner";
 import Equipment from "@/components/agent/equipment/equipment";
 import Footer from "@/components/agent/footer";
+import SiteFooter from "@/components/home/footer";
 import Injuries from "@/components/agent/injuries";
 import Personal from "@/components/agent/personal";
 import Psychology from "@/components/agent/psychology";
@@ -38,6 +39,8 @@ export default function Agent({
       mode: isEditable ? "edit" : "view",
       isEditable,
       showDeleteDialog: false,
+      showExportDialog: false,
+      showShareDialog: false,
       agent: {
         bonds: [],
         skills: [],
@@ -87,6 +90,9 @@ export default function Agent({
       </div>
       <div className="mb-16">
         <Disclaimer />
+      </div>
+      <div className="w-full items-center justify-center text-center text-xs text-muted-foreground mb-16">
+        <SiteFooter />
       </div>
       <Toaster expand richColors />
     </Container>
