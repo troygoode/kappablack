@@ -1,12 +1,9 @@
 import { notFound } from "next/navigation";
 
+import { auth } from "@/auth";
 import AgentPage from "@/components/pages/agent";
 import { AgentStoreProvider } from "@/components/agent/stores/agent";
 import { getAgent } from "@/actions/get-agent";
-
-interface ITest {
-  baz: string;
-}
 
 export default async function Page({
   params,
@@ -18,14 +15,15 @@ export default async function Page({
   if (!pk?.length || !sk?.length) return notFound();
 
   // query db
-  const agent = await getAgent<ITest>(pk, sk);
-  if (!agent) return notFound();
+  const agentRecord = await getAgent(`USER#${pk}`, `AGENT#${sk}`);
+  if (!agentRecord) return notFound();
 
-  console.log("DDB.Agent", agent);
+  const session = await auth();
+  const isEditable = pk === session?.user?.id;
 
   return (
     <AgentStoreProvider>
-      <AgentPage />
+      <AgentPage agent={agentRecord} pk={pk} sk={sk} isEditable={isEditable} />
     </AgentStoreProvider>
   );
 }

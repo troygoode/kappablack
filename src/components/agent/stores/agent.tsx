@@ -1,18 +1,18 @@
 "use client";
 
-import { type IWeaponData } from "@/types/data";
-import {
-  type IWeapon,
-  type IStunWeapon,
-  type IAgent,
-  type IAgentSkill,
-} from "@/types/agent";
+import type { IWeaponData } from "@/types/data";
+import type { IWeapon, IStunWeapon, IAgent, IAgentSkill } from "@/types/agent";
 
 import { generateStore } from "@/lib/zustand-helpers";
+import { debounce } from "@/lib/debounce";
+import { save } from "@/actions/update-agent";
 
 interface IAgentState {
   isLoaded: boolean;
   mode: "view" | "edit" | "play";
+  isEditable: boolean;
+  pk: string | undefined;
+  sk: string | undefined;
   agent: IAgent;
 }
 interface IAgentActions {
@@ -40,10 +40,19 @@ interface IAgentActions {
   removeMultiSkillType: (skill: string, index: number) => void;
 }
 
+const _debouncedSave = debounce(save, 1000);
+const debouncedSave = (get: () => IAgentState & IAgentActions) => {
+  const { pk, sk, agent: agent2 } = get();
+  if (pk && sk && agent2) {
+    _debouncedSave(pk, sk, agent2);
+  }
+};
+
 const store = generateStore<IAgentState, IAgentActions>({
   initState: () => ({
     isLoaded: false,
     mode: "view",
+    isEditable: false,
     agent: {
       bonds: [],
       skills: [],
@@ -51,13 +60,17 @@ const store = generateStore<IAgentState, IAgentActions>({
       stunWeapons: [],
       specialTraining: [],
     },
+    pk: undefined,
+    sk: undefined,
   }),
   actions: ({ set, get }) => ({
     reset: (state: IAgentState) => set(() => state),
-    merge: (agent: Partial<IAgent>) =>
+    merge: (agent: Partial<IAgent>) => {
       set((state) => ({
         agent: { ...state.agent, ...agent },
-      })),
+      }));
+      debouncedSave(get);
+    },
     setMode: (mode: "view" | "edit" | "play") => set(() => ({ mode })),
 
     addWeapon: (weapon: IWeaponData) => {
@@ -86,6 +99,7 @@ const store = generateStore<IAgentState, IAgentActions>({
           },
         });
       }
+      debouncedSave(get);
     },
     updateWeapon: (weapon: IWeapon, index: number) => {
       const weapons = [...(get().agent.weapons ?? [])];
@@ -96,6 +110,7 @@ const store = generateStore<IAgentState, IAgentActions>({
           weapons,
         },
       });
+      debouncedSave(get);
     },
     updateStunWeapon: (weapon: IStunWeapon, index: number) => {
       const stunWeapons = [...(get().agent.stunWeapons ?? [])];
@@ -106,6 +121,7 @@ const store = generateStore<IAgentState, IAgentActions>({
           stunWeapons,
         },
       });
+      debouncedSave(get);
     },
     removeWeapon: (index: number) => {
       const weapons = [...(get().agent.weapons ?? [])];
@@ -116,6 +132,7 @@ const store = generateStore<IAgentState, IAgentActions>({
           weapons,
         },
       });
+      debouncedSave(get);
     },
     removeStunWeapon: (index: number) => {
       const stunWeapons = [...(get().agent.stunWeapons ?? [])];
@@ -126,6 +143,7 @@ const store = generateStore<IAgentState, IAgentActions>({
           stunWeapons,
         },
       });
+      debouncedSave(get);
     },
 
     getSkill: (skill: string) => {
@@ -161,6 +179,7 @@ const store = generateStore<IAgentState, IAgentActions>({
           skills,
         },
       });
+      debouncedSave(get);
     },
 
     getMultiSkillTypes: (skill: string) => {
@@ -180,6 +199,7 @@ const store = generateStore<IAgentState, IAgentActions>({
           skills,
         },
       });
+      debouncedSave(get);
     },
     updateMultiSkillType: (
       skill: string,
@@ -209,6 +229,7 @@ const store = generateStore<IAgentState, IAgentActions>({
           skills,
         },
       });
+      debouncedSave(get);
     },
     removeMultiSkillType: (skill: string, index: number) => {
       const { agent } = get();
@@ -227,6 +248,7 @@ const store = generateStore<IAgentState, IAgentActions>({
           skills,
         },
       });
+      debouncedSave(get);
     },
   }),
 });

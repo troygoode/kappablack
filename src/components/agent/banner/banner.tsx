@@ -12,8 +12,10 @@ import { Spinner } from "@/components/ui/spinner";
 import { ModeSelector } from "../mode-selector";
 import { HouseIcon } from "@/components/ui/icons/lucide-house";
 import { Button } from "@/components/ui/button";
+import { useAgentStore } from "../stores/agent";
 
 export default function Banner({ isLoading }: { isLoading: boolean }) {
+  const isEditable = useAgentStore((state) => state.isEditable);
   return (
     <div className="flex bg-black dark:bg-white h-12">
       <div className="grid grid-cols-3 w-full px-2">
@@ -90,7 +92,7 @@ export default function Banner({ isLoading }: { isLoading: boolean }) {
           )}
         </div>
         <div className="flex items-center justify-end gap-2">
-          <ModeSelector className="print:hidden" />
+          {isEditable && <ModeSelector className="print:hidden" />}
           <Settings className="print:hidden" />
         </div>
       </div>

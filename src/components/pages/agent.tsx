@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect } from "react";
+import type { IAgent } from "@/types/agent";
 
-import testAgent from "@/data/test-agent.json";
+import { useEffect } from "react";
 
 import { Toaster } from "@/components/ui/sonner";
 import Equipment from "@/components/agent/equipment/equipment";
@@ -19,34 +19,36 @@ import Disclaimer from "@/components/disclaimer/disclaimer";
 import Navigation from "@/components/navigation";
 import { useAgentStore } from "@/components/agent/stores/agent";
 
-const DEBUG_LOAD_TEST_AGENT = true;
-const DEBUG_ENABLE_WAIT = false;
-const DEBUG_WAIT_SECONDS = 2.25;
-
-export default function Agent() {
+export default function Agent({
+  agent,
+  pk,
+  sk,
+  isEditable,
+}: {
+  agent: IAgent | undefined;
+  pk: string | undefined;
+  sk: string;
+  isEditable: boolean;
+}) {
   const reset = useAgentStore((state) => state.reset);
   const isLoaded = useAgentStore((state) => state.isLoaded);
   useEffect(() => {
-    if (isLoaded) return;
-    setTimeout(
-      () => {
-        reset({
-          isLoaded: true,
-          mode: "play",
-          agent: DEBUG_LOAD_TEST_AGENT
-            ? testAgent
-            : {
-                bonds: [],
-                skills: [],
-                weapons: [],
-                stunWeapons: [],
-                specialTraining: [],
-              },
-        });
+    reset({
+      isLoaded: true,
+      mode: isEditable ? "edit" : "view",
+      isEditable,
+      agent: {
+        bonds: [],
+        skills: [],
+        weapons: [],
+        stunWeapons: [],
+        specialTraining: [],
+        ...agent,
       },
-      DEBUG_ENABLE_WAIT ? 1000 * DEBUG_WAIT_SECONDS : 50
-    );
-  }, [isLoaded]);
+      pk,
+      sk,
+    });
+  }, [agent]);
 
   return (
     <Container>

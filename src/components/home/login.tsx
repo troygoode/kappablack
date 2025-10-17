@@ -1,6 +1,8 @@
 "use client";
 
 import GoogleButton from "react-google-button";
+import { signIn } from "next-auth/react";
+
 import {
   Card,
   CardContent,
@@ -18,16 +20,16 @@ export function LoginBox() {
       <CardHeader>
         <CardTitle>Login</CardTitle>
         <CardDescription>
-          Login with Google to save and share your character sheets.
+          Login with Google to save and share your character sheets. Characters
+          created without logging in are deleted after 7 days.
         </CardDescription>
       </CardHeader>
-      <CardContent></CardContent>
       <CardFooter className="justify-center">
         <div className="rounded-md overflow-clip">
           <GoogleButton
             type="light"
             onClick={() => {
-              console.log("Google button clicked");
+              signIn("google");
             }}
           />
         </div>

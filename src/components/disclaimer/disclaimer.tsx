@@ -7,7 +7,7 @@ import LogoK from "./DeltaGreen-Seal-Scientia1-black-dirty.webp";
 
 export default function Disclaimer() {
   return (
-    <div className="flex border-dashed border-zinc-200 dark:border-zinc-800 border-2 p-4 print:hidden text-muted-foreground">
+    <div className="flex border-dashed border-zinc-200 dark:border-zinc-800 border-2 p-4 print:hidden text-muted-foreground rounded-sm">
       <div className="mr-4 pt-0.5">
         <Image
           src={LogoW}

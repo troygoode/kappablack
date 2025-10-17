@@ -1,6 +1,10 @@
 "use client";
 
 import { ArrowUpRightIcon, FolderArchiveIcon, DotIcon } from "lucide-react";
+import { signOut } from "next-auth/react";
+import { redirect, RedirectType } from "next/navigation";
+
+import { create } from "@/actions/put-agent";
 
 import {
   Empty,
@@ -11,10 +15,20 @@ import {
   EmptyTitle,
 } from "@/components/ui/empty";
 import { Button } from "@/components/ui/button";
+import { RainbowButton } from "../ui/rainbow-button";
+
+async function createAgent() {
+  const agent = await create();
+  if (agent.pk?.length) {
+    redirect(`/agents/${agent.pk}/${agent.id}`, RedirectType.push);
+  } else {
+    redirect(`/public/${agent.id}`, RedirectType.push);
+  }
+}
 
 export function EmptyState() {
   return (
-    <Empty>
+    <Empty className="outline-1">
       <EmptyHeader>
         <EmptyMedia variant="icon">
           <FolderArchiveIcon />
@@ -27,7 +41,9 @@ export function EmptyState() {
       </EmptyHeader>
       <EmptyContent>
         <div className="flex gap-2">
-          <Button className="cursor-pointer">Create Agent</Button>
+          <RainbowButton onClick={() => createAgent()}>
+            Create Agent
+          </RainbowButton>
           <Button variant="outline" disabled>
             Import Agent
           </Button>
@@ -39,6 +55,7 @@ export function EmptyState() {
           // asChild
           className="text-muted-foreground cursor-pointer"
           size="sm"
+          onClick={() => signOut()}
         >
           Logout
         </Button>
