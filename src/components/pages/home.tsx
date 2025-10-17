@@ -21,6 +21,8 @@ import Disclaimer from "../disclaimer/disclaimer";
 import { Skeleton } from "../ui/skeleton";
 import { AgentsList } from "../home/agents";
 import { LogOutIcon } from "../ui/icons/lucide-log-out";
+import Head from "../home/head";
+import Footer from "../home/footer";
 
 async function createAgent() {
   const agent = await create();
@@ -36,21 +38,7 @@ export default function Home({ agents }: { agents: TAgentRecord<IAgent>[] }) {
   return (
     <Container className="flex w-full items-center justify-center">
       <div className="max-w-[350px]">
-        <div className="mt-8 mb-4">
-          <Image
-            src={KappaBlackCutoutK}
-            alt="Kappa Black Cutout"
-            className="bg-white hidden dark:inline"
-          />
-          <Image
-            src={KappaBlackCutoutW}
-            alt="Kappa Black Cutout"
-            className="bg-black inline dark:hidden"
-          />
-        </div>
-        <div className="mb-8 text-sm text-center">
-          An online character sheet for <strong>Delta Green</strong>.
-        </div>
+        <Head />
         {!session || agents.length ? (
           <div className="mb-8">
             <div className="flex gap-4 justify-center">
@@ -85,8 +73,11 @@ export default function Home({ agents }: { agents: TAgentRecord<IAgent>[] }) {
             <LoginBox />
           )}
         </div>
-        <div className="mb-16">
+        <div className="mb-8">
           <Disclaimer />
+        </div>
+        <div className="w-full items-center justify-center text-center text-xs text-muted-foreground mb-16">
+          <Footer />
         </div>
       </div>
     </Container>
