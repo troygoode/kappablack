@@ -41,6 +41,7 @@ export default function Agent({
       showDeleteDialog: false,
       showExportDialog: false,
       showShareDialog: false,
+      exportText: undefined,
       agent: {
         bonds: [],
         skills: [],
