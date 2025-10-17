@@ -13,6 +13,8 @@ import { WeaponPicker } from "../picker/picker";
 import { AgentTextInput } from "../../form/agent-text-input";
 import { AgentLabel } from "../../form/agent-label";
 import { useAgentStore } from "../../stores/agent";
+import { Rollable } from "../../rollable";
+import { RollableLookup } from "../../rollable-lookup";
 
 const WeaponCardField = ({
   loading,
@@ -21,6 +23,7 @@ const WeaponCardField = ({
   label,
   value,
   maxLength,
+  editableDuringPlay,
   required,
   onChange,
 }: {
@@ -30,6 +33,7 @@ const WeaponCardField = ({
   label: string;
   value: string;
   maxLength: number;
+  editableDuringPlay?: boolean;
   required?: boolean;
   onChange: (value: string) => void;
 }) => {
@@ -49,6 +53,7 @@ const WeaponCardField = ({
           value={value}
           onChange={onChange}
           maxLength={maxLength}
+          editableDuringPlay={editableDuringPlay}
           required={required}
         />
       ) : (
@@ -140,17 +145,23 @@ export const WeaponsCards = ({
                   <tbody>
                     <tr>
                       <td>
-                        <WeaponCardField
-                          loading={loading}
-                          fieldName={`weapon-${index}-skill`}
-                          label="Skill"
-                          maxLength={16}
+                        <RollableLookup
+                          source={weapon.weapon ?? ""}
                           value={weapon.skill ?? ""}
-                          onChange={(value) => {
-                            onChange({ ...weapon, skill: value }, index);
-                          }}
-                          required
-                        />
+                          enabled={!!weapon.skill && mode === "play"}
+                        >
+                          <WeaponCardField
+                            loading={loading}
+                            fieldName={`weapon-${index}-skill`}
+                            label="Skill"
+                            maxLength={16}
+                            value={weapon.skill ?? ""}
+                            onChange={(value) => {
+                              onChange({ ...weapon, skill: value }, index);
+                            }}
+                            required
+                          />
+                        </RollableLookup>
                       </td>
                       <td>
                         <WeaponCardField
@@ -167,16 +178,22 @@ export const WeaponsCards = ({
                     </tr>
                     <tr>
                       <td>
-                        <WeaponCardField
-                          loading={loading}
-                          fieldName={`weapon-${index}-damage`}
-                          label="Damage"
-                          maxLength={10}
-                          value={weapon.damage ?? ""}
-                          onChange={(value) => {
-                            onChange({ ...weapon, damage: value }, index);
-                          }}
-                        />
+                        <Rollable
+                          value={weapon.damage}
+                          source={weapon.weapon || ""}
+                          enabled={mode === "play" && !!weapon.damage}
+                        >
+                          <WeaponCardField
+                            loading={loading}
+                            fieldName={`weapon-${index}-damage`}
+                            label="Damage"
+                            maxLength={10}
+                            value={weapon.damage ?? ""}
+                            onChange={(value) => {
+                              onChange({ ...weapon, damage: value }, index);
+                            }}
+                          />
+                        </Rollable>
                       </td>
                       <td>
                         <WeaponCardField
@@ -234,6 +251,7 @@ export const WeaponsCards = ({
                           label="Ammo"
                           maxLength={2}
                           value={weapon.ammo?.toString() ?? ""}
+                          editableDuringPlay={!!weapon.capacity}
                           onChange={(value) => {
                             onChange(
                               { ...weapon, ammo: parseInt(value, 10) },

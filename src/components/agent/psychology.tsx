@@ -197,7 +197,7 @@ export default function Psychology() {
             Check a damaged Bond&rsquo;s box until the next Home scene ends.
           </div>
         </div>
-        <div className="flex w-full flex-col gap-1 px-2 py-1 outline-1 outline-zinc-800 print:gap-0 print:outline-slate-950 grow sm:h-auto h-36">
+        <div className="flex w-full flex-col gap-1 px-2 py-1 outline-1 outline-zinc-800 print:gap-0 print:outline-slate-950 grow sm:h-auto h-36 overflow-clip">
           <div className="flex items-center justify-between">
             <label className="w-full text-xs uppercase" htmlFor="motivations">
               <h3>12. Motivations and mental disorders</h3>

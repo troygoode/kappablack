@@ -5,7 +5,6 @@ import { signIn } from "next-auth/react";
 
 import {
   Card,
-  CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
@@ -25,13 +24,23 @@ export function LoginBox() {
         </CardDescription>
       </CardHeader>
       <CardFooter className="justify-center">
-        <div className="rounded-md overflow-clip">
-          <GoogleButton
-            type="light"
-            onClick={() => {
-              signIn("google");
-            }}
-          />
+        <div className="">
+          <div className="block dark:hidden">
+            <GoogleButton
+              type="dark"
+              onClick={() => {
+                signIn("google");
+              }}
+            />
+          </div>
+          <div className="hidden dark:block">
+            <GoogleButton
+              type="light"
+              onClick={() => {
+                signIn("google");
+              }}
+            />
+          </div>
         </div>
       </CardFooter>
     </Card>

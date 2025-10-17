@@ -276,6 +276,7 @@ export const WeaponsTable = ({
                   maxLength={3}
                   min={0}
                   value={weapon.ammo?.toString() || ""}
+                  editableDuringPlay={!!weapon.capacity}
                   onChange={(value) =>
                     onChange(
                       { ...weapon, ammo: parseInt(value) ?? undefined },

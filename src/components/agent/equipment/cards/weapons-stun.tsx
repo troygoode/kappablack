@@ -10,6 +10,7 @@ import { Trash2Icon } from "@/components/ui/icons/lucide-trash-2";
 import { AgentTextInput } from "../../form/agent-text-input";
 import { AgentLabel } from "../../form/agent-label";
 import { useAgentStore } from "../../stores/agent";
+import { RollableLookup } from "../../rollable-lookup";
 
 const WeaponCardField = ({
   loading,
@@ -17,6 +18,7 @@ const WeaponCardField = ({
   type,
   label,
   value,
+  editableDuringPlay,
   maxLength,
   required,
   onChange,
@@ -28,6 +30,7 @@ const WeaponCardField = ({
   value: string;
   maxLength: number;
   required?: boolean;
+  editableDuringPlay?: boolean;
   onChange: (value: string) => void;
 }) => {
   return (
@@ -44,6 +47,7 @@ const WeaponCardField = ({
           fieldName={fieldName}
           type={type}
           value={value}
+          editableDuringPlay={editableDuringPlay}
           onChange={onChange}
           maxLength={maxLength}
           required={required}
@@ -97,17 +101,23 @@ export const StunWeaponsCards = ({
           <tbody>
             <tr>
               <td>
-                <WeaponCardField
-                  loading={loading}
-                  fieldName={`stun-weapon-${index}-skill`}
-                  label="Skill"
-                  maxLength={16}
+                <RollableLookup
+                  source={weapon.weapon ?? ""}
                   value={weapon.skill ?? ""}
-                  onChange={(value) => {
-                    onChange({ ...weapon, skill: value }, index);
-                  }}
-                  required
-                />
+                  enabled={!!weapon.skill && mode === "play"}
+                >
+                  <WeaponCardField
+                    loading={loading}
+                    fieldName={`stun-weapon-${index}-skill`}
+                    label="Skill"
+                    maxLength={16}
+                    value={weapon.skill ?? ""}
+                    onChange={(value) => {
+                      onChange({ ...weapon, skill: value }, index);
+                    }}
+                    required
+                  />
+                </RollableLookup>
               </td>
               <td>
                 <WeaponCardField
@@ -157,6 +167,7 @@ export const StunWeaponsCards = ({
                   label="Ammo"
                   maxLength={2}
                   value={weapon.ammo?.toString() ?? ""}
+                  editableDuringPlay={!!weapon.capacity}
                   onChange={(value) => {
                     onChange({ ...weapon, ammo: parseInt(value, 10) }, index);
                   }}

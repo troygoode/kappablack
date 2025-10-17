@@ -62,7 +62,7 @@ export default function Banner({ isLoading }: { isLoading: boolean }) {
               <Spinner className="text-black opacity-0" />
             </div>
           )}
-          <Link href="/" className="hidden md:inline print:inline">
+          <div className="hidden md:inline print:inline">
             <Image
               priority={true}
               src={KappaBlackCutoutW}
@@ -84,7 +84,7 @@ export default function Banner({ isLoading }: { isLoading: boolean }) {
               height="48"
               className="bg-white hidden dark:hidden print:inline"
             />
-          </Link>
+          </div>
           {isLoading && (
             <div className="items-center hidden md:flex">
               <Spinner className="text-black" />

@@ -9,6 +9,7 @@ import { useSession } from "next-auth/react";
 import { signOut } from "next-auth/react";
 
 import KappaBlackCutoutK from "../agent/banner/kappablack_cutout_k.webp";
+import KappaBlackCutoutW from "../agent/banner/kappablack_cutout_w.webp";
 
 import { create } from "@/actions/create-agent";
 
@@ -39,7 +40,12 @@ export default function Home({ agents }: { agents: TAgentRecord<IAgent>[] }) {
           <Image
             src={KappaBlackCutoutK}
             alt="Kappa Black Cutout"
-            className="bg-white"
+            className="bg-white hidden dark:inline"
+          />
+          <Image
+            src={KappaBlackCutoutW}
+            alt="Kappa Black Cutout"
+            className="bg-black inline dark:hidden"
           />
         </div>
         <div className="mb-8 text-sm text-center">

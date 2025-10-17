@@ -1,9 +1,30 @@
+import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { auth } from "@/auth";
 import AgentPage from "@/components/pages/agent";
 import { AgentStoreProvider } from "@/components/agent/stores/agent";
 import { getAgent } from "@/actions/get-agent";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ pk: string; sk: string }>;
+}): Promise<Metadata> {
+  // Fetch data to determine the title based on the slug
+  const { pk, sk } = await params;
+  if (!pk?.length || !sk?.length) return notFound();
+
+  // query db
+  const agentRecord = await getAgent(`USER#${pk}`, `AGENT#${sk}`);
+  return agentRecord?.name?.length
+    ? {
+        title: `${agentRecord?.name} • KAPPA BLACK`,
+      }
+    : {
+        title: `Unnamed Agent • KAPPA BLACK`,
+      };
+}
 
 export default async function Page({
   params,
