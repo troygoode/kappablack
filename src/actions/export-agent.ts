@@ -1,8 +1,11 @@
 "use server";
 
-import { stringify } from "smol-toml";
+import type { IAgent } from "@/types/agent";
+
+import { stringify, parse } from "smol-toml";
 
 import { getAgent } from "./get-agent";
+import { create } from "./create-agent";
 
 function removeEmptyArrays(obj: object): object {
   return Object.fromEntries(
@@ -15,6 +18,36 @@ function removeEmptyArrays(obj: object): object {
 function scrub(obj: object): object {
   const { pk, sk, ...obj2 } = obj as any;
   return removeEmptyArrays(obj2);
+}
+
+type TImportResult =
+  | {
+      pk?: string;
+      sk: string;
+    }
+  | {
+      error: string;
+    };
+export async function importAgent(
+  _prevState: any,
+  formData: FormData
+): Promise<TImportResult> {
+  const file = formData.get("import") as File;
+  if (!file) return { error: "No file uploaded" };
+
+  try {
+    const data = await file.text();
+    const parsed = parse(data);
+
+    delete parsed.pk;
+    delete parsed.sk;
+    delete parsed.version;
+
+    return await create(parsed as IAgent);
+  } catch {
+    console.error("Failed to import agent", file);
+    return { error: "Failed to import agent" };
+  }
 }
 
 export async function exportAgent(

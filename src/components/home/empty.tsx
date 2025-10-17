@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/empty";
 import { Button } from "@/components/ui/button";
 import { RainbowButton } from "../ui/rainbow-button";
+import ImportButton from "./import";
 
 async function createAgent() {
   const agent = await create();
@@ -44,9 +45,7 @@ export function EmptyState() {
           <RainbowButton onClick={() => createAgent()}>
             Create Agent
           </RainbowButton>
-          <Button variant="outline" disabled>
-            Import Agent
-          </Button>
+          <ImportButton />
         </div>
       </EmptyContent>
       <div className="flex justify-center">

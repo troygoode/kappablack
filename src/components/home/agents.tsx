@@ -4,13 +4,10 @@ import type { IAgent } from "@/types/agent";
 
 import Link from "next/link";
 
-import { EmptyState } from "./empty";
 import { TAgentRecord } from "@/actions/get-agent";
 
 export function AgentsList({ agents }: { agents: TAgentRecord<IAgent>[] }) {
-  return !agents.length ? (
-    <EmptyState />
-  ) : (
+  return (
     <div>
       <ul className="block">
         {agents.map((agent, idx) => (

@@ -3,13 +3,9 @@
 import type { TAgentRecord } from "@/actions/get-agent";
 import type { IAgent } from "@/types/agent";
 
-import Image from "next/image";
 import { redirect, RedirectType } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { signOut } from "next-auth/react";
-
-import KappaBlackCutoutK from "../agent/banner/kappablack_cutout_k.webp";
-import KappaBlackCutoutW from "../agent/banner/kappablack_cutout_w.webp";
 
 import { create } from "@/actions/create-agent";
 
@@ -23,6 +19,8 @@ import { AgentsList } from "../home/agents";
 import { LogOutIcon } from "../ui/icons/lucide-log-out";
 import Head from "../home/head";
 import Footer from "../home/footer";
+import { EmptyState } from "../home/empty";
+import ImportButton from "../home/import";
 
 async function createAgent() {
   const agent = await create();
@@ -45,13 +43,7 @@ export default function Home({ agents }: { agents: TAgentRecord<IAgent>[] }) {
               <RainbowButton onClick={() => createAgent()}>
                 Create Agent
               </RainbowButton>
-              <Button
-                variant="outline"
-                disabled={true}
-                className="cursor-not-allowed"
-              >
-                Import Agent
-              </Button>
+              <ImportButton />
               {session && (
                 <Button
                   variant="outline"
@@ -68,7 +60,11 @@ export default function Home({ agents }: { agents: TAgentRecord<IAgent>[] }) {
           {status === "loading" ? (
             <Skeleton className="w-full h-52" />
           ) : session ? (
-            <AgentsList agents={agents} />
+            agents?.length ? (
+              <AgentsList agents={agents} />
+            ) : (
+              <EmptyState />
+            )
           ) : (
             <LoginBox />
           )}
