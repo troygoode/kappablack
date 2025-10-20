@@ -21,6 +21,7 @@ interface IAgentState {
   toPDF:
     | undefined
     | ((
+        filename: string | undefined,
         mode: "view" | "edit" | "play" | "print",
         theme: string | undefined
       ) => void);

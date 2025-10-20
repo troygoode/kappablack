@@ -66,9 +66,15 @@ const Theme = () => {
   );
 };
 
+const generateFilenamePDF = (agentName: string | undefined) => {
+  const name = agentName?.trim().toLowerCase().replace(/\s+/g, "-");
+  return `${name?.length ? name : "unnamed-agent"}.pdf`;
+};
+
 const CharacterSheet = () => {
   const isEditable = useAgentStore((state) => state.isEditable);
   const mode = useAgentStore((state) => state.mode);
+  const name = useAgentStore((state) => state.agent?.name);
   const { theme } = useTheme();
   const toPDF = useAgentStore((state) => state.toPDF);
   const setDeleteDialog = useAgentStore((state) => state.setDeleteDialog);
@@ -77,6 +83,8 @@ const CharacterSheet = () => {
   const setShareDialog = useAgentStore((state) => state.setShareDialog);
   const pk = useAgentStore((state) => state.pk);
   const sk = useAgentStore((state) => state.sk);
+
+  const pdfName = generateFilenamePDF(name);
 
   const onCopy = async () => {
     if (!sk) return;
@@ -138,7 +146,7 @@ const CharacterSheet = () => {
         </DropdownMenuItem>
         <DropdownMenuItem
           className="cursor-pointer"
-          onSelect={() => (toPDF ? toPDF(mode, theme) : null)}
+          onSelect={() => (toPDF ? toPDF(pdfName, mode, theme) : null)}
         >
           <PrinterIcon />
           <span className="relative top-0.5">Export to PDF</span>

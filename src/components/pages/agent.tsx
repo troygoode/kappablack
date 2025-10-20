@@ -22,11 +22,6 @@ import Navigation from "@/components/navigation";
 import { useAgentStore } from "@/components/agent/stores/agent";
 import { useTheme } from "next-themes";
 
-const generateFilename = (agentName: string) => {
-  const name = agentName.trim().toLowerCase().replace(/\s+/g, "-");
-  return `${name?.length ? name : "unnamed-agent"}.pdf`;
-};
-
 export default function Agent({
   agent,
   pk,
@@ -38,16 +33,12 @@ export default function Agent({
   sk: string;
   isEditable: boolean;
 }) {
-  const name = useAgentStore((state) => state.agent?.name);
   const reset = useAgentStore((state) => state.reset);
   const isLoaded = useAgentStore((state) => state.isLoaded);
   const setMode = useAgentStore((state) => state.setMode);
   const { setTheme } = useTheme();
-  const { toPDF, targetRef } = usePDF({
-    method: "save",
-    filename: generateFilename(name ?? "unnamed-agent"),
-    page: { margin: Margin.SMALL },
-  });
+
+  const { toPDF, targetRef } = usePDF();
 
   useEffect(() => {
     reset({
@@ -59,6 +50,7 @@ export default function Agent({
       showShareDialog: false,
       exportText: undefined,
       toPDF: (
+        filename: string | undefined,
         mode: "view" | "edit" | "play" | "print",
         theme: string | undefined
       ) => {
@@ -66,7 +58,11 @@ export default function Agent({
         setTheme("light");
 
         setTimeout(() => {
-          toPDF();
+          toPDF({
+            filename,
+            method: "save",
+            page: { margin: Margin.SMALL },
+          });
         }, 100);
 
         setTimeout(() => {
