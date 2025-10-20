@@ -39,45 +39,47 @@ export const StunWeaponsTable = ({
   const mode = useAgentStore((state) => state.mode);
   return (
     <table className="w-full">
-      <thead className="text-xs uppercase">
-        <tr>
-          <th className="border-l border-b border-zinc-800 py-0.5 pl-2 pr-1 text-left font-normal h-10">
-            <div className="flex items-center justify-between">
-              16.b. Stun Weapons
-              {weapons.length > 0 && mode === "edit" ? (
-                <WeaponPicker add={add}>
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    className="cursor-pointer print:hidden"
-                    disabled={loading}
-                  >
-                    <CirclePlusIcon />
-                  </Button>
-                </WeaponPicker>
-              ) : null}
-            </div>
-          </th>
-          <th className="border-l border-b border-zinc-800 px-1 py-0.5 font-normal">
-            Skill
-          </th>
-          <th className="border-l border-b border-zinc-800 px-1 py-0.5 font-normal">
-            Base range
-          </th>
-          <th className="border-l border-b border-zinc-800 px-1 py-0.5 font-normal">
-            Victim's Penalty
-          </th>
-          <th className="border-l border-b border-zinc-800 px-1 py-0.5 font-normal">
-            Radius
-          </th>
-          <th className="border-l border-b border-zinc-800 px-1 py-0.5 font-normal">
-            Ammo
-          </th>
-          <th className="border-l border-b border-zinc-800 px-1 py-0.5 font-normal">
-            Capacity
-          </th>
-        </tr>
-      </thead>
+      {mode !== "print" && (
+        <thead className="text-xs uppercase">
+          <tr>
+            <th className="border-l border-b border-zinc-800 py-0.5 pl-2 pr-1 text-left font-normal h-10">
+              <div className="flex items-center justify-between">
+                16.b. Stun Weapons
+                {weapons.length > 0 && mode === "edit" ? (
+                  <WeaponPicker add={add}>
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      className="cursor-pointer print:hidden"
+                      disabled={loading}
+                    >
+                      <CirclePlusIcon />
+                    </Button>
+                  </WeaponPicker>
+                ) : null}
+              </div>
+            </th>
+            <th className="border-l border-b border-zinc-800 px-1 py-0.5 font-normal">
+              Skill
+            </th>
+            <th className="border-l border-b border-zinc-800 px-1 py-0.5 font-normal">
+              Base range
+            </th>
+            <th className="border-l border-b border-zinc-800 px-1 py-0.5 font-normal">
+              Victim's Penalty
+            </th>
+            <th className="border-l border-b border-zinc-800 px-1 py-0.5 font-normal">
+              Radius
+            </th>
+            <th className="border-l border-b border-zinc-800 px-1 py-0.5 font-normal">
+              Ammo
+            </th>
+            <th className="border-l border-b border-zinc-800 px-1 py-0.5 font-normal">
+              Capacity
+            </th>
+          </tr>
+        </thead>
+      )}
       <tbody>
         {weapons.length === 0 && mode === "edit" ? (
           <tr className="text-center print:hidden">

@@ -48,7 +48,9 @@ export const WeaponsTable = ({
         <tr>
           <th className="border-l border-b border-zinc-800 py-0.5 pl-2 pr-1 text-left font-normal h-10">
             <div className="flex items-center justify-between">
-              {hasStunWeapons ? "16.a. Lethal Weapons" : "16. Weapons"}
+              {hasStunWeapons && mode !== "print"
+                ? "16.a. Lethal Weapons"
+                : "16. Weapons"}
               {weapons.length > 0 && mode === "edit" ? (
                 <WeaponPicker add={add}>
                   <Button

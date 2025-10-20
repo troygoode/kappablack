@@ -47,7 +47,7 @@ export function Skill({
           />
         </div>
         <div className="flex grow items-center gap-1.5 text-sm print:text-xs">
-          {tooltip && (
+          {mode !== "print" && tooltip && (
             <AgentTooltip>
               <p className="mb-2">{tooltip}</p>
               {base != undefined && (

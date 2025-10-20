@@ -3,6 +3,7 @@
 import type { IAgent } from "@/types/agent";
 
 import { useEffect } from "react";
+import { usePDF, Margin } from "react-to-pdf";
 
 import { Toaster } from "@/components/ui/sonner";
 import Equipment from "@/components/agent/equipment/equipment";
@@ -19,6 +20,7 @@ import { Container } from "@/components/container";
 import Disclaimer from "@/components/disclaimer/disclaimer";
 import Navigation from "@/components/navigation";
 import { useAgentStore } from "@/components/agent/stores/agent";
+import { useTheme } from "next-themes";
 
 export default function Agent({
   agent,
@@ -33,6 +35,14 @@ export default function Agent({
 }) {
   const reset = useAgentStore((state) => state.reset);
   const isLoaded = useAgentStore((state) => state.isLoaded);
+  const setMode = useAgentStore((state) => state.setMode);
+  const { setTheme } = useTheme();
+  const { toPDF, targetRef } = usePDF({
+    method: "save",
+    filename: "test.pdf",
+    page: { margin: Margin.SMALL },
+  });
+
   useEffect(() => {
     reset({
       isLoaded: true,
@@ -42,6 +52,22 @@ export default function Agent({
       showExportDialog: false,
       showShareDialog: false,
       exportText: undefined,
+      toPDF: (
+        mode: "view" | "edit" | "play" | "print",
+        theme: string | undefined
+      ) => {
+        setMode("print");
+        setTheme("light");
+
+        setTimeout(() => {
+          toPDF();
+        }, 100);
+
+        setTimeout(() => {
+          setMode(mode);
+          setTheme(theme ?? "system");
+        }, 200);
+      },
       agent: {
         bonds: [],
         skills: [],
@@ -57,37 +83,39 @@ export default function Agent({
 
   return (
     <Container>
-      <div className="mt-4 mb-1">
-        <Navigation isLoading={!isLoaded} />
-      </div>
-      <div className="border-2">
-        <Personal />
-      </div>
-      <div className="mt-1 flex flex-col gap-2 lg:grid lg:grid-cols-2 print:grid print:grid-cols-2">
-        <div className="border-2">
-          <Stats />
+      <div ref={targetRef}>
+        <div className="mt-4 mb-1">
+          <Navigation isLoading={!isLoaded} />
         </div>
         <div className="border-2">
-          <Psychology />
+          <Personal />
         </div>
-      </div>
-      <div className="mt-1 mb-1 border-2">
-        <Skills />
-      </div>
-      <div className="mt-1 mb-1 border-2">
-        <Injuries />
-      </div>
-      <div className="mt-1 mb-1 border-2">
-        <Equipment />
-      </div>
-      <div className="mt-1 mb-1 border-2">
-        <Remarks />
-      </div>
-      <div className="mb-4 border-2">
-        <Signature />
-      </div>
-      <div className="mb-4">
-        <Footer />
+        <div className="mt-1 flex flex-col gap-2 lg:grid lg:grid-cols-2 print:grid print:grid-cols-2">
+          <div className="border-2">
+            <Stats />
+          </div>
+          <div className="border-2">
+            <Psychology />
+          </div>
+        </div>
+        <div className="mt-1 mb-1 border-2">
+          <Skills />
+        </div>
+        <div className="mt-1 mb-1 border-2">
+          <Injuries />
+        </div>
+        <div className="mt-1 mb-1 border-2">
+          <Equipment />
+        </div>
+        <div className="mt-1 mb-1 border-2">
+          <Remarks />
+        </div>
+        <div className="mb-4 border-2">
+          <Signature />
+        </div>
+        <div className="mb-4">
+          <Footer />
+        </div>
       </div>
       <div className="mb-16">
         <Disclaimer />

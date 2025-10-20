@@ -56,7 +56,7 @@ const Stat = ({
           mode === "edit" ? 3 : 4
         } flex flex-wrap items-center gap-1 px-2 py-1 text-sm outline-1 outline-zinc-800 print:outline-slate-950`}
       >
-        {tooltip && (
+        {mode !== "print" && tooltip && (
           <AgentTooltip>
             <p>{tooltip}</p>
           </AgentTooltip>
@@ -147,7 +147,7 @@ const Derived = ({
   return (
     <div className="grid grid-cols-9 print:text-sm">
       <div className="col-span-4 flex items-center gap-1 px-2 py-1 text-sm outline-1 outline-zinc-800 print:outline-slate-950">
-        {tooltip && (
+        {mode !== "print" && tooltip && (
           <AgentTooltip>
             <p>{tooltip}</p>
           </AgentTooltip>

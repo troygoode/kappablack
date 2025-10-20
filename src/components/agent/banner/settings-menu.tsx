@@ -29,6 +29,7 @@ import { CloudDownloadIcon } from "@/components/ui/icons/lucide-cloud-download";
 import { ExportDialog } from "./export-dialog";
 import { ShareDialog } from "./share-dialog";
 import { exportAgent } from "@/actions/export-agent";
+import { PrinterIcon } from "@/components/ui/icons/lucide-printer";
 
 const Theme = () => {
   const { theme, setTheme } = useTheme();
@@ -67,6 +68,9 @@ const Theme = () => {
 
 const CharacterSheet = () => {
   const isEditable = useAgentStore((state) => state.isEditable);
+  const mode = useAgentStore((state) => state.mode);
+  const { theme } = useTheme();
+  const toPDF = useAgentStore((state) => state.toPDF);
   const setDeleteDialog = useAgentStore((state) => state.setDeleteDialog);
   const setExportDialog = useAgentStore((state) => state.setExportDialog);
   const setExportText = useAgentStore((state) => state.setExportText);
@@ -107,13 +111,6 @@ const CharacterSheet = () => {
           <Share2Icon />
           <span className="relative top-0.5">Share Agent</span>
         </DropdownMenuItem>
-        <DropdownMenuItem
-          className="cursor-pointer"
-          onSelect={() => onExport()}
-        >
-          <CloudDownloadIcon />
-          <span className="relative top-0.5">Export Agent</span>
-        </DropdownMenuItem>
         <DropdownMenuItem className="cursor-pointer" onSelect={() => onCopy()}>
           <CopyPlusIcon />
           <span className="relative top-0.5">Create Copy of Agent</span>
@@ -128,6 +125,24 @@ const CharacterSheet = () => {
             <span className="relative top-0.5">Delete Agent</span>
           </DropdownMenuItem>
         )}
+        <DropdownMenuSeparator />
+        <DropdownMenuLabel className="text-muted-foreground">
+          Export Agent
+        </DropdownMenuLabel>
+        <DropdownMenuItem
+          className="cursor-pointer"
+          onSelect={() => onExport()}
+        >
+          <CloudDownloadIcon />
+          <span className="relative top-0.5">Export to TOML</span>
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          className="cursor-pointer"
+          onSelect={() => (toPDF ? toPDF(mode, theme) : null)}
+        >
+          <PrinterIcon />
+          <span className="relative top-0.5">Export to PDF</span>
+        </DropdownMenuItem>
       </DropdownMenuGroup>
       <DropdownMenuSeparator />
     </>

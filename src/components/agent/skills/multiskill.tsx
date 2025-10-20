@@ -56,7 +56,7 @@ export function MultiSkill({
           <div className="flex justify-center">
             <div className="w-7 pt-1.5"></div>
             <div className="flex grow items-center gap-1.5 text-sm print:text-xs">
-              {tooltip && (
+              {mode !== "print" && tooltip && (
                 <span className="inline">
                   <AgentTooltip>
                     <p className="mb-2">{tooltip}</p>

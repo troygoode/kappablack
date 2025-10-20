@@ -9,7 +9,7 @@ import { save } from "@/actions/update-agent";
 
 interface IAgentState {
   isLoaded: boolean;
-  mode: "view" | "edit" | "play";
+  mode: "view" | "edit" | "play" | "print";
   isEditable: boolean;
   showDeleteDialog: boolean;
   showExportDialog: boolean;
@@ -18,15 +18,22 @@ interface IAgentState {
   pk: string | undefined;
   sk: string | undefined;
   agent: IAgent;
+  toPDF:
+    | undefined
+    | ((
+        mode: "view" | "edit" | "play" | "print",
+        theme: string | undefined
+      ) => void);
 }
 interface IAgentActions {
   reset: (state: IAgentState) => void;
   merge: (agent: Partial<IAgent>) => void;
-  setMode: (mode: "view" | "edit" | "play") => void;
+  setMode: (mode: "view" | "edit" | "play" | "print") => void;
   setDeleteDialog: (show: boolean) => void;
   setExportDialog: (show: boolean) => void;
   setShareDialog: (show: boolean) => void;
   setExportText: (text: string | undefined) => void;
+  setToPDF: (toPDF: () => void | undefined) => void;
 
   addWeapon: (weapon: IWeaponData) => void;
   updateWeapon: (weapon: IWeapon, index: number) => void;
@@ -65,6 +72,7 @@ const store = generateStore<IAgentState, IAgentActions>({
     showExportDialog: false,
     showShareDialog: false,
     exportText: undefined,
+    toPDF: undefined,
     agent: {
       bonds: [],
       skills: [],
@@ -83,12 +91,14 @@ const store = generateStore<IAgentState, IAgentActions>({
       }));
       debouncedSave(get);
     },
-    setMode: (mode: "view" | "edit" | "play") => set(() => ({ mode })),
+    setMode: (mode: "view" | "edit" | "play" | "print") =>
+      set(() => ({ mode })),
     setDeleteDialog: (show: boolean) => set(() => ({ showDeleteDialog: show })),
     setExportDialog: (show: boolean) => set(() => ({ showExportDialog: show })),
     setShareDialog: (show: boolean) => set(() => ({ showShareDialog: show })),
     setExportText: (text: string | undefined) =>
       set(() => ({ exportText: text })),
+    setToPDF: (toPDF: () => void | undefined) => set(() => ({ toPDF })),
 
     addWeapon: (weapon: IWeaponData) => {
       if (weapon.penalty !== undefined) {

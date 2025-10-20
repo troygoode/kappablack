@@ -16,43 +16,52 @@ import { useAgentStore } from "../stores/agent";
 
 export default function Banner({ isLoading }: { isLoading: boolean }) {
   const isEditable = useAgentStore((state) => state.isEditable);
+  const mode = useAgentStore((state) => state.mode);
   return (
     <div className="flex bg-black dark:bg-white h-12">
       <div className="grid grid-cols-3 w-full px-2">
         <div className="flex items-center justify-start">
           <div className="md:hidden print:hidden">
-            <Link href="/">
-              <Image
-                priority={true}
-                src={KappaBlackCutoutW}
-                alt="Logo"
-                height="48"
-                className="bg-black hidden dark:inline"
-              />
-              <Image
-                priority={true}
-                src={KappaBlackCutoutK}
-                alt="Logo"
-                height="48"
-                className="bg-white inline dark:hidden"
-              />
-            </Link>
-            {isLoading && (
-              <div className="flex items-center">
-                <Spinner className="text-black" />
-              </div>
+            {mode !== "print" && (
+              <>
+                <Link href="/">
+                  <Image
+                    priority={true}
+                    src={KappaBlackCutoutW}
+                    alt="Logo"
+                    height="48"
+                    className="bg-black hidden dark:inline"
+                  />
+                  <Image
+                    priority={true}
+                    src={KappaBlackCutoutK}
+                    alt="Logo"
+                    height="48"
+                    className="bg-white inline dark:hidden"
+                  />
+                </Link>
+                {isLoading && (
+                  <div className="flex items-center">
+                    <Spinner className="text-black" />
+                  </div>
+                )}
+              </>
             )}
           </div>
           <div className="hidden md:block print:hidden">
-            <Link href="/">
-              <Button
-                size="sm"
-                variant="outline"
-                className="cursor-pointer bg-black text-zinc-200 border-zinc-800 hover:text-white hover:bg-zinc-800 hover:border-zinc-600 dark:text-black dark:border-zinc-100 dark:hover:bg-zinc-200 dark:hover:text-black dark:hover:border-zinc-200"
-              >
-                <HouseIcon />
-              </Button>
-            </Link>
+            {mode !== "print" && (
+              <>
+                <Link href="/">
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    className="cursor-pointer bg-black text-zinc-200 border-zinc-800 hover:text-white hover:bg-zinc-800 hover:border-zinc-600 dark:text-black dark:border-zinc-100 dark:hover:bg-zinc-200 dark:hover:text-black dark:hover:border-zinc-200"
+                  >
+                    <HouseIcon />
+                  </Button>
+                </Link>
+              </>
+            )}
           </div>
         </div>
         <div className="flex justify-center">
@@ -92,8 +101,12 @@ export default function Banner({ isLoading }: { isLoading: boolean }) {
           )}
         </div>
         <div className="flex items-center justify-end gap-2">
-          {isEditable && <ModeSelector className="print:hidden" />}
-          <Settings className="print:hidden" />
+          {mode !== "print" && (
+            <>
+              {isEditable && <ModeSelector className="print:hidden" />}
+              <Settings className="print:hidden" />
+            </>
+          )}
         </div>
       </div>
     </div>
