@@ -1,9 +1,9 @@
+import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import AgentPage from "@/components/pages/agent";
 import { AgentStoreProvider } from "@/components/agent/stores/agent";
 import { getAgent } from "@/actions/get-agent";
-import { Metadata } from "next";
 
 export async function generateMetadata({
   params,
