@@ -14,6 +14,11 @@ interface IRollOutput {
   rolled: number[];
 }
 
+const seconds = (ms: number) => Math.floor(ms * 1000);
+
+// const TOAST_DURATION = seconds(4); // default
+const TOAST_DURATION = seconds(10);
+
 const ablyClient = new Ably.Realtime({
   authUrl: "/api/ably",
 });
@@ -50,7 +55,7 @@ function ToasterInner({ channelName }: { channelName: string }) {
             </Toast>
           ),
           {
-            // duration: 4000 * 60,
+            duration: TOAST_DURATION,
           }
         );
       } else if ("result" in message.data) {
@@ -66,7 +71,7 @@ function ToasterInner({ channelName }: { channelName: string }) {
             </Toast>
           ),
           {
-            // duration: 4000 * 60,
+            duration: TOAST_DURATION,
           }
         );
       }
