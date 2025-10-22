@@ -4,8 +4,9 @@ import type { IAgent } from "@/types/agent";
 
 import { useEffect } from "react";
 import { usePDF, Margin } from "react-to-pdf";
+import { useTheme } from "next-themes";
+import dynamic from "next/dynamic";
 
-import { Toaster } from "@/components/ui/sonner";
 import Equipment from "@/components/agent/equipment/equipment";
 import Footer from "@/components/agent/footer";
 import SiteFooter from "@/components/home/footer";
@@ -20,7 +21,11 @@ import { Container } from "@/components/container";
 import Disclaimer from "@/components/disclaimer/disclaimer";
 import Navigation from "@/components/navigation";
 import { useAgentStore } from "@/components/agent/stores/agent";
-import { useTheme } from "next-themes";
+
+const Toaster = dynamic(
+  () => import("@/components/agent/toaster").then((comp) => comp.Toaster),
+  { ssr: false }
+);
 
 export default function Agent({
   agent,
@@ -37,7 +42,6 @@ export default function Agent({
   const isLoaded = useAgentStore((state) => state.isLoaded);
   const setMode = useAgentStore((state) => state.setMode);
   const { setTheme } = useTheme();
-
   const { toPDF, targetRef } = usePDF();
 
   useEffect(() => {
@@ -49,6 +53,7 @@ export default function Agent({
       showExportDialog: false,
       showShareDialog: false,
       exportText: undefined,
+      publish: undefined,
       toPDF: (
         filename: string | undefined,
         mode: "view" | "edit" | "play" | "print",
@@ -125,7 +130,7 @@ export default function Agent({
       <div className="w-full items-center justify-center text-center text-xs text-muted-foreground mb-16">
         <SiteFooter />
       </div>
-      <Toaster expand richColors />
+      <Toaster channelName={`agent-${sk}`} />
     </Container>
   );
 }

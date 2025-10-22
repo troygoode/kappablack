@@ -18,6 +18,7 @@ interface IAgentState {
   pk: string | undefined;
   sk: string | undefined;
   agent: IAgent;
+  publish: ((message: object) => void) | undefined;
   toPDF:
     | undefined
     | ((
@@ -35,6 +36,7 @@ interface IAgentActions {
   setShareDialog: (show: boolean) => void;
   setExportText: (text: string | undefined) => void;
   setToPDF: (toPDF: () => void | undefined) => void;
+  setPublish: (publish: ((message: object) => void) | undefined) => void;
 
   addWeapon: (weapon: IWeaponData) => void;
   updateWeapon: (weapon: IWeapon, index: number) => void;
@@ -74,6 +76,7 @@ const store = generateStore<IAgentState, IAgentActions>({
     showShareDialog: false,
     exportText: undefined,
     toPDF: undefined,
+    publish: undefined,
     agent: {
       bonds: [],
       skills: [],
@@ -100,6 +103,8 @@ const store = generateStore<IAgentState, IAgentActions>({
     setExportText: (text: string | undefined) =>
       set(() => ({ exportText: text })),
     setToPDF: (toPDF: () => void | undefined) => set(() => ({ toPDF })),
+    setPublish: (publish: ((message: object) => void) | undefined) =>
+      set(() => ({ publish })),
 
     addWeapon: (weapon: IWeaponData) => {
       if (weapon.penalty !== undefined) {
