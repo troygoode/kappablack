@@ -13,6 +13,10 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger,
   DropdownMenuSeparator,
+  DropdownMenuSub,
+  DropdownMenuSubTrigger,
+  DropdownMenuPortal,
+  DropdownMenuSubContent,
 } from "@/components/ui/dropdown-menu";
 import { CheckIcon } from "@/components/ui/icons/lucide-check";
 import { useAgentStore } from "../stores/agent";
@@ -30,6 +34,7 @@ import { ExportDialog } from "./export-dialog";
 import { ShareDialog } from "./share-dialog";
 import { exportAgent } from "@/actions/export-agent";
 import { PrinterIcon } from "@/components/ui/icons/lucide-printer";
+import { PaletteIcon } from "@/components/ui/icons/lucide-palette";
 
 const Theme = () => {
   const { theme, setTheme } = useTheme();
@@ -37,29 +42,39 @@ const Theme = () => {
     <>
       <DropdownMenuGroup>
         <DropdownMenuLabel className="text-muted-foreground">
-          Theme
+          Appearance
         </DropdownMenuLabel>
-        <DropdownMenuItem
-          onClick={() => setTheme("light")}
-          className="cursor-pointer"
-        >
-          {theme === "light" ? <CheckIcon /> : <SunIcon />}
-          Light
-        </DropdownMenuItem>
-        <DropdownMenuItem
-          onClick={() => setTheme("dark")}
-          className="cursor-pointer"
-        >
-          {theme === "dark" ? <CheckIcon /> : <MoonStarIcon />}
-          Dark
-        </DropdownMenuItem>
-        <DropdownMenuItem
-          onClick={() => setTheme("system")}
-          className="cursor-pointer"
-        >
-          {theme === "system" ? <CheckIcon /> : <ComputerIcon />}
-          System
-        </DropdownMenuItem>
+        <DropdownMenuSub>
+          <DropdownMenuSubTrigger className="cursor-pointer">
+            <PaletteIcon />
+            <span className="relative top-0.5">Theme</span>
+          </DropdownMenuSubTrigger>
+          <DropdownMenuPortal>
+            <DropdownMenuSubContent>
+              <DropdownMenuItem
+                onClick={() => setTheme("light")}
+                className="cursor-pointer"
+              >
+                {theme === "light" ? <CheckIcon /> : <SunIcon />}
+                <span className="relative top-0.5">Light</span>
+              </DropdownMenuItem>
+              <DropdownMenuItem
+                onClick={() => setTheme("dark")}
+                className="cursor-pointer"
+              >
+                {theme === "dark" ? <CheckIcon /> : <MoonStarIcon />}
+                <span className="relative top-0.5">Dark</span>
+              </DropdownMenuItem>
+              <DropdownMenuItem
+                onClick={() => setTheme("system")}
+                className="cursor-pointer"
+              >
+                {theme === "system" ? <CheckIcon /> : <ComputerIcon />}
+                <span className="relative top-0.5">System</span>
+              </DropdownMenuItem>
+            </DropdownMenuSubContent>
+          </DropdownMenuPortal>
+        </DropdownMenuSub>
       </DropdownMenuGroup>
       <DropdownMenuSeparator />
     </>
