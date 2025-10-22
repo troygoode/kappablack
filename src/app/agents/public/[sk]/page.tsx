@@ -4,6 +4,9 @@ import { notFound } from "next/navigation";
 import AgentPage from "@/components/pages/agent";
 import { AgentStoreProvider } from "@/components/agent/stores/agent";
 import { getAgent } from "@/actions/get-agent";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { TriangleAlertIcon } from "@/components/ui/icons/lucide-triangle-alert";
+import { Container } from "@/components/container";
 
 export async function generateMetadata({
   params,
@@ -42,6 +45,22 @@ export default async function Page({
 
   return (
     <AgentStoreProvider>
+      <Container className="print:hidden px-16">
+        <div className="w-full mt-4">
+          <Alert variant="destructive">
+            <TriangleAlertIcon />
+            <AlertTitle className="font-bold">
+              Warning! Agents created without logging in are deleted after 7
+              days.
+            </AlertTitle>
+            <AlertDescription>
+              If you'd like to keep the agents you create indefinitely, be sure
+              to login first. It is completely free.
+            </AlertDescription>
+          </Alert>
+        </div>
+      </Container>
+
       <AgentPage
         agent={agentRecord}
         pk={undefined}
