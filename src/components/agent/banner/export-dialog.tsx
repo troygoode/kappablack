@@ -61,11 +61,11 @@ export function ExportDialog({
   const toml = useAgentStore((state) => state.exportText);
   const [copied, setCopied] = useState(false);
   const [format, setFormat] = useState("TOML");
-  const [text, setText] = useState(toml ?? "");
+  const [text, setText] = useState<string | undefined>();
   useEffect(() => {
     switch (format) {
       case "TOML":
-        setText(toml ?? "");
+        setText(toml);
         break;
       case "Foundry":
         setText(JSON.stringify(exportFoundryAgent(agent), null, 2));
@@ -83,18 +83,19 @@ export function ExportDialog({
     format === "TOML" ? "toml" : format === "Foundry" ? "json" : "txt"
   );
 
+  const exportText = text ?? toml ?? "";
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle>Export Agent</DialogTitle>
           <DialogDescription>
-            Download a local copy of your agent configuration in {format}{" "}
-            format. {filename}
+            Download a local copy of your agent configuration.
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4">
-          {!toml?.length ? (
+          {!exportText?.length ? (
             <div className="grid gap-3">
               <Alert>
                 <TriangleAlertIcon />
@@ -112,14 +113,14 @@ export function ExportDialog({
                 <SelectGroup>
                   <SelectLabel>Export Formats</SelectLabel>
                   <SelectItem value="TOML" className="cursor-pointer">
-                    Kappa Black .TOML file
+                    KAPPA BLACK (TOML file)
                   </SelectItem>
                   <SelectItem value="Foundry" className="cursor-pointer">
-                    Foundry Virtual Tabletop .JSON file
+                    Foundry VTT (JSON file)
                   </SelectItem>
-                  <SelectItem value="Statblock" className="cursor-pointer">
+                  {/* <SelectItem value="Statblock" className="cursor-pointer">
                     Statblock .TXT file
-                  </SelectItem>
+                  </SelectItem> */}
                 </SelectGroup>
               </SelectContent>
             </Select>
@@ -129,7 +130,7 @@ export function ExportDialog({
             <Textarea
               id="export"
               name="export"
-              value={text}
+              value={exportText}
               className="min-h-40 max-h-40"
               readOnly
             />
@@ -139,8 +140,8 @@ export function ExportDialog({
           <Button
             variant="outline"
             className="cursor-pointer"
-            onClick={() => handleCopy(text ?? "", setCopied)}
-            disabled={!text?.length}
+            onClick={() => handleCopy(exportText, setCopied)}
+            disabled={!exportText?.length}
           >
             {copied ? <CheckIcon /> : <ClipboardCopyIcon />}
             Copy
@@ -148,8 +149,8 @@ export function ExportDialog({
           <Button
             variant="outline"
             className="cursor-pointer"
-            onClick={() => handleFileDownload(filename, text ?? "")}
-            disabled={!text?.length}
+            onClick={() => handleFileDownload(filename, exportText)}
+            disabled={!exportText?.length}
           >
             <CloudDownloadIcon />
             Download
