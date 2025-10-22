@@ -1,0 +1,1508 @@
+{
+  "type": "agent",
+  "system": {
+    "health": {
+      "value": 13,
+      "min": 0,
+      "max": 13,
+      "protection": 0
+    },
+    "wp": {
+      "value": 13,
+      "min": 0,
+      "max": 13
+    },
+    "statistics": {
+      "str": {
+        "value": 14,
+        "distinguishing_feature": "",
+        "x5": 70,
+        "meleeDamageBonus": 1,
+        "meleeDamageBonusFormula": "+1"
+      },
+      "con": {
+        "value": 12,
+        "distinguishing_feature": "",
+        "x5": 60
+      },
+      "dex": {
+        "value": 10,
+        "distinguishing_feature": "",
+        "x5": 50
+      },
+      "int": {
+        "value": 12,
+        "distinguishing_feature": "",
+        "x5": 60
+      },
+      "pow": {
+        "value": 13,
+        "distinguishing_feature": "",
+        "x5": 65
+      },
+      "cha": {
+        "value": 12,
+        "distinguishing_feature": "",
+        "x5": 60
+      }
+    },
+    "skills": {
+      "accounting": {
+        "label": "Accounting",
+        "proficiency": 0,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 0,
+        "key": "accounting",
+        "sortLabel": "Accounting",
+        "tooltip": "Spot financial red flags like hidden assets, shell companies, or embezzlement.Spot financial red flags like hidden assets, shell companies, or embezzlement.<br><br>A skill at 0% cannot be used.  See page 28 of the Agent's Handbook."
+      },
+      "alertness": {
+        "label": "Alertness",
+        "proficiency": 50,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 50,
+        "key": "alertness",
+        "sortLabel": "Alertness",
+        "tooltip": "Notice hidden dangers, subtle movements, or quiet sounds before they become threats."
+      },
+      "anthropology": {
+        "label": "Anthropology",
+        "proficiency": 0,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 0,
+        "key": "anthropology",
+        "sortLabel": "Anthropology",
+        "tooltip": "Understand the beliefs, behaviors, and taboos of living cultures and societies.Understand the beliefs, behaviors, and taboos of living cultures and societies.<br><br>A skill at 0% cannot be used.  See page 28 of the Agent's Handbook."
+      },
+      "archeology": {
+        "label": "Archeology",
+        "proficiency": 0,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 0,
+        "key": "archeology",
+        "sortLabel": "Archeology",
+        "tooltip": "Analyze ancient artifacts and ruins to interpret long-dead civilizations.Analyze ancient artifacts and ruins to interpret long-dead civilizations.<br><br>A skill at 0% cannot be used.  See page 28 of the Agent's Handbook."
+      },
+      "artillery": {
+        "label": "Artillery",
+        "proficiency": 0,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 0,
+        "key": "artillery",
+        "sortLabel": "Artillery",
+        "tooltip": "Operate heavy weapons like mortars or tank cannons with precision.Operate heavy weapons like mortars or tank cannons with precision.<br><br>A skill at 0% cannot be used.  See page 28 of the Agent's Handbook."
+      },
+      "athletics": {
+        "label": "Athletics",
+        "proficiency": 0,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 0,
+        "key": "athletics",
+        "sortLabel": "Athletics",
+        "tooltip": "Run, climb, jump, and throw with trained strength and agility.Run, climb, jump, and throw with trained strength and agility.<br><br>A skill at 0% cannot be used.  See page 28 of the Agent's Handbook."
+      },
+      "bureaucracy": {
+        "label": "Bureaucracy",
+        "proficiency": 70,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 70,
+        "key": "bureaucracy",
+        "sortLabel": "Bureaucracy",
+        "tooltip": "Navigate red tape, cut deals with officials, and get access to restricted resources."
+      },
+      "computer_science": {
+        "label": "Computer Science",
+        "proficiency": 0,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 0,
+        "key": "computer_science",
+        "sortLabel": "Computer Science",
+        "tooltip": "Hack, protect, or manipulate computer systems and recover deleted data.Hack, protect, or manipulate computer systems and recover deleted data.<br><br>A skill at 0% cannot be used.  See page 28 of the Agent's Handbook."
+      },
+      "criminology": {
+        "label": "Criminology",
+        "proficiency": 45,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 45,
+        "key": "criminology",
+        "sortLabel": "Criminology",
+        "tooltip": "Profile criminal behavior and analyze conspiracies or patterns of illicit activity."
+      },
+      "demolitions": {
+        "label": "Demolitions",
+        "proficiency": 0,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 0,
+        "key": "demolitions",
+        "sortLabel": "Demolitions",
+        "tooltip": "Safely set, disarm, or analyze explosive devices.Safely set, disarm, or analyze explosive devices.<br><br>A skill at 0% cannot be used.  See page 28 of the Agent's Handbook."
+      },
+      "disguise": {
+        "label": "Disguise",
+        "proficiency": 0,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 0,
+        "key": "disguise",
+        "sortLabel": "Disguise",
+        "tooltip": "Alter your appearance and mannerisms to avoid recognition.Alter your appearance and mannerisms to avoid recognition.<br><br>A skill at 0% cannot be used.  See page 28 of the Agent's Handbook."
+      },
+      "dodge": {
+        "label": "Dodge",
+        "proficiency": 0,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 0,
+        "key": "dodge",
+        "sortLabel": "Dodge",
+        "tooltip": "Evade incoming attacks or scramble to cover.Evade incoming attacks or scramble to cover.<br><br>A skill at 0% cannot be used.  See page 28 of the Agent's Handbook."
+      },
+      "drive": {
+        "label": "Drive",
+        "proficiency": 55,
+        "failure": true,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 55,
+        "key": "drive",
+        "sortLabel": "Drive",
+        "tooltip": "Handle vehicles under pressure, including chases and rough terrain."
+      },
+      "firearms": {
+        "label": "Firearms",
+        "proficiency": 60,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 60,
+        "key": "firearms",
+        "sortLabel": "Firearms",
+        "tooltip": "Shoot accurately under pressure with pistols, rifles, and other small arms."
+      },
+      "first_aid": {
+        "label": "First Adi",
+        "proficiency": 30,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 30,
+        "key": "first_aid",
+        "sortLabel": "First Aid",
+        "tooltip": "Stabilize injuries and restore HP in the short term."
+      },
+      "forensics": {
+        "label": "Forensics",
+        "proficiency": 0,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 0,
+        "key": "forensics",
+        "sortLabel": "Forensics",
+        "tooltip": "Analyze crime scenes for hidden evidence using forensic methods—or conceal traces of a crime to mislead investigators.Analyze crime scenes for hidden evidence using forensic methods—or conceal traces of a crime to mislead investigators.<br><br>A skill at 0% cannot be used.  See page 28 of the Agent's Handbook."
+      },
+      "heavy_machiner": {
+        "label": "Heavy Machinery",
+        "proficiency": 10,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 10,
+        "key": "heavy_machiner",
+        "sortLabel": "Heavy Machinery",
+        "tooltip": "Operate large equipment like cranes, bulldozers, or tanks in high-stress situations."
+      },
+      "heavy_weapons": {
+        "label": "Heavy Weapons",
+        "proficiency": 0,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 0,
+        "key": "heavy_weapons",
+        "sortLabel": "Heavy Weapons",
+        "tooltip": "Use portable heavy arms like LMGs or rocket launchers in combat.Use portable heavy arms like LMGs or rocket launchers in combat.<br><br>A skill at 0% cannot be used.  See page 28 of the Agent's Handbook."
+      },
+      "history": {
+        "label": "History",
+        "proficiency": 0,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 0,
+        "key": "history",
+        "sortLabel": "History",
+        "tooltip": "Recall historical facts, obscure references, or find buried knowledge.Recall historical facts, obscure references, or find buried knowledge.<br><br>A skill at 0% cannot be used.  See page 28 of the Agent's Handbook."
+      },
+      "humint": {
+        "label": "HUMINT",
+        "proficiency": 40,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 40,
+        "key": "humint",
+        "sortLabel": "HUMINT",
+        "tooltip": "Read people, detect deception, and uncover hidden motives through interaction."
+      },
+      "law": {
+        "label": "Law",
+        "proficiency": 0,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 0,
+        "key": "law",
+        "sortLabel": "Law",
+        "tooltip": "Apply or exploit legal knowledge to win court cases or avoid prosecution.Apply or exploit legal knowledge to win court cases or avoid prosecution.<br><br>A skill at 0% cannot be used.  See page 28 of the Agent's Handbook."
+      },
+      "medicine": {
+        "label": "Medicine",
+        "proficiency": 0,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 0,
+        "key": "medicine",
+        "sortLabel": "Medicine",
+        "tooltip": "Diagnose and treat injuries or illnesses for long-term care and recovery.Diagnose and treat injuries or illnesses for long-term care and recovery.<br><br>A skill at 0% cannot be used.  See page 28 of the Agent's Handbook."
+      },
+      "melee_weapons": {
+        "label": "Melee Weapons",
+        "proficiency": 55,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 55,
+        "key": "melee_weapons",
+        "sortLabel": "Melee Weapons",
+        "tooltip": "Fight effectively in close quarters using knives, clubs, or improvised handheld weapons."
+      },
+      "navigate": {
+        "label": "Navigate",
+        "proficiency": 0,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 0,
+        "key": "navigate",
+        "sortLabel": "Navigate",
+        "tooltip": "Use maps, instruments, or intuition to find your way in unfamiliar terrain.Use maps, instruments, or intuition to find your way in unfamiliar terrain.<br><br>A skill at 0% cannot be used.  See page 28 of the Agent's Handbook."
+      },
+      "occult": {
+        "label": "Occult",
+        "proficiency": 0,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 0,
+        "key": "occult",
+        "sortLabel": "Occult",
+        "tooltip": "Identify myths, rituals, and fringe beliefs—but not separate truth from superstition.Identify myths, rituals, and fringe beliefs—but not separate truth from superstition.<br><br>A skill at 0% cannot be used.  See page 28 of the Agent's Handbook."
+      },
+      "persuade": {
+        "label": "Persuade",
+        "proficiency": 50,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 50,
+        "key": "persuade",
+        "sortLabel": "Persuade",
+        "tooltip": "Convince others to change their mind or take actions they normally wouldn’t."
+      },
+      "pharmacy": {
+        "label": "Pharmacy",
+        "proficiency": 0,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 0,
+        "key": "pharmacy",
+        "sortLabel": "Pharmacy",
+        "tooltip": "Identify, produce, or misuse drugs, antidotes, and poisons.Identify, produce, or misuse drugs, antidotes, and poisons.<br><br>A skill at 0% cannot be used.  See page 28 of the Agent's Handbook."
+      },
+      "psychotherapy": {
+        "label": "Psychotherapy",
+        "proficiency": 0,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 0,
+        "key": "psychotherapy",
+        "sortLabel": "Psychotherapy",
+        "tooltip": "Diagnose and treat mental disorders; calm or support others under psychological strain.Diagnose and treat mental disorders; calm or support others under psychological strain.<br><br>A skill at 0% cannot be used.  See page 28 of the Agent's Handbook."
+      },
+      "ride": {
+        "label": "Ride",
+        "proficiency": 0,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 0,
+        "key": "ride",
+        "sortLabel": "Ride",
+        "tooltip": "Control and care for mounts like horses or camels.Control and care for mounts like horses or camels.<br><br>A skill at 0% cannot be used.  See page 28 of the Agent's Handbook."
+      },
+      "search": {
+        "label": "Search",
+        "proficiency": 60,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 60,
+        "key": "search",
+        "sortLabel": "Search",
+        "tooltip": "Thoroughly locate concealed objects, traps, or clues in an area."
+      },
+      "sigint": {
+        "label": "SIGINT",
+        "proficiency": 0,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 0,
+        "key": "sigint",
+        "sortLabel": "SIGINT",
+        "tooltip": "Intercept, encrypt, or manipulate electronic communications and surveillance systems.Intercept, encrypt, or manipulate electronic communications and surveillance systems.<br><br>A skill at 0% cannot be used.  See page 28 of the Agent's Handbook."
+      },
+      "stealth": {
+        "label": "Stealth",
+        "proficiency": 70,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 70,
+        "key": "stealth",
+        "sortLabel": "Stealth",
+        "tooltip": "Avoid detection or hide objects and actions from view."
+      },
+      "surgery": {
+        "label": "Surgery",
+        "proficiency": 0,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 0,
+        "key": "surgery",
+        "sortLabel": "Surgery",
+        "tooltip": "Perform invasive procedures to save lives or repair critical injuries.Perform invasive procedures to save lives or repair critical injuries.<br><br>A skill at 0% cannot be used.  See page 28 of the Agent's Handbook."
+      },
+      "survival": {
+        "label": "Survival",
+        "proficiency": 0,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 0,
+        "key": "survival",
+        "sortLabel": "Survival",
+        "tooltip": "Track, hunt, and stay alive in the wilderness by finding food, shelter, and signs of danger.Track, hunt, and stay alive in the wilderness by finding food, shelter, and signs of danger.<br><br>A skill at 0% cannot be used.  See page 28 of the Agent's Handbook."
+      },
+      "swim": {
+        "label": "Swim",
+        "proficiency": 0,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 0,
+        "key": "swim",
+        "sortLabel": "Swim",
+        "tooltip": "Survive in water under duress—rescue others, escape, or endure hazards.Survive in water under duress—rescue others, escape, or endure hazards.<br><br>A skill at 0% cannot be used.  See page 28 of the Agent's Handbook."
+      },
+      "unarmed_combat": {
+        "label": "Unarmed Combat",
+        "proficiency": 60,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 60,
+        "key": "unarmed_combat",
+        "sortLabel": "Unarmed Combat",
+        "tooltip": "Subdue or injure opponents using fists, grapples, kicks, and other hand-to-hand techniques."
+      },
+      "unnatural": {
+        "label": "Unnatural",
+        "proficiency": 0,
+        "failure": false,
+        "cannotBeImprovedByFailure": true,
+        "isCalculatedValue": false,
+        "targetProficiency": 0,
+        "key": "unnatural",
+        "sortLabel": "Unnatural",
+        "tooltip": "Recognize, research, or recall truths about entities and forces beyond human understanding.Recognize, research, or recall truths about entities and forces beyond human understanding.<br><br>A skill at 0% cannot be used.  See page 28 of the Agent's Handbook."
+      },
+      "heavy_machinery": {
+        "label": "Heavy Machinery",
+        "proficiency": 0,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 0,
+        "key": "heavy_machinery",
+        "sortLabel": "heavy_machinery",
+        "tooltip": "DG.Skills.Tooltip.heavy_machineryDG.Skills.Tooltip.heavy_machinery<br><br>A skill at 0% cannot be used.  See page 28 of the Agent's Handbook."
+      }
+    },
+    "typedSkills": {
+      "202510221069": {
+        "label": "Painting",
+        "group": "Art",
+        "proficiency": 10,
+        "failure": false
+      }
+    },
+    "specialTraining": [
+      {
+        "name": "training",
+        "attribute": "dex",
+        "id": "QpOwEXiBhdE1MVN4"
+      }
+    ],
+    "settings": {
+      "sorting": {
+        "weaponSortAlphabetical": false,
+        "armorSortAlphabetical": false,
+        "gearSortAlphabetical": false,
+        "tomeSortAlphabetical": false,
+        "ritualSortAlphabetical": false
+      },
+      "rolling": {
+        "defaultPercentileModifier": 20
+      }
+    },
+    "schemaVersion": 1,
+    "sanity": {
+      "value": 65,
+      "currentBreakingPoint": 52,
+      "adaptations": {
+        "violence": {
+          "incident1": true,
+          "incident2": true,
+          "incident3": true,
+          "isAdapted": false
+        },
+        "helplessness": {
+          "incident1": true,
+          "incident2": true,
+          "incident3": true,
+          "isAdapted": false
+        }
+      },
+      "ritual": 34,
+      "max": 99,
+      "breakingPointHit": false
+    },
+    "physical": {
+      "description": "HP 13 WP 13 SAN 47 BREAKING POINT 39",
+      "wounds": "A gash on his forehead",
+      "firstAidAttempted": true,
+      "exhausted": true,
+      "exhaustedPenalty": -20
+    },
+    "biography": {
+      "profession": "Serial Killer",
+      "employer": "FBI",
+      "nationality": "USA",
+      "sex": "M",
+      "age": "45",
+      "education": "High school"
+    },
+    "corruption": {
+      "value": 13,
+      "haveSeenTheYellowSign": true,
+      "gift": "Christmas",
+      "insight": "Very little"
+    },
+    "physicalDescription": "",
+    "sortedSkills": [
+      {
+        "label": "Accounting",
+        "proficiency": 0,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 0,
+        "key": "accounting",
+        "sortLabel": "Accounting",
+        "tooltip": "Spot financial red flags like hidden assets, shell companies, or embezzlement.Spot financial red flags like hidden assets, shell companies, or embezzlement.<br><br>A skill at 0% cannot be used.  See page 28 of the Agent's Handbook."
+      },
+      {
+        "label": "Alertness",
+        "proficiency": 50,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 50,
+        "key": "alertness",
+        "sortLabel": "Alertness",
+        "tooltip": "Notice hidden dangers, subtle movements, or quiet sounds before they become threats."
+      },
+      {
+        "label": "Anthropology",
+        "proficiency": 0,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 0,
+        "key": "anthropology",
+        "sortLabel": "Anthropology",
+        "tooltip": "Understand the beliefs, behaviors, and taboos of living cultures and societies.Understand the beliefs, behaviors, and taboos of living cultures and societies.<br><br>A skill at 0% cannot be used.  See page 28 of the Agent's Handbook."
+      },
+      {
+        "label": "Archeology",
+        "proficiency": 0,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 0,
+        "key": "archeology",
+        "sortLabel": "Archeology",
+        "tooltip": "Analyze ancient artifacts and ruins to interpret long-dead civilizations.Analyze ancient artifacts and ruins to interpret long-dead civilizations.<br><br>A skill at 0% cannot be used.  See page 28 of the Agent's Handbook."
+      },
+      {
+        "label": "Artillery",
+        "proficiency": 0,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 0,
+        "key": "artillery",
+        "sortLabel": "Artillery",
+        "tooltip": "Operate heavy weapons like mortars or tank cannons with precision.Operate heavy weapons like mortars or tank cannons with precision.<br><br>A skill at 0% cannot be used.  See page 28 of the Agent's Handbook."
+      },
+      {
+        "label": "Athletics",
+        "proficiency": 0,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 0,
+        "key": "athletics",
+        "sortLabel": "Athletics",
+        "tooltip": "Run, climb, jump, and throw with trained strength and agility.Run, climb, jump, and throw with trained strength and agility.<br><br>A skill at 0% cannot be used.  See page 28 of the Agent's Handbook."
+      },
+      {
+        "label": "Bureaucracy",
+        "proficiency": 70,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 70,
+        "key": "bureaucracy",
+        "sortLabel": "Bureaucracy",
+        "tooltip": "Navigate red tape, cut deals with officials, and get access to restricted resources."
+      },
+      {
+        "label": "Computer Science",
+        "proficiency": 0,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 0,
+        "key": "computer_science",
+        "sortLabel": "Computer Science",
+        "tooltip": "Hack, protect, or manipulate computer systems and recover deleted data.Hack, protect, or manipulate computer systems and recover deleted data.<br><br>A skill at 0% cannot be used.  See page 28 of the Agent's Handbook."
+      },
+      {
+        "label": "Criminology",
+        "proficiency": 45,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 45,
+        "key": "criminology",
+        "sortLabel": "Criminology",
+        "tooltip": "Profile criminal behavior and analyze conspiracies or patterns of illicit activity."
+      },
+      {
+        "label": "Demolitions",
+        "proficiency": 0,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 0,
+        "key": "demolitions",
+        "sortLabel": "Demolitions",
+        "tooltip": "Safely set, disarm, or analyze explosive devices.Safely set, disarm, or analyze explosive devices.<br><br>A skill at 0% cannot be used.  See page 28 of the Agent's Handbook."
+      },
+      {
+        "label": "Disguise",
+        "proficiency": 0,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 0,
+        "key": "disguise",
+        "sortLabel": "Disguise",
+        "tooltip": "Alter your appearance and mannerisms to avoid recognition.Alter your appearance and mannerisms to avoid recognition.<br><br>A skill at 0% cannot be used.  See page 28 of the Agent's Handbook."
+      },
+      {
+        "label": "Dodge",
+        "proficiency": 0,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 0,
+        "key": "dodge",
+        "sortLabel": "Dodge",
+        "tooltip": "Evade incoming attacks or scramble to cover.Evade incoming attacks or scramble to cover.<br><br>A skill at 0% cannot be used.  See page 28 of the Agent's Handbook."
+      },
+      {
+        "label": "Drive",
+        "proficiency": 55,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 55,
+        "key": "drive",
+        "sortLabel": "Drive",
+        "tooltip": "Handle vehicles under pressure, including chases and rough terrain."
+      },
+      {
+        "label": "Firearms",
+        "proficiency": 60,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 60,
+        "key": "firearms",
+        "sortLabel": "Firearms",
+        "tooltip": "Shoot accurately under pressure with pistols, rifles, and other small arms."
+      },
+      {
+        "label": "First Adi",
+        "proficiency": 30,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 30,
+        "key": "first_aid",
+        "sortLabel": "First Aid",
+        "tooltip": "Stabilize injuries and restore HP in the short term."
+      },
+      {
+        "label": "Forensics",
+        "proficiency": 0,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 0,
+        "key": "forensics",
+        "sortLabel": "Forensics",
+        "tooltip": "Analyze crime scenes for hidden evidence using forensic methods—or conceal traces of a crime to mislead investigators.Analyze crime scenes for hidden evidence using forensic methods—or conceal traces of a crime to mislead investigators.<br><br>A skill at 0% cannot be used.  See page 28 of the Agent's Handbook."
+      },
+      {
+        "label": "Heavy Machinery",
+        "proficiency": 10,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 10,
+        "key": "heavy_machiner",
+        "sortLabel": "Heavy Machinery",
+        "tooltip": "Operate large equipment like cranes, bulldozers, or tanks in high-stress situations."
+      },
+      {
+        "label": "Heavy Weapons",
+        "proficiency": 0,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 0,
+        "key": "heavy_weapons",
+        "sortLabel": "Heavy Weapons",
+        "tooltip": "Use portable heavy arms like LMGs or rocket launchers in combat.Use portable heavy arms like LMGs or rocket launchers in combat.<br><br>A skill at 0% cannot be used.  See page 28 of the Agent's Handbook."
+      },
+      {
+        "label": "Heavy Machinery",
+        "proficiency": 0,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 0,
+        "key": "heavy_machinery",
+        "sortLabel": "heavy_machinery",
+        "tooltip": "DG.Skills.Tooltip.heavy_machineryDG.Skills.Tooltip.heavy_machinery<br><br>A skill at 0% cannot be used.  See page 28 of the Agent's Handbook."
+      },
+      {
+        "label": "History",
+        "proficiency": 0,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 0,
+        "key": "history",
+        "sortLabel": "History",
+        "tooltip": "Recall historical facts, obscure references, or find buried knowledge.Recall historical facts, obscure references, or find buried knowledge.<br><br>A skill at 0% cannot be used.  See page 28 of the Agent's Handbook."
+      },
+      {
+        "label": "HUMINT",
+        "proficiency": 40,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 40,
+        "key": "humint",
+        "sortLabel": "HUMINT",
+        "tooltip": "Read people, detect deception, and uncover hidden motives through interaction."
+      },
+      {
+        "label": "Law",
+        "proficiency": 0,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 0,
+        "key": "law",
+        "sortLabel": "Law",
+        "tooltip": "Apply or exploit legal knowledge to win court cases or avoid prosecution.Apply or exploit legal knowledge to win court cases or avoid prosecution.<br><br>A skill at 0% cannot be used.  See page 28 of the Agent's Handbook."
+      },
+      {
+        "label": "Medicine",
+        "proficiency": 0,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 0,
+        "key": "medicine",
+        "sortLabel": "Medicine",
+        "tooltip": "Diagnose and treat injuries or illnesses for long-term care and recovery.Diagnose and treat injuries or illnesses for long-term care and recovery.<br><br>A skill at 0% cannot be used.  See page 28 of the Agent's Handbook."
+      },
+      {
+        "label": "Melee Weapons",
+        "proficiency": 55,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 55,
+        "key": "melee_weapons",
+        "sortLabel": "Melee Weapons",
+        "tooltip": "Fight effectively in close quarters using knives, clubs, or improvised handheld weapons."
+      },
+      {
+        "label": "Navigate",
+        "proficiency": 0,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 0,
+        "key": "navigate",
+        "sortLabel": "Navigate",
+        "tooltip": "Use maps, instruments, or intuition to find your way in unfamiliar terrain.Use maps, instruments, or intuition to find your way in unfamiliar terrain.<br><br>A skill at 0% cannot be used.  See page 28 of the Agent's Handbook."
+      },
+      {
+        "label": "Occult",
+        "proficiency": 0,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 0,
+        "key": "occult",
+        "sortLabel": "Occult",
+        "tooltip": "Identify myths, rituals, and fringe beliefs—but not separate truth from superstition.Identify myths, rituals, and fringe beliefs—but not separate truth from superstition.<br><br>A skill at 0% cannot be used.  See page 28 of the Agent's Handbook."
+      },
+      {
+        "label": "Persuade",
+        "proficiency": 50,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 50,
+        "key": "persuade",
+        "sortLabel": "Persuade",
+        "tooltip": "Convince others to change their mind or take actions they normally wouldn’t."
+      },
+      {
+        "label": "Pharmacy",
+        "proficiency": 0,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 0,
+        "key": "pharmacy",
+        "sortLabel": "Pharmacy",
+        "tooltip": "Identify, produce, or misuse drugs, antidotes, and poisons.Identify, produce, or misuse drugs, antidotes, and poisons.<br><br>A skill at 0% cannot be used.  See page 28 of the Agent's Handbook."
+      },
+      {
+        "label": "Psychotherapy",
+        "proficiency": 0,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 0,
+        "key": "psychotherapy",
+        "sortLabel": "Psychotherapy",
+        "tooltip": "Diagnose and treat mental disorders; calm or support others under psychological strain.Diagnose and treat mental disorders; calm or support others under psychological strain.<br><br>A skill at 0% cannot be used.  See page 28 of the Agent's Handbook."
+      },
+      {
+        "label": "Ride",
+        "proficiency": 0,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 0,
+        "key": "ride",
+        "sortLabel": "Ride",
+        "tooltip": "Control and care for mounts like horses or camels.Control and care for mounts like horses or camels.<br><br>A skill at 0% cannot be used.  See page 28 of the Agent's Handbook."
+      },
+      {
+        "label": "Search",
+        "proficiency": 60,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 60,
+        "key": "search",
+        "sortLabel": "Search",
+        "tooltip": "Thoroughly locate concealed objects, traps, or clues in an area."
+      },
+      {
+        "label": "SIGINT",
+        "proficiency": 0,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 0,
+        "key": "sigint",
+        "sortLabel": "SIGINT",
+        "tooltip": "Intercept, encrypt, or manipulate electronic communications and surveillance systems.Intercept, encrypt, or manipulate electronic communications and surveillance systems.<br><br>A skill at 0% cannot be used.  See page 28 of the Agent's Handbook."
+      },
+      {
+        "label": "Stealth",
+        "proficiency": 70,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 70,
+        "key": "stealth",
+        "sortLabel": "Stealth",
+        "tooltip": "Avoid detection or hide objects and actions from view."
+      },
+      {
+        "label": "Surgery",
+        "proficiency": 0,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 0,
+        "key": "surgery",
+        "sortLabel": "Surgery",
+        "tooltip": "Perform invasive procedures to save lives or repair critical injuries.Perform invasive procedures to save lives or repair critical injuries.<br><br>A skill at 0% cannot be used.  See page 28 of the Agent's Handbook."
+      },
+      {
+        "label": "Survival",
+        "proficiency": 0,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 0,
+        "key": "survival",
+        "sortLabel": "Survival",
+        "tooltip": "Track, hunt, and stay alive in the wilderness by finding food, shelter, and signs of danger.Track, hunt, and stay alive in the wilderness by finding food, shelter, and signs of danger.<br><br>A skill at 0% cannot be used.  See page 28 of the Agent's Handbook."
+      },
+      {
+        "label": "Swim",
+        "proficiency": 0,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 0,
+        "key": "swim",
+        "sortLabel": "Swim",
+        "tooltip": "Survive in water under duress—rescue others, escape, or endure hazards.Survive in water under duress—rescue others, escape, or endure hazards.<br><br>A skill at 0% cannot be used.  See page 28 of the Agent's Handbook."
+      },
+      {
+        "label": "Unarmed Combat",
+        "proficiency": 60,
+        "failure": false,
+        "cannotBeImprovedByFailure": false,
+        "isCalculatedValue": false,
+        "targetProficiency": 60,
+        "key": "unarmed_combat",
+        "sortLabel": "Unarmed Combat",
+        "tooltip": "Subdue or injure opponents using fists, grapples, kicks, and other hand-to-hand techniques."
+      },
+      {
+        "label": "Unnatural",
+        "proficiency": 0,
+        "failure": false,
+        "cannotBeImprovedByFailure": true,
+        "isCalculatedValue": false,
+        "targetProficiency": 0,
+        "key": "unnatural",
+        "sortLabel": "Unnatural",
+        "tooltip": "Recognize, research, or recall truths about entities and forces beyond human understanding.Recognize, research, or recall truths about entities and forces beyond human understanding.<br><br>A skill at 0% cannot be used.  See page 28 of the Agent's Handbook."
+      }
+    ],
+    "sortedCustomSkills": []
+  },
+  "name": "Dexter Morgan",
+  "img": "tokenizer/npc-images/aarakocra.Token-world.ddb-5e-ddb-monsters.webp",
+  "prototypeToken": {
+    "name": "Dexter Morgan",
+    "displayName": 0,
+    "actorLink": false,
+    "width": 1,
+    "height": 1,
+    "texture": {
+      "src": "tokenizer/npc-images/aarakocra.Token-world.ddb-5e-ddb-monsters.webp",
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "offsetX": 0,
+      "offsetY": 0,
+      "fit": "contain",
+      "scaleX": 1,
+      "scaleY": 1,
+      "rotation": 0,
+      "tint": "#ffffff",
+      "alphaThreshold": 0.75
+    },
+    "lockRotation": false,
+    "rotation": 0,
+    "alpha": 1,
+    "disposition": -1,
+    "displayBars": 0,
+    "bar1": {
+      "attribute": "health"
+    },
+    "bar2": {
+      "attribute": "wp"
+    },
+    "light": {
+      "negative": false,
+      "priority": 0,
+      "alpha": 0.5,
+      "angle": 360,
+      "bright": 0,
+      "color": null,
+      "coloration": 1,
+      "dim": 0,
+      "attenuation": 0.5,
+      "luminosity": 0.5,
+      "saturation": 0,
+      "contrast": 0,
+      "shadows": 0,
+      "animation": {
+        "type": null,
+        "speed": 5,
+        "intensity": 5,
+        "reverse": false
+      },
+      "darkness": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    "sight": {
+      "enabled": false,
+      "range": 0,
+      "angle": 360,
+      "visionMode": "basic",
+      "color": null,
+      "attenuation": 0.1,
+      "brightness": 0,
+      "saturation": 0,
+      "contrast": 0
+    },
+    "detectionModes": [],
+    "occludable": {
+      "radius": 0
+    },
+    "ring": {
+      "enabled": false,
+      "colors": {
+        "ring": null,
+        "background": null
+      },
+      "effects": 1,
+      "subject": {
+        "scale": 1,
+        "texture": null
+      }
+    },
+    "turnMarker": {
+      "mode": 1,
+      "animation": null,
+      "src": null,
+      "disposition": false
+    },
+    "movementAction": null,
+    "flags": {},
+    "randomImg": false,
+    "appendNumber": false,
+    "prependAdjective": false
+  },
+  "items": [
+    {
+      "type": "weapon",
+      "name": "GLOCK 26 PISTOL",
+      "system": {
+        "name": "",
+        "description": " GLOCK 26 PISTOL 60%, DAMAGE 1D10.",
+        "skill": "custom",
+        "skillModifier": 0,
+        "customSkillTarget": 60,
+        "range": "10M",
+        "damage": "1D10",
+        "armorPiercing": 0,
+        "lethality": 0,
+        "isLethal": false,
+        "killRadius": "N/A",
+        "ammo": "",
+        "expense": "NA",
+        "equipped": true
+      },
+      "_id": "YS7XgoCyUSLgSEAe",
+      "img": "systems/deltagreen/assets/icons/swap-bag-black-bg.svg",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "deltagreen",
+        "systemVersion": "1.6.1",
+        "createdTime": 1760944750426,
+        "modifiedTime": 1760944750426,
+        "lastModifiedBy": "XXXXXXXXXXXX"
+      },
+      "ownership": {
+        "default": 0
+      }
+    },
+    {
+      "type": "weapon",
+      "name": "UNARMED",
+      "system": {
+        "name": "",
+        "description": "UNARMED 60%, DAMAGE 1D4−2.",
+        "skill": "custom",
+        "skillModifier": 0,
+        "customSkillTarget": 60,
+        "range": "10M",
+        "damage": "1D4",
+        "armorPiercing": 0,
+        "lethality": 0,
+        "isLethal": false,
+        "killRadius": "N/A",
+        "ammo": "",
+        "expense": "NA",
+        "equipped": true
+      },
+      "_id": "fd2kilGs7E79UD7e",
+      "img": "systems/deltagreen/assets/icons/swap-bag-black-bg.svg",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "deltagreen",
+        "systemVersion": "1.6.1",
+        "createdTime": 1760944750432,
+        "modifiedTime": 1760944750432,
+        "lastModifiedBy": "XXXXXXXXXXXX"
+      },
+      "ownership": {
+        "default": 0
+      }
+    },
+    {
+      "name": "Unarmed Attack",
+      "type": "weapon",
+      "flags": {
+        "deltagreen": {
+          "AutoAdded": true,
+          "SystemName": "unarmed-attack"
+        }
+      },
+      "img": "systems/deltagreen/assets/icons/punch.svg",
+      "_id": "r6Vmx0pyIzqPeHMI",
+      "effects": [],
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "deltagreen",
+        "systemVersion": "1.6.1",
+        "createdTime": 1760944750483,
+        "modifiedTime": 1760944750505,
+        "lastModifiedBy": "XXXXXXXXXXXX"
+      },
+      "system": {
+        "name": "",
+        "description": "",
+        "skill": "unarmed_combat",
+        "skillModifier": 0,
+        "customSkillTarget": 50,
+        "range": "0M",
+        "damage": "1D4-1",
+        "armorPiercing": 0,
+        "lethality": 0,
+        "isLethal": false,
+        "killRadius": "N/A",
+        "ammo": "",
+        "expense": "Standard",
+        "equipped": true
+      },
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      }
+    },
+    {
+      "name": "New Motivation",
+      "type": "motivation",
+      "system": {
+        "name": "",
+        "description": "<p>test</p>",
+        "disorder": "",
+        "crossedOut": false,
+        "disorderCured": false
+      },
+      "_id": "qHoTWIWLgYvGzQy8",
+      "img": "systems/deltagreen/assets/icons/swap-bag-black-bg.svg",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "deltagreen",
+        "systemVersion": "1.6.1",
+        "createdTime": 1761152791890,
+        "modifiedTime": 1761152804563,
+        "lastModifiedBy": "XXXXXXXXXXXX"
+      },
+      "ownership": {
+        "default": 0
+      }
+    },
+    {
+      "name": "New Disorder",
+      "type": "motivation",
+      "system": {
+        "name": "",
+        "description": "<p>nlfdgsdfgsdg</p>",
+        "disorder": "Disorder 1",
+        "crossedOut": true,
+        "disorderCured": false
+      },
+      "_id": "H7firvsXhkgmZTWr",
+      "img": "systems/deltagreen/assets/icons/swap-bag-black-bg.svg",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "deltagreen",
+        "systemVersion": "1.6.1",
+        "createdTime": 1761152809307,
+        "modifiedTime": 1761152835051,
+        "lastModifiedBy": "XXXXXXXXXXXX"
+      },
+      "ownership": {
+        "default": 0
+      }
+    },
+    {
+      "name": "New Disorder 2",
+      "type": "motivation",
+      "system": {
+        "name": "",
+        "description": "<p>fdgadgdsgsdgdsg</p>",
+        "disorder": "Disorder 2",
+        "crossedOut": true,
+        "disorderCured": true
+      },
+      "_id": "J2W4yPkrxV1HSCnR",
+      "img": "systems/deltagreen/assets/icons/swap-bag-black-bg.svg",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "deltagreen",
+        "systemVersion": "1.6.1",
+        "createdTime": 1761152836051,
+        "modifiedTime": 1761152848872,
+        "lastModifiedBy": "XXXXXXXXXXXX"
+      },
+      "ownership": {
+        "default": 0
+      }
+    },
+    {
+      "name": "New Armor",
+      "type": "armor",
+      "system": {
+        "name": "",
+        "description": "",
+        "protection": 3,
+        "equipped": true,
+        "expense": "Standard"
+      },
+      "_id": "PFKO1ywGwOXueXdr",
+      "img": "systems/deltagreen/assets/icons/swap-bag-black-bg.svg",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "deltagreen",
+        "systemVersion": "1.6.1",
+        "createdTime": 1761152860003,
+        "modifiedTime": 1761152860003,
+        "lastModifiedBy": "XXXXXXXXXXXX"
+      },
+      "ownership": {
+        "default": 0
+      }
+    },
+    {
+      "name": "Cigarettes",
+      "type": "gear",
+      "system": {
+        "name": "",
+        "description": "<p>dafdaf</p>",
+        "equipped": true,
+        "expense": "Incidental"
+      },
+      "_id": "3iOpH9KCtwGTaDX9",
+      "img": "systems/deltagreen/assets/icons/swap-bag-black-bg.svg",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "deltagreen",
+        "systemVersion": "1.6.1",
+        "createdTime": 1761152864113,
+        "modifiedTime": 1761152878378,
+        "lastModifiedBy": "XXXXXXXXXXXX"
+      },
+      "ownership": {
+        "default": 0
+      }
+    },
+    {
+      "name": "New Tome",
+      "type": "tome",
+      "system": {
+        "name": "",
+        "description": "<p>sdafsafdasdf as</p>",
+        "language": "Latin",
+        "studyTime": "4 hours",
+        "unnaturalSkillIncrease": 5,
+        "occultSkillIncrease": 3,
+        "sanity": {
+          "notes": "",
+          "failedLoss": "1D6",
+          "successLoss": "1D4"
+        },
+        "handlerNotes": "<p>hander only notes</p>",
+        "revealed": false
+      },
+      "_id": "JT0iIkqpUG14x8no",
+      "img": "systems/deltagreen/assets/icons/book-cover.svg",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "deltagreen",
+        "systemVersion": "1.6.1",
+        "createdTime": 1761152880206,
+        "modifiedTime": 1761152904194,
+        "lastModifiedBy": "XXXXXXXXXXXX"
+      },
+      "ownership": {
+        "default": 0
+      }
+    },
+    {
+      "name": "New Ritual",
+      "type": "ritual",
+      "system": {
+        "name": "",
+        "description": "<p>desc</p>",
+        "studyTime": "1 day",
+        "sanity": {
+          "notes": "",
+          "failedLoss": "1D10",
+          "successLoss": "3"
+        },
+        "learnedSanity": {
+          "notes": "",
+          "failedLoss": "1D10",
+          "successLoss": "2"
+        },
+        "unnaturalSkillIncrease": 1,
+        "activationCosts": "your eyeballs",
+        "activationTime": "2 days",
+        "complexity": "Simple",
+        "handlerNotes": "<p>handler only</p>",
+        "revealed": false
+      },
+      "_id": "Sh6EcAx5WG5FascE",
+      "img": "systems/deltagreen/assets/icons/bookmarklet.svg",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "deltagreen",
+        "systemVersion": "1.6.1",
+        "createdTime": 1761152905762,
+        "modifiedTime": 1761152934522,
+        "lastModifiedBy": "XXXXXXXXXXXX"
+      },
+      "ownership": {
+        "default": 0
+      }
+    },
+    {
+      "name": "Bond 1",
+      "type": "bond",
+      "system": {
+        "name": "",
+        "description": "",
+        "score": 12,
+        "relationship": "momma",
+        "hasBeenDamagedSinceLastHomeScene": false
+      },
+      "_id": "XgurhNW2ZlFIwGY2",
+      "img": "systems/deltagreen/assets/icons/person-black-bg.svg",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "deltagreen",
+        "systemVersion": "1.6.1",
+        "createdTime": 1761152973679,
+        "modifiedTime": 1761152984707,
+        "lastModifiedBy": "XXXXXXXXXXXX"
+      },
+      "ownership": {
+        "default": 0
+      }
+    },
+    {
+      "name": "Bond 2",
+      "type": "bond",
+      "system": {
+        "name": "",
+        "description": "<p>retewtewtwetwe</p>",
+        "score": 12,
+        "relationship": "daddy",
+        "hasBeenDamagedSinceLastHomeScene": true
+      },
+      "_id": "d3iTNGCgAqg5JiiQ",
+      "img": "systems/deltagreen/assets/icons/person-black-bg.svg",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "deltagreen",
+        "systemVersion": "1.6.1",
+        "createdTime": 1761152991688,
+        "modifiedTime": 1761153003913,
+        "lastModifiedBy": "XXXXXXXXXXXX"
+      },
+      "ownership": {
+        "default": 0
+      }
+    }
+  ],
+  "effects": [],
+  "folder": null,
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": {
+      "worldId": "delta-green",
+      "uuid": "Actor.szGUIVC39tl3P6ZE",
+      "coreVersion": "13.350",
+      "systemId": "deltagreen",
+      "systemVersion": "1.6.1"
+    },
+    "coreVersion": "13.350",
+    "systemId": "deltagreen",
+    "systemVersion": "1.6.1",
+    "createdTime": 1760944750408,
+    "modifiedTime": 1761153047137,
+    "lastModifiedBy": "XXXXXXXXXXXX"
+  },
+  "ownership": {
+    "default": 0
+  }
+}

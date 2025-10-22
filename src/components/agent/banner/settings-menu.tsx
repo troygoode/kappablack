@@ -142,7 +142,7 @@ const CharacterSheet = () => {
           onSelect={() => onExport()}
         >
           <CloudDownloadIcon />
-          <span className="relative top-0.5">Export to TOML</span>
+          <span className="relative top-0.5">Export Data</span>
         </DropdownMenuItem>
         <DropdownMenuItem
           className="cursor-pointer"

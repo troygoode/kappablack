@@ -1,10 +1,9 @@
 "use client";
 
-import { useState } from "react";
-import Link from "next/link";
+import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Alert, AlertTitle } from "@/components/ui/alert";
 import {
   Dialog,
   DialogClose,
@@ -15,17 +14,26 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { ClipboardCopyIcon } from "@/components/ui/icons/lucide-clipboard-copy";
-import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { CheckIcon } from "@/components/ui/icons/lucide-check";
 import { handleCopy } from "@/lib/handle-copy";
 import { useAgentStore } from "../stores/agent";
 import { CloudDownloadIcon } from "@/components/ui/icons/lucide-cloud-download";
 import { TriangleAlertIcon } from "@/components/ui/icons/lucide-triangle-alert";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { exportFoundryAgent } from "./export-foundry";
 
-const generateFilename = (agentName: string) => {
+const generateFilename = (agentName: string, ext: string) => {
   const name = agentName.trim().toLowerCase().replace(/\s+/g, "-");
-  return `${name?.length ? name : "unnamed-agent"}.toml`;
+  return `${name?.length ? name : "unnamed-agent"}.${ext}`;
 };
 
 const handleFileDownload = async (filename: string, text: string) => {
@@ -50,10 +58,30 @@ export function ExportDialog({
   onOpenChange: (open: boolean) => void;
 }) {
   const agent = useAgentStore((state) => state.agent);
-  const text = useAgentStore((state) => state.exportText);
+  const toml = useAgentStore((state) => state.exportText);
   const [copied, setCopied] = useState(false);
+  const [format, setFormat] = useState("TOML");
+  const [text, setText] = useState(toml ?? "");
+  useEffect(() => {
+    switch (format) {
+      case "TOML":
+        setText(toml ?? "");
+        break;
+      case "Foundry":
+        setText(JSON.stringify(exportFoundryAgent(agent), null, 2));
+        break;
+      case "Statblock":
+        setText("TODO: Statblock export not yet implemented.");
+        break;
+      default:
+        setText("Not Implemented");
+    }
+  }, [format]);
 
-  const filename = generateFilename(agent?.name ?? "");
+  const filename = generateFilename(
+    agent?.name ?? "",
+    format === "TOML" ? "toml" : format === "Foundry" ? "json" : "txt"
+  );
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -61,19 +89,12 @@ export function ExportDialog({
         <DialogHeader>
           <DialogTitle>Export Agent</DialogTitle>
           <DialogDescription>
-            Download a local copy of your agent configuration in{" "}
-            <Link
-              href="https://toml.io/en/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              TOML
-            </Link>{" "}
-            format.
+            Download a local copy of your agent configuration in {format}{" "}
+            format. {filename}
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4">
-          {!text?.length ? (
+          {!toml?.length ? (
             <div className="grid gap-3">
               <Alert>
                 <TriangleAlertIcon />
@@ -82,14 +103,33 @@ export function ExportDialog({
             </div>
           ) : null}
 
+          <div>
+            <Select value={format} onValueChange={setFormat}>
+              <SelectTrigger className="w-full cursor-pointer">
+                <SelectValue placeholder="Select an export format" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup>
+                  <SelectLabel>Export Formats</SelectLabel>
+                  <SelectItem value="TOML" className="cursor-pointer">
+                    Kappa Black .TOML file
+                  </SelectItem>
+                  <SelectItem value="Foundry" className="cursor-pointer">
+                    Foundry Virtual Tabletop .JSON file
+                  </SelectItem>
+                  <SelectItem value="Statblock" className="cursor-pointer">
+                    Statblock .TXT file
+                  </SelectItem>
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+          </div>
+
           <div className="grid gap-3">
-            <Label htmlFor="export">
-              <code>{filename}</code>
-            </Label>
             <Textarea
               id="export"
               name="export"
-              defaultValue={text}
+              value={text}
               className="min-h-40 max-h-40"
               readOnly
             />
