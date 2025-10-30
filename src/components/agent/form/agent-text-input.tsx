@@ -1,7 +1,7 @@
 "use client";
 
-import React from "react";
 import classNames from "classnames";
+import type React from "react";
 
 import { Input } from "@/components/ui/input";
 import { useAgentStore } from "../stores/agent";
@@ -74,7 +74,7 @@ const AgentTextInput = ({
 
           print:border-0 print:outline-0
           `
-          : ""
+          : "",
       )}
       autoComplete="off"
       data-1p-ignore

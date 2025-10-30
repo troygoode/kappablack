@@ -1,12 +1,10 @@
 "use client";
 
-import { type ISkill, type IMultiSkill } from "@/types/skill";
-
-import { SideHeader } from "../form/side-header";
-import { Skill } from "./skill";
-import { MultiSkill } from "./multiskill";
-
 import skillData from "@/data/skills.json";
+import type { IMultiSkill, ISkill } from "@/types/skill";
+import { SideHeader } from "../form/side-header";
+import { MultiSkill } from "./multiskill";
+import { Skill } from "./skill";
 
 for (const s of skillData.skills) {
   s.multi = !!s.multi;

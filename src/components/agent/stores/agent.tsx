@@ -1,11 +1,11 @@
 "use client";
 
-import type { IWeaponData } from "@/types/data";
-import type { IWeapon, IStunWeapon, IAgent, IAgentSkill } from "@/types/agent";
+import { save } from "@/actions/update-agent";
+import { debounce } from "@/lib/debounce";
 
 import { generateStore } from "@/lib/zustand-helpers";
-import { debounce } from "@/lib/debounce";
-import { save } from "@/actions/update-agent";
+import type { IAgent, IAgentSkill, IStunWeapon, IWeapon } from "@/types/agent";
+import type { IWeaponData } from "@/types/data";
 
 interface IAgentState {
   isLoaded: boolean;
@@ -24,7 +24,7 @@ interface IAgentState {
     | ((
         filename: string | undefined,
         mode: "view" | "edit" | "play" | "print",
-        theme: string | undefined
+        theme: string | undefined,
       ) => void);
 }
 interface IAgentActions {
@@ -53,7 +53,7 @@ interface IAgentActions {
     index: number,
     type?: string,
     score?: number,
-    marked?: boolean
+    marked?: boolean,
   ) => void;
   removeMultiSkillType: (skill: string, index: number) => void;
 }
@@ -239,7 +239,7 @@ const store = generateStore<IAgentState, IAgentActions>({
       index: number,
       type?: string,
       score?: number,
-      marked?: boolean
+      marked?: boolean,
     ) => {
       const { agent } = get();
       if (!agent) return;

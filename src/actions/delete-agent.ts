@@ -1,7 +1,7 @@
 "use server";
 
-import { dynamodb, DeleteCommand } from "@/lib/dynamodb";
 import { auth } from "@/auth";
+import { DeleteCommand, dynamodb } from "@/lib/dynamodb";
 
 export async function deleteAgent(pk: string, sk: string) {
   const session = await auth();

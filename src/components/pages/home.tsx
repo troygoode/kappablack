@@ -1,26 +1,22 @@
 "use client";
 
-import type { TAgentRecord } from "@/actions/get-agent";
-import type { IAgent } from "@/types/agent";
-
-import { redirect, RedirectType } from "next/navigation";
-import { useSession } from "next-auth/react";
-import { signOut } from "next-auth/react";
-
+import { RedirectType, redirect } from "next/navigation";
+import { signOut, useSession } from "next-auth/react";
 import { create } from "@/actions/create-agent";
-
-import { RainbowButton } from "@/components/ui/rainbow-button";
-import { Button } from "@/components/ui/button";
+import type { TAgentRecord } from "@/actions/get-agent";
 import { Container } from "@/components/container";
-import { LoginBox } from "../home/login";
+import { Button } from "@/components/ui/button";
+import { RainbowButton } from "@/components/ui/rainbow-button";
+import type { IAgent } from "@/types/agent";
 import Disclaimer from "../disclaimer/disclaimer";
-import { Skeleton } from "../ui/skeleton";
 import { AgentsList } from "../home/agents";
-import { LogOutIcon } from "../ui/icons/lucide-log-out";
-import Head from "../home/head";
-import Footer from "../home/footer";
 import { EmptyState } from "../home/empty";
+import Footer from "../home/footer";
+import Head from "../home/head";
 import ImportButton from "../home/import";
+import { LoginBox } from "../home/login";
+import { LogOutIcon } from "../ui/icons/lucide-log-out";
+import { Skeleton } from "../ui/skeleton";
 
 async function createAgent() {
   const agent = await create();

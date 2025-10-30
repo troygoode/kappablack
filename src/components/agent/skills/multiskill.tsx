@@ -1,7 +1,7 @@
 "use client";
 
-import { useShallow } from "zustand/shallow";
 import classNames from "classnames";
+import { useShallow } from "zustand/shallow";
 
 import { Button } from "../../ui/button";
 import { CirclePlusIcon } from "../../ui/icons/lucide-circle-plus";
@@ -20,15 +20,15 @@ export function MultiSkill({
 }) {
   const addMultiSkillType = useAgentStore((state) => state.addMultiSkillType);
   const updateMultiSkillType = useAgentStore(
-    (state) => state.updateMultiSkillType
+    (state) => state.updateMultiSkillType,
   );
   const removeMultiSkillType = useAgentStore(
-    (state) => state.removeMultiSkillType
+    (state) => state.removeMultiSkillType,
   );
   const isLoaded = useAgentStore((state) => state.isLoaded);
   const mode = useAgentStore((state) => state.mode);
   const types = useAgentStore(
-    useShallow((state) => state.getMultiSkillTypes(skill))
+    useShallow((state) => state.getMultiSkillTypes(skill)),
   );
 
   const onUpdateType =
@@ -48,7 +48,7 @@ export function MultiSkill({
     <div
       className={classNames(
         "py-2 outline-1 outline-zinc-800 print:outline-slate-950",
-        mode === "play" && !maxScore ? "text-zinc-300 dark:text-zinc-700" : ""
+        mode === "play" && !maxScore ? "text-zinc-300 dark:text-zinc-700" : "",
       )}
     >
       <div className="flex grow">

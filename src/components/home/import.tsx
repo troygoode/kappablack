@@ -1,8 +1,8 @@
 "use client";
 
+import { RedirectType, redirect } from "next/navigation";
 import { useActionState, useEffect } from "react";
 import { importAgent } from "@/actions/export-agent";
-import { redirect, RedirectType } from "next/navigation";
 import { UploadButton } from "../upload-button";
 
 type TUploadState =
@@ -18,7 +18,7 @@ type TUploadState =
 export default function ImportButton() {
   const [state, formAction] = useActionState<TUploadState, FormData>(
     importAgent,
-    undefined
+    undefined,
   );
 
   useEffect(() => {

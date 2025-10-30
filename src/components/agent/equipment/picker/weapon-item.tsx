@@ -1,24 +1,23 @@
 "use client";
 
-import { type IWeaponData } from "@/types/data";
-
-import { SheetClose } from "@/components/ui/sheet";
+import { Badge } from "@/components/ui/badge";
+import { BrainIcon } from "@/components/ui/icons/lucide-brain";
+import { CalculatorIcon } from "@/components/ui/icons/lucide-calculator";
+import { CircleDotDashedIcon } from "@/components/ui/icons/lucide-circle-dot-dashed";
+import { FlagIcon } from "@/components/ui/icons/lucide-flag";
+import { HeartCrackIcon } from "@/components/ui/icons/lucide-heart-crack";
+import { RulerDimensionLineIcon } from "@/components/ui/icons/lucide-ruler-dimension-line";
+import { ShieldMinusIcon } from "@/components/ui/icons/lucide-shield-minus";
+import { SkullIcon } from "@/components/ui/icons/lucide-skull";
+import { TriangleIcon } from "@/components/ui/icons/lucide-triangle";
 import {
   Item,
   ItemContent,
-  ItemTitle,
   ItemDescription,
+  ItemTitle,
 } from "@/components/ui/item";
-import { BrainIcon } from "@/components/ui/icons/lucide-brain";
-import { Badge } from "@/components/ui/badge";
-import { RulerDimensionLineIcon } from "@/components/ui/icons/lucide-ruler-dimension-line";
-import { SkullIcon } from "@/components/ui/icons/lucide-skull";
-import { CircleDotDashedIcon } from "@/components/ui/icons/lucide-circle-dot-dashed";
-import { TriangleIcon } from "@/components/ui/icons/lucide-triangle";
-import { HeartCrackIcon } from "@/components/ui/icons/lucide-heart-crack";
-import { ShieldMinusIcon } from "@/components/ui/icons/lucide-shield-minus";
-import { CalculatorIcon } from "@/components/ui/icons/lucide-calculator";
-import { FlagIcon } from "@/components/ui/icons/lucide-flag";
+import { SheetClose } from "@/components/ui/sheet";
+import type { IWeaponData } from "@/types/data";
 
 function expenseToColor(expense: string | undefined) {
   switch (expense) {

@@ -1,4 +1,4 @@
-import { useRef, type PropsWithChildren } from "react";
+import { type PropsWithChildren, useRef } from "react";
 import { Button } from "./ui/button";
 
 export function UploadButton({
@@ -17,7 +17,7 @@ export function UploadButton({
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     ref.current?.dispatchEvent(
-      new Event("submit", { cancelable: true, bubbles: true })
+      new Event("submit", { cancelable: true, bubbles: true }),
     );
     return;
   };

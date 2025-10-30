@@ -1,12 +1,11 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-
-import AgentPage from "@/components/pages/agent";
-import { AgentStoreProvider } from "@/components/agent/stores/agent";
 import { getAgent } from "@/actions/get-agent";
+import { AgentStoreProvider } from "@/components/agent/stores/agent";
+import { Container } from "@/components/container";
+import AgentPage from "@/components/pages/agent";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { TriangleAlertIcon } from "@/components/ui/icons/lucide-triangle-alert";
-import { Container } from "@/components/container";
 
 export async function generateMetadata({
   params,

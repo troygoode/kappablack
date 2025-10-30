@@ -1,7 +1,7 @@
 "use client";
 
-import GoogleButton from "react-google-button";
 import { signIn } from "next-auth/react";
+import GoogleButton from "react-google-button";
 
 import {
   Card,

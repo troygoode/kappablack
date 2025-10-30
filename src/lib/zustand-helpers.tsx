@@ -1,27 +1,27 @@
 "use client";
 
 import {
-  type PropsWithChildren,
   createContext as createReactContext,
+  type PropsWithChildren,
   useContext,
   useRef,
 } from "react";
 import {
-  type StoreApi,
   createStore as createZustandStore,
+  type StoreApi,
   useStore as useZustandStore,
 } from "zustand";
 
 type TSet<T> = {
   (
     partial: T | Partial<T> | ((state: T) => T | Partial<T>),
-    replace?: false | undefined
+    replace?: false | undefined,
   ): void;
   (state: T | ((state: T) => T), replace: true): void;
 };
 
 export const createContext = <IState, IActions>(
-  value?: StoreApi<IState & IActions>
+  value?: StoreApi<IState & IActions>,
 ) => {
   return createReactContext<StoreApi<IState & IActions> | undefined>(value);
 };

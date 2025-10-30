@@ -1,18 +1,16 @@
 "use client";
 
 import { useShallow } from "zustand/shallow";
-
+import StatsData from "@/data/stats.json";
 import { Button } from "../ui/button";
-import { AgentTextInput } from "./form/agent-text-input";
-import { SideHeader } from "./form/side-header";
 import { RefreshCwIcon } from "../ui/icons/lucide-refresh-cw";
 import { Skeleton } from "../ui/skeleton";
+import { AgentTextInput } from "./form/agent-text-input";
 import { AgentTextarea } from "./form/agent-textarea";
 import { AgentTooltip } from "./form/agent-tooltip";
-import { useAgentStore } from "./stores/agent";
+import { SideHeader } from "./form/side-header";
 import { Rollable } from "./rollable";
-
-import StatsData from "@/data/stats.json";
+import { useAgentStore } from "./stores/agent";
 
 interface IStatsData {
   str: string;
@@ -170,7 +168,7 @@ const Derived = ({
                 type="number"
                 value={current?.toString() ?? ""}
                 onChange={(value) => {
-                  setCurrent(parseInt(value) || undefined);
+                  setCurrent(parseInt(value, 10) || undefined);
                 }}
                 maxLength={3}
                 min={0}
@@ -203,7 +201,7 @@ const featurePlaceholders = (
   lowest: string,
   low: string,
   high: string,
-  highest: string
+  highest: string,
 ) => {
   if (!score || (score >= 9 && score <= 12)) return undefined;
   switch (score) {
@@ -239,46 +237,46 @@ export default function Stats() {
         san: state.agent?.san,
         bp: state.agent?.bp,
         physicalDescription: state.agent?.physicalDescription || "",
-      }))
+      })),
     );
   const strength = useAgentStore(
     useShallow((state) => ({
       ...{ score: undefined, feature: "" },
       ...state.agent?.strength,
-    }))
+    })),
   );
   const dexterity = useAgentStore(
     useShallow((state) => ({
       ...{ score: undefined, feature: "" },
       ...state.agent?.dexterity,
-    }))
+    })),
   );
   const constitution = useAgentStore(
     useShallow((state) => ({
       ...{ score: undefined, feature: "" },
       ...state.agent?.constitution,
-    }))
+    })),
   );
   const intelligence = useAgentStore(
     useShallow((state) => ({
       ...{ score: undefined, feature: "" },
       ...state.agent?.intelligence,
-    }))
+    })),
   );
   const power = useAgentStore(
     useShallow((state) => ({
       ...{ score: undefined, feature: "" },
       ...state.agent?.power,
-    }))
+    })),
   );
   const charisma = useAgentStore(
     useShallow((state) => ({
       ...{ score: undefined, feature: "" },
       ...state.agent?.charisma,
-    }))
+    })),
   );
   const unnatural = useAgentStore(
-    useShallow((state) => state.getSkill("Unnatural"))
+    useShallow((state) => state.getSkill("Unnatural")),
   );
 
   return (
@@ -326,7 +324,7 @@ export default function Stats() {
                 "Feeble",
                 "Weak",
                 "Muscular",
-                "Huge"
+                "Huge",
               )}
               setFeature={(feature) => {
                 merge({ strength: { score: strength.score, feature } });
@@ -347,7 +345,7 @@ export default function Stats() {
                 "Barely Mobile",
                 "Clumsy",
                 "Nimble",
-                "Acrobatic"
+                "Acrobatic",
               )}
               setFeature={(feature) => {
                 merge({ dexterity: { score: dexterity.score, feature } });
@@ -370,7 +368,7 @@ export default function Stats() {
                 "Bedridden",
                 "Sickly",
                 "Perfect Health",
-                "Indefatigable"
+                "Indefatigable",
               )}
               setFeature={(feature) => {
                 merge({ constitution: { score: constitution.score, feature } });
@@ -393,7 +391,7 @@ export default function Stats() {
                 "Imbecilic",
                 "Slow",
                 "Perceptive",
-                "Brilliant"
+                "Brilliant",
               )}
               setFeature={(feature) => {
                 merge({ intelligence: { score: intelligence.score, feature } });
@@ -414,7 +412,7 @@ export default function Stats() {
                 "Spineless",
                 "Nervous",
                 "Strong-willed",
-                "Indomitable"
+                "Indomitable",
               )}
               setFeature={(feature) => {
                 merge({ power: { score: power.score, feature } });
@@ -435,7 +433,7 @@ export default function Stats() {
                 "Unbearable",
                 "Awkward",
                 "Charming",
-                "Magnetic"
+                "Magnetic",
               )}
               setFeature={(feature) => {
                 merge({ charisma: { score: charisma.score, feature } });
@@ -462,7 +460,7 @@ export default function Stats() {
                 !strength.score || !constitution.score
                   ? undefined
                   : Math.ceil(
-                      ((strength.score ?? 0) + (constitution.score ?? 0)) / 2
+                      ((strength.score ?? 0) + (constitution.score ?? 0)) / 2,
                     )
               }
               current={hp}

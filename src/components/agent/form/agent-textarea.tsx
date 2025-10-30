@@ -57,7 +57,7 @@ const AgentTextarea = ({
           disabled:required:dark:border-input/10
           `
             : "",
-          className
+          className,
         )}
       />
     ) : (
@@ -70,7 +70,7 @@ const AgentTextarea = ({
     <Skeleton
       className={classNames(
         "min-h-15 h-full rounded-md",
-        className ?? skeletonClassName
+        className ?? skeletonClassName,
       )}
     />
   );

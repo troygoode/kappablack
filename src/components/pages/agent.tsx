@@ -1,30 +1,28 @@
 "use client";
 
-import type { IAgent } from "@/types/agent";
-
-import { useEffect } from "react";
-import { usePDF, Margin } from "react-to-pdf";
-import { useTheme } from "next-themes";
 import dynamic from "next/dynamic";
-
+import { useTheme } from "next-themes";
+import { useEffect } from "react";
+import { Margin, usePDF } from "react-to-pdf";
 import Equipment from "@/components/agent/equipment/equipment";
 import Footer from "@/components/agent/footer";
-import SiteFooter from "@/components/home/footer";
 import Injuries from "@/components/agent/injuries";
 import Personal from "@/components/agent/personal";
 import Psychology from "@/components/agent/psychology";
 import Remarks from "@/components/agent/remarks";
+import Signature from "@/components/agent/signature";
 import Skills from "@/components/agent/skills/skills";
 import Stats from "@/components/agent/stats";
-import Signature from "@/components/agent/signature";
+import { useAgentStore } from "@/components/agent/stores/agent";
 import { Container } from "@/components/container";
 import Disclaimer from "@/components/disclaimer/disclaimer";
+import SiteFooter from "@/components/home/footer";
 import Navigation from "@/components/navigation";
-import { useAgentStore } from "@/components/agent/stores/agent";
+import type { IAgent } from "@/types/agent";
 
 const Toaster = dynamic(
   () => import("@/components/agent/toaster").then((comp) => comp.Toaster),
-  { ssr: false }
+  { ssr: false },
 );
 
 export default function Agent({
@@ -57,7 +55,7 @@ export default function Agent({
       toPDF: (
         filename: string | undefined,
         mode: "view" | "edit" | "play" | "print",
-        theme: string | undefined
+        theme: string | undefined,
       ) => {
         setMode("print");
         setTheme("light");
@@ -86,7 +84,7 @@ export default function Agent({
       pk,
       sk,
     });
-  }, [agent]);
+  }, [agent, isEditable, pk, reset, setMode, setTheme, sk, toPDF]);
 
   return (
     <Container>

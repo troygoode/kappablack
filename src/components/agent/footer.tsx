@@ -17,6 +17,7 @@ export default function Footer() {
         </div>
         <div className="flex flex-col items-center gap-2 lg:flex-row print:flex-row">
           <div className="w-96 text-center text-xs leading-none">
+            {/** biome-ignore lint/suspicious/noCommentText: false positive */}
             Top secret//orcon//special access required—Delta Green Agent
             documentation sheet
           </div>

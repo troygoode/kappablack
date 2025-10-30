@@ -1,18 +1,17 @@
-import type { IAgent } from "@/types/agent";
-
-import * as z from "zod";
 import { customAlphabet } from "nanoid";
 import { nolookalikesSafe } from "nanoid-dictionary";
+import type * as z from "zod";
+import skillData from "@/data/skills.json";
 
 import {
+  type BondSchema,
   FoundryVTTSchema,
-  WeaponSchema,
-  MotivationSchema,
-  GearSchema,
-  BondSchema,
-  ItemSchema,
+  type GearSchema,
+  type ItemSchema,
+  type MotivationSchema,
+  type WeaponSchema,
 } from "@/schemas/foundry";
-import skillData from "@/data/skills.json";
+import type { IAgent } from "@/types/agent";
 
 type TFoundryVTTAgent = z.infer<typeof FoundryVTTSchema>;
 type TWeaponSchema = z.infer<typeof WeaponSchema>;
@@ -87,7 +86,7 @@ export function exportFoundryAgent(agent: IAgent): TFoundryVTTAgent {
         damage: weapon.damage ?? "",
         armorPiercing: weapon.ap ?? 0,
         lethality: weapon.lethality ?? 0,
-        isLethal: weapon.lethality && weapon.lethality > 0 ? true : false,
+        isLethal: (weapon.lethality ?? 0) > 0,
         killRadius: weapon.radius ?? "",
         ammo: weapon.ammo?.toString() ?? "",
         expense: "",
@@ -305,7 +304,7 @@ export function exportFoundryAgent(agent: IAgent): TFoundryVTTAgent {
                 s.skill === skill.name &&
                 (s.type?.length ||
                   s.score !== undefined ||
-                  s.marked != undefined)
+                  s.marked !== undefined)
             ) ?? [];
           if (!agentSkills.length) return acc;
 
@@ -320,7 +319,7 @@ export function exportFoundryAgent(agent: IAgent): TFoundryVTTAgent {
               group:
                 skill.name === KAPPABLACK_OTHER ? FOUNDRY_OTHER : skill.name,
               proficiency: s.score ?? 0,
-              failure: s.marked ? true : false,
+              failure: !!s.marked,
             };
           }
 

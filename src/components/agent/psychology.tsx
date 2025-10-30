@@ -1,17 +1,16 @@
 "use client";
 
 import { useShallow } from "zustand/shallow";
-
+import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
+import { BrainIcon } from "../ui/icons/lucide-brain";
 import { CirclePlusIcon } from "../ui/icons/lucide-circle-plus";
+import { HeartCrackIcon } from "../ui/icons/lucide-heart-crack";
 import { Trash2Icon } from "../ui/icons/lucide-trash-2";
 import { AgentTextInput } from "./form/agent-text-input";
+import { AgentTextarea } from "./form/agent-textarea";
 import { SideHeader } from "./form/side-header";
 import { SquareCheckbox } from "./form/square-checkbox";
-import { Badge } from "../ui/badge";
-import { BrainIcon } from "../ui/icons/lucide-brain";
-import { HeartCrackIcon } from "../ui/icons/lucide-heart-crack";
-import { AgentTextarea } from "./form/agent-textarea";
 import { useAgentStore } from "./stores/agent";
 
 const Bond = ({
@@ -29,7 +28,7 @@ const Bond = ({
   update: (
     bond: string | undefined,
     score: number | undefined,
-    isMarked: boolean
+    isMarked: boolean,
   ) => void;
   remove: () => void;
 }) => {
@@ -79,9 +78,9 @@ const Bond = ({
                 update(
                   bond,
                   value !== undefined
-                    ? parseInt(value) ?? undefined
+                    ? (parseInt(value) ?? undefined)
                     : undefined,
-                  isMarked
+                  isMarked,
                 );
               }}
               maxLength={3}
@@ -110,10 +109,10 @@ export default function Psychology() {
       motivationsAndDisorders: state.agent?.motivationsAndDisorders || "",
       violenceAdaptation: state.agent?.violenceAdaptation || 0,
       helplessnessAdaptation: state.agent?.helplessnessAdaptation || 0,
-    }))
+    })),
   );
   const charismaScore = useAgentStore(
-    useShallow((state) => state.agent?.charisma?.score)
+    useShallow((state) => state.agent?.charisma?.score),
   );
   const bonds = useAgentStore(useShallow((state) => state.agent?.bonds || []));
 
@@ -136,7 +135,7 @@ export default function Psychology() {
     return (
       bond: string | undefined,
       score: number | undefined,
-      isMarked: boolean
+      isMarked: boolean,
     ) => {
       const updatedBonds = [...bonds];
       updatedBonds[index] = { bond, score, marked: isMarked };

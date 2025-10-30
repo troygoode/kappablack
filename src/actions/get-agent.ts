@@ -1,10 +1,10 @@
 "use server";
 
-import type { IAgent } from "@/types/agent";
 import { unmarshall } from "@aws-sdk/util-dynamodb";
+import { auth } from "@/auth";
 
 import { dynamodb, GetCommand, QueryCommand } from "@/lib/dynamodb";
-import { auth } from "@/auth";
+import type { IAgent } from "@/types/agent";
 
 export interface IAgentRecord {
   pk: string | undefined;

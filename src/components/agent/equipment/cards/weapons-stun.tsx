@@ -1,16 +1,14 @@
 "use client";
 
-import type { IStunWeapon } from "@/types/agent";
-
-import { Item, ItemContent, ItemTitle } from "@/components/ui/item";
-
 import { Button } from "@/components/ui/button";
-import { Skeleton } from "@/components/ui/skeleton";
 import { Trash2Icon } from "@/components/ui/icons/lucide-trash-2";
-import { AgentTextInput } from "../../form/agent-text-input";
+import { Item, ItemContent, ItemTitle } from "@/components/ui/item";
+import { Skeleton } from "@/components/ui/skeleton";
+import type { IStunWeapon } from "@/types/agent";
 import { AgentLabel } from "../../form/agent-label";
-import { useAgentStore } from "../../stores/agent";
+import { AgentTextInput } from "../../form/agent-text-input";
 import { RollableLookup } from "../../rollable-lookup";
+import { useAgentStore } from "../../stores/agent";
 
 const WeaponCardField = ({
   loading,
@@ -184,7 +182,7 @@ export const StunWeaponsCards = ({
                   onChange={(value) => {
                     onChange(
                       { ...weapon, capacity: parseInt(value, 10) },
-                      index
+                      index,
                     );
                   }}
                 />

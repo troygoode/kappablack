@@ -28,7 +28,7 @@ export function MultiSkillType({
   onUpdateType: (
     type: string | undefined,
     score: number | undefined,
-    marked: boolean | undefined
+    marked: boolean | undefined,
   ) => void;
   onRemoveType: () => void;
 }) {
@@ -89,7 +89,7 @@ export function MultiSkillType({
                   onUpdateType(
                     type,
                     value ? parseInt(value) : undefined,
-                    marked
+                    marked,
                   )
                 }
                 maxLength={3}

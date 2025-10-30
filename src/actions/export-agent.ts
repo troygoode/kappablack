@@ -1,11 +1,9 @@
 "use server";
 
+import { parse, stringify } from "smol-toml";
 import type { IAgent } from "@/types/agent";
-
-import { stringify, parse } from "smol-toml";
-
-import { getAgent } from "./get-agent";
 import { create } from "./create-agent";
+import { getAgent } from "./get-agent";
 
 function removeEmptyArrays(obj: object): object {
   return Object.fromEntries(

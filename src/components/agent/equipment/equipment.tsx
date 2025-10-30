@@ -5,10 +5,10 @@ import { useShallow } from "zustand/shallow";
 import { AgentTextarea } from "../form/agent-textarea";
 import { SideHeader } from "../form/side-header";
 import { useAgentStore } from "../stores/agent";
-import { WeaponsTable } from "./tables/weapons";
 import { WeaponsCards } from "./cards/weapons";
-import { StunWeaponsTable } from "./tables/weapons-stun";
 import { StunWeaponsCards } from "./cards/weapons-stun";
+import { WeaponsTable } from "./tables/weapons";
+import { StunWeaponsTable } from "./tables/weapons-stun";
 
 export default function Equipment() {
   const merge = useAgentStore((state) => state.merge);
@@ -21,10 +21,10 @@ export default function Equipment() {
   const mode = useAgentStore((state) => state.mode);
   const gear = useAgentStore((state) => state.agent?.gear || "");
   const weapons = useAgentStore(
-    useShallow((state) => state.agent?.weapons || [])
+    useShallow((state) => state.agent?.weapons || []),
   );
   const stunWeapons = useAgentStore(
-    useShallow((state) => state.agent?.stunWeapons || [])
+    useShallow((state) => state.agent?.stunWeapons || []),
   );
 
   return (

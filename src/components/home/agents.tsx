@@ -1,17 +1,15 @@
 "use client";
 
-import type { IAgent } from "@/types/agent";
-
 import Link from "next/link";
-
-import { TAgentRecord } from "@/actions/get-agent";
+import type { TAgentRecord } from "@/actions/get-agent";
+import type { IAgent } from "@/types/agent";
 
 export function AgentsList({ agents }: { agents: TAgentRecord<IAgent>[] }) {
   return (
     <div>
       <ul className="block">
         {agents.map((agent, idx) => (
-          <li key={idx}>
+          <li key={agent.sk}>
             <Link
               href={`/agents/${agent.pk}/${agent.sk}`}
               className="hover:[&_span]:underline"

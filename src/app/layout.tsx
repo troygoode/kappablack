@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { SessionProvider } from "next-auth/react";
 import { Special_Elite } from "next/font/google";
+import { SessionProvider } from "next-auth/react";
 
 import { ThemeProvider } from "@/components/theme-provider";
 

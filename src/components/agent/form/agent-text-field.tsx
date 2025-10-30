@@ -3,11 +3,11 @@
 import { useShallow } from "zustand/shallow";
 
 import { Skeleton } from "@/components/ui/skeleton";
+import type { IAgent } from "@/types/agent";
+import { useAgentStore } from "../stores/agent";
 import { AgentField } from "./agent-field";
 import { AgentLabel } from "./agent-label";
 import { AgentTextInput } from "./agent-text-input";
-import { useAgentStore } from "../stores/agent";
-import { IAgent } from "@/types/agent";
 
 export function AgentTextField({
   fieldName,
@@ -30,7 +30,7 @@ export function AgentTextField({
 
   const isLoaded = useAgentStore(useShallow((state) => state.isLoaded));
   const val = useAgentStore(
-    useShallow((state) => (state.agent ? value(state.agent) : "") || "")
+    useShallow((state) => (state.agent ? value(state.agent) : "") || ""),
   );
   const agent = useAgentStore((state) => state.agent);
 

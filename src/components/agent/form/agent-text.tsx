@@ -16,7 +16,7 @@ export const AgentText = ({
       className={classNames(
         "w-full p-2 text-sm min-h-8 rounded",
         type === "number" ? "text-center" : "",
-        className
+        className,
       )}
     >
       {value}

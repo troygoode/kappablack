@@ -1,9 +1,8 @@
+import { DynamoDBAdapter } from "@auth/dynamodb-adapter";
+import { DynamoDB, type DynamoDBClientConfig } from "@aws-sdk/client-dynamodb";
+import { DynamoDBDocument } from "@aws-sdk/lib-dynamodb";
 import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
-
-import { DynamoDB, DynamoDBClientConfig } from "@aws-sdk/client-dynamodb";
-import { DynamoDBDocument } from "@aws-sdk/lib-dynamodb";
-import { DynamoDBAdapter } from "@auth/dynamodb-adapter";
 
 const config: DynamoDBClientConfig = {
   credentials: {

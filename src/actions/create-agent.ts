@@ -1,13 +1,12 @@
 "use server";
 
-import type { IAgent } from "@/types/agent";
-
 import { marshall } from "@aws-sdk/util-dynamodb";
 import { customAlphabet } from "nanoid";
 import { nolookalikesSafe } from "nanoid-dictionary";
+import { auth } from "@/auth";
 
 import { dynamodb, PutCommand } from "@/lib/dynamodb";
-import { auth } from "@/auth";
+import type { IAgent } from "@/types/agent";
 import { getAgent } from "./get-agent";
 
 const idGenerator = customAlphabet(nolookalikesSafe, 6);

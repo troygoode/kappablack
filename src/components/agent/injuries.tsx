@@ -1,13 +1,12 @@
 "use client";
 
-import { useShallow } from "zustand/shallow";
 import classNames from "classnames";
-
+import { useShallow } from "zustand/shallow";
+import { Badge } from "../ui/badge";
 import { AgentTextarea } from "./form/agent-textarea";
 import { SideHeader } from "./form/side-header";
 import { SquareCheckbox } from "./form/square-checkbox";
 import { useAgentStore } from "./stores/agent";
-import { Badge } from "../ui/badge";
 
 export default function Injuries() {
   const merge = useAgentStore((state) => state.merge);
@@ -17,7 +16,7 @@ export default function Injuries() {
     useShallow((state) => ({
       wounds: state.agent?.wounds || "",
       firstAidAttempted: state.agent?.firstAidAttempted || false,
-    }))
+    })),
   );
 
   return (
@@ -64,14 +63,14 @@ export default function Injuries() {
             <span
               className={classNames(
                 "pt-1",
-                firstAidAttempted ? "" : "text-muted-foreground opacity-20"
+                firstAidAttempted ? "" : "text-muted-foreground opacity-20",
               )}
             >
               <Badge
                 variant={firstAidAttempted ? "default" : "outline"}
                 className={classNames(
                   firstAidAttempted ? "" : "text-muted-foreground",
-                  "mr-2"
+                  "mr-2",
                 )}
               >
                 Yes

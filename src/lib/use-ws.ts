@@ -22,7 +22,7 @@ export const useWs = ({ url }: { url: string }) => {
     return () => {
       socket.close();
     };
-  }, []);
+  }, [url]);
 
   // bind is needed to make sure `send` references correct `this`
   return [isReady, data, ws.current?.send.bind(ws.current)];

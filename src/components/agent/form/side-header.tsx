@@ -17,7 +17,7 @@ const SideHeader = ({ children }: React.PropsWithChildren) => {
         `,
 
         // TODO this is still not properly printing the rotated text in PDF export
-        mode === "print" ? "[&_span]:transform-[rotate(90deg)]" : ""
+        mode === "print" ? "[&_span]:transform-[rotate(90deg)]" : "",
       )}
     >
       <span>{children}</span>

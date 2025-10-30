@@ -1,6 +1,6 @@
 import { Container } from "@/components/container";
-import Policy from "./content";
 import Head from "@/components/home/head";
+import Policy from "./content";
 
 import "../privacy/policy.css";
 import Footer from "@/components/home/footer";

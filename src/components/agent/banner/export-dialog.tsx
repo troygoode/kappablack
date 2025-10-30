@@ -1,9 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
-import { Button } from "@/components/ui/button";
 import { Alert, AlertTitle } from "@/components/ui/alert";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogClose,
@@ -13,11 +12,8 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { ClipboardCopyIcon } from "@/components/ui/icons/lucide-clipboard-copy";
-import { Textarea } from "@/components/ui/textarea";
 import { CheckIcon } from "@/components/ui/icons/lucide-check";
-import { handleCopy } from "@/lib/handle-copy";
-import { useAgentStore } from "../stores/agent";
+import { ClipboardCopyIcon } from "@/components/ui/icons/lucide-clipboard-copy";
 import { CloudDownloadIcon } from "@/components/ui/icons/lucide-cloud-download";
 import { TriangleAlertIcon } from "@/components/ui/icons/lucide-triangle-alert";
 import {
@@ -29,6 +25,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
+import { handleCopy } from "@/lib/handle-copy";
+import { useAgentStore } from "../stores/agent";
 import { exportFoundryAgent } from "./export-foundry";
 
 const generateFilename = (agentName: string, ext: string) => {
@@ -40,7 +39,7 @@ const handleFileDownload = async (filename: string, text: string) => {
   var element = document.createElement("a");
   element.setAttribute(
     "href",
-    "data:text/plain;charset=utf-8," + encodeURIComponent(text)
+    "data:text/plain;charset=utf-8," + encodeURIComponent(text),
   );
   element.setAttribute("download", filename);
 
@@ -76,11 +75,11 @@ export function ExportDialog({
       default:
         setText("Not Implemented");
     }
-  }, [format]);
+  }, [format, agent, toml]);
 
   const filename = generateFilename(
     agent?.name ?? "",
-    format === "TOML" ? "toml" : format === "Foundry" ? "json" : "txt"
+    format === "TOML" ? "toml" : format === "Foundry" ? "json" : "txt",
   );
 
   const exportText = text ?? toml ?? "";

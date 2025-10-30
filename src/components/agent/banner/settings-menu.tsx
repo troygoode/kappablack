@@ -1,40 +1,39 @@
 "use client";
 
-import type React from "react";
+import { RedirectType, redirect } from "next/navigation";
+import { signIn, signOut, useSession } from "next-auth/react";
 import { useTheme } from "next-themes";
-import { useSession, signIn, signOut } from "next-auth/react";
-import { redirect, RedirectType } from "next/navigation";
-
+import type React from "react";
+import { copyAgent } from "@/actions/create-agent";
+import { exportAgent } from "@/actions/export-agent";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuTrigger,
+  DropdownMenuPortal,
   DropdownMenuSeparator,
   DropdownMenuSub,
-  DropdownMenuSubTrigger,
-  DropdownMenuPortal,
   DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { CheckIcon } from "@/components/ui/icons/lucide-check";
-import { useAgentStore } from "../stores/agent";
-import { copyAgent } from "@/actions/create-agent";
-import { ConfirmDeleteDialog } from "./delete-dialog";
-import { Trash2Icon } from "@/components/ui/icons/lucide-trash-2";
-import { LogOutIcon } from "@/components/ui/icons/lucide-log-out";
-import { CopyPlusIcon } from "@/components/ui/icons/lucide-copy-plus";
-import { SunIcon } from "@/components/ui/icons/lucide-sun";
-import { MoonStarIcon } from "@/components/ui/icons/lucide-moon-star";
-import { ComputerIcon } from "@/components/ui/icons/lucide-computer";
-import { Share2Icon } from "@/components/ui/icons/lucide-share-2";
 import { CloudDownloadIcon } from "@/components/ui/icons/lucide-cloud-download";
+import { ComputerIcon } from "@/components/ui/icons/lucide-computer";
+import { CopyPlusIcon } from "@/components/ui/icons/lucide-copy-plus";
+import { LogOutIcon } from "@/components/ui/icons/lucide-log-out";
+import { MoonStarIcon } from "@/components/ui/icons/lucide-moon-star";
+import { PaletteIcon } from "@/components/ui/icons/lucide-palette";
+import { PrinterIcon } from "@/components/ui/icons/lucide-printer";
+import { Share2Icon } from "@/components/ui/icons/lucide-share-2";
+import { SunIcon } from "@/components/ui/icons/lucide-sun";
+import { Trash2Icon } from "@/components/ui/icons/lucide-trash-2";
+import { useAgentStore } from "../stores/agent";
+import { ConfirmDeleteDialog } from "./delete-dialog";
 import { ExportDialog } from "./export-dialog";
 import { ShareDialog } from "./share-dialog";
-import { exportAgent } from "@/actions/export-agent";
-import { PrinterIcon } from "@/components/ui/icons/lucide-printer";
-import { PaletteIcon } from "@/components/ui/icons/lucide-palette";
 
 const Theme = () => {
   const { theme, setTheme } = useTheme();

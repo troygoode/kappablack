@@ -1,17 +1,16 @@
 "use client";
 
-import { type IWeapon } from "@/types/agent";
-import { type IWeaponData } from "@/types/data";
-
 import { Button } from "@/components/ui/button";
 import { CirclePlusIcon } from "@/components/ui/icons/lucide-circle-plus";
 import { Trash2Icon } from "@/components/ui/icons/lucide-trash-2";
 import { Skeleton } from "@/components/ui/skeleton";
+import type { IWeapon } from "@/types/agent";
+import type { IWeaponData } from "@/types/data";
 import { AgentTextInput } from "../../form/agent-text-input";
-import { WeaponPicker } from "../picker/picker";
-import { useAgentStore } from "../../stores/agent";
 import { Rollable } from "../../rollable";
 import { RollableLookup } from "../../rollable-lookup";
+import { useAgentStore } from "../../stores/agent";
+import { WeaponPicker } from "../picker/picker";
 
 const WIDTHS = {
   name: "w-80",
@@ -223,7 +222,7 @@ export const WeaponsTable = ({
                   onChange={(value) =>
                     onChange(
                       { ...weapon, ap: parseInt(value) ?? undefined },
-                      index
+                      index,
                     )
                   }
                 />
@@ -244,7 +243,7 @@ export const WeaponsTable = ({
                   onChange={(value) =>
                     onChange(
                       { ...weapon, lethality: parseInt(value) ?? undefined },
-                      index
+                      index,
                     )
                   }
                 />
@@ -282,7 +281,7 @@ export const WeaponsTable = ({
                   onChange={(value) =>
                     onChange(
                       { ...weapon, ammo: parseInt(value) ?? undefined },
-                      index
+                      index,
                     )
                   }
                 />
@@ -303,7 +302,7 @@ export const WeaponsTable = ({
                   onChange={(value) =>
                     onChange(
                       { ...weapon, capacity: parseInt(value) ?? undefined },
-                      index
+                      index,
                     )
                   }
                 />

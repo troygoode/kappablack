@@ -32,7 +32,7 @@ export function Dice100Toast({
   d1: number;
   d2: number;
 }) {
-  let value = parseInt(d1.toString() + d2.toString());
+  let value = parseInt(d1.toString() + d2.toString(), 10);
   if (value === 0) value = 100;
 
   const isGood = target && value <= target;
@@ -50,8 +50,8 @@ export function Dice100Toast({
           isGood
             ? "bg-linear-65 from-lime-500 to-emerald-500 outline-lime-400"
             : isBad
-            ? "bg-linear-65 from-amber-500 to-red-500 outline-amber-400"
-            : "outline-zinc-600"
+              ? "bg-linear-65 from-amber-500 to-red-500 outline-amber-400"
+              : "outline-zinc-600"
         }
         `}
         >
@@ -94,26 +94,25 @@ export function DiceToast({
   );
 
   return (
-    <>
-      <div className="flex gap-2 items-center justify-start">
-        <div
-          className={`
+    <div className="flex gap-2 items-center justify-start">
+      <div
+        className={`
         w-[48px] h-[48px] text-xl items-center justify-center text-center outline-2 rounded-sm font-bold mr-1
       outline-zinc-600
         `}
-        >
-          <div className="relative top-2">{total}</div>
-        </div>
-        <div className="gap-1">
-          <div className="flex gap-1 mb-1">
-            {dice.map((d, idx) => (
-              <Die key={idx} value={d} isMatch={false} />
-            ))}
-          </div>
-          <div>{label}</div>
-        </div>
+      >
+        <div className="relative top-2">{total}</div>
       </div>
-    </>
+      <div className="gap-1">
+        <div className="flex gap-1 mb-1">
+          {dice.map((d, idx) => (
+            // biome-ignore lint/suspicious/noArrayIndexKey: these are just dice; no natural key
+            <Die key={idx} value={d} isMatch={false} />
+          ))}
+        </div>
+        <div>{label}</div>
+      </div>
+    </div>
   );
 }
 

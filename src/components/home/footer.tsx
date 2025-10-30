@@ -1,9 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { GithubIcon } from "../ui/icons/lucide-github";
 import { Button } from "../ui/button";
 import { CoffeeIcon } from "../ui/icons/lucide-coffee";
+import { GithubIcon } from "../ui/icons/lucide-github";
 
 export default function Footer() {
   return (

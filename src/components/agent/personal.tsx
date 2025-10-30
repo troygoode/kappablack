@@ -5,15 +5,15 @@ import { useShallow } from "zustand/shallow";
 
 import { Label } from "../ui/label";
 import { RadioGroup } from "../ui/radio-group";
+import { Skeleton } from "../ui/skeleton";
 import { AgentField } from "./form/agent-field";
 import { AgentLabel } from "./form/agent-label";
+import { AgentText } from "./form/agent-text";
 import { AgentTextField } from "./form/agent-text-field";
 import { AgentTextInput } from "./form/agent-text-input";
 import { SideHeader } from "./form/side-header";
 import { SquareRadioGroupItem } from "./form/square-radio-group-item";
 import { useAgentStore } from "./stores/agent";
-import { Skeleton } from "../ui/skeleton";
-import { AgentText } from "./form/agent-text";
 
 const Name = () => {
   return (
@@ -104,7 +104,7 @@ const Sex = () => {
       sex: state.agent.sex,
       sexOther: state.agent.sexOther,
       isLoaded: state.isLoaded,
-    }))
+    })),
   );
   const merge = useAgentStore((state) => state.merge);
   const mode = useAgentStore((state) => state.mode);
@@ -114,10 +114,10 @@ const Sex = () => {
     storeSex === "m"
       ? "sex-m"
       : storeSex === "f"
-      ? "sex-f"
-      : storeSex === "other"
-      ? "sex-other"
-      : "sex-m"
+        ? "sex-f"
+        : storeSex === "other"
+          ? "sex-other"
+          : "sex-m",
   );
   const [sexOther, setSexOther] = useState(storeSexOther ?? "");
 
@@ -219,14 +219,9 @@ const Sex = () => {
 };
 
 export default function Personal() {
-  const onFormChange = (e: React.FormEvent<HTMLFormElement>) => {
-    // console.log("form changed", e.target);
-    return;
-  };
-
   return (
     <div>
-      <form onChange={onFormChange} className="w-full">
+      <form className="w-full">
         <div className="flex flex-col outline-1 outline-zinc-800 sm:flex-row print:outline-slate-950 ">
           <SideHeader>Personal Data</SideHeader>
           <div className="w-full">

@@ -1,7 +1,7 @@
 "use client";
 
-import { toast as sonner } from "sonner";
 import Roll from "roll";
+import { toast as sonner } from "sonner";
 
 import { DicesIcon } from "../ui/icons/lucide-dices";
 import { useAgentStore } from "./stores/agent";
@@ -12,7 +12,7 @@ const roll = new Roll();
 function rollToast(
   source: string,
   value?: string,
-  publish?: (msg: object) => void
+  publish?: (msg: object) => void,
 ) {
   if (value && REGEX_NUMERIC.test(value)) {
     const d1 = Math.floor(Math.random() * 10);
@@ -64,6 +64,7 @@ export function Rollable({
         hover:bg-zinc-800 hover:text-white hover:dark:bg-white hover:dark:text-black
         `}
       onClick={roll}
+      onKeyUp={roll}
     >
       <DicesIcon className="w-[14px] absolute -top-1 -right-0 hidden" />
       {children}

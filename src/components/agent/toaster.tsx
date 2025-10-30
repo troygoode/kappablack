@@ -1,13 +1,13 @@
 "use client";
 
-import { useEffect } from "react";
 import * as Ably from "ably";
 import { AblyProvider, ChannelProvider, useChannel } from "ably/react";
+import { useEffect } from "react";
 import { toast as sonner } from "sonner";
 
 import { Toaster as SonnerToaster } from "@/components/ui/sonner";
-import { Dice100Toast, DiceToast, Toast } from "./toast";
 import { useAgentStore } from "./stores/agent";
+import { Dice100Toast, DiceToast, Toast } from "./toast";
 
 interface IRollOutput {
   result: number;
@@ -56,7 +56,7 @@ function ToasterInner({ channelName }: { channelName: string }) {
           ),
           {
             duration: TOAST_DURATION,
-          }
+          },
         );
       } else if ("result" in message.data) {
         const result = message.data.result as IRollOutput;
@@ -72,7 +72,7 @@ function ToasterInner({ channelName }: { channelName: string }) {
           ),
           {
             duration: TOAST_DURATION,
-          }
+          },
         );
       }
     }
@@ -81,7 +81,7 @@ function ToasterInner({ channelName }: { channelName: string }) {
 
   useEffect(() => {
     setPublish((msg) => publish("rolled", msg));
-  }, [publish, channelName]);
+  }, [publish, setPublish]);
 
   return <SonnerToaster expand richColors />;
 }

@@ -19,40 +19,40 @@ export function RollableLookup({
     useShallow((state) => ({
       ...{ score: undefined, feature: "" },
       ...state.agent?.strength,
-    }))
+    })),
   );
   const dexterity = useAgentStore(
     useShallow((state) => ({
       ...{ score: undefined, feature: "" },
       ...state.agent?.dexterity,
-    }))
+    })),
   );
   const constitution = useAgentStore(
     useShallow((state) => ({
       ...{ score: undefined, feature: "" },
       ...state.agent?.constitution,
-    }))
+    })),
   );
   const intelligence = useAgentStore(
     useShallow((state) => ({
       ...{ score: undefined, feature: "" },
       ...state.agent?.intelligence,
-    }))
+    })),
   );
   const power = useAgentStore(
     useShallow((state) => ({
       ...{ score: undefined, feature: "" },
       ...state.agent?.power,
-    }))
+    })),
   );
   const charisma = useAgentStore(
     useShallow((state) => ({
       ...{ score: undefined, feature: "" },
       ...state.agent?.charisma,
-    }))
+    })),
   );
   const skill = useAgentStore(
-    useShallow((state) => state.getSkill(value?.toString() ?? ""))
+    useShallow((state) => state.getSkill(value?.toString() ?? "")),
   );
 
   let lookupSource = source;

@@ -1,14 +1,14 @@
 "use client";
 
-import { useShallow } from "zustand/shallow";
 import classNames from "classnames";
+import { useShallow } from "zustand/shallow";
 
 import { Skeleton } from "../../ui/skeleton";
 import { AgentTextInput } from "../form/agent-text-input";
 import { AgentTooltip } from "../form/agent-tooltip";
 import { SquareCheckbox } from "../form/square-checkbox";
-import { useAgentStore } from "../stores/agent";
 import { Rollable } from "../rollable";
+import { useAgentStore } from "../stores/agent";
 
 export function Skill({
   fieldName,
@@ -25,14 +25,14 @@ export function Skill({
   const isLoaded = useAgentStore((state) => state.isLoaded);
   const mode = useAgentStore((state) => state.mode);
   const { marked, score } = useAgentStore(
-    useShallow((state) => state.getSkill(skill))
+    useShallow((state) => state.getSkill(skill)),
   );
 
   return (
     <div
       className={classNames(
         "flex grow",
-        mode === "play" && !score ? "text-zinc-300 dark:text-zinc-700" : ""
+        mode === "play" && !score ? "text-zinc-300 dark:text-zinc-700" : "",
       )}
     >
       <div className="flex w-full items-center px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
@@ -50,7 +50,7 @@ export function Skill({
           {mode !== "print" && tooltip && (
             <AgentTooltip>
               <p className="mb-2">{tooltip}</p>
-              {base != undefined && (
+              {base !== undefined && (
                 <p>
                   <strong>Base value:</strong> {base}%
                 </p>
@@ -83,7 +83,7 @@ export function Skill({
                     updateSkill(
                       skill,
                       value?.length ? parseInt(value) : undefined,
-                      marked
+                      marked,
                     );
                   }}
                   required

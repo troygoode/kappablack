@@ -1,11 +1,9 @@
 "use server";
 
-import type { IAgent } from "@/types/agent";
-
 import { marshall } from "@aws-sdk/util-dynamodb";
-
 import { auth } from "@/auth";
 import { dynamodb, UpdateCommand } from "@/lib/dynamodb";
+import type { IAgent } from "@/types/agent";
 
 export async function save(pk: string | undefined, sk: string, agent?: IAgent) {
   const session = await auth();

@@ -1,11 +1,10 @@
 "use client";
 
 import { useShallow } from "zustand/shallow";
-
+import { Skeleton } from "../ui/skeleton";
 import { AgentLabel } from "./form/agent-label";
 import { AgentTextInput } from "./form/agent-text-input";
 import { useAgentStore } from "./stores/agent";
-import { Skeleton } from "../ui/skeleton";
 
 const MAX_LENGTH = 100;
 
@@ -15,7 +14,7 @@ export default function Signature() {
     useShallow((state) => ({
       isLoaded: state.isLoaded,
       player: state.agent?.player || "",
-    }))
+    })),
   );
 
   return (

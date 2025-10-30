@@ -1,9 +1,8 @@
 "use client";
 
 import Image from "next/image";
-
-import LogoW from "./DeltaGreen-Seal-Scientia1-white-dirty.webp";
 import LogoK from "./DeltaGreen-Seal-Scientia1-black-dirty.webp";
+import LogoW from "./DeltaGreen-Seal-Scientia1-white-dirty.webp";
 
 export default function Disclaimer() {
   return (

@@ -12,11 +12,11 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { CheckIcon } from "@/components/ui/icons/lucide-check";
 import { ClipboardCopyIcon } from "@/components/ui/icons/lucide-clipboard-copy";
+import { EyeIcon } from "@/components/ui/icons/lucide-eye";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { CheckIcon } from "@/components/ui/icons/lucide-check";
-import { EyeIcon } from "@/components/ui/icons/lucide-eye";
 import { handleCopy } from "@/lib/handle-copy";
 
 export function CopyableInput({

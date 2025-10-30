@@ -1,6 +1,6 @@
 "use client";
 
-import type { IWeaponData } from "@/types/data";
+import { useState } from "react";
 
 import {
   Sheet,
@@ -11,12 +11,11 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { WeaponFilter } from "./filter";
-
 import weapons from "@/data/weapons.json";
+import type { IWeaponData } from "@/types/data";
 import { CreateCustom } from "./create-custom";
+import { WeaponFilter } from "./filter";
 import { WeaponItem } from "./weapon-item";
-import { useState } from "react";
 
 const weaponData = (weapons.weapons as IWeaponData[]).reduce(
   (acc: Record<string, IWeaponData[]>, weapon: IWeaponData) => {
@@ -26,7 +25,7 @@ const weaponData = (weapons.weapons as IWeaponData[]).reduce(
     acc[weapon.category].push(weapon);
     return acc;
   },
-  {} as Record<string, IWeaponData[]>
+  {} as Record<string, IWeaponData[]>,
 );
 
 export const WeaponPicker = ({
@@ -83,7 +82,7 @@ export const WeaponPicker = ({
                     />
                   ))}
                 </div>
-              ) : null
+              ) : null,
             )}
           </div>
           <SheetFooter>

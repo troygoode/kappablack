@@ -1,20 +1,18 @@
 "use client";
 
-import type { IWeapon } from "@/types/agent";
-import type { IWeaponData } from "@/types/data";
-
-import { Item, ItemContent, ItemTitle } from "@/components/ui/item";
-
 import { Button } from "@/components/ui/button";
 import { CirclePlusIcon } from "@/components/ui/icons/lucide-circle-plus";
-import { Skeleton } from "@/components/ui/skeleton";
 import { Trash2Icon } from "@/components/ui/icons/lucide-trash-2";
-import { WeaponPicker } from "../picker/picker";
-import { AgentTextInput } from "../../form/agent-text-input";
+import { Item, ItemContent, ItemTitle } from "@/components/ui/item";
+import { Skeleton } from "@/components/ui/skeleton";
+import type { IWeapon } from "@/types/agent";
+import type { IWeaponData } from "@/types/data";
 import { AgentLabel } from "../../form/agent-label";
-import { useAgentStore } from "../../stores/agent";
+import { AgentTextInput } from "../../form/agent-text-input";
 import { Rollable } from "../../rollable";
 import { RollableLookup } from "../../rollable-lookup";
+import { useAgentStore } from "../../stores/agent";
+import { WeaponPicker } from "../picker/picker";
 
 const WeaponCardField = ({
   loading,
@@ -206,7 +204,7 @@ export const WeaponsCards = ({
                           onChange={(value) => {
                             onChange(
                               { ...weapon, ap: parseInt(value, 10) },
-                              index
+                              index,
                             );
                           }}
                         />
@@ -224,7 +222,7 @@ export const WeaponsCards = ({
                           onChange={(value) => {
                             onChange(
                               { ...weapon, lethality: parseInt(value, 10) },
-                              index
+                              index,
                             );
                           }}
                         />
@@ -255,7 +253,7 @@ export const WeaponsCards = ({
                           onChange={(value) => {
                             onChange(
                               { ...weapon, ammo: parseInt(value, 10) },
-                              index
+                              index,
                             );
                           }}
                         />
@@ -271,7 +269,7 @@ export const WeaponsCards = ({
                           onChange={(value) => {
                             onChange(
                               { ...weapon, capacity: parseInt(value, 10) },
-                              index
+                              index,
                             );
                           }}
                         />

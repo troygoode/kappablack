@@ -1,6 +1,7 @@
 "use client";
 
-import { redirect, RedirectType } from "next/navigation";
+import { RedirectType, redirect } from "next/navigation";
+import { deleteAgent } from "@/actions/delete-agent";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -11,9 +12,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-
 import { useAgentStore } from "../stores/agent";
-import { deleteAgent } from "@/actions/delete-agent";
 
 export function ConfirmDeleteDialog({
   open,

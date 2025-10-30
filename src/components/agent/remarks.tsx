@@ -9,8 +9,8 @@ import { Skeleton } from "../ui/skeleton";
 import { AgentTextInput } from "./form/agent-text-input";
 import { AgentTextarea } from "./form/agent-textarea";
 import { SideHeader } from "./form/side-header";
-import { useAgentStore } from "./stores/agent";
 import { RollableLookup } from "./rollable-lookup";
+import { useAgentStore } from "./stores/agent";
 
 const SpecialTraining = ({
   loading,
@@ -26,7 +26,7 @@ const SpecialTraining = ({
   skillOrStat: string | undefined;
   update: (
     training: string | undefined,
-    skillOrStat: string | undefined
+    skillOrStat: string | undefined,
   ) => void;
   remove: () => void;
 }) => {
@@ -91,10 +91,10 @@ export default function Remarks() {
       mode: state.mode,
       notes: state.agent?.notes || "",
       developments: state.agent?.developments || "",
-    }))
+    })),
   );
   const trainings = useAgentStore(
-    useShallow((state) => state.agent?.specialTraining || [])
+    useShallow((state) => state.agent?.specialTraining || []),
   );
 
   const addTraining = () => {
