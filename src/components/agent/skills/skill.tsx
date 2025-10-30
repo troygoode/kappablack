@@ -28,11 +28,18 @@ export function Skill({
     useShallow((state) => state.getSkill(skill)),
   );
 
+  const scoreValue =
+    mode === "play" && score === undefined && base !== undefined && base !== 0
+      ? base
+      : score;
+
   return (
     <div
       className={classNames(
         "flex grow",
-        mode === "play" && !score ? "text-zinc-300 dark:text-zinc-700" : "",
+        mode === "play" && !scoreValue
+          ? "text-zinc-300 dark:text-zinc-700"
+          : "",
       )}
     >
       <div className="flex w-full items-center px-2 py-1 outline-1 outline-zinc-800 print:outline-slate-950">
@@ -70,19 +77,19 @@ export function Skill({
               <Rollable
                 value={score}
                 source={skill}
-                enabled={mode === "play" && !!score}
+                enabled={mode === "play" && !!scoreValue}
               >
                 <AgentTextInput
                   fieldName={`${fieldName}-score`}
                   type="number"
-                  value={score?.toString() ?? ""}
+                  value={scoreValue?.toString() ?? ""}
                   placeholder={base && base !== 0 ? base.toString() : undefined}
                   maxLength={3}
                   min={0}
                   onChange={(value) => {
                     updateSkill(
                       skill,
-                      value?.length ? parseInt(value) : undefined,
+                      value?.length ? parseInt(value, 10) : undefined,
                       marked,
                     );
                   }}
