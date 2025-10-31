@@ -75,7 +75,7 @@ export function Skill({
           <div className="flex gap-0.5 w-full">
             {isLoaded ? (
               <Rollable
-                value={score}
+                value={scoreValue}
                 source={skill}
                 enabled={mode === "play" && !!scoreValue}
               >
